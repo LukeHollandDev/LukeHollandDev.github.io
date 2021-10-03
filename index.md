@@ -5,6 +5,7 @@ Below are downloads for my proposal poster and the slides from my presentation.
 [1]:{{ site.url }}/assets/files/Poster.pdf
 [2]:{{ site.url }}/assets/files/Presentation.pdf
 
+# My internship at Barclays
 
 ### Who are Barclays?
 Barclays is a multinational universal bank, headquartered in London. Barclays is responsible for many innovations in the banking industry such as contactless payments and even creating the world’s first ATM. With the increasing popularity of digital banking and the usefulness of different technologies in the banking industry, Barclays have been hiring more and more in the technology industry. With the opening of their new campus in Glasgow, they expect to double their number of workers, having around 5,000 workers within 2 years at the new campus.
@@ -38,3 +39,22 @@ The AWS services we used:
 
 ### PSD and the team projects' relevance
 Both professional software development and the team project I felt were quite useful for my internship. The experience I gained during my team project helped me prepare for the internship as the experience of working on a project was very similar – especially with the idea of stand-ups, sprints and tickets and the overall workflow of working on a project with other developers. Then professional software development, quite a few of the ideas taught during the course I found during my internship such as the agile methodology, retrospectives, code reviews, feature branching to name a few.
+
+# My project proposal for AWS CloudFormation tool
+
+### What is CloudFormation
+CloudFormation is an AWS service which allows developers to provision and configure AWS infrastructure, which can be made up of many of the services AWS offers and even some third-party ones. It works by creating a template for the product which describes all the resources and how they connect with each other. CloudFormation then takes this template and handles the provisioning and configuration for you.
+
+### Problem statement/why the tool might be required
+CloudFormation handles a lot of the work for the developer, such as deployment and configuration of the individual components in an AWS product. However, there are a few issues due to the nature of developing a new infrastructure such as some configuration options which require being dynamic and need changed/calibrated during testing. Also, if you update the template to add new resources it isn’t always practical to tear down the existing infrastructure and re-build all – this leads to any additional resources to an existing stack needing to be manually provisioned by the developer using the AWS service catalogue.
+
+When developing a large project there’s often many environments where the project is deployed such as development, testing, production etc. When the product template is updated, this might need to be reflected in all these environments such as introducing a new service into the product stack. Generally, the development stack would be updated first to get the new service to work with the rest of the stack. But once it has been implemented, you’ll likely want to move it to your testing environments which there could many, this would then mean for each environment you’ll have to use the service catalogue to deploy each of the services for every environment. This can become quite monotonous when you’re doing it quite often.
+
+Another issue when developing a large project is many of the parameters will be updated during the development step and subsequentially the development stack will have many configured parameters which will need to be used in the next environments after development – testing/prod etc. The developer would need to manually promote these changes up the stack when moving onto the testing environment for instance.
+
+### How the tool will work
+This tool will be used to tackle the two issues highlighted in the problem statement: adding new resources to a template and promoting the state of one environment to another. It’ll be a simple script which will give the developer the ability to deploying new resources added to their templates without having to navigate through AWS and deploy them via the AWS service catalogue.
+
+Then for when you’re done with testing on any environment you can easily promote its configuration to the next step whether it be more testing environments or even to production environment. For promoting stacks there will also be a built-in whitelist where you can specify any environment specific parameters which should not be promoted such as configurations for databases etc.
+
+Additionally, when using the tool there will be a drift check which before updating any configuration or deploying new resources, you’ll receive a drift report to let you know how your deployed stack differs to the template.
