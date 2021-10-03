@@ -1,3 +1,4 @@
+Below are downloads for my proposal poster and the slides from my presentation.
 * Download for my project proposal poster - [DOWNLOAD][1]
 * Download for my internship presentation slides - [DOWNLOAD][2]
 
