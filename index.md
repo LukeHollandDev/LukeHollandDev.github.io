@@ -1,6 +1,3 @@
-# UofG Luke Holland - Barclays Summer Internship
-Here you can see information about my internship and the proposal derived from the internship.
-
 ### Who are Barclays?
 Barclays is a multinational universal bank, headquartered in London. Barclays is responsible for many innovations in the banking industry such as contactless payments and even creating the world’s first ATM. With the increasing popularity of digital banking and the usefulness of different technologies in the banking industry, Barclays have been hiring more and more in the technology industry. With the opening of their new campus in Glasgow, they expect to double their number of workers, having around 5,000 workers within 2 years at the new campus.
 
