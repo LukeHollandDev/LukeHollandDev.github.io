@@ -1,3 +1,10 @@
+* Download for my project proposal poster - [DOWNLOAD][1]
+* Download for my internship presentation slides - [DOWNLOAD][2]
+
+[1]:{{ site.url }}/assets/files/Poster.pdf
+[2]:{{ site.url }}/assets/files/Presentation.pdf
+
+
 ### Who are Barclays?
 Barclays is a multinational universal bank, headquartered in London. Barclays is responsible for many innovations in the banking industry such as contactless payments and even creating the world’s first ATM. With the increasing popularity of digital banking and the usefulness of different technologies in the banking industry, Barclays have been hiring more and more in the technology industry. With the opening of their new campus in Glasgow, they expect to double their number of workers, having around 5,000 workers within 2 years at the new campus.
 
@@ -30,10 +37,3 @@ The AWS services we used:
 
 ### PSD and the team projects' relevance
 Both professional software development and the team project I felt were quite useful for my internship. The experience I gained during my team project helped me prepare for the internship as the experience of working on a project was very similar – especially with the idea of stand-ups, sprints and tickets and the overall workflow of working on a project with other developers. Then professional software development, quite a few of the ideas taught during the course I found during my internship such as the agile methodology, retrospectives, code reviews, feature branching to name a few.
-
-## Below is a PDF of my poster and a PDF of my presentation slides
-* Download for the poster - [DOWNLOAD][1]
-* Download for the presentation slides - [DOWNLOAD][2]
-
-[1]:{{ site.url }}/assets/files/Poster.pdf
-[2]:{{ site.url }}/assets/files/Presentation.pdf
