@@ -1,4 +1,4 @@
-# Luke Holland - University of Glasgow
+# UofG Luke Holland - Barclays Summer Internship
 Here you can see information about my internship and the proposal derived from the internship.
 
 ### Who are Barclays?
@@ -35,7 +35,8 @@ The AWS services we used:
 Both professional software development and the team project I felt were quite useful for my internship. The experience I gained during my team project helped me prepare for the internship as the experience of working on a project was very similar – especially with the idea of stand-ups, sprints and tickets and the overall workflow of working on a project with other developers. Then professional software development, quite a few of the ideas taught during the course I found during my internship such as the agile methodology, retrospectives, code reviews, feature branching to name a few.
 
 ## Below is a PDF of my poster and a PDF of my presentation slides
-* Download here for the presentation slides - [DOWNLOAD][1]
+* Download for the poster - [DOWNLOAD][1]
+* Download for the presentation slides - [DOWNLOAD][2]
 
-
-[1]:{{ site.url }}/assets/files/Presentation.pdf
+[1]:{{ site.url }}/assets/files/Poster.pdf
+[2]:{{ site.url }}/assets/files/Presentation.pdf
