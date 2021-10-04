@@ -2,7 +2,7 @@ Below are downloads for my proposal poster and the slides from my presentation.
 * Download for my project proposal poster - [DOWNLOAD][1]
 * Download for my internship presentation slides - [DOWNLOAD][2]
 
-[1]:{{ site.url }}/assets/files/Poster.pdf
+[1]:{{ site.url }}/assets/files/poster.pdf
 [2]:{{ site.url }}/assets/files/Presentation.pdf
 
 # My internship at Barclays
