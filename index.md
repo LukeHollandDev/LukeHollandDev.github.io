@@ -6,4 +6,4 @@ Hi, my name is Luke Holland and I'm currently a 4th year student at the Universi
 * Level 4 Project - [Algorithm Visualiser][2]
 
 [1]:{{ site.url }}/placement
-[2]:{{ site.url }}/alg
+[2]:{{ site.url }}/indproj
