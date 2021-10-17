@@ -1,11 +1,10 @@
+[🠔 Go Back][3]
+
+# My internship at Barclays
+
 Below are downloads for my proposal poster and the slides from my presentation.
 * Download for my project proposal poster - [DOWNLOAD][1]
 * Download for my internship presentation slides - [DOWNLOAD][2]
-
-[1]:{{ site.url }}/assets/files/poster.pdf
-[2]:{{ site.url }}/assets/files/Presentation.pdf
-
-# My internship at Barclays
 
 ### Who are Barclays?
 Barclays is a multinational universal bank, headquartered in London. Barclays is responsible for many innovations in the banking industry such as contactless payments and even creating the world’s first ATM. With the increasing popularity of digital banking and the usefulness of different technologies in the banking industry, Barclays have been hiring more and more in the technology industry. With the opening of their new campus in Glasgow, they expect to double their number of workers, having around 5,000 workers within 2 years at the new campus.
@@ -58,3 +57,7 @@ This tool will be used to tackle the two issues highlighted in the problem state
 Then for when you’re done with testing on any environment you can easily promote its configuration to the next step whether it be more testing environments or even to production environment. For promoting stacks there will also be a built-in whitelist where you can specify any environment specific parameters which should not be promoted such as configurations for databases etc.
 
 Additionally, when using the tool there will be a drift check which before updating any configuration or deploying new resources, you’ll receive a drift report to let you know how your deployed stack differs to the template.
+
+[1]:{{ site.url }}/assets/files/poster.pdf
+[2]:{{ site.url }}/assets/files/Presentation.pdf
+[3]:{{ site.url }}
