@@ -1,4 +1,4 @@
-[🠔 Go Back][3]
+[&larr; Go Back][3]
 
 # My internship at Barclays
 
