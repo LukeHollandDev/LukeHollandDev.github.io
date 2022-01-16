@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trade Up</title>
+    <link rel="stylesheet" href="css/master.css">
+  </head>
+  <body>
+    <script src="js/Item.js"></script>
+    <script src="js/Game.js"></script>
+    <script src="js/Util.js"></script>
+    <script src="data.js"></script>
+    <script type="text/javascript">
+      let localStorage = window.localStorage;
+      let game = new Game();
+      let interval = null;
+
+      function setTime() {
+        if (!game.inProgress) {
+          return;
+        }
+        ++game.time;
+        var time = document.getElementById('time');
+        if (parseInt(game.time / 60) > 0) {
+          time.innerHTML = `${parseInt(game.time / 60)}m ${game.time % 60}s`
+        } else {
+          time.innerHTML = `${game.time % 60}s`
+        }
+      }
+
+      function checkInput() {
+        var input = document.getElementById('player-name');
+        var button = document.getElementById('saveButton');
+        if (input.value.length >= 2) {
+          button.disabled = false;
+        } else {
+          button.disabled = true;
+        }
+      }
+
+      function setOffers(els) {
+        for (let i = 0; i < els.length; i++) {
+          var img = els[i].getElementsByTagName('img')[0]
+          img.src = game.currentOffers[i].imageUri;
+          img.style.borderColor = 'white';
+          var name = els[i].getElementsByClassName('name')[0]
+          name.innerHTML = game.currentOffers[i].name
+        }
+      }
+
+      function setCurrent(el) {
+        var img = el.getElementsByTagName('img')[0];
+        img.src = game.currentItem.imageUri;
+        var name = el.getElementsByClassName('name')[0];
+        name.innerHTML = game.currentItem.name;
+        var price = el.getElementsByClassName('price')[0];
+        price.innerHTML = `£${game.currentItem.price}`;
+      }
+
+      function updateBoard(old_value = null) {
+        var offers = document.getElementById('offers');
+        setOffers(offers.children);
+        var current = document.getElementById('current');
+        setCurrent(current);
+        var moves = document.getElementById('moves');
+        moves.innerHTML = `${game.moves} moves`
+        var value = document.getElementById('value');
+        value.innerHTML = `£${game.currentItem.price} / £100.00`
+        if (old_value) {
+          value.style.color = old_value < game.currentItem.price ? 'green' : 'red';
+        }
+      }
+
+      function highlightOffers(old_value) {
+        var offers = document.getElementById('offers');
+        for (let i = 0; i < offers.children.length; i++) {
+          var img = offers.children[i].getElementsByTagName('img')[0]
+          if (old_value > game.currentOffers[i].price) {
+            img.style.borderColor = 'red';
+          } else if (old_value < game.currentOffers[i].price) {
+            img.style.borderColor = 'green';
+          } else {
+            img.style.borderColor = 'orange';
+          }
+        }
+      }
+
+      function selectOffer(i) {
+        if (game.selectingOffer) {
+          return;
+        }
+        game.selectingOffer = true;
+        game.inProgress = false;
+        var old_value = parseFloat(game.currentItem.price);
+        highlightOffers(old_value);
+        game.selectItem(i);
+        setTimeout(() => {
+          updateBoard(old_value);
+          game.selectingOffer = false;
+          game.inProgress = true;
+          // check to see if player has won - got an item £100 or more in value
+          if (game.currentItem.price >= 100) {
+            console.log('you are a winner, nerd');
+            var winner = document.getElementById('winner');
+            winner.style.display = 'block';
+            setTimeout(() => {
+              game.inProgress = false;
+              // hide game board
+              var menu = document.getElementById('menu');
+              menu.style.display = "none";
+              var board = document.getElementById('board');
+              board.style.display = "none";
+              winner.style.display = 'none';
+              // show congratulations screen
+              var finished = document.getElementById('finished');
+              finished.style.display = "flex";
+              var moves = document.getElementById('results-moves');
+              moves.innerHTML = `Moves: ${game.moves}`;
+              var value = document.getElementById('results-value');
+              value.innerHTML = `Value: £${game.currentItem.price}`;
+              var time = document.getElementById('results-time');
+              if (parseInt(game.time / 60) > 0) {
+                time.innerHTML = `Time: ${parseInt(game.time / 60)}m ${game.time % 60}s`
+              } else {
+                time.innerHTML = `Time: ${game.time % 60}s`
+              }
+            }, 2000);
+          }
+        }, 750);
+      }
+
+      function saveScore() {
+        // get name from input
+        var input = document.getElementById('player-name');
+        // save score to local storage
+        var scores = JSON.parse(localStorage.getItem("scores") || "[]")
+        scores.push({
+          name: input.value,
+          moves: game.moves,
+          time: game.time,
+          value: game.currentItem.price
+        });
+        localStorage.setItem('scores', JSON.stringify(scores));
+        // update to tell user it has been added
+        var confirmation = document.getElementById('confirmation');
+        confirmation.style.display = 'block';
+        var submit = document.getElementById('saveButton');
+        submit.disabled = true;
+        input.disabled;
+        input.value = '';
+      }
+
+      function play() {
+        // make copy of the data
+        let data_copy = JSON.parse(JSON.stringify(data));
+        // start the game
+        game = new Game(data_copy);
+        game.start();
+        interval = setInterval(setTime, 1000);
+        // hide menu items
+        var play = document.getElementById('play');
+        play.style.display = "none";
+        var scores = document.getElementById('scores');
+        scores.style.display = "none";
+        // var about = document.getElementById('about');
+        // about.style.display = "none";
+        // show game board
+        var menu = document.getElementById('menu');
+        menu.style.display = "flex";
+        var board = document.getElementById('board');;
+        board.style.display = "flex";
+        // setup board
+        updateBoard();
+      }
+
+      function quit() {
+        game.inProgress = false;
+        clearInterval(interval);
+        // show menu items
+        var play = document.getElementById('play');
+        play.style.display = "initial";
+        var scores = document.getElementById('scores');
+        scores.style.display = "initial";
+        // var about = document.getElementById('about');
+        // about.style.display = "initial";
+        // hide game board
+        var menu = document.getElementById('menu');
+        menu.style.display = "none";
+        var board = document.getElementById('board');;
+        board.style.display = "none";
+        // reset value color
+        var value = document.getElementById('value');
+        value.style.color = 'white';
+        // reset time
+        var time = document.getElementById('time');
+        time.innerHTML = '0s'
+        // hide congratulations screen
+        var finished = document.getElementById('finished');
+        finished.style.display = "none";
+        var confirmation = document.getElementById('confirmation');
+        confirmation.style.display = 'none';
+        // hide scoreboard and delete its children
+        var scoreboard = document.getElementById('scoreboard');
+        scoreboard.style.display = 'none';
+      }
+
+      function renderScoreboard() {
+        // reset score list
+        var scores = JSON.parse(localStorage.getItem("scores") || "[]");
+        var scoreboard = document.getElementById('scoreboard');
+        var scoretable = document.getElementById('scores-table');
+        while (scoretable.firstChild) {
+          scoretable.removeChild(scoretable.lastChild);
+        }
+        if (scores.length === 0) {
+          var span = document.createElement('span');
+          var text = document.createTextNode("You don't have any scores saved.");
+          scoretable.appendChild(span.appendChild(text));
+        } else {
+          var header = document.createElement('tr');
+          var th_rank = document.createElement('th');
+          th_rank.innerHTML = '#';
+          var th_name = document.createElement('th');
+          th_name.innerHTML = 'name'
+          var th_time = document.createElement('th');
+          th_time.innerHTML = 'time'
+          var th_value = document.createElement('th');
+          th_value.innerHTML = 'value'
+          var th_moves = document.createElement('th');
+          th_moves.innerHTML = 'moves'
+          header.appendChild(th_rank);
+          header.appendChild(th_name);
+          header.appendChild(th_time);
+          header.appendChild(th_value);
+          header.appendChild(th_moves);
+          scoretable.appendChild(header);
+          scores = scores.sort((e1, e2) => e1.time - e2.time);
+          for (let i = 0; i < scores.length; i++) {
+            var tr = document.createElement('tr');
+            var pos = document.createElement('td');
+            pos.innerHTML = `${i+1}.`;
+            var name = document.createElement('td');
+            name.innerHTML = scores[i].name;
+            var time = document.createElement('td');
+            time.innerHTML = renderTime(scores[i].time);
+            var value = document.createElement('td');
+            value.innerHTML = `£${scores[i].value}`;
+            var moves = document.createElement('td');
+            moves.innerHTML = scores[i].moves;
+            tr.appendChild(pos);
+            tr.appendChild(name);
+            tr.appendChild(time);
+            tr.appendChild(value);
+            tr.appendChild(moves);
+            scoretable.append(tr);
+          }
+        }
+        // hide menu items
+        var play = document.getElementById('play');
+        play.style.display = "none";
+        var scores = document.getElementById('scores');
+        scores.style.display = "none";
+        // var about = document.getElementById('about');
+        // about.style.display = "none";
+        // show scoreboard
+        scoreboard.style.display = "flex";
+      }
+    </script>
+
+    <div class="content center">
+      <div class="title">Trade Up</div>
+      <div class="desc">make the right trades to turn £1 into over £100</div>
+      <div class="menu-buttons">
+        <button type="button" id="play" onclick="play()">play</button>
+        <button type="button" id="scores" onclick="renderScoreboard()">scores</button>
+        <!--<button type="button" id="about">about</button>-->
+      </div>
+      <div class="menu" id="menu" style="display:none;">
+        <span class="time" id="time">0s</span>
+        <span id="moves">0 moves</span>
+        <span class="value" id="value">£0.01 / £100.00</span>
+        <span class="quit" onclick="quit()">× quit</span>
+      </div>
+      <div class="board" id="board" style="display:none;">
+        <div class="winner" id="winner" style="display:none;">
+          <span>Winner!</span>
+        </div>
+        <div class="current" id="current">
+          <img width="192px" height="192px" src="https://www.royalmint.com/globalassets/__rebrand/_structure/shop/editions/_historic-coins/_product-image/queen-elizabeth-ii-1967-penny-obverse-hise2967b.jpg" />
+          <div class="text">
+            <span class="name">name</span>
+            <span class="price">£0.01</span>
+          </div>
+        </div>
+        <div class="arrow">&#8674;</div>
+        <div class="offers" id="offers">
+          <div id="0" onclick="selectOffer(0)">
+            <img width="150px" height="150px" src="https://www.royalmint.com/globalassets/__rebrand/_structure/shop/editions/_historic-coins/_product-image/queen-elizabeth-ii-1967-penny-obverse-hise2967b.jpg" />
+            <div class="text">
+              <span class="name">name</span>
+            </div>
+          </div>
+          <div id="1" onclick="selectOffer(1)">
+            <img width="150px" height="150px" src="https://www.royalmint.com/globalassets/__rebrand/_structure/shop/editions/_historic-coins/_product-image/queen-elizabeth-ii-1967-penny-obverse-hise2967b.jpg" />
+            <div class="text">
+              <span class="name">name</span>
+            </div>
+          </div>
+          <div id="2" onclick="selectOffer(2)">
+            <img width="150px" height="150px" src="https://www.royalmint.com/globalassets/__rebrand/_structure/shop/editions/_historic-coins/_product-image/queen-elizabeth-ii-1967-penny-obverse-hise2967b.jpg" />
+            <div class="text">
+              <span class="name">name</span>
+            </div>
+          </div>
+          <div id="3" onclick="selectOffer(3)">
+            <img width="150px" height="150px" src="https://www.royalmint.com/globalassets/__rebrand/_structure/shop/editions/_historic-coins/_product-image/queen-elizabeth-ii-1967-penny-obverse-hise2967b.jpg" />
+            <div class="text">
+              <span class="name">name</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="finished center" id="finished" style="display:none;">
+        <span>Congratulations!!</span>
+        <div class="results">
+          <span id="results-moves">Moves: 0</span>
+          <span id="results-time">Time: 0s</span>
+          <span id="results-value">Value: £0</span>
+        </div>
+        <input onkeyup="checkInput()" type="text" id="player-name" class="inputbox" placeholder="Name" />
+        <div class="finished-buttons">
+          <button disabled class="saveButton" id="saveButton" type="button" name="button" onclick="saveScore()">Save Score</button>
+          <button class="menuButton" type="button" name="button" onclick="quit()">Menu</button>
+        </div>
+        <span id="confirmation" style="display:none;">Score saved!</span>
+        <img src="https://media2.giphy.com/media/g9582DNuQppxC/200.gif" />
+      </div>
+      <div class="scoreboard" id="scoreboard" style="display:none;">
+        <button class="back-button" type="button" onclick="quit()">Back to Menu</button>
+        <table class="scores-table">
+          <tbody id="scores-table">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,355 @@
+body {
+  background-color: black;
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+img {
+  border-radius: 15px;
+  border: 4px solid white;
+}
+
+* {
+  transition: all ease 0.35s;
+  -webkit-transition: all ease 0.35s;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.content {
+  margin-top: 10%;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: 2em;
+}
+
+.title {
+  font-size: 5em;
+}
+
+.desc {
+  font-size: 1.25em;
+}
+
+.menu-buttons {
+  margin-top: 2em;
+  width: 20em;
+}
+
+.menu-buttons > button {
+  display: block;
+  margin: auto;
+  margin-top: 1em;
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 0.5em;
+  width: 100%;
+  font-weight: bold;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: all ease 0.35s;
+  -webkit-transition: all ease 0.35s;
+}
+
+.menu-buttons > button:hover {
+  color: #48dbfb;
+  border-color: #48dbfb;
+}
+
+.menu {
+  margin-top: 2em;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  gap: 1em;
+}
+
+.menu .quit {
+  text-align: center;
+  flex: 1 1 0;
+  cursor: pointer;
+  transition: all ease 0.35s;
+  -webkit-transition: all ease 0.35s;
+}
+
+.menu .quit:hover {
+  color: #48dbfb;
+}
+
+.menu > span {
+  flex: 1 1 0;
+  text-align: center;
+}
+
+.menu .time {
+  text-align: right;
+}
+
+.menu .value {
+  text-align: left;
+}
+
+.board {
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-top: 2em;
+  position: relative;
+}
+
+.board > div {
+  flex: 4 1 0;
+  text-align: center;
+}
+
+.board .current {
+  flex: 3 1 0;
+}
+
+.board .arrow {
+  flex: 1 1 0;
+  width: 100%;
+  font-size: 2.5em;
+}
+
+.board .current .text {
+  width: 192px;
+  margin: 0 auto;
+}
+
+.board .current .text > span {
+  display: block;
+  text-align: left;
+}
+
+.board .offers {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.board .offers > div {
+  display: flex;
+  flex-basis: calc(50% - 40px);
+  justify-content: center;
+  flex-direction: column;
+}
+
+.board .offers > div .text {
+  width: 150px;
+  height: 92px;
+  margin: 0 auto;
+  margin-left: 0;
+  overflow-y: scroll;
+}
+
+.board .offers > div .text > span {
+  display: block;
+  text-align: left;
+}
+
+.finished {
+  margin-top: 2em;
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 1em 2em 1em 2em;
+  gap: 1em;
+}
+
+.finished > * {
+  display: block;
+}
+
+.finished .inputbox {
+  padding: 0.4em;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+
+.finished .inputbox:focus, .finished .inputbox:hover {
+  outline-color: #48dbfb;
+  outline-style: solid;
+  border-color: #48dbfb;
+}
+
+.finished .finished-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.finished .finished-buttons .saveButton {
+  flex: 3 1 0;
+}
+.finished .finished-buttons .menuButton {
+  flex: 1 1 0;
+}
+
+.finished .results {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+}
+
+.scoreboard {
+  margin-top: 2em;
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 1em 2em 1em 2em;
+  gap: 1em;
+  flex-direction: column;
+}
+
+.scores-table {
+  border-spacing: 0;
+  border: none;
+}
+
+.scores-table th {
+  padding: 0 1em 0 1em;
+}
+
+.scores-table td {
+  text-align: center;
+  padding: 0 0.2em 0 0.2em;
+}
+
+.scores-table tr:first-of-type {
+  border: 2px solid rgba(72, 219, 251, 0.75);
+}
+
+.scores-table tr:nth-child(2) td:first-child {
+  background-color: gold;
+}
+.scores-table tr:nth-child(3) td:first-child {
+  background-color: silver;
+}
+.scores-table tr:nth-child(4) td:first-child {
+  background-color:  #cd7f32;
+}
+
+.winner {
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.winner > span {
+  display: block;
+  font-size: 5em;
+  font-weight: bold;
+  background: black;
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 0.2em;
+  -webkit-animation: breathing 1s ease-out infinite normal;
+  animation: breathing 1s ease-out infinite normal;
+}
+
+@-webkit-keyframes breathing {
+  0% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    color: white;
+  }
+
+  50% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    color: green;
+  }
+
+  100% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    color: white;
+  }
+}
+
+@keyframes breathing {
+  0% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    color: white;
+  }
+
+  50% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    color: green;
+  }
+
+  100% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    color: white;
+  }
+}
+
+@media (min-width: 720px) {
+  .content {
+    width: 720px !important;
+  }
+}
+
+@media (min-width: 650px) {
+  .content {
+    width: 100%;
+  }
+}
+
+@media (max-width: 670px) {
+  .board {
+    flex-direction: column;
+  }
+  .board .arrow {
+    transform: rotate(90deg);
+    margin: 0.2em 0;
+  }
+
+  .board .offers {
+    justify-content: center;
+  }
+
+  .board .offers > div {
+    flex-basis: auto;
+  }
+}
+
+
+@media (max-width: 550px) {
+  .title {
+    font-size: 4em;
+  }
+
+  .desc {
+    font-size: 1em;
+    text-align: center;
+  }
+}
+
+@media (max-height: 1000px) {
+  .board {
+    min-height: 0;
+  }
+}
