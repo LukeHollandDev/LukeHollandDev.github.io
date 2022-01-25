@@ -4,7 +4,10 @@ Hi, my name is Luke Holland and I'm currently a 4th year student at the Universi
 
 ### Site Directory
 * [Summer Placement][1]
-* Level 4 Project - [Algorithm Visualiser][2]
+* Level 4 Project - [Algorithm Visualiser][2] ([DEV][3])
+* [Trade-Up][4] - small game similar style to higher lower
 
 [1]:{{ site.url }}/placement
 [2]:{{ site.url }}/indproj
+[3]:{{ site.url }}/indproj-dev
+[4]:{{ site.url }}/trade-up
