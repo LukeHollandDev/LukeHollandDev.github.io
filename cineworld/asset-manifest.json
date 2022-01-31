@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "./static/css/main.1b9859de.css",
-    "main.js": "./static/js/main.fceb3153.js",
+    "main.js": "./static/js/main.bde1cf88.js",
     "static/media/cineworld_star.png": "./static/media/cineworld_star.6bfb9ab1f6260d8e2d2f.png",
     "index.html": "./index.html",
     "main.1b9859de.css.map": "./static/css/main.1b9859de.css.map",
-    "main.fceb3153.js.map": "./static/js/main.fceb3153.js.map"
+    "main.bde1cf88.js.map": "./static/js/main.bde1cf88.js.map"
   },
   "entrypoints": [
     "static/css/main.1b9859de.css",
-    "static/js/main.fceb3153.js"
+    "static/js/main.bde1cf88.js"
   ]
 }
