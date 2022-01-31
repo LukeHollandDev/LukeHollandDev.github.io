@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1b9859de.css",
+    "main.js": "/static/js/main.2954ccda.js",
+    "static/media/cineworld_star.png": "/static/media/cineworld_star.6bfb9ab1f6260d8e2d2f.png",
+    "index.html": "/index.html",
+    "main.1b9859de.css.map": "/static/css/main.1b9859de.css.map",
+    "main.2954ccda.js.map": "/static/js/main.2954ccda.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1b9859de.css",
+    "static/js/main.2954ccda.js"
+  ]
+}
