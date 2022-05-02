@@ -19820,7 +19820,7 @@ function toHex$1(n2) {
     return "0" + n2.toString(16);
   return n2.toString(16);
 }
-var text = { exports: {} };
+var text = {};
 var TINF_OK$1 = 0;
 var TINF_DATA_ERROR$1 = -3;
 function Tree$1() {
@@ -20750,7 +20750,7 @@ const Font$2 = base;
 const PDF$6 = object$1;
 const UNDERLINE_FLAG = 1;
 const STRIKETHROUGH_FLAG = 2;
-const Text = text.exports = class Text2 extends Fragment$5 {
+const Text = class Text2 extends Fragment$5 {
   constructor(doc2, parent, opts) {
     super(doc2, parent);
     this._line = [];
@@ -21755,7 +21755,7 @@ var header = class Header2 extends Fragment$2 {
     if (this._pageNumbers.length === 0) {
       return;
     }
-    const Text3 = text.exports;
+    const Text3 = text;
     for (const instance of this._pageNumbers) {
       let withPageCount = false;
       if (instance.fn) {
@@ -22203,7 +22203,7 @@ var fragment = class Fragment2 {
     if (!opts || typeof opts !== "object") {
       opts = {};
     }
-    const Text3 = text.exports;
+    const Text3 = text;
     const ctx = new Text3(this._doc, this, this._opts(opts));
     this._begin(ctx);
     ctx._pending.push(() => ctx._start());
@@ -22272,7 +22272,7 @@ var fragment = class Fragment2 {
   destination(name2) {
     this._begin(null);
     this._pending.push(async () => {
-      const DestinationRangeStyle2 = text.exports.DestinationRangeStyle;
+      const DestinationRangeStyle2 = text.DestinationRangeStyle;
       const self2 = {
         destination: name2,
         doc: this._doc,
