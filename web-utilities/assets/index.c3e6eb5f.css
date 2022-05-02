@@ -179,7 +179,7 @@ button {
   color: var(--color-text);
 }
 
-.file-area[data-v-0698debb] {
+.file-area[data-v-53f83d92] {
   display: flex;
   height: 150px;
   justify-content: center;
@@ -187,21 +187,21 @@ button {
   text-align: center;
   border: 1px solid;
 }
-.file-area p[data-v-0698debb] {
+.file-area p[data-v-53f83d92] {
   padding: 0 1em;
 }
-.files li[data-v-0698debb]::before {
+.files li[data-v-53f83d92]::before {
   content: "";
   width: 1em;
   display: inline-block;
 }
-.files li[data-v-0698debb] {
+.files li[data-v-53f83d92] {
   margin: 0.5em 0;
   font-weight: bold;
   padding: 0.25em 0;
   cursor: pointer;
 }
-.remove[data-v-0698debb] {
+.remove[data-v-53f83d92] {
   color: red;
   margin-left: 0.5em;
 }

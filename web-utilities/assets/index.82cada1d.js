@@ -9036,7 +9036,7 @@ function commonjsRequire(path) {
   throw new Error('Could not dynamically require "' + path + '". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.');
 }
 var index_common = {};
-var require$$0$3 = /* @__PURE__ */ getAugmentedNamespace(vue_runtime_esmBundler);
+var require$$0$4 = /* @__PURE__ */ getAugmentedNamespace(vue_runtime_esmBundler);
 function __awaiter(thisArg, _arguments, P, generator) {
   function adopt(value2) {
     return value2 instanceof P ? value2 : new P(function(resolve2) {
@@ -9388,7 +9388,7 @@ es.default = function(file, acceptedFiles) {
   return true;
 };
 Object.defineProperty(index_common, "__esModule", { value: true });
-var e = require$$0$3, n = require$$1$2;
+var e = require$$0$4, n = require$$1$2;
 function t(e2) {
   return e2 && typeof e2 == "object" && "default" in e2 ? e2 : { default: e2 };
 }
@@ -12474,7 +12474,7 @@ var sortable_esm = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePr
 var require$$1$1 = /* @__PURE__ */ getAugmentedNamespace(sortable_esm);
 (function(module, exports2) {
   (function webpackUniversalModuleDefinition(root, factory) {
-    module.exports = factory(require$$0$3, require$$1$1);
+    module.exports = factory(require$$0$4, require$$1$1);
   })(typeof self !== "undefined" ? self : commonjsGlobal, function(__WEBPACK_EXTERNAL_MODULE__8bbf__, __WEBPACK_EXTERNAL_MODULE_a352__) {
     return function(modules) {
       var installedModules = {};
@@ -16038,7163 +16038,6 @@ var require$$1$1 = /* @__PURE__ */ getAugmentedNamespace(sortable_esm);
   });
 })(vuedraggable_umd);
 var draggable = /* @__PURE__ */ getDefaultExportFromCjs(vuedraggable_umd.exports);
-var PDFMergeView_vue_vue_type_style_index_0_scoped_true_lang = "";
-const _withScopeId$1 = (n2) => (pushScopeId("data-v-0698debb"), n2 = n2(), popScopeId(), n2);
-const _hoisted_1$1 = { class: "view-container" };
-const _hoisted_2$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("h2", null, "PDF Merger", -1));
-const _hoisted_3$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("hr", null, null, -1));
-const _hoisted_4$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("h4", null, " Add your PDF files using them prompt below, you can upload them one at a time or multiple at once. ", -1));
-const _hoisted_5$1 = { key: 0 };
-const _hoisted_6$1 = { key: 1 };
-const _hoisted_7$1 = {
-  key: 0,
-  class: "error"
-};
-const _hoisted_8$1 = { key: 1 };
-const _hoisted_9$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("h3", null, "Selected PDFs (drag to re-order)", -1));
-const _hoisted_10$1 = { class: "files" };
-const _hoisted_11$1 = ["onClick"];
-const _hoisted_12 = { key: 0 };
-const _hoisted_13 = ["disabled"];
-const _hoisted_14 = {
-  key: 0,
-  class: "loader"
-};
-const _sfc_main$1 = {
-  props: {
-    navCollapsed: {
-      type: Boolean,
-      required: true
-    }
-  },
-  setup(__props) {
-    let merger = new PDFMerger();
-    const files = ref([]);
-    const error = ref("");
-    const loading = ref(false);
-    function onDrop(acceptFiles, rejectReasons) {
-      if (acceptFiles) {
-        files.value = [...files.value, ...acceptFiles];
-      }
-      if (rejectReasons.length > 0) {
-        error.value = "File type must be .pdf!";
-      } else {
-        error.value = "";
-      }
-    }
-    function removeFile(index2) {
-      files.value.splice(index2, 1);
-    }
-    async function merge() {
-      loading.value = true;
-      for (let file of files.value) {
-        await merger.add(file);
-      }
-      return await merger.save("merged").then(() => {
-        loading.value = false;
-        merger = new PDFMerger();
-      });
-    }
-    const options = {
-      onDrop,
-      accept: ".pdf"
-    };
-    const { getRootProps, getInputProps, isDragActive } = useDropzone(options);
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("main", {
-        class: normalizeClass({ navCollapsed: __props.navCollapsed })
-      }, [
-        createBaseVNode("div", _hoisted_1$1, [
-          _hoisted_2$1,
-          _hoisted_3$1,
-          _hoisted_4$1,
-          createBaseVNode("div", mergeProps({ class: "file-area" }, unref(getRootProps)()), [
-            createBaseVNode("input", normalizeProps(guardReactiveProps(unref(getInputProps)())), null, 16),
-            unref(isDragActive) ? (openBlock(), createElementBlock("p", _hoisted_5$1, "Drop the files here ...")) : (openBlock(), createElementBlock("p", _hoisted_6$1, " Drag and drop the PDF files here, or click in this area to select your files! "))
-          ], 16),
-          error.value ? (openBlock(), createElementBlock("p", _hoisted_7$1, toDisplayString(error.value), 1)) : createCommentVNode("", true),
-          files.value.length > 0 ? (openBlock(), createElementBlock("div", _hoisted_8$1, [
-            _hoisted_9$1,
-            createBaseVNode("div", _hoisted_10$1, [
-              createBaseVNode("ol", null, [
-                createVNode(unref(draggable), {
-                  modelValue: files.value,
-                  "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => files.value = $event),
-                  "item-key": "id"
-                }, {
-                  item: withCtx(({ element, index: index2 }) => [
-                    createBaseVNode("li", null, [
-                      createTextVNode(toDisplayString(element.name) + " ", 1),
-                      createBaseVNode("span", {
-                        class: "remove",
-                        onClick: ($event) => removeFile(index2)
-                      }, "X", 8, _hoisted_11$1)
-                    ])
-                  ]),
-                  _: 1
-                }, 8, ["modelValue"])
-              ])
-            ]),
-            files.value.length > 1 ? (openBlock(), createElementBlock("div", _hoisted_12, [
-              createBaseVNode("button", {
-                onClick: merge,
-                disabled: loading.value
-              }, "Merge PDFs", 8, _hoisted_13),
-              loading.value ? (openBlock(), createElementBlock("div", _hoisted_14)) : createCommentVNode("", true)
-            ])) : createCommentVNode("", true)
-          ])) : createCommentVNode("", true)
-        ])
-      ], 2);
-    };
-  }
-};
-var PDFMergeView = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-0698debb"]]);
-var __viteBrowserExternal = {};
-var __viteBrowserExternal$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  "default": __viteBrowserExternal
-}, Symbol.toStringTag, { value: "Module" }));
-var require$$3$1 = /* @__PURE__ */ getAugmentedNamespace(__viteBrowserExternal$1);
-var pluralize$3 = { exports: {} };
-(function(module, exports2) {
-  (function(root, pluralize2) {
-    if (typeof commonjsRequire === "function" && true && true) {
-      module.exports = pluralize2();
-    } else {
-      root.pluralize = pluralize2();
-    }
-  })(commonjsGlobal, function() {
-    var pluralRules = [];
-    var singularRules = [];
-    var uncountables = {};
-    var irregularPlurals = {};
-    var irregularSingles = {};
-    function sanitizeRule(rule) {
-      if (typeof rule === "string") {
-        return new RegExp("^" + rule + "$", "i");
-      }
-      return rule;
-    }
-    function restoreCase(word, token) {
-      if (word === token)
-        return token;
-      if (word === word.toUpperCase())
-        return token.toUpperCase();
-      if (word[0] === word[0].toUpperCase()) {
-        return token.charAt(0).toUpperCase() + token.substr(1).toLowerCase();
-      }
-      return token.toLowerCase();
-    }
-    function interpolate(str, args) {
-      return str.replace(/\$(\d{1,2})/g, function(match, index2) {
-        return args[index2] || "";
-      });
-    }
-    function replace(word, rule) {
-      return word.replace(rule[0], function(match, index2) {
-        var result = interpolate(rule[1], arguments);
-        if (match === "") {
-          return restoreCase(word[index2 - 1], result);
-        }
-        return restoreCase(match, result);
-      });
-    }
-    function sanitizeWord(token, word, rules) {
-      if (!token.length || uncountables.hasOwnProperty(token)) {
-        return word;
-      }
-      var len2 = rules.length;
-      while (len2--) {
-        var rule = rules[len2];
-        if (rule[0].test(word))
-          return replace(word, rule);
-      }
-      return word;
-    }
-    function replaceWord(replaceMap, keepMap, rules) {
-      return function(word) {
-        var token = word.toLowerCase();
-        if (keepMap.hasOwnProperty(token)) {
-          return restoreCase(word, token);
-        }
-        if (replaceMap.hasOwnProperty(token)) {
-          return restoreCase(word, replaceMap[token]);
-        }
-        return sanitizeWord(token, word, rules);
-      };
-    }
-    function checkWord(replaceMap, keepMap, rules, bool) {
-      return function(word) {
-        var token = word.toLowerCase();
-        if (keepMap.hasOwnProperty(token))
-          return true;
-        if (replaceMap.hasOwnProperty(token))
-          return false;
-        return sanitizeWord(token, token, rules) === token;
-      };
-    }
-    function pluralize2(word, count, inclusive) {
-      var pluralized = count === 1 ? pluralize2.singular(word) : pluralize2.plural(word);
-      return (inclusive ? count + " " : "") + pluralized;
-    }
-    pluralize2.plural = replaceWord(irregularSingles, irregularPlurals, pluralRules);
-    pluralize2.isPlural = checkWord(irregularSingles, irregularPlurals, pluralRules);
-    pluralize2.singular = replaceWord(irregularPlurals, irregularSingles, singularRules);
-    pluralize2.isSingular = checkWord(irregularPlurals, irregularSingles, singularRules);
-    pluralize2.addPluralRule = function(rule, replacement) {
-      pluralRules.push([sanitizeRule(rule), replacement]);
-    };
-    pluralize2.addSingularRule = function(rule, replacement) {
-      singularRules.push([sanitizeRule(rule), replacement]);
-    };
-    pluralize2.addUncountableRule = function(word) {
-      if (typeof word === "string") {
-        uncountables[word.toLowerCase()] = true;
-        return;
-      }
-      pluralize2.addPluralRule(word, "$0");
-      pluralize2.addSingularRule(word, "$0");
-    };
-    pluralize2.addIrregularRule = function(single, plural) {
-      plural = plural.toLowerCase();
-      single = single.toLowerCase();
-      irregularSingles[single] = plural;
-      irregularPlurals[plural] = single;
-    };
-    [
-      ["I", "we"],
-      ["me", "us"],
-      ["he", "they"],
-      ["she", "they"],
-      ["them", "them"],
-      ["myself", "ourselves"],
-      ["yourself", "yourselves"],
-      ["itself", "themselves"],
-      ["herself", "themselves"],
-      ["himself", "themselves"],
-      ["themself", "themselves"],
-      ["is", "are"],
-      ["was", "were"],
-      ["has", "have"],
-      ["this", "these"],
-      ["that", "those"],
-      ["echo", "echoes"],
-      ["dingo", "dingoes"],
-      ["volcano", "volcanoes"],
-      ["tornado", "tornadoes"],
-      ["torpedo", "torpedoes"],
-      ["genus", "genera"],
-      ["viscus", "viscera"],
-      ["stigma", "stigmata"],
-      ["stoma", "stomata"],
-      ["dogma", "dogmata"],
-      ["lemma", "lemmata"],
-      ["schema", "schemata"],
-      ["anathema", "anathemata"],
-      ["ox", "oxen"],
-      ["axe", "axes"],
-      ["die", "dice"],
-      ["yes", "yeses"],
-      ["foot", "feet"],
-      ["eave", "eaves"],
-      ["goose", "geese"],
-      ["tooth", "teeth"],
-      ["quiz", "quizzes"],
-      ["human", "humans"],
-      ["proof", "proofs"],
-      ["carve", "carves"],
-      ["valve", "valves"],
-      ["looey", "looies"],
-      ["thief", "thieves"],
-      ["groove", "grooves"],
-      ["pickaxe", "pickaxes"],
-      ["whiskey", "whiskies"]
-    ].forEach(function(rule) {
-      return pluralize2.addIrregularRule(rule[0], rule[1]);
-    });
-    [
-      [/s?$/i, "s"],
-      [/[^\u0000-\u007F]$/i, "$0"],
-      [/([^aeiou]ese)$/i, "$1"],
-      [/(ax|test)is$/i, "$1es"],
-      [/(alias|[^aou]us|tlas|gas|ris)$/i, "$1es"],
-      [/(e[mn]u)s?$/i, "$1s"],
-      [/([^l]ias|[aeiou]las|[emjzr]as|[iu]am)$/i, "$1"],
-      [/(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc|strat)(?:us|i)$/i, "$1i"],
-      [/(alumn|alg|vertebr)(?:a|ae)$/i, "$1ae"],
-      [/(seraph|cherub)(?:im)?$/i, "$1im"],
-      [/(her|at|gr)o$/i, "$1oes"],
-      [/(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|automat|quor)(?:a|um)$/i, "$1a"],
-      [/(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|hedr|automat)(?:a|on)$/i, "$1a"],
-      [/sis$/i, "ses"],
-      [/(?:(kni|wi|li)fe|(ar|l|ea|eo|oa|hoo)f)$/i, "$1$2ves"],
-      [/([^aeiouy]|qu)y$/i, "$1ies"],
-      [/([^ch][ieo][ln])ey$/i, "$1ies"],
-      [/(x|ch|ss|sh|zz)$/i, "$1es"],
-      [/(matr|cod|mur|sil|vert|ind|append)(?:ix|ex)$/i, "$1ices"],
-      [/(m|l)(?:ice|ouse)$/i, "$1ice"],
-      [/(pe)(?:rson|ople)$/i, "$1ople"],
-      [/(child)(?:ren)?$/i, "$1ren"],
-      [/eaux$/i, "$0"],
-      [/m[ae]n$/i, "men"],
-      ["thou", "you"]
-    ].forEach(function(rule) {
-      return pluralize2.addPluralRule(rule[0], rule[1]);
-    });
-    [
-      [/s$/i, ""],
-      [/(ss)$/i, "$1"],
-      [/(wi|kni|(?:after|half|high|low|mid|non|night|[^\w]|^)li)ves$/i, "$1fe"],
-      [/(ar|(?:wo|[ae])l|[eo][ao])ves$/i, "$1f"],
-      [/ies$/i, "y"],
-      [/\b([pl]|zomb|(?:neck|cross)?t|coll|faer|food|gen|goon|group|lass|talk|goal|cut)ies$/i, "$1ie"],
-      [/\b(mon|smil)ies$/i, "$1ey"],
-      [/(m|l)ice$/i, "$1ouse"],
-      [/(seraph|cherub)im$/i, "$1"],
-      [/(x|ch|ss|sh|zz|tto|go|cho|alias|[^aou]us|tlas|gas|(?:her|at|gr)o|ris)(?:es)?$/i, "$1"],
-      [/(analy|ba|diagno|parenthe|progno|synop|the|empha|cri)(?:sis|ses)$/i, "$1sis"],
-      [/(movie|twelve|abuse|e[mn]u)s$/i, "$1"],
-      [/(test)(?:is|es)$/i, "$1is"],
-      [/(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc|strat)(?:us|i)$/i, "$1us"],
-      [/(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|quor)a$/i, "$1um"],
-      [/(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|hedr|automat)a$/i, "$1on"],
-      [/(alumn|alg|vertebr)ae$/i, "$1a"],
-      [/(cod|mur|sil|vert|ind)ices$/i, "$1ex"],
-      [/(matr|append)ices$/i, "$1ix"],
-      [/(pe)(rson|ople)$/i, "$1rson"],
-      [/(child)ren$/i, "$1"],
-      [/(eau)x?$/i, "$1"],
-      [/men$/i, "man"]
-    ].forEach(function(rule) {
-      return pluralize2.addSingularRule(rule[0], rule[1]);
-    });
-    [
-      "adulthood",
-      "advice",
-      "agenda",
-      "aid",
-      "alcohol",
-      "ammo",
-      "anime",
-      "athletics",
-      "audio",
-      "bison",
-      "blood",
-      "bream",
-      "buffalo",
-      "butter",
-      "carp",
-      "cash",
-      "chassis",
-      "chess",
-      "clothing",
-      "cod",
-      "commerce",
-      "cooperation",
-      "corps",
-      "debris",
-      "diabetes",
-      "digestion",
-      "elk",
-      "energy",
-      "equipment",
-      "excretion",
-      "expertise",
-      "flounder",
-      "fun",
-      "gallows",
-      "garbage",
-      "graffiti",
-      "headquarters",
-      "health",
-      "herpes",
-      "highjinks",
-      "homework",
-      "housework",
-      "information",
-      "jeans",
-      "justice",
-      "kudos",
-      "labour",
-      "literature",
-      "machinery",
-      "mackerel",
-      "mail",
-      "media",
-      "mews",
-      "moose",
-      "music",
-      "manga",
-      "news",
-      "pike",
-      "plankton",
-      "pliers",
-      "pollution",
-      "premises",
-      "rain",
-      "research",
-      "rice",
-      "salmon",
-      "scissors",
-      "series",
-      "sewage",
-      "shambles",
-      "shrimp",
-      "species",
-      "staff",
-      "swine",
-      "tennis",
-      "traffic",
-      "transporation",
-      "trout",
-      "tuna",
-      "wealth",
-      "welfare",
-      "whiting",
-      "wildebeest",
-      "wildlife",
-      "you",
-      /[^aeiou]ese$/i,
-      /deer$/i,
-      /fish$/i,
-      /measles$/i,
-      /o[iu]s$/i,
-      /pox$/i,
-      /sheep$/i
-    ].forEach(pluralize2.addUncountableRule);
-    return pluralize2;
-  });
-})(pluralize$3);
-var normalizeStrings = { exports: {} };
-var require$$0$2 = {
-  "105": "i",
-  "192": "A",
-  "193": "A",
-  "194": "A",
-  "195": "A",
-  "196": "A",
-  "197": "A",
-  "199": "C",
-  "200": "E",
-  "201": "E",
-  "202": "E",
-  "203": "E",
-  "204": "I",
-  "205": "I",
-  "206": "I",
-  "207": "I",
-  "209": "N",
-  "210": "O",
-  "211": "O",
-  "212": "O",
-  "213": "O",
-  "214": "O",
-  "216": "O",
-  "217": "U",
-  "218": "U",
-  "219": "U",
-  "220": "U",
-  "221": "Y",
-  "224": "a",
-  "225": "a",
-  "226": "a",
-  "227": "a",
-  "228": "a",
-  "229": "a",
-  "231": "c",
-  "232": "e",
-  "233": "e",
-  "234": "e",
-  "235": "e",
-  "236": "i",
-  "237": "i",
-  "238": "i",
-  "239": "i",
-  "241": "n",
-  "242": "o",
-  "243": "o",
-  "244": "o",
-  "245": "o",
-  "246": "o",
-  "248": "o",
-  "249": "u",
-  "250": "u",
-  "251": "u",
-  "252": "u",
-  "253": "y",
-  "255": "y",
-  "256": "A",
-  "257": "a",
-  "258": "A",
-  "259": "a",
-  "260": "A",
-  "261": "a",
-  "262": "C",
-  "263": "c",
-  "264": "C",
-  "265": "c",
-  "266": "C",
-  "267": "c",
-  "268": "C",
-  "269": "c",
-  "270": "D",
-  "271": "d",
-  "272": "D",
-  "273": "d",
-  "274": "E",
-  "275": "e",
-  "276": "E",
-  "277": "e",
-  "278": "E",
-  "279": "e",
-  "280": "E",
-  "281": "e",
-  "282": "E",
-  "283": "e",
-  "284": "G",
-  "285": "g",
-  "286": "G",
-  "287": "g",
-  "288": "G",
-  "289": "g",
-  "290": "G",
-  "291": "g",
-  "292": "H",
-  "293": "h",
-  "294": "H",
-  "295": "h",
-  "296": "I",
-  "297": "i",
-  "298": "I",
-  "299": "i",
-  "300": "I",
-  "301": "i",
-  "302": "I",
-  "303": "i",
-  "304": "I",
-  "308": "J",
-  "309": "j",
-  "310": "K",
-  "311": "k",
-  "313": "L",
-  "314": "l",
-  "315": "L",
-  "316": "l",
-  "317": "L",
-  "318": "l",
-  "319": "L",
-  "320": "l",
-  "321": "L",
-  "322": "l",
-  "323": "N",
-  "324": "n",
-  "325": "N",
-  "326": "n",
-  "327": "N",
-  "328": "n",
-  "332": "O",
-  "333": "o",
-  "334": "O",
-  "335": "o",
-  "336": "O",
-  "337": "o",
-  "338": "O",
-  "339": "o",
-  "340": "R",
-  "341": "r",
-  "342": "R",
-  "343": "r",
-  "344": "R",
-  "345": "r",
-  "346": "S",
-  "347": "s",
-  "348": "S",
-  "349": "s",
-  "350": "S",
-  "351": "s",
-  "352": "S",
-  "353": "s",
-  "354": "T",
-  "355": "t",
-  "356": "T",
-  "357": "t",
-  "358": "T",
-  "359": "t",
-  "360": "U",
-  "361": "u",
-  "362": "U",
-  "363": "u",
-  "364": "U",
-  "365": "u",
-  "366": "U",
-  "367": "u",
-  "368": "U",
-  "369": "u",
-  "370": "U",
-  "371": "u",
-  "372": "W",
-  "373": "w",
-  "374": "Y",
-  "375": "y",
-  "376": "Y",
-  "377": "Z",
-  "378": "z",
-  "379": "Z",
-  "380": "z",
-  "381": "Z",
-  "382": "z",
-  "384": "b",
-  "385": "B",
-  "386": "B",
-  "387": "b",
-  "390": "O",
-  "391": "C",
-  "392": "c",
-  "393": "D",
-  "394": "D",
-  "395": "D",
-  "396": "d",
-  "398": "E",
-  "400": "E",
-  "401": "F",
-  "402": "f",
-  "403": "G",
-  "407": "I",
-  "408": "K",
-  "409": "k",
-  "410": "l",
-  "412": "M",
-  "413": "N",
-  "414": "n",
-  "415": "O",
-  "416": "O",
-  "417": "o",
-  "420": "P",
-  "421": "p",
-  "422": "R",
-  "427": "t",
-  "428": "T",
-  "429": "t",
-  "430": "T",
-  "431": "U",
-  "432": "u",
-  "434": "V",
-  "435": "Y",
-  "436": "y",
-  "437": "Z",
-  "438": "z",
-  "461": "A",
-  "462": "a",
-  "463": "I",
-  "464": "i",
-  "465": "O",
-  "466": "o",
-  "467": "U",
-  "468": "u",
-  "477": "e",
-  "484": "G",
-  "485": "g",
-  "486": "G",
-  "487": "g",
-  "488": "K",
-  "489": "k",
-  "490": "O",
-  "491": "o",
-  "500": "G",
-  "501": "g",
-  "504": "N",
-  "505": "n",
-  "512": "A",
-  "513": "a",
-  "514": "A",
-  "515": "a",
-  "516": "E",
-  "517": "e",
-  "518": "E",
-  "519": "e",
-  "520": "I",
-  "521": "i",
-  "522": "I",
-  "523": "i",
-  "524": "O",
-  "525": "o",
-  "526": "O",
-  "527": "o",
-  "528": "R",
-  "529": "r",
-  "530": "R",
-  "531": "r",
-  "532": "U",
-  "533": "u",
-  "534": "U",
-  "535": "u",
-  "536": "S",
-  "537": "s",
-  "538": "T",
-  "539": "t",
-  "542": "H",
-  "543": "h",
-  "544": "N",
-  "545": "d",
-  "548": "Z",
-  "549": "z",
-  "550": "A",
-  "551": "a",
-  "552": "E",
-  "553": "e",
-  "558": "O",
-  "559": "o",
-  "562": "Y",
-  "563": "y",
-  "564": "l",
-  "565": "n",
-  "566": "t",
-  "567": "j",
-  "570": "A",
-  "571": "C",
-  "572": "c",
-  "573": "L",
-  "574": "T",
-  "575": "s",
-  "576": "z",
-  "579": "B",
-  "580": "U",
-  "581": "V",
-  "582": "E",
-  "583": "e",
-  "584": "J",
-  "585": "j",
-  "586": "Q",
-  "587": "q",
-  "588": "R",
-  "589": "r",
-  "590": "Y",
-  "591": "y",
-  "592": "a",
-  "593": "a",
-  "595": "b",
-  "596": "o",
-  "597": "c",
-  "598": "d",
-  "599": "d",
-  "600": "e",
-  "603": "e",
-  "604": "e",
-  "605": "e",
-  "606": "e",
-  "607": "j",
-  "608": "g",
-  "609": "g",
-  "610": "g",
-  "613": "h",
-  "614": "h",
-  "616": "i",
-  "618": "i",
-  "619": "l",
-  "620": "l",
-  "621": "l",
-  "623": "m",
-  "624": "m",
-  "625": "m",
-  "626": "n",
-  "627": "n",
-  "628": "n",
-  "629": "o",
-  "633": "r",
-  "634": "r",
-  "635": "r",
-  "636": "r",
-  "637": "r",
-  "638": "r",
-  "639": "r",
-  "640": "r",
-  "641": "r",
-  "642": "s",
-  "647": "t",
-  "648": "t",
-  "649": "u",
-  "651": "v",
-  "652": "v",
-  "653": "w",
-  "654": "y",
-  "655": "y",
-  "656": "z",
-  "657": "z",
-  "663": "c",
-  "665": "b",
-  "666": "e",
-  "667": "g",
-  "668": "h",
-  "669": "j",
-  "670": "k",
-  "671": "l",
-  "672": "q",
-  "686": "h",
-  "688": "h",
-  "690": "j",
-  "691": "r",
-  "692": "r",
-  "694": "r",
-  "695": "w",
-  "696": "y",
-  "737": "l",
-  "738": "s",
-  "739": "x",
-  "780": "v",
-  "829": "x",
-  "851": "x",
-  "867": "a",
-  "868": "e",
-  "869": "i",
-  "870": "o",
-  "871": "u",
-  "872": "c",
-  "873": "d",
-  "874": "h",
-  "875": "m",
-  "876": "r",
-  "877": "t",
-  "878": "v",
-  "879": "x",
-  "7424": "a",
-  "7427": "b",
-  "7428": "c",
-  "7429": "d",
-  "7431": "e",
-  "7432": "e",
-  "7433": "i",
-  "7434": "j",
-  "7435": "k",
-  "7436": "l",
-  "7437": "m",
-  "7438": "n",
-  "7439": "o",
-  "7440": "o",
-  "7441": "o",
-  "7442": "o",
-  "7443": "o",
-  "7446": "o",
-  "7447": "o",
-  "7448": "p",
-  "7449": "r",
-  "7450": "r",
-  "7451": "t",
-  "7452": "u",
-  "7453": "u",
-  "7454": "u",
-  "7455": "m",
-  "7456": "v",
-  "7457": "w",
-  "7458": "z",
-  "7522": "i",
-  "7523": "r",
-  "7524": "u",
-  "7525": "v",
-  "7680": "A",
-  "7681": "a",
-  "7682": "B",
-  "7683": "b",
-  "7684": "B",
-  "7685": "b",
-  "7686": "B",
-  "7687": "b",
-  "7690": "D",
-  "7691": "d",
-  "7692": "D",
-  "7693": "d",
-  "7694": "D",
-  "7695": "d",
-  "7696": "D",
-  "7697": "d",
-  "7698": "D",
-  "7699": "d",
-  "7704": "E",
-  "7705": "e",
-  "7706": "E",
-  "7707": "e",
-  "7710": "F",
-  "7711": "f",
-  "7712": "G",
-  "7713": "g",
-  "7714": "H",
-  "7715": "h",
-  "7716": "H",
-  "7717": "h",
-  "7718": "H",
-  "7719": "h",
-  "7720": "H",
-  "7721": "h",
-  "7722": "H",
-  "7723": "h",
-  "7724": "I",
-  "7725": "i",
-  "7728": "K",
-  "7729": "k",
-  "7730": "K",
-  "7731": "k",
-  "7732": "K",
-  "7733": "k",
-  "7734": "L",
-  "7735": "l",
-  "7738": "L",
-  "7739": "l",
-  "7740": "L",
-  "7741": "l",
-  "7742": "M",
-  "7743": "m",
-  "7744": "M",
-  "7745": "m",
-  "7746": "M",
-  "7747": "m",
-  "7748": "N",
-  "7749": "n",
-  "7750": "N",
-  "7751": "n",
-  "7752": "N",
-  "7753": "n",
-  "7754": "N",
-  "7755": "n",
-  "7764": "P",
-  "7765": "p",
-  "7766": "P",
-  "7767": "p",
-  "7768": "R",
-  "7769": "r",
-  "7770": "R",
-  "7771": "r",
-  "7774": "R",
-  "7775": "r",
-  "7776": "S",
-  "7777": "s",
-  "7778": "S",
-  "7779": "s",
-  "7786": "T",
-  "7787": "t",
-  "7788": "T",
-  "7789": "t",
-  "7790": "T",
-  "7791": "t",
-  "7792": "T",
-  "7793": "t",
-  "7794": "U",
-  "7795": "u",
-  "7796": "U",
-  "7797": "u",
-  "7798": "U",
-  "7799": "u",
-  "7804": "V",
-  "7805": "v",
-  "7806": "V",
-  "7807": "v",
-  "7808": "W",
-  "7809": "w",
-  "7810": "W",
-  "7811": "w",
-  "7812": "W",
-  "7813": "w",
-  "7814": "W",
-  "7815": "w",
-  "7816": "W",
-  "7817": "w",
-  "7818": "X",
-  "7819": "x",
-  "7820": "X",
-  "7821": "x",
-  "7822": "Y",
-  "7823": "y",
-  "7824": "Z",
-  "7825": "z",
-  "7826": "Z",
-  "7827": "z",
-  "7828": "Z",
-  "7829": "z",
-  "7835": "s",
-  "7840": "A",
-  "7841": "a",
-  "7842": "A",
-  "7843": "a",
-  "7864": "E",
-  "7865": "e",
-  "7866": "E",
-  "7867": "e",
-  "7868": "E",
-  "7869": "e",
-  "7880": "I",
-  "7881": "i",
-  "7882": "I",
-  "7883": "i",
-  "7884": "O",
-  "7885": "o",
-  "7886": "O",
-  "7887": "o",
-  "7908": "U",
-  "7909": "u",
-  "7910": "U",
-  "7911": "u",
-  "7922": "Y",
-  "7923": "y",
-  "7924": "Y",
-  "7925": "y",
-  "7926": "Y",
-  "7927": "y",
-  "7928": "Y",
-  "7929": "y",
-  "8305": "i",
-  "8341": "h",
-  "8342": "k",
-  "8343": "l",
-  "8344": "m",
-  "8345": "n",
-  "8346": "p",
-  "8347": "s",
-  "8348": "t",
-  "8450": "c",
-  "8458": "g",
-  "8459": "h",
-  "8460": "h",
-  "8461": "h",
-  "8464": "i",
-  "8465": "i",
-  "8466": "l",
-  "8467": "l",
-  "8468": "l",
-  "8469": "n",
-  "8472": "p",
-  "8473": "p",
-  "8474": "q",
-  "8475": "r",
-  "8476": "r",
-  "8477": "r",
-  "8484": "z",
-  "8488": "z",
-  "8492": "b",
-  "8493": "c",
-  "8495": "e",
-  "8496": "e",
-  "8497": "f",
-  "8498": "F",
-  "8499": "m",
-  "8500": "o",
-  "8506": "q",
-  "8513": "g",
-  "8514": "l",
-  "8515": "l",
-  "8516": "y",
-  "8517": "d",
-  "8518": "d",
-  "8519": "e",
-  "8520": "i",
-  "8521": "j",
-  "8526": "f",
-  "8579": "C",
-  "8580": "c",
-  "8765": "s",
-  "8766": "s",
-  "8959": "z",
-  "8999": "x",
-  "9746": "x",
-  "9776": "i",
-  "9866": "i",
-  "10005": "x",
-  "10006": "x",
-  "10007": "x",
-  "10008": "x",
-  "10625": "z",
-  "10626": "z",
-  "11362": "L",
-  "11364": "R",
-  "11365": "a",
-  "11366": "t",
-  "11373": "A",
-  "11374": "M",
-  "11375": "A",
-  "11390": "S",
-  "11391": "Z",
-  "19904": "i",
-  "42893": "H",
-  "42922": "H",
-  "42923": "E",
-  "42924": "G",
-  "42925": "L",
-  "42928": "K",
-  "42929": "T",
-  "62937": "x"
-};
-(function(module) {
-  (function(window2, factory) {
-    if (module.exports) {
-      module.exports = factory(window2, window2.document);
-    } else {
-      window2.normalize = factory(window2, window2.document);
-    }
-  })(typeof window !== "undefined" ? window : commonjsGlobal, function(window2, document2) {
-    var charmap = require$$0$2;
-    var regex = null;
-    var current_charmap;
-    var old_charmap;
-    function normalize2(str, custom_charmap) {
-      old_charmap = current_charmap;
-      current_charmap = custom_charmap || charmap;
-      regex = regex && old_charmap === current_charmap ? regex : buildRegExp(current_charmap);
-      return str.replace(regex, function(charToReplace) {
-        return current_charmap[charToReplace.charCodeAt(0)] || charToReplace;
-      });
-    }
-    function buildRegExp(charmap2) {
-      return new RegExp("[" + Object.keys(charmap2).map(function(code2) {
-        return String.fromCharCode(code2);
-      }).join(" ") + "]", "g");
-    }
-    return normalize2;
-  });
-})(normalizeStrings);
-const abalone = 4;
-const abare = 3;
-const abbruzzese = 4;
-const abed = 2;
-const aborigine = 5;
-const abruzzese = 4;
-const acreage = 3;
-const adame = 3;
-const adieu = 2;
-const adobe = 3;
-const anemone = 4;
-const apache = 3;
-const aphrodite = 4;
-const apostrophe = 4;
-const ariadne = 4;
-const cafe = 2;
-const calliope = 4;
-const catastrophe = 4;
-const chile = 2;
-const chloe = 2;
-const circe = 2;
-const coyote = 3;
-const daphne = 2;
-const epitome = 4;
-const eurydice = 4;
-const euterpe = 3;
-const every = 2;
-const everywhere = 3;
-const forever = 3;
-const gethsemane = 4;
-const guacamole = 4;
-const hermione = 4;
-const hyperbole = 4;
-const jesse = 2;
-const jukebox = 2;
-const karate = 3;
-const machete = 3;
-const maybe = 2;
-const newlywed = 3;
-const penelope = 4;
-const people = 2;
-const persephone = 4;
-const phoebe = 2;
-const pulse = 1;
-const queue$1 = 1;
-const recipe = 3;
-const riverbed = 3;
-const sesame = 3;
-const shoreline = 2;
-const simile = 3;
-const snuffleupagus = 5;
-const sometimes = 2;
-const syncope = 3;
-const tamale = 3;
-const waterbed = 3;
-const wednesday = 2;
-const yosemite = 4;
-const zoe = 2;
-var require$$2 = {
-  abalone,
-  abare,
-  abbruzzese,
-  abed,
-  aborigine,
-  abruzzese,
-  acreage,
-  adame,
-  adieu,
-  adobe,
-  anemone,
-  apache,
-  aphrodite,
-  apostrophe,
-  ariadne,
-  cafe,
-  calliope,
-  catastrophe,
-  chile,
-  chloe,
-  circe,
-  coyote,
-  daphne,
-  epitome,
-  eurydice,
-  euterpe,
-  every,
-  everywhere,
-  forever,
-  gethsemane,
-  guacamole,
-  hermione,
-  hyperbole,
-  jesse,
-  jukebox,
-  karate,
-  machete,
-  maybe,
-  newlywed,
-  penelope,
-  people,
-  persephone,
-  phoebe,
-  pulse,
-  queue: queue$1,
-  recipe,
-  riverbed,
-  sesame,
-  shoreline,
-  simile,
-  snuffleupagus,
-  sometimes,
-  syncope,
-  tamale,
-  waterbed,
-  wednesday,
-  yosemite,
-  zoe
-};
-var pluralize$2 = pluralize$3.exports;
-var normalize = normalizeStrings.exports;
-var problematic = require$$2;
-var syllable_1 = syllables;
-var own = {}.hasOwnProperty;
-var EXPRESSION_MONOSYLLABIC_ONE = new RegExp([
-  "cia(?:l|$)",
-  "tia",
-  "cius",
-  "cious",
-  "[^aeiou]giu",
-  "[aeiouy][^aeiouy]ion",
-  "iou",
-  "sia$",
-  "eous$",
-  "[oa]gue$",
-  ".[^aeiuoycgltdb]{2,}ed$",
-  ".ely$",
-  "^jua",
-  "uai",
-  "eau",
-  "^busi$",
-  "(?:[aeiouy](?:" + [
-    "[bcfgklmnprsvwxyz]",
-    "ch",
-    "dg",
-    "g[hn]",
-    "lch",
-    "l[lv]",
-    "mm",
-    "nch",
-    "n[cgn]",
-    "r[bcnsv]",
-    "squ",
-    "s[chkls]",
-    "th"
-  ].join("|") + ")ed$)",
-  "(?:[aeiouy](?:" + [
-    "[bdfklmnprstvy]",
-    "ch",
-    "g[hn]",
-    "lch",
-    "l[lv]",
-    "mm",
-    "nch",
-    "nn",
-    "r[nsv]",
-    "squ",
-    "s[cklst]",
-    "th"
-  ].join("|") + ")es$)"
-].join("|"), "g");
-var EXPRESSION_MONOSYLLABIC_TWO = new RegExp("[aeiouy](?:" + [
-  "[bcdfgklmnprstvyz]",
-  "ch",
-  "dg",
-  "g[hn]",
-  "l[lv]",
-  "mm",
-  "n[cgn]",
-  "r[cnsv]",
-  "squ",
-  "s[cklst]",
-  "th"
-].join("|") + ")e$", "g");
-var EXPRESSION_DOUBLE_SYLLABIC_ONE = new RegExp("(?:" + [
-  "([^aeiouy])\\1l",
-  "[^aeiouy]ie(?:r|s?t)",
-  "[aeiouym]bl",
-  "eo",
-  "ism",
-  "asm",
-  "thm",
-  "dnt",
-  "snt",
-  "uity",
-  "dea",
-  "gean",
-  "oa",
-  "ua",
-  "react?",
-  "orbed",
-  "eings?",
-  "[aeiouy]sh?e[rs]"
-].join("|") + ")$", "g");
-var EXPRESSION_DOUBLE_SYLLABIC_TWO = new RegExp([
-  "creat(?!u)",
-  "[^gq]ua[^auieo]",
-  "[aeiou]{3}",
-  "^(?:ia|mc|coa[dglx].)",
-  "^re(app|es|im|us)"
-].join("|"), "g");
-var EXPRESSION_DOUBLE_SYLLABIC_THREE = new RegExp([
-  "[^aeiou]y[ae]",
-  "[^l]lien",
-  "riet",
-  "dien",
-  "iu",
-  "io",
-  "ii",
-  "uen",
-  "real",
-  "iell",
-  "eo[^aeiou]",
-  "[aeiou]y[aeiou]"
-].join("|"), "g");
-var EXPRESSION_DOUBLE_SYLLABIC_FOUR = /[^s]ia/;
-var EXPRESSION_SINGLE = new RegExp([
-  "^(?:" + [
-    "un",
-    "fore",
-    "ware",
-    "none?",
-    "out",
-    "post",
-    "sub",
-    "pre",
-    "pro",
-    "dis",
-    "side",
-    "some"
-  ].join("|") + ")",
-  "(?:" + [
-    "ly",
-    "less",
-    "some",
-    "ful",
-    "ers?",
-    "ness",
-    "cians?",
-    "ments?",
-    "ettes?",
-    "villes?",
-    "ships?",
-    "sides?",
-    "ports?",
-    "shires?",
-    "tion(?:ed|s)?"
-  ].join("|") + ")$"
-].join("|"), "g");
-var EXPRESSION_DOUBLE = new RegExp([
-  "^(?:" + [
-    "above",
-    "anti",
-    "ante",
-    "counter",
-    "hyper",
-    "afore",
-    "agri",
-    "infra",
-    "intra",
-    "inter",
-    "over",
-    "semi",
-    "ultra",
-    "under",
-    "extra",
-    "dia",
-    "micro",
-    "mega",
-    "kilo",
-    "pico",
-    "nano",
-    "macro",
-    "somer"
-  ].join("|") + ")",
-  "(?:" + ["fully", "berry", "woman", "women", "edly"].join("|") + ")$"
-].join("|"), "g");
-var EXPRESSION_TRIPLE = /(creations?|ology|ologist|onomy|onomist)$/g;
-var SPLIT = /\b/g;
-var APOSTROPHE = /['’]/g;
-var EXPRESSION_NONALPHABETIC = /[^a-z]/g;
-function syllables(value2) {
-  var values = normalize(String(value2)).toLowerCase().replace(APOSTROPHE, "").split(SPLIT);
-  var length = values.length;
-  var index2 = -1;
-  var total = 0;
-  while (++index2 < length) {
-    total += syllable$1(values[index2].replace(EXPRESSION_NONALPHABETIC, ""));
-  }
-  return total;
-}
-function syllable$1(value2) {
-  var count = 0;
-  var index2;
-  var length;
-  var singular;
-  var parts;
-  var addOne;
-  var subtractOne;
-  if (value2.length === 0) {
-    return count;
-  }
-  if (value2.length < 3) {
-    return 1;
-  }
-  if (own.call(problematic, value2)) {
-    return problematic[value2];
-  }
-  singular = pluralize$2(value2, 1);
-  if (own.call(problematic, singular)) {
-    return problematic[singular];
-  }
-  addOne = returnFactory(1);
-  subtractOne = returnFactory(-1);
-  value2 = value2.replace(EXPRESSION_TRIPLE, countFactory(3)).replace(EXPRESSION_DOUBLE, countFactory(2)).replace(EXPRESSION_SINGLE, countFactory(1));
-  parts = value2.split(/[^aeiouy]+/);
-  index2 = -1;
-  length = parts.length;
-  while (++index2 < length) {
-    if (parts[index2] !== "") {
-      count++;
-    }
-  }
-  value2.replace(EXPRESSION_MONOSYLLABIC_ONE, subtractOne).replace(EXPRESSION_MONOSYLLABIC_TWO, subtractOne);
-  value2.replace(EXPRESSION_DOUBLE_SYLLABIC_ONE, addOne).replace(EXPRESSION_DOUBLE_SYLLABIC_TWO, addOne).replace(EXPRESSION_DOUBLE_SYLLABIC_THREE, addOne).replace(EXPRESSION_DOUBLE_SYLLABIC_FOUR, addOne);
-  return count || 1;
-  function countFactory(addition) {
-    return counter;
-    function counter() {
-      count += addition;
-      return "";
-    }
-  }
-  function returnFactory(addition) {
-    return returner;
-    function returner($0) {
-      count += addition;
-      return $0;
-    }
-  }
-}
-var pluralize$1 = { exports: {} };
-(function(module, exports2) {
-  (function(root, pluralize2) {
-    if (typeof commonjsRequire === "function" && true && true) {
-      module.exports = pluralize2();
-    } else {
-      root.pluralize = pluralize2();
-    }
-  })(commonjsGlobal, function() {
-    var pluralRules = [];
-    var singularRules = [];
-    var uncountables = {};
-    var irregularPlurals = {};
-    var irregularSingles = {};
-    function sanitizeRule(rule) {
-      if (typeof rule === "string") {
-        return new RegExp("^" + rule + "$", "i");
-      }
-      return rule;
-    }
-    function restoreCase(word, token) {
-      if (word === token)
-        return token;
-      if (word === word.toLowerCase())
-        return token.toLowerCase();
-      if (word === word.toUpperCase())
-        return token.toUpperCase();
-      if (word[0] === word[0].toUpperCase()) {
-        return token.charAt(0).toUpperCase() + token.substr(1).toLowerCase();
-      }
-      return token.toLowerCase();
-    }
-    function interpolate(str, args) {
-      return str.replace(/\$(\d{1,2})/g, function(match, index2) {
-        return args[index2] || "";
-      });
-    }
-    function replace(word, rule) {
-      return word.replace(rule[0], function(match, index2) {
-        var result = interpolate(rule[1], arguments);
-        if (match === "") {
-          return restoreCase(word[index2 - 1], result);
-        }
-        return restoreCase(match, result);
-      });
-    }
-    function sanitizeWord(token, word, rules) {
-      if (!token.length || uncountables.hasOwnProperty(token)) {
-        return word;
-      }
-      var len2 = rules.length;
-      while (len2--) {
-        var rule = rules[len2];
-        if (rule[0].test(word))
-          return replace(word, rule);
-      }
-      return word;
-    }
-    function replaceWord(replaceMap, keepMap, rules) {
-      return function(word) {
-        var token = word.toLowerCase();
-        if (keepMap.hasOwnProperty(token)) {
-          return restoreCase(word, token);
-        }
-        if (replaceMap.hasOwnProperty(token)) {
-          return restoreCase(word, replaceMap[token]);
-        }
-        return sanitizeWord(token, word, rules);
-      };
-    }
-    function checkWord(replaceMap, keepMap, rules, bool) {
-      return function(word) {
-        var token = word.toLowerCase();
-        if (keepMap.hasOwnProperty(token))
-          return true;
-        if (replaceMap.hasOwnProperty(token))
-          return false;
-        return sanitizeWord(token, token, rules) === token;
-      };
-    }
-    function pluralize2(word, count, inclusive) {
-      var pluralized = count === 1 ? pluralize2.singular(word) : pluralize2.plural(word);
-      return (inclusive ? count + " " : "") + pluralized;
-    }
-    pluralize2.plural = replaceWord(irregularSingles, irregularPlurals, pluralRules);
-    pluralize2.isPlural = checkWord(irregularSingles, irregularPlurals, pluralRules);
-    pluralize2.singular = replaceWord(irregularPlurals, irregularSingles, singularRules);
-    pluralize2.isSingular = checkWord(irregularPlurals, irregularSingles, singularRules);
-    pluralize2.addPluralRule = function(rule, replacement) {
-      pluralRules.push([sanitizeRule(rule), replacement]);
-    };
-    pluralize2.addSingularRule = function(rule, replacement) {
-      singularRules.push([sanitizeRule(rule), replacement]);
-    };
-    pluralize2.addUncountableRule = function(word) {
-      if (typeof word === "string") {
-        uncountables[word.toLowerCase()] = true;
-        return;
-      }
-      pluralize2.addPluralRule(word, "$0");
-      pluralize2.addSingularRule(word, "$0");
-    };
-    pluralize2.addIrregularRule = function(single, plural) {
-      plural = plural.toLowerCase();
-      single = single.toLowerCase();
-      irregularSingles[single] = plural;
-      irregularPlurals[plural] = single;
-    };
-    [
-      ["I", "we"],
-      ["me", "us"],
-      ["he", "they"],
-      ["she", "they"],
-      ["them", "them"],
-      ["myself", "ourselves"],
-      ["yourself", "yourselves"],
-      ["itself", "themselves"],
-      ["herself", "themselves"],
-      ["himself", "themselves"],
-      ["themself", "themselves"],
-      ["is", "are"],
-      ["was", "were"],
-      ["has", "have"],
-      ["this", "these"],
-      ["that", "those"],
-      ["echo", "echoes"],
-      ["dingo", "dingoes"],
-      ["volcano", "volcanoes"],
-      ["tornado", "tornadoes"],
-      ["torpedo", "torpedoes"],
-      ["genus", "genera"],
-      ["viscus", "viscera"],
-      ["stigma", "stigmata"],
-      ["stoma", "stomata"],
-      ["dogma", "dogmata"],
-      ["lemma", "lemmata"],
-      ["schema", "schemata"],
-      ["anathema", "anathemata"],
-      ["ox", "oxen"],
-      ["axe", "axes"],
-      ["die", "dice"],
-      ["yes", "yeses"],
-      ["foot", "feet"],
-      ["eave", "eaves"],
-      ["goose", "geese"],
-      ["tooth", "teeth"],
-      ["quiz", "quizzes"],
-      ["human", "humans"],
-      ["proof", "proofs"],
-      ["carve", "carves"],
-      ["valve", "valves"],
-      ["looey", "looies"],
-      ["thief", "thieves"],
-      ["groove", "grooves"],
-      ["pickaxe", "pickaxes"],
-      ["passerby", "passersby"]
-    ].forEach(function(rule) {
-      return pluralize2.addIrregularRule(rule[0], rule[1]);
-    });
-    [
-      [/s?$/i, "s"],
-      [/[^\u0000-\u007F]$/i, "$0"],
-      [/([^aeiou]ese)$/i, "$1"],
-      [/(ax|test)is$/i, "$1es"],
-      [/(alias|[^aou]us|t[lm]as|gas|ris)$/i, "$1es"],
-      [/(e[mn]u)s?$/i, "$1s"],
-      [/([^l]ias|[aeiou]las|[ejzr]as|[iu]am)$/i, "$1"],
-      [/(alumn|syllab|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc|strat)(?:us|i)$/i, "$1i"],
-      [/(alumn|alg|vertebr)(?:a|ae)$/i, "$1ae"],
-      [/(seraph|cherub)(?:im)?$/i, "$1im"],
-      [/(her|at|gr)o$/i, "$1oes"],
-      [/(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|automat|quor)(?:a|um)$/i, "$1a"],
-      [/(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|hedr|automat)(?:a|on)$/i, "$1a"],
-      [/sis$/i, "ses"],
-      [/(?:(kni|wi|li)fe|(ar|l|ea|eo|oa|hoo)f)$/i, "$1$2ves"],
-      [/([^aeiouy]|qu)y$/i, "$1ies"],
-      [/([^ch][ieo][ln])ey$/i, "$1ies"],
-      [/(x|ch|ss|sh|zz)$/i, "$1es"],
-      [/(matr|cod|mur|sil|vert|ind|append)(?:ix|ex)$/i, "$1ices"],
-      [/\b((?:tit)?m|l)(?:ice|ouse)$/i, "$1ice"],
-      [/(pe)(?:rson|ople)$/i, "$1ople"],
-      [/(child)(?:ren)?$/i, "$1ren"],
-      [/eaux$/i, "$0"],
-      [/m[ae]n$/i, "men"],
-      ["thou", "you"]
-    ].forEach(function(rule) {
-      return pluralize2.addPluralRule(rule[0], rule[1]);
-    });
-    [
-      [/s$/i, ""],
-      [/(ss)$/i, "$1"],
-      [/(wi|kni|(?:after|half|high|low|mid|non|night|[^\w]|^)li)ves$/i, "$1fe"],
-      [/(ar|(?:wo|[ae])l|[eo][ao])ves$/i, "$1f"],
-      [/ies$/i, "y"],
-      [/\b([pl]|zomb|(?:neck|cross)?t|coll|faer|food|gen|goon|group|lass|talk|goal|cut)ies$/i, "$1ie"],
-      [/\b(mon|smil)ies$/i, "$1ey"],
-      [/\b((?:tit)?m|l)ice$/i, "$1ouse"],
-      [/(seraph|cherub)im$/i, "$1"],
-      [/(x|ch|ss|sh|zz|tto|go|cho|alias|[^aou]us|t[lm]as|gas|(?:her|at|gr)o|[aeiou]ris)(?:es)?$/i, "$1"],
-      [/(analy|diagno|parenthe|progno|synop|the|empha|cri|ne)(?:sis|ses)$/i, "$1sis"],
-      [/(movie|twelve|abuse|e[mn]u)s$/i, "$1"],
-      [/(test)(?:is|es)$/i, "$1is"],
-      [/(alumn|syllab|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc|strat)(?:us|i)$/i, "$1us"],
-      [/(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|quor)a$/i, "$1um"],
-      [/(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|hedr|automat)a$/i, "$1on"],
-      [/(alumn|alg|vertebr)ae$/i, "$1a"],
-      [/(cod|mur|sil|vert|ind)ices$/i, "$1ex"],
-      [/(matr|append)ices$/i, "$1ix"],
-      [/(pe)(rson|ople)$/i, "$1rson"],
-      [/(child)ren$/i, "$1"],
-      [/(eau)x?$/i, "$1"],
-      [/men$/i, "man"]
-    ].forEach(function(rule) {
-      return pluralize2.addSingularRule(rule[0], rule[1]);
-    });
-    [
-      "adulthood",
-      "advice",
-      "agenda",
-      "aid",
-      "aircraft",
-      "alcohol",
-      "ammo",
-      "analytics",
-      "anime",
-      "athletics",
-      "audio",
-      "bison",
-      "blood",
-      "bream",
-      "buffalo",
-      "butter",
-      "carp",
-      "cash",
-      "chassis",
-      "chess",
-      "clothing",
-      "cod",
-      "commerce",
-      "cooperation",
-      "corps",
-      "debris",
-      "diabetes",
-      "digestion",
-      "elk",
-      "energy",
-      "equipment",
-      "excretion",
-      "expertise",
-      "firmware",
-      "flounder",
-      "fun",
-      "gallows",
-      "garbage",
-      "graffiti",
-      "hardware",
-      "headquarters",
-      "health",
-      "herpes",
-      "highjinks",
-      "homework",
-      "housework",
-      "information",
-      "jeans",
-      "justice",
-      "kudos",
-      "labour",
-      "literature",
-      "machinery",
-      "mackerel",
-      "mail",
-      "media",
-      "mews",
-      "moose",
-      "music",
-      "mud",
-      "manga",
-      "news",
-      "only",
-      "personnel",
-      "pike",
-      "plankton",
-      "pliers",
-      "police",
-      "pollution",
-      "premises",
-      "rain",
-      "research",
-      "rice",
-      "salmon",
-      "scissors",
-      "series",
-      "sewage",
-      "shambles",
-      "shrimp",
-      "software",
-      "species",
-      "staff",
-      "swine",
-      "tennis",
-      "traffic",
-      "transportation",
-      "trout",
-      "tuna",
-      "wealth",
-      "welfare",
-      "whiting",
-      "wildebeest",
-      "wildlife",
-      "you",
-      /pok[eé]mon$/i,
-      /[^aeiou]ese$/i,
-      /deer$/i,
-      /fish$/i,
-      /measles$/i,
-      /o[iu]s$/i,
-      /pox$/i,
-      /sheep$/i
-    ].forEach(pluralize2.addUncountableRule);
-    return pluralize2;
-  });
-})(pluralize$1);
-const easyWords$1 = [
-  "a",
-  "able",
-  "aboard",
-  "about",
-  "above",
-  "absent",
-  "accept",
-  "accident",
-  "account",
-  "ache",
-  "aching",
-  "acorn",
-  "acre",
-  "across",
-  "act",
-  "acts",
-  "add",
-  "address",
-  "admire",
-  "adventure",
-  "afar",
-  "afraid",
-  "after",
-  "afternoon",
-  "afterward",
-  "afterwards",
-  "again",
-  "against",
-  "age",
-  "aged",
-  "ago",
-  "agree",
-  "ah",
-  "ahead",
-  "aid",
-  "aim",
-  "air",
-  "airfield",
-  "airplane",
-  "airport",
-  "airship",
-  "airy",
-  "alarm",
-  "alike",
-  "alive",
-  "all",
-  "alley",
-  "alligator",
-  "allow",
-  "almost",
-  "alone",
-  "along",
-  "aloud",
-  "already",
-  "also",
-  "always",
-  "am",
-  "america",
-  "american",
-  "among",
-  "amount",
-  "an",
-  "and",
-  "angel",
-  "anger",
-  "angry",
-  "animal",
-  "another",
-  "answer",
-  "ant",
-  "any",
-  "anybody",
-  "anyhow",
-  "anyone",
-  "anything",
-  "anyway",
-  "anywhere",
-  "apart",
-  "apartment",
-  "ape",
-  "apiece",
-  "appear",
-  "apple",
-  "april",
-  "apron",
-  "are",
-  "aren't",
-  "arise",
-  "arithmetic",
-  "arm",
-  "armful",
-  "army",
-  "arose",
-  "around",
-  "arrange",
-  "arrive",
-  "arrived",
-  "arrow",
-  "art",
-  "artist",
-  "as",
-  "ash",
-  "ashes",
-  "aside",
-  "ask",
-  "asleep",
-  "at",
-  "ate",
-  "attack",
-  "attend",
-  "attention",
-  "august",
-  "aunt",
-  "author",
-  "auto",
-  "automobile",
-  "autumn",
-  "avenue",
-  "awake",
-  "awaken",
-  "away",
-  "awful",
-  "awfully",
-  "awhile",
-  "ax",
-  "axe",
-  "baa",
-  "babe",
-  "babies",
-  "back",
-  "background",
-  "backward",
-  "backwards",
-  "bacon",
-  "bad",
-  "badge",
-  "badly",
-  "bag",
-  "bake",
-  "baker",
-  "bakery",
-  "baking",
-  "ball",
-  "balloon",
-  "banana",
-  "band",
-  "bandage",
-  "bang",
-  "banjo",
-  "bank",
-  "banker",
-  "bar",
-  "barber",
-  "bare",
-  "barefoot",
-  "barely",
-  "bark",
-  "barn",
-  "barrel",
-  "base",
-  "baseball",
-  "basement",
-  "basket",
-  "bat",
-  "batch",
-  "bath",
-  "bathe",
-  "bathing",
-  "bathroom",
-  "bathtub",
-  "battle",
-  "battleship",
-  "bay",
-  "be",
-  "beach",
-  "bead",
-  "beam",
-  "bean",
-  "bear",
-  "beard",
-  "beast",
-  "beat",
-  "beating",
-  "beautiful",
-  "beautify",
-  "beauty",
-  "became",
-  "because",
-  "become",
-  "becoming",
-  "bed",
-  "bedbug",
-  "bedroom",
-  "bedspread",
-  "bedtime",
-  "bee",
-  "beech",
-  "beef",
-  "beefsteak",
-  "beehive",
-  "been",
-  "beer",
-  "beet",
-  "before",
-  "beg",
-  "began",
-  "beggar",
-  "begged",
-  "begin",
-  "beginning",
-  "begun",
-  "behave",
-  "behind",
-  "being",
-  "believe",
-  "bell",
-  "belong",
-  "below",
-  "belt",
-  "bench",
-  "bend",
-  "beneath",
-  "bent",
-  "berries",
-  "berry",
-  "beside",
-  "besides",
-  "best",
-  "bet",
-  "better",
-  "between",
-  "bib",
-  "bible",
-  "bicycle",
-  "bid",
-  "big",
-  "bigger",
-  "bill",
-  "billboard",
-  "bin",
-  "bind",
-  "bird",
-  "birth",
-  "birthday",
-  "biscuit",
-  "bit",
-  "bite",
-  "biting",
-  "bitter",
-  "black",
-  "blackberry",
-  "blackbird",
-  "blackboard",
-  "blackness",
-  "blacksmith",
-  "blame",
-  "blank",
-  "blanket",
-  "blast",
-  "blaze",
-  "bleed",
-  "bless",
-  "blessing",
-  "blew",
-  "blind",
-  "blindfold",
-  "blinds",
-  "block",
-  "blood",
-  "bloom",
-  "blossom",
-  "blot",
-  "blow",
-  "blue",
-  "blueberry",
-  "bluebird",
-  "blush",
-  "board",
-  "boast",
-  "boat",
-  "bob",
-  "bobwhite",
-  "bodies",
-  "body",
-  "boil",
-  "boiler",
-  "bold",
-  "bone",
-  "bonnet",
-  "boo",
-  "book",
-  "bookcase",
-  "bookkeeper",
-  "boom",
-  "boot",
-  "born",
-  "borrow",
-  "boss",
-  "both",
-  "bother",
-  "bottle",
-  "bottom",
-  "bought",
-  "bounce",
-  "bow",
-  "bowl",
-  "bow-wow",
-  "box",
-  "boxcar",
-  "boxer",
-  "boxes",
-  "boy",
-  "boyhood",
-  "bracelet",
-  "brain",
-  "brake",
-  "bran",
-  "branch",
-  "brass",
-  "brave",
-  "bread",
-  "break",
-  "breakfast",
-  "breast",
-  "breath",
-  "breathe",
-  "breeze",
-  "brick",
-  "bride",
-  "bridge",
-  "bright",
-  "brightness",
-  "bring",
-  "broad",
-  "broadcast",
-  "broke",
-  "broken",
-  "brook",
-  "broom",
-  "brother",
-  "brought",
-  "brown",
-  "brush",
-  "bubble",
-  "bucket",
-  "buckle",
-  "bud",
-  "buffalo",
-  "bug",
-  "buggy",
-  "build",
-  "building",
-  "built",
-  "bulb",
-  "bull",
-  "bullet",
-  "bum",
-  "bumblebee",
-  "bump",
-  "bun",
-  "bunch",
-  "bundle",
-  "bunny",
-  "burn",
-  "burst",
-  "bury",
-  "bus",
-  "bush",
-  "bushel",
-  "business",
-  "busy",
-  "but",
-  "butcher",
-  "butt",
-  "butter",
-  "buttercup",
-  "butterfly",
-  "buttermilk",
-  "butterscotch",
-  "button",
-  "buttonhole",
-  "buy",
-  "buzz",
-  "by",
-  "bye",
-  "cab",
-  "cabbage",
-  "cabin",
-  "cabinet",
-  "cackle",
-  "cage",
-  "cake",
-  "calendar",
-  "calf",
-  "call",
-  "caller",
-  "calling",
-  "came",
-  "camel",
-  "camp",
-  "campfire",
-  "can",
-  "canal",
-  "canary",
-  "candle",
-  "candlestick",
-  "candy",
-  "cane",
-  "cannon",
-  "cannot",
-  "canoe",
-  "can't",
-  "canyon",
-  "cap",
-  "cape",
-  "capital",
-  "captain",
-  "car",
-  "card",
-  "cardboard",
-  "care",
-  "careful",
-  "careless",
-  "carelessness",
-  "carload",
-  "carpenter",
-  "carpet",
-  "carriage",
-  "carrot",
-  "carry",
-  "cart",
-  "carve",
-  "case",
-  "cash",
-  "cashier",
-  "castle",
-  "cat",
-  "catbird",
-  "catch",
-  "catcher",
-  "caterpillar",
-  "catfish",
-  "catsup",
-  "cattle",
-  "caught",
-  "cause",
-  "cave",
-  "ceiling",
-  "cell",
-  "cellar",
-  "cent",
-  "center",
-  "cereal",
-  "certain",
-  "certainly",
-  "chain",
-  "chair",
-  "chalk",
-  "champion",
-  "chance",
-  "change",
-  "chap",
-  "charge",
-  "charm",
-  "chart",
-  "chase",
-  "chatter",
-  "cheap",
-  "cheat",
-  "check",
-  "checkers",
-  "cheek",
-  "cheer",
-  "cheese",
-  "cherry",
-  "chest",
-  "chew",
-  "chick",
-  "chicken",
-  "chief",
-  "child",
-  "childhood",
-  "children",
-  "chill",
-  "chilly",
-  "chimney",
-  "chin",
-  "china",
-  "chip",
-  "chipmunk",
-  "chocolate",
-  "choice",
-  "choose",
-  "chop",
-  "chorus",
-  "chose",
-  "chosen",
-  "christen",
-  "christmas",
-  "church",
-  "churn",
-  "cigarette",
-  "circle",
-  "circus",
-  "citizen",
-  "city",
-  "clang",
-  "clap",
-  "class",
-  "classmate",
-  "classroom",
-  "claw",
-  "clay",
-  "clean",
-  "cleaner",
-  "clear",
-  "clerk",
-  "clever",
-  "click",
-  "cliff",
-  "climb",
-  "clip",
-  "cloak",
-  "clock",
-  "close",
-  "closet",
-  "cloth",
-  "clothes",
-  "clothing",
-  "cloud",
-  "cloudy",
-  "clover",
-  "clown",
-  "club",
-  "cluck",
-  "clump",
-  "coach",
-  "coal",
-  "coast",
-  "coat",
-  "cob",
-  "cobbler",
-  "cocoa",
-  "coconut",
-  "cocoon",
-  "cod",
-  "codfish",
-  "coffee",
-  "coffeepot",
-  "coin",
-  "cold",
-  "collar",
-  "college",
-  "color",
-  "colored",
-  "colt",
-  "column",
-  "comb",
-  "come",
-  "comfort",
-  "comic",
-  "coming",
-  "company",
-  "compare",
-  "conductor",
-  "cone",
-  "connect",
-  "coo",
-  "cook",
-  "cooked",
-  "cooking",
-  "cookie",
-  "cookies",
-  "cool",
-  "cooler",
-  "coop",
-  "copper",
-  "copy",
-  "cord",
-  "cork",
-  "corn",
-  "corner",
-  "correct",
-  "cost",
-  "cot",
-  "cottage",
-  "cotton",
-  "couch",
-  "cough",
-  "could",
-  "couldn't",
-  "count",
-  "counter",
-  "country",
-  "county",
-  "course",
-  "court",
-  "cousin",
-  "cover",
-  "cow",
-  "coward",
-  "cowardly",
-  "cowboy",
-  "cozy",
-  "crab",
-  "crack",
-  "cracker",
-  "cradle",
-  "cramps",
-  "cranberry",
-  "crank",
-  "cranky",
-  "crash",
-  "crawl",
-  "crazy",
-  "cream",
-  "creamy",
-  "creek",
-  "creep",
-  "crept",
-  "cried",
-  "croak",
-  "crook",
-  "crooked",
-  "crop",
-  "cross",
-  "crossing",
-  "cross-eyed",
-  "crow",
-  "crowd",
-  "crowded",
-  "crown",
-  "cruel",
-  "crumb",
-  "crumble",
-  "crush",
-  "crust",
-  "cry",
-  "cries",
-  "cub",
-  "cuff",
-  "cup",
-  "cuff",
-  "cup",
-  "cupboard",
-  "cupful",
-  "cure",
-  "curl",
-  "curly",
-  "curtain",
-  "curve",
-  "cushion",
-  "custard",
-  "customer",
-  "cut",
-  "cute",
-  "cutting",
-  "dab",
-  "dad",
-  "daddy",
-  "daily",
-  "dairy",
-  "daisy",
-  "dam",
-  "damage",
-  "dame",
-  "damp",
-  "dance",
-  "dancer",
-  "dancing",
-  "dandy",
-  "danger",
-  "dangerous",
-  "dare",
-  "dark",
-  "darkness",
-  "darling",
-  "darn",
-  "dart",
-  "dash",
-  "date",
-  "daughter",
-  "dawn",
-  "day",
-  "daybreak",
-  "daytime",
-  "dead",
-  "deaf",
-  "deal",
-  "dear",
-  "death",
-  "december",
-  "decide",
-  "deck",
-  "deed",
-  "deep",
-  "deer",
-  "defeat",
-  "defend",
-  "defense",
-  "delight",
-  "den",
-  "dentist",
-  "depend",
-  "deposit",
-  "describe",
-  "desert",
-  "deserve",
-  "desire",
-  "desk",
-  "destroy",
-  "devil",
-  "dew",
-  "diamond",
-  "did",
-  "didn't",
-  "die",
-  "died",
-  "dies",
-  "difference",
-  "different",
-  "dig",
-  "dim",
-  "dime",
-  "dine",
-  "ding-dong",
-  "dinner",
-  "dip",
-  "direct",
-  "direction",
-  "dirt",
-  "dirty",
-  "discover",
-  "dish",
-  "dislike",
-  "dismiss",
-  "ditch",
-  "dive",
-  "diver",
-  "divide",
-  "do",
-  "dock",
-  "doctor",
-  "does",
-  "doesn't",
-  "dog",
-  "doll",
-  "dollar",
-  "dolly",
-  "done",
-  "donkey",
-  "don't",
-  "door",
-  "doorbell",
-  "doorknob",
-  "doorstep",
-  "dope",
-  "dot",
-  "double",
-  "dough",
-  "dove",
-  "down",
-  "downstairs",
-  "downtown",
-  "dozen",
-  "drag",
-  "drain",
-  "drank",
-  "draw",
-  "drawer",
-  "draw",
-  "drawing",
-  "dream",
-  "dress",
-  "dresser",
-  "dressmaker",
-  "drew",
-  "dried",
-  "drift",
-  "drill",
-  "drink",
-  "drip",
-  "drive",
-  "driven",
-  "driver",
-  "drop",
-  "drove",
-  "drown",
-  "drowsy",
-  "drub",
-  "drum",
-  "drunk",
-  "dry",
-  "duck",
-  "due",
-  "dug",
-  "dull",
-  "dumb",
-  "dump",
-  "during",
-  "dust",
-  "dusty",
-  "duty",
-  "dwarf",
-  "dwell",
-  "dwelt",
-  "dying",
-  "each",
-  "eager",
-  "eagle",
-  "ear",
-  "early",
-  "earn",
-  "earth",
-  "east",
-  "eastern",
-  "easy",
-  "eat",
-  "eaten",
-  "edge",
-  "egg",
-  "eh",
-  "eight",
-  "eighteen",
-  "eighth",
-  "eighty",
-  "either",
-  "elbow",
-  "elder",
-  "eldest",
-  "electric",
-  "electricity",
-  "elephant",
-  "eleven",
-  "elf",
-  "elm",
-  "else",
-  "elsewhere",
-  "empty",
-  "end",
-  "ending",
-  "enemy",
-  "engine",
-  "engineer",
-  "english",
-  "enjoy",
-  "enough",
-  "enter",
-  "envelope",
-  "equal",
-  "erase",
-  "eraser",
-  "errand",
-  "escape",
-  "eve",
-  "even",
-  "evening",
-  "ever",
-  "every",
-  "everybody",
-  "everyday",
-  "everyone",
-  "everything",
-  "everywhere",
-  "evil",
-  "exact",
-  "except",
-  "exchange",
-  "excited",
-  "exciting",
-  "excuse",
-  "exit",
-  "expect",
-  "explain",
-  "extra",
-  "eye",
-  "eyebrow",
-  "fable",
-  "face",
-  "facing",
-  "fact",
-  "factory",
-  "fail",
-  "faint",
-  "fair",
-  "fairy",
-  "faith",
-  "fake",
-  "fall",
-  "false",
-  "family",
-  "fan",
-  "fancy",
-  "far",
-  "faraway",
-  "fare",
-  "farmer",
-  "farm",
-  "farming",
-  "far-off",
-  "farther",
-  "fashion",
-  "fast",
-  "fasten",
-  "fat",
-  "father",
-  "fault",
-  "favor",
-  "favorite",
-  "fear",
-  "feast",
-  "feather",
-  "february",
-  "fed",
-  "feed",
-  "feel",
-  "feet",
-  "fell",
-  "fellow",
-  "felt",
-  "fence",
-  "fever",
-  "few",
-  "fib",
-  "fiddle",
-  "field",
-  "fife",
-  "fifteen",
-  "fifth",
-  "fifty",
-  "fig",
-  "fight",
-  "figure",
-  "file",
-  "fill",
-  "film",
-  "finally",
-  "find",
-  "fine",
-  "finger",
-  "finish",
-  "fire",
-  "firearm",
-  "firecracker",
-  "fireplace",
-  "fireworks",
-  "firing",
-  "first",
-  "fish",
-  "fisherman",
-  "fist",
-  "fit",
-  "fits",
-  "five",
-  "fix",
-  "flag",
-  "flake",
-  "flame",
-  "flap",
-  "flash",
-  "flashlight",
-  "flat",
-  "flea",
-  "flesh",
-  "flew",
-  "flies",
-  "flight",
-  "flip",
-  "flip-flop",
-  "float",
-  "flock",
-  "flood",
-  "floor",
-  "flop",
-  "flour",
-  "flow",
-  "flower",
-  "flowery",
-  "flutter",
-  "fly",
-  "foam",
-  "fog",
-  "foggy",
-  "fold",
-  "folks",
-  "follow",
-  "following",
-  "fond",
-  "food",
-  "fool",
-  "foolish",
-  "foot",
-  "football",
-  "footprint",
-  "for",
-  "forehead",
-  "forest",
-  "forget",
-  "forgive",
-  "forgot",
-  "forgotten",
-  "fork",
-  "form",
-  "fort",
-  "forth",
-  "fortune",
-  "forty",
-  "forward",
-  "fought",
-  "found",
-  "fountain",
-  "four",
-  "fourteen",
-  "fourth",
-  "fox",
-  "frame",
-  "free",
-  "freedom",
-  "freeze",
-  "freight",
-  "french",
-  "fresh",
-  "fret",
-  "friday",
-  "fried",
-  "friend",
-  "friendly",
-  "friendship",
-  "frighten",
-  "frog",
-  "from",
-  "front",
-  "frost",
-  "frown",
-  "froze",
-  "fruit",
-  "fry",
-  "fudge",
-  "fuel",
-  "full",
-  "fully",
-  "fun",
-  "funny",
-  "fur",
-  "furniture",
-  "further",
-  "fuzzy",
-  "gain",
-  "gallon",
-  "gallop",
-  "game",
-  "gang",
-  "garage",
-  "garbage",
-  "garden",
-  "gas",
-  "gasoline",
-  "gate",
-  "gather",
-  "gave",
-  "gay",
-  "gear",
-  "geese",
-  "general",
-  "gentle",
-  "gentleman",
-  "gentlemen",
-  "geography",
-  "get",
-  "getting",
-  "giant",
-  "gift",
-  "gingerbread",
-  "girl",
-  "give",
-  "given",
-  "giving",
-  "glad",
-  "gladly",
-  "glance",
-  "glass",
-  "glasses",
-  "gleam",
-  "glide",
-  "glory",
-  "glove",
-  "glow",
-  "glue",
-  "go",
-  "going",
-  "goes",
-  "goal",
-  "goat",
-  "gobble",
-  "god",
-  "god",
-  "godmother",
-  "gold",
-  "golden",
-  "goldfish",
-  "golf",
-  "gone",
-  "good",
-  "goods",
-  "goodbye",
-  "good-by",
-  "goodbye",
-  "good-bye",
-  "good-looking",
-  "goodness",
-  "goody",
-  "goose",
-  "gooseberry",
-  "got",
-  "govern",
-  "government",
-  "gown",
-  "grab",
-  "gracious",
-  "grade",
-  "grain",
-  "grand",
-  "grandchild",
-  "grandchildren",
-  "granddaughter",
-  "grandfather",
-  "grandma",
-  "grandmother",
-  "grandpa",
-  "grandson",
-  "grandstand",
-  "grape",
-  "grapes",
-  "grapefruit",
-  "grass",
-  "grasshopper",
-  "grateful",
-  "grave",
-  "gravel",
-  "graveyard",
-  "gravy",
-  "gray",
-  "graze",
-  "grease",
-  "great",
-  "green",
-  "greet",
-  "grew",
-  "grind",
-  "groan",
-  "grocery",
-  "ground",
-  "group",
-  "grove",
-  "grow",
-  "guard",
-  "guess",
-  "guest",
-  "guide",
-  "gulf",
-  "gum",
-  "gun",
-  "gunpowder",
-  "guy",
-  "ha",
-  "habit",
-  "had",
-  "hadn't",
-  "hail",
-  "hair",
-  "haircut",
-  "hairpin",
-  "half",
-  "hall",
-  "halt",
-  "ham",
-  "hammer",
-  "hand",
-  "handful",
-  "handkerchief",
-  "handle",
-  "handwriting",
-  "hang",
-  "happen",
-  "happily",
-  "happiness",
-  "happy",
-  "harbor",
-  "hard",
-  "hardly",
-  "hardship",
-  "hardware",
-  "hare",
-  "hark",
-  "harm",
-  "harness",
-  "harp",
-  "harvest",
-  "has",
-  "hasn't",
-  "haste",
-  "hasten",
-  "hasty",
-  "hat",
-  "hatch",
-  "hatchet",
-  "hate",
-  "haul",
-  "have",
-  "haven't",
-  "having",
-  "hawk",
-  "hay",
-  "hayfield",
-  "haystack",
-  "he",
-  "head",
-  "headache",
-  "heal",
-  "health",
-  "healthy",
-  "heap",
-  "hear",
-  "hearing",
-  "heard",
-  "heart",
-  "heat",
-  "heater",
-  "heaven",
-  "heavy",
-  "he'd",
-  "heel",
-  "height",
-  "held",
-  "hell",
-  "he'll",
-  "hello",
-  "helmet",
-  "help",
-  "helper",
-  "helpful",
-  "hem",
-  "hen",
-  "henhouse",
-  "her",
-  "hers",
-  "herd",
-  "here",
-  "here's",
-  "hero",
-  "herself",
-  "he's",
-  "hey",
-  "hickory",
-  "hid",
-  "hidden",
-  "hide",
-  "high",
-  "highway",
-  "hill",
-  "hillside",
-  "hilltop",
-  "hilly",
-  "him",
-  "himself",
-  "hind",
-  "hint",
-  "hip",
-  "hire",
-  "his",
-  "hiss",
-  "history",
-  "hit",
-  "hitch",
-  "hive",
-  "ho",
-  "hoe",
-  "hog",
-  "hold",
-  "holder",
-  "hole",
-  "holiday",
-  "hollow",
-  "holy",
-  "home",
-  "homely",
-  "homesick",
-  "honest",
-  "honey",
-  "honeybee",
-  "honeymoon",
-  "honk",
-  "honor",
-  "hood",
-  "hoof",
-  "hook",
-  "hoop",
-  "hop",
-  "hope",
-  "hopeful",
-  "hopeless",
-  "horn",
-  "horse",
-  "horseback",
-  "horseshoe",
-  "hose",
-  "hospital",
-  "host",
-  "hot",
-  "hotel",
-  "hound",
-  "hour",
-  "house",
-  "housetop",
-  "housewife",
-  "housework",
-  "how",
-  "however",
-  "howl",
-  "hug",
-  "huge",
-  "hum",
-  "humble",
-  "hump",
-  "hundred",
-  "hung",
-  "hunger",
-  "hungry",
-  "hunk",
-  "hunt",
-  "hunter",
-  "hurrah",
-  "hurried",
-  "hurry",
-  "hurt",
-  "husband",
-  "hush",
-  "hut",
-  "hymn",
-  "i",
-  "ice",
-  "icy",
-  "i'd",
-  "idea",
-  "ideal",
-  "if",
-  "ill",
-  "i'll",
-  "i'm",
-  "important",
-  "impossible",
-  "improve",
-  "in",
-  "inch",
-  "inches",
-  "income",
-  "indeed",
-  "indian",
-  "indoors",
-  "ink",
-  "inn",
-  "insect",
-  "inside",
-  "instant",
-  "instead",
-  "insult",
-  "intend",
-  "interested",
-  "interesting",
-  "into",
-  "invite",
-  "iron",
-  "is",
-  "island",
-  "isn't",
-  "it",
-  "its",
-  "it's",
-  "itself",
-  "i've",
-  "ivory",
-  "ivy",
-  "jacket",
-  "jacks",
-  "jail",
-  "jam",
-  "january",
-  "jar",
-  "jaw",
-  "jay",
-  "jelly",
-  "jellyfish",
-  "jerk",
-  "jig",
-  "job",
-  "jockey",
-  "join",
-  "joke",
-  "joking",
-  "jolly",
-  "journey",
-  "joy",
-  "joyful",
-  "joyous",
-  "judge",
-  "jug",
-  "juice",
-  "juicy",
-  "july",
-  "jump",
-  "june",
-  "junior",
-  "junk",
-  "just",
-  "keen",
-  "keep",
-  "kept",
-  "kettle",
-  "key",
-  "kick",
-  "kid",
-  "kill",
-  "killed",
-  "kind",
-  "kindly",
-  "kindness",
-  "king",
-  "kingdom",
-  "kiss",
-  "kitchen",
-  "kite",
-  "kitten",
-  "kitty",
-  "knee",
-  "kneel",
-  "knew",
-  "knife",
-  "knit",
-  "knives",
-  "knob",
-  "knock",
-  "knot",
-  "know",
-  "known",
-  "lace",
-  "lad",
-  "ladder",
-  "ladies",
-  "lady",
-  "laid",
-  "lake",
-  "lamb",
-  "lame",
-  "lamp",
-  "land",
-  "lane",
-  "language",
-  "lantern",
-  "lap",
-  "lard",
-  "large",
-  "lash",
-  "lass",
-  "last",
-  "late",
-  "laugh",
-  "laundry",
-  "law",
-  "lawn",
-  "lawyer",
-  "lay",
-  "lazy",
-  "lead",
-  "leader",
-  "leaf",
-  "leak",
-  "lean",
-  "leap",
-  "learn",
-  "learned",
-  "least",
-  "leather",
-  "leave",
-  "leaving",
-  "led",
-  "left",
-  "leg",
-  "lemon",
-  "lemonade",
-  "lend",
-  "length",
-  "less",
-  "lesson",
-  "let",
-  "let's",
-  "letter",
-  "letting",
-  "lettuce",
-  "level",
-  "liberty",
-  "library",
-  "lice",
-  "lick",
-  "lid",
-  "lie",
-  "life",
-  "lift",
-  "light",
-  "lightness",
-  "lightning",
-  "like",
-  "likely",
-  "liking",
-  "lily",
-  "limb",
-  "lime",
-  "limp",
-  "line",
-  "linen",
-  "lion",
-  "lip",
-  "list",
-  "listen",
-  "lit",
-  "little",
-  "live",
-  "lives",
-  "lively",
-  "liver",
-  "living",
-  "lizard",
-  "load",
-  "loaf",
-  "loan",
-  "loaves",
-  "lock",
-  "locomotive",
-  "log",
-  "lone",
-  "lonely",
-  "lonesome",
-  "long",
-  "look",
-  "lookout",
-  "loop",
-  "loose",
-  "lord",
-  "lose",
-  "loser",
-  "loss",
-  "lost",
-  "lot",
-  "loud",
-  "love",
-  "lovely",
-  "lover",
-  "low",
-  "luck",
-  "lucky",
-  "lumber",
-  "lump",
-  "lunch",
-  "lying",
-  "machine",
-  "machinery",
-  "mad",
-  "made",
-  "magazine",
-  "magic",
-  "maid",
-  "mail",
-  "mailbox",
-  "mailman",
-  "major",
-  "make",
-  "making",
-  "male",
-  "mama",
-  "mamma",
-  "man",
-  "manager",
-  "mane",
-  "manger",
-  "many",
-  "map",
-  "maple",
-  "marble",
-  "march",
-  "march",
-  "mare",
-  "mark",
-  "market",
-  "marriage",
-  "married",
-  "marry",
-  "mask",
-  "mast",
-  "master",
-  "mat",
-  "match",
-  "matter",
-  "mattress",
-  "may",
-  "may",
-  "maybe",
-  "mayor",
-  "maypole",
-  "me",
-  "meadow",
-  "meal",
-  "mean",
-  "means",
-  "meant",
-  "measure",
-  "meat",
-  "medicine",
-  "meet",
-  "meeting",
-  "melt",
-  "member",
-  "men",
-  "mend",
-  "meow",
-  "merry",
-  "mess",
-  "message",
-  "met",
-  "metal",
-  "mew",
-  "mice",
-  "middle",
-  "midnight",
-  "might",
-  "mighty",
-  "mile",
-  "milk",
-  "milkman",
-  "mill",
-  "miler",
-  "million",
-  "mind",
-  "mine",
-  "miner",
-  "mint",
-  "minute",
-  "mirror",
-  "mischief",
-  "miss",
-  "miss",
-  "misspell",
-  "mistake",
-  "misty",
-  "mitt",
-  "mitten",
-  "mix",
-  "moment",
-  "monday",
-  "money",
-  "monkey",
-  "month",
-  "moo",
-  "moon",
-  "moonlight",
-  "moose",
-  "mop",
-  "more",
-  "morning",
-  "morrow",
-  "moss",
-  "most",
-  "mostly",
-  "mother",
-  "motor",
-  "mount",
-  "mountain",
-  "mouse",
-  "mouth",
-  "move",
-  "movie",
-  "movies",
-  "moving",
-  "mow",
-  "mr.",
-  "mrs.",
-  "much",
-  "mud",
-  "muddy",
-  "mug",
-  "mule",
-  "multiply",
-  "murder",
-  "music",
-  "must",
-  "my",
-  "myself",
-  "nail",
-  "name",
-  "nap",
-  "napkin",
-  "narrow",
-  "nasty",
-  "naughty",
-  "navy",
-  "near",
-  "nearby",
-  "nearly",
-  "neat",
-  "neck",
-  "necktie",
-  "need",
-  "needle",
-  "needn't",
-  "negro",
-  "neighbor",
-  "neighborhood",
-  "neither",
-  "nerve",
-  "nest",
-  "net",
-  "never",
-  "nevermore",
-  "new",
-  "news",
-  "newspaper",
-  "next",
-  "nibble",
-  "nice",
-  "nickel",
-  "night",
-  "nightgown",
-  "nine",
-  "nineteen",
-  "ninety",
-  "no",
-  "nobody",
-  "nod",
-  "noise",
-  "noisy",
-  "none",
-  "noon",
-  "nor",
-  "north",
-  "northern",
-  "nose",
-  "not",
-  "note",
-  "nothing",
-  "notice",
-  "november",
-  "now",
-  "nowhere",
-  "number",
-  "nurse",
-  "nut",
-  "oak",
-  "oar",
-  "oatmeal",
-  "oats",
-  "obey",
-  "ocean",
-  "o'clock",
-  "october",
-  "odd",
-  "of",
-  "off",
-  "offer",
-  "office",
-  "officer",
-  "often",
-  "oh",
-  "oil",
-  "old",
-  "old-fashioned",
-  "on",
-  "once",
-  "one",
-  "onion",
-  "only",
-  "onward",
-  "open",
-  "or",
-  "orange",
-  "orchard",
-  "order",
-  "ore",
-  "organ",
-  "other",
-  "otherwise",
-  "ouch",
-  "ought",
-  "our",
-  "ours",
-  "ourselves",
-  "out",
-  "outdoors",
-  "outfit",
-  "outlaw",
-  "outline",
-  "outside",
-  "outward",
-  "oven",
-  "over",
-  "overalls",
-  "overcoat",
-  "overeat",
-  "overhead",
-  "overhear",
-  "overnight",
-  "overturn",
-  "owe",
-  "owing",
-  "owl",
-  "own",
-  "owner",
-  "ox",
-  "pa",
-  "pace",
-  "pack",
-  "package",
-  "pad",
-  "page",
-  "paid",
-  "pail",
-  "pain",
-  "painful",
-  "paint",
-  "painter",
-  "painting",
-  "pair",
-  "pal",
-  "palace",
-  "pale",
-  "pan",
-  "pancake",
-  "pane",
-  "pansy",
-  "pants",
-  "papa",
-  "paper",
-  "parade",
-  "pardon",
-  "parent",
-  "park",
-  "part",
-  "partly",
-  "partner",
-  "party",
-  "pass",
-  "passenger",
-  "past",
-  "paste",
-  "pasture",
-  "pat",
-  "patch",
-  "path",
-  "patter",
-  "pave",
-  "pavement",
-  "paw",
-  "pay",
-  "payment",
-  "pea",
-  "peas",
-  "peace",
-  "peaceful",
-  "peach",
-  "peaches",
-  "peak",
-  "peanut",
-  "pear",
-  "pearl",
-  "peck",
-  "peek",
-  "peel",
-  "peep",
-  "peg",
-  "pen",
-  "pencil",
-  "penny",
-  "people",
-  "pepper",
-  "peppermint",
-  "perfume",
-  "perhaps",
-  "person",
-  "pet",
-  "phone",
-  "piano",
-  "pick",
-  "pickle",
-  "picnic",
-  "picture",
-  "pie",
-  "piece",
-  "pig",
-  "pigeon",
-  "piggy",
-  "pile",
-  "pill",
-  "pillow",
-  "pin",
-  "pine",
-  "pineapple",
-  "pink",
-  "pint",
-  "pipe",
-  "pistol",
-  "pit",
-  "pitch",
-  "pitcher",
-  "pity",
-  "place",
-  "plain",
-  "plan",
-  "plane",
-  "plant",
-  "plate",
-  "platform",
-  "platter",
-  "play",
-  "player",
-  "playground",
-  "playhouse",
-  "playmate",
-  "plaything",
-  "pleasant",
-  "please",
-  "pleasure",
-  "plenty",
-  "plow",
-  "plug",
-  "plum",
-  "pocket",
-  "pocketbook",
-  "poem",
-  "point",
-  "poison",
-  "poke",
-  "pole",
-  "police",
-  "policeman",
-  "polish",
-  "polite",
-  "pond",
-  "ponies",
-  "pony",
-  "pool",
-  "poor",
-  "pop",
-  "popcorn",
-  "popped",
-  "porch",
-  "pork",
-  "possible",
-  "post",
-  "postage",
-  "postman",
-  "pot",
-  "potato",
-  "potatoes",
-  "pound",
-  "pour",
-  "powder",
-  "power",
-  "powerful",
-  "praise",
-  "pray",
-  "prayer",
-  "prepare",
-  "present",
-  "pretty",
-  "price",
-  "prick",
-  "prince",
-  "princess",
-  "print",
-  "prison",
-  "prize",
-  "promise",
-  "proper",
-  "protect",
-  "proud",
-  "prove",
-  "prune",
-  "public",
-  "puddle",
-  "puff",
-  "pull",
-  "pump",
-  "pumpkin",
-  "punch",
-  "punish",
-  "pup",
-  "pupil",
-  "puppy",
-  "pure",
-  "purple",
-  "purse",
-  "push",
-  "puss",
-  "pussy",
-  "pussycat",
-  "put",
-  "putting",
-  "puzzle",
-  "quack",
-  "quart",
-  "quarter",
-  "queen",
-  "queer",
-  "question",
-  "quick",
-  "quickly",
-  "quiet",
-  "quilt",
-  "quit",
-  "quite",
-  "rabbit",
-  "race",
-  "rack",
-  "radio",
-  "radish",
-  "rag",
-  "rail",
-  "railroad",
-  "railway",
-  "rain",
-  "rainy",
-  "rainbow",
-  "raise",
-  "raisin",
-  "rake",
-  "ram",
-  "ran",
-  "ranch",
-  "rang",
-  "rap",
-  "rapidly",
-  "rat",
-  "rate",
-  "rather",
-  "rattle",
-  "raw",
-  "ray",
-  "reach",
-  "read",
-  "reader",
-  "reading",
-  "ready",
-  "real",
-  "really",
-  "reap",
-  "rear",
-  "reason",
-  "rebuild",
-  "receive",
-  "recess",
-  "record",
-  "red",
-  "redbird",
-  "redbreast",
-  "refuse",
-  "reindeer",
-  "rejoice",
-  "remain",
-  "remember",
-  "remind",
-  "remove",
-  "rent",
-  "repair",
-  "repay",
-  "repeat",
-  "report",
-  "rest",
-  "return",
-  "review",
-  "reward",
-  "rib",
-  "ribbon",
-  "rice",
-  "rich",
-  "rid",
-  "riddle",
-  "ride",
-  "rider",
-  "riding",
-  "right",
-  "rim",
-  "ring",
-  "rip",
-  "ripe",
-  "rise",
-  "rising",
-  "river",
-  "road",
-  "roadside",
-  "roar",
-  "roast",
-  "rob",
-  "robber",
-  "robe",
-  "robin",
-  "rock",
-  "rocky",
-  "rocket",
-  "rode",
-  "roll",
-  "roller",
-  "roof",
-  "room",
-  "rooster",
-  "root",
-  "rope",
-  "rose",
-  "rosebud",
-  "rot",
-  "rotten",
-  "rough",
-  "round",
-  "route",
-  "row",
-  "rowboat",
-  "royal",
-  "rub",
-  "rubbed",
-  "rubber",
-  "rubbish",
-  "rug",
-  "rule",
-  "ruler",
-  "rumble",
-  "run",
-  "rung",
-  "runner",
-  "running",
-  "rush",
-  "rust",
-  "rusty",
-  "rye",
-  "sack",
-  "sad",
-  "saddle",
-  "sadness",
-  "safe",
-  "safety",
-  "said",
-  "sail",
-  "sailboat",
-  "sailor",
-  "saint",
-  "salad",
-  "sale",
-  "salt",
-  "same",
-  "sand",
-  "sandy",
-  "sandwich",
-  "sang",
-  "sank",
-  "sap",
-  "sash",
-  "sat",
-  "satin",
-  "satisfactory",
-  "saturday",
-  "sausage",
-  "savage",
-  "save",
-  "savings",
-  "saw",
-  "say",
-  "scab",
-  "scales",
-  "scare",
-  "scarf",
-  "school",
-  "schoolboy",
-  "schoolhouse",
-  "schoolmaster",
-  "schoolroom",
-  "scorch",
-  "score",
-  "scrap",
-  "scrape",
-  "scratch",
-  "scream",
-  "screen",
-  "screw",
-  "scrub",
-  "sea",
-  "seal",
-  "seam",
-  "search",
-  "season",
-  "seat",
-  "second",
-  "secret",
-  "see",
-  "seeing",
-  "seed",
-  "seek",
-  "seem",
-  "seen",
-  "seesaw",
-  "select",
-  "self",
-  "selfish",
-  "sell",
-  "send",
-  "sense",
-  "sent",
-  "sentence",
-  "separate",
-  "september",
-  "servant",
-  "serve",
-  "service",
-  "set",
-  "setting",
-  "settle",
-  "settlement",
-  "seven",
-  "seventeen",
-  "seventh",
-  "seventy",
-  "several",
-  "sew",
-  "shade",
-  "shadow",
-  "shady",
-  "shake",
-  "shaker",
-  "shaking",
-  "shall",
-  "shame",
-  "shan't",
-  "shape",
-  "share",
-  "sharp",
-  "shave",
-  "she",
-  "she'd",
-  "she'll",
-  "she's",
-  "shear",
-  "shears",
-  "shed",
-  "sheep",
-  "sheet",
-  "shelf",
-  "shell",
-  "shepherd",
-  "shine",
-  "shining",
-  "shiny",
-  "ship",
-  "shirt",
-  "shock",
-  "shoe",
-  "shoemaker",
-  "shone",
-  "shook",
-  "shoot",
-  "shop",
-  "shopping",
-  "shore",
-  "short",
-  "shot",
-  "should",
-  "shoulder",
-  "shouldn't",
-  "shout",
-  "shovel",
-  "show",
-  "shower",
-  "shut",
-  "shy",
-  "sick",
-  "sickness",
-  "side",
-  "sidewalk",
-  "sideways",
-  "sigh",
-  "sight",
-  "sign",
-  "silence",
-  "silent",
-  "silk",
-  "sill",
-  "silly",
-  "silver",
-  "simple",
-  "sin",
-  "since",
-  "sing",
-  "singer",
-  "single",
-  "sink",
-  "sip",
-  "sir",
-  "sis",
-  "sissy",
-  "sister",
-  "sit",
-  "sitting",
-  "six",
-  "sixteen",
-  "sixth",
-  "sixty",
-  "size",
-  "skate",
-  "skater",
-  "ski",
-  "skin",
-  "skip",
-  "skirt",
-  "sky",
-  "slam",
-  "slap",
-  "slate",
-  "slave",
-  "sled",
-  "sleep",
-  "sleepy",
-  "sleeve",
-  "sleigh",
-  "slept",
-  "slice",
-  "slid",
-  "slide",
-  "sling",
-  "slip",
-  "slipped",
-  "slipper",
-  "slippery",
-  "slit",
-  "slow",
-  "slowly",
-  "sly",
-  "smack",
-  "small",
-  "smart",
-  "smell",
-  "smile",
-  "smoke",
-  "smooth",
-  "snail",
-  "snake",
-  "snap",
-  "snapping",
-  "sneeze",
-  "snow",
-  "snowy",
-  "snowball",
-  "snowflake",
-  "snuff",
-  "snug",
-  "so",
-  "soak",
-  "soap",
-  "sob",
-  "socks",
-  "sod",
-  "soda",
-  "sofa",
-  "soft",
-  "soil",
-  "sold",
-  "soldier",
-  "sole",
-  "some",
-  "somebody",
-  "somehow",
-  "someone",
-  "something",
-  "sometime",
-  "sometimes",
-  "somewhere",
-  "son",
-  "song",
-  "soon",
-  "sore",
-  "sorrow",
-  "sorry",
-  "sort",
-  "soul",
-  "sound",
-  "soup",
-  "sour",
-  "south",
-  "southern",
-  "space",
-  "spade",
-  "spank",
-  "sparrow",
-  "speak",
-  "speaker",
-  "spear",
-  "speech",
-  "speed",
-  "spell",
-  "spelling",
-  "spend",
-  "spent",
-  "spider",
-  "spike",
-  "spill",
-  "spin",
-  "spinach",
-  "spirit",
-  "spit",
-  "splash",
-  "spoil",
-  "spoke",
-  "spook",
-  "spoon",
-  "sport",
-  "spot",
-  "spread",
-  "spring",
-  "springtime",
-  "sprinkle",
-  "square",
-  "squash",
-  "squeak",
-  "squeeze",
-  "squirrel",
-  "stable",
-  "stack",
-  "stage",
-  "stair",
-  "stall",
-  "stamp",
-  "stand",
-  "star",
-  "stare",
-  "start",
-  "starve",
-  "state",
-  "station",
-  "stay",
-  "steak",
-  "steal",
-  "steam",
-  "steamboat",
-  "steamer",
-  "steel",
-  "steep",
-  "steeple",
-  "steer",
-  "stem",
-  "step",
-  "stepping",
-  "stick",
-  "sticky",
-  "stiff",
-  "still",
-  "stillness",
-  "sting",
-  "stir",
-  "stitch",
-  "stock",
-  "stocking",
-  "stole",
-  "stone",
-  "stood",
-  "stool",
-  "stoop",
-  "stop",
-  "stopped",
-  "stopping",
-  "store",
-  "stork",
-  "stories",
-  "storm",
-  "stormy",
-  "story",
-  "stove",
-  "straight",
-  "strange",
-  "stranger",
-  "strap",
-  "straw",
-  "strawberry",
-  "stream",
-  "street",
-  "stretch",
-  "string",
-  "strip",
-  "stripes",
-  "strong",
-  "stuck",
-  "study",
-  "stuff",
-  "stump",
-  "stung",
-  "subject",
-  "such",
-  "suck",
-  "sudden",
-  "suffer",
-  "sugar",
-  "suit",
-  "sum",
-  "summer",
-  "sun",
-  "sunday",
-  "sunflower",
-  "sung",
-  "sunk",
-  "sunlight",
-  "sunny",
-  "sunrise",
-  "sunset",
-  "sunshine",
-  "supper",
-  "suppose",
-  "sure",
-  "surely",
-  "surface",
-  "surprise",
-  "swallow",
-  "swam",
-  "swamp",
-  "swan",
-  "swat",
-  "swear",
-  "sweat",
-  "sweater",
-  "sweep",
-  "sweet",
-  "sweetness",
-  "sweetheart",
-  "swell",
-  "swept",
-  "swift",
-  "swim",
-  "swimming",
-  "swing",
-  "switch",
-  "sword",
-  "swore",
-  "table",
-  "tablecloth",
-  "tablespoon",
-  "tablet",
-  "tack",
-  "tag",
-  "tail",
-  "tailor",
-  "take",
-  "taken",
-  "taking",
-  "tale",
-  "talk",
-  "talker",
-  "tall",
-  "tame",
-  "tan",
-  "tank",
-  "tap",
-  "tape",
-  "tar",
-  "tardy",
-  "task",
-  "taste",
-  "taught",
-  "tax",
-  "tea",
-  "teach",
-  "teacher",
-  "team",
-  "tear",
-  "tease",
-  "teaspoon",
-  "teeth",
-  "telephone",
-  "tell",
-  "temper",
-  "ten",
-  "tennis",
-  "tent",
-  "term",
-  "terrible",
-  "test",
-  "than",
-  "thank",
-  "thanks",
-  "thankful",
-  "thanksgiving",
-  "that",
-  "that's",
-  "the",
-  "theater",
-  "thee",
-  "their",
-  "them",
-  "then",
-  "there",
-  "these",
-  "they",
-  "they'd",
-  "they'll",
-  "they're",
-  "they've",
-  "thick",
-  "thief",
-  "thimble",
-  "thin",
-  "thing",
-  "think",
-  "third",
-  "thirsty",
-  "thirteen",
-  "thirty",
-  "this",
-  "thorn",
-  "those",
-  "though",
-  "thought",
-  "thousand",
-  "thread",
-  "three",
-  "threw",
-  "throat",
-  "throne",
-  "through",
-  "throw",
-  "thrown",
-  "thumb",
-  "thunder",
-  "thursday",
-  "thy",
-  "tick",
-  "ticket",
-  "tickle",
-  "tie",
-  "tiger",
-  "tight",
-  "till",
-  "time",
-  "tin",
-  "tinkle",
-  "tiny",
-  "tip",
-  "tiptoe",
-  "tire",
-  "tired",
-  "title",
-  "to",
-  "toad",
-  "toadstool",
-  "toast",
-  "tobacco",
-  "today",
-  "toe",
-  "together",
-  "toilet",
-  "told",
-  "tomato",
-  "tomorrow",
-  "ton",
-  "tone",
-  "tongue",
-  "tonight",
-  "too",
-  "took",
-  "tool",
-  "toot",
-  "tooth",
-  "toothbrush",
-  "toothpick",
-  "top",
-  "tore",
-  "torn",
-  "toss",
-  "touch",
-  "tow",
-  "toward",
-  "towards",
-  "towel",
-  "tower",
-  "town",
-  "toy",
-  "trace",
-  "track",
-  "trade",
-  "train",
-  "tramp",
-  "trap",
-  "tray",
-  "treasure",
-  "treat",
-  "tree",
-  "trick",
-  "tricycle",
-  "tried",
-  "trim",
-  "trip",
-  "trolley",
-  "trouble",
-  "truck",
-  "true",
-  "truly",
-  "trunk",
-  "trust",
-  "truth",
-  "try",
-  "tub",
-  "tuesday",
-  "tug",
-  "tulip",
-  "tumble",
-  "tune",
-  "tunnel",
-  "turkey",
-  "turn",
-  "turtle",
-  "twelve",
-  "twenty",
-  "twice",
-  "twig",
-  "twin",
-  "two",
-  "ugly",
-  "umbrella",
-  "uncle",
-  "under",
-  "understand",
-  "underwear",
-  "undress",
-  "unfair",
-  "unfinished",
-  "unfold",
-  "unfriendly",
-  "unhappy",
-  "unhurt",
-  "uniform",
-  "united",
-  "states",
-  "unkind",
-  "unknown",
-  "unless",
-  "unpleasant",
-  "until",
-  "unwilling",
-  "up",
-  "upon",
-  "upper",
-  "upset",
-  "upside",
-  "upstairs",
-  "uptown",
-  "upward",
-  "us",
-  "use",
-  "used",
-  "useful",
-  "valentine",
-  "valley",
-  "valuable",
-  "value",
-  "vase",
-  "vegetable",
-  "velvet",
-  "very",
-  "vessel",
-  "victory",
-  "view",
-  "village",
-  "vine",
-  "violet",
-  "visit",
-  "visitor",
-  "voice",
-  "vote",
-  "wag",
-  "wagon",
-  "waist",
-  "wait",
-  "wake",
-  "waken",
-  "walk",
-  "wall",
-  "walnut",
-  "want",
-  "war",
-  "warm",
-  "warn",
-  "was",
-  "wash",
-  "washer",
-  "washtub",
-  "wasn't",
-  "waste",
-  "watch",
-  "watchman",
-  "water",
-  "watermelon",
-  "waterproof",
-  "wave",
-  "wax",
-  "way",
-  "wayside",
-  "we",
-  "weak",
-  "weakness",
-  "weaken",
-  "wealth",
-  "weapon",
-  "wear",
-  "weary",
-  "weather",
-  "weave",
-  "web",
-  "we'd",
-  "wedding",
-  "wednesday",
-  "wee",
-  "weed",
-  "week",
-  "we'll",
-  "weep",
-  "weigh",
-  "welcome",
-  "well",
-  "went",
-  "were",
-  "we're",
-  "west",
-  "western",
-  "wet",
-  "we've",
-  "whale",
-  "what",
-  "what's",
-  "wheat",
-  "wheel",
-  "when",
-  "whenever",
-  "where",
-  "which",
-  "while",
-  "whip",
-  "whipped",
-  "whirl",
-  "whisky",
-  "whiskey",
-  "whisper",
-  "whistle",
-  "white",
-  "who",
-  "who'd",
-  "whole",
-  "who'll",
-  "whom",
-  "who's",
-  "whose",
-  "why",
-  "wicked",
-  "wide",
-  "wife",
-  "wiggle",
-  "wild",
-  "wildcat",
-  "will",
-  "willing",
-  "willow",
-  "win",
-  "wind",
-  "windy",
-  "windmill",
-  "window",
-  "wine",
-  "wing",
-  "wink",
-  "winner",
-  "winter",
-  "wipe",
-  "wire",
-  "wise",
-  "wish",
-  "wit",
-  "witch",
-  "with",
-  "without",
-  "woke",
-  "wolf",
-  "woman",
-  "women",
-  "won",
-  "wonder",
-  "wonderful",
-  "won't",
-  "wood",
-  "wooden",
-  "woodpecker",
-  "woods",
-  "wool",
-  "woolen",
-  "word",
-  "wore",
-  "work",
-  "worker",
-  "workman",
-  "world",
-  "worm",
-  "worn",
-  "worry",
-  "worse",
-  "worst",
-  "worth",
-  "would",
-  "wouldn't",
-  "wound",
-  "wove",
-  "wrap",
-  "wrapped",
-  "wreck",
-  "wren",
-  "wring",
-  "write",
-  "writing",
-  "written",
-  "wrong",
-  "wrote",
-  "wrung",
-  "yard",
-  "yarn",
-  "year",
-  "yell",
-  "yellow",
-  "yes",
-  "yesterday",
-  "yet",
-  "yolk",
-  "yonder",
-  "you",
-  "you'd",
-  "you'll",
-  "young",
-  "youngster",
-  "your",
-  "yours",
-  "you're",
-  "yourself",
-  "yourselves",
-  "youth",
-  "you've"
-];
-var easy_words = easyWords$1;
-const syllable = syllable_1;
-const pluralize = pluralize$1.exports;
-const punctuationRE = /[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,\-./:;<=>?@[\]^_`{|}~]/g;
-const easyWords = easy_words;
-const easyWordSet = new Set(easyWords);
-Math.copySign = (x, y2) => {
-  return x * (y2 / Math.abs(y2));
-};
-Math.legacyRound = (number2, points = 0) => {
-  const p2 = 10 ** points;
-  return Math.floor(number2 * p2 + Math.copySign(0.5, number2)) / p2;
-};
-class Readability {
-  static getGradeSuffix(grade) {
-    grade = Math.floor(grade);
-    const gradeMap = {
-      1: "st",
-      2: "nd",
-      3: "rd"
-    };
-    return gradeMap[grade] ? gradeMap[grade] : "th";
-  }
-  charCount(text2, ignoreSpaces = true) {
-    if (ignoreSpaces)
-      text2 = text2.replace(/ /g, "");
-    return text2.length;
-  }
-  letterCount(text2, ignoreSpaces = true) {
-    if (ignoreSpaces)
-      text2 = text2.replace(/ /g, "");
-    return this.removePunctuation(text2).length;
-  }
-  removePunctuation(text2) {
-    text2 = text2.replace(punctuationRE, "");
-    return text2;
-  }
-  static split(text2) {
-    text2 = text2.split(/,| |\n|\r/g);
-    text2 = text2.filter((n2) => n2);
-    return text2;
-  }
-  lexiconCount(text2, removePunctuation = true) {
-    if (removePunctuation)
-      text2 = this.removePunctuation(text2);
-    text2 = text2.split(/,| |\n|\r/g);
-    text2 = text2.filter((n2) => n2);
-    return text2.length;
-  }
-  syllableCount(text2, lang = "en-US") {
-    text2 = text2.toLocaleLowerCase(lang);
-    text2 = this.removePunctuation(text2);
-    if (!text2)
-      return 0;
-    const count = syllable(text2);
-    return count;
-  }
-  sentenceCount(text2) {
-    let ignoreCount = 0;
-    let sentences = text2.split(/ *[.?!]['")\]]*[ |\n](?=[A-Z])/g);
-    for (let sentence of sentences) {
-      if (this.lexiconCount(sentence) <= 2)
-        ignoreCount += 1;
-    }
-    const validSentences = sentences.length - ignoreCount;
-    return validSentences > 1 ? validSentences : 1;
-  }
-  averageSentenceLength(text2) {
-    const asl = this.lexiconCount(text2) / this.sentenceCount(text2);
-    const returnVal = Math.legacyRound(asl, 1);
-    return !isNaN(returnVal) ? returnVal : 0;
-  }
-  averageSyllablePerWord(text2) {
-    const syllables2 = this.syllableCount(text2);
-    const words = this.lexiconCount(text2);
-    const syllablePerWord = syllables2 / words;
-    const returnVal = Math.legacyRound(syllablePerWord, 1);
-    return !isNaN(returnVal) ? returnVal : 0;
-  }
-  averageCharacterPerWord(text2) {
-    const charactersPerWord = this.charCount(text2) / this.lexiconCount(text2);
-    const returnVal = Math.legacyRound(charactersPerWord, 2);
-    return !isNaN(returnVal) ? returnVal : 0;
-  }
-  averageLetterPerWord(text2) {
-    const lettersPerWord = this.letterCount(text2) / this.lexiconCount(text2);
-    const returnVal = Math.legacyRound(lettersPerWord, 2);
-    return !isNaN(returnVal) ? returnVal : 0;
-  }
-  averageSentencePerWord(text2) {
-    const sentencesPerWord = this.sentenceCount(text2) / this.lexiconCount(text2);
-    const returnVal = Math.legacyRound(sentencesPerWord, 2);
-    return !isNaN(returnVal) ? returnVal : 0;
-  }
-  fleschReadingEase(text2) {
-    const sentenceLength = this.averageSentenceLength(text2);
-    const syllablesPerWord = this.averageSyllablePerWord(text2);
-    const flesch = 206.835 - 1.015 * sentenceLength - 84.6 * syllablesPerWord;
-    const returnVal = Math.legacyRound(flesch, 2);
-    return returnVal;
-  }
-  fleschReadingEaseToGrade(score) {
-    if (score < 100 && score >= 90)
-      return 5;
-    else if (score < 90 && score >= 80)
-      return 6;
-    else if (score < 80 && score >= 70)
-      return 7;
-    else if (score < 70 && score >= 60)
-      return 8.5;
-    else if (score < 60 && score >= 50)
-      return 11;
-    else if (score < 50 && score >= 40)
-      return 13;
-    else if (score < 40 && score >= 30)
-      return 15;
-    else
-      return 16;
-  }
-  fleschKincaidGrade(text2) {
-    const sentenceLength = this.averageSentenceLength(text2);
-    const syllablePerWord = this.averageSyllablePerWord(text2);
-    const flesch = 0.39 * sentenceLength + 11.8 * syllablePerWord - 15.59;
-    const returnVal = Math.legacyRound(flesch, 1);
-    return returnVal;
-  }
-  polySyllableCount(text2) {
-    let count = 0;
-    let wrds;
-    for (let word of Readability.split(text2)) {
-      wrds = this.syllableCount(word);
-      if (wrds >= 3)
-        count += 1;
-    }
-    return count;
-  }
-  smogIndex(text2) {
-    const sentences = this.sentenceCount(text2);
-    if (sentences >= 3) {
-      const polySyllab = this.polySyllableCount(text2);
-      const smog = 1.043 * (30 * (polySyllab / sentences)) ** 0.5 + 3.1291;
-      const returnVal = Math.legacyRound(smog, 1);
-      return !isNaN(returnVal) ? returnVal : 0;
-    }
-    return 0;
-  }
-  colemanLiauIndex(text2) {
-    const letters = Math.legacyRound(this.averageLetterPerWord(text2) * 100, 2);
-    const sentences = Math.legacyRound(this.averageSentencePerWord(text2) * 100, 2);
-    const coleman = 0.058 * letters - 0.296 * sentences - 15.8;
-    return Math.legacyRound(coleman, 2);
-  }
-  automatedReadabilityIndex(text2) {
-    const characters = this.charCount(text2);
-    const words = this.lexiconCount(text2);
-    const sentences = this.sentenceCount(text2);
-    const averageCharacterPerWord = characters / words;
-    const averageWordPerSentence = words / sentences;
-    const readability2 = 4.71 * Math.legacyRound(averageCharacterPerWord, 2) + 0.5 * Math.legacyRound(averageWordPerSentence, 2) - 21.43;
-    const returnVal = Math.legacyRound(readability2, 1);
-    return !isNaN(returnVal) ? returnVal : 0;
-  }
-  linsearWriteFormula(text2) {
-    let easyWord = 0;
-    let difficultWord = 0;
-    let textList = Readability.split(text2).slice(0, 100);
-    for (let word of textList) {
-      if (this.syllableCount(word) < 3) {
-        easyWord += 1;
-      } else {
-        difficultWord += 1;
-      }
-    }
-    text2 = textList.join(" ");
-    let number2 = (easyWord * 1 + difficultWord * 3) / this.sentenceCount(text2);
-    let returnVal = number2 <= 20 ? (number2 - 2) / 2 : number2 / 2;
-    returnVal = Math.legacyRound(returnVal, 1);
-    return !isNaN(returnVal) ? returnVal : 0;
-  }
-  presentTense(word) {
-    if (word.length < 6)
-      return word;
-    if (word.endsWith("ed")) {
-      if (easyWordSet.has(word.slice(0, -1)))
-        return word.slice(0, -1);
-      else
-        return word.slice(0, -2);
-    }
-    if (word.endsWith("ing")) {
-      const suffixIngToE = word.slice(0, -3) + "e";
-      if (easyWordSet.has(suffixIngToE))
-        return suffixIngToE;
-      else
-        return word.slice(0, -3);
-    }
-    return word;
-  }
-  difficultWords(text2, syllableThreshold = 2) {
-    const textList = text2.match(/[\w=‘’]+/g);
-    const diffWordsSet = /* @__PURE__ */ new Set();
-    if (textList === null)
-      return diffWordsSet;
-    for (let word of textList) {
-      const normalized = this.presentTense(pluralize(word.toLocaleLowerCase(), 1));
-      if (!easyWordSet.has(normalized) && this.syllableCount(word) >= syllableThreshold) {
-        diffWordsSet.add(word);
-      }
-    }
-    return [...diffWordsSet].length;
-  }
-  daleChallReadabilityScore(text2) {
-    const wordCount = this.lexiconCount(text2);
-    const count = wordCount - this.difficultWords(text2);
-    const per = count / wordCount * 100;
-    if (isNaN(per))
-      return 0;
-    const difficultWords = 100 - per;
-    let score = 0.1579 * difficultWords + 0.0496 * this.averageSentenceLength(text2);
-    if (difficultWords > 5)
-      score += 3.6365;
-    return Math.legacyRound(score, 2);
-  }
-  daleChallToGrade(score) {
-    if (score <= 4.9)
-      return 4;
-    if (score < 5.9)
-      return 5;
-    if (score < 6.9)
-      return 7;
-    if (score < 7.9)
-      return 9;
-    if (score < 8.9)
-      return 11;
-    if (score < 9.9)
-      return 13;
-    else
-      return 16;
-  }
-  gunningFog(text2) {
-    const perDiffWords = this.difficultWords(text2, 3) / this.lexiconCount(text2) * 100;
-    const grade = 0.4 * (this.averageSentenceLength(text2) + perDiffWords);
-    const returnVal = Math.legacyRound(grade, 2);
-    return !isNaN(returnVal) ? returnVal : 0;
-  }
-  lix(text2) {
-    const words = Readability.split(text2);
-    const wordsLen = words.length;
-    const longWords = words.filter((wrd) => wrd.length > 6).length;
-    const perLongWords = longWords * 100 / wordsLen;
-    const asl = this.averageSentenceLength(text2);
-    const lix = asl + perLongWords;
-    return Math.legacyRound(lix, 2);
-  }
-  rix(text2) {
-    const words = Readability.split(text2);
-    const longWordsCount = words.filter((wrd) => wrd.length > 6).length;
-    const sentencesCount = this.sentenceCount(text2);
-    const rix = longWordsCount / sentencesCount;
-    return !isNaN(rix) ? Math.legacyRound(rix, 2) : 0;
-  }
-  textStandard(text2, floatOutput = null) {
-    const grade = [];
-    let lower = Math.legacyRound(this.fleschKincaidGrade(text2));
-    let upper = Math.ceil(this.fleschKincaidGrade(text2));
-    grade.push(Math.floor(lower));
-    grade.push(Math.floor(upper));
-    let score = this.fleschReadingEase(text2);
-    let freGrade = this.fleschReadingEaseToGrade(score);
-    grade.push(freGrade);
-    lower = Math.legacyRound(this.smogIndex(text2));
-    upper = Math.ceil(this.smogIndex(text2));
-    grade.push(Math.floor(lower));
-    grade.push(Math.floor(upper));
-    lower = Math.legacyRound(this.colemanLiauIndex(text2));
-    upper = Math.ceil(this.colemanLiauIndex(text2));
-    grade.push(Math.floor(lower));
-    grade.push(Math.floor(upper));
-    lower = Math.legacyRound(this.automatedReadabilityIndex(text2));
-    upper = Math.ceil(this.automatedReadabilityIndex(text2));
-    grade.push(Math.floor(lower));
-    grade.push(Math.floor(upper));
-    lower = Math.legacyRound(this.daleChallToGrade(this.daleChallReadabilityScore(text2)));
-    upper = Math.ceil(this.daleChallToGrade(this.daleChallReadabilityScore(text2)));
-    grade.push(Math.floor(lower));
-    grade.push(Math.floor(upper));
-    lower = Math.legacyRound(this.linsearWriteFormula(text2));
-    upper = Math.ceil(this.linsearWriteFormula(text2));
-    grade.push(Math.floor(lower));
-    grade.push(Math.floor(upper));
-    lower = Math.legacyRound(this.gunningFog(text2));
-    upper = Math.ceil(this.gunningFog(text2));
-    grade.push(Math.floor(lower));
-    grade.push(Math.floor(upper));
-    const counterMap = [...new Set(grade)].map((x) => [x, grade.filter((y2) => y2 === x).length]);
-    const finalGrade = counterMap.reduce((x, y2) => y2[1] >= x[1] ? y2 : x);
-    score = finalGrade[0];
-    if (floatOutput)
-      return score;
-    const lowerScore = Math.floor(score) - 1;
-    const upperScore = lowerScore + 1;
-    return `${lowerScore}${Readability.getGradeSuffix(lowerScore)} and ${upperScore}${Readability.getGradeSuffix(upperScore)} grade`;
-  }
-  textMedian(text2) {
-    const grade = [];
-    grade.push(this.fleschKincaidGrade(text2));
-    const score = this.fleschReadingEase(text2);
-    const freGrade = this.fleschReadingEaseToGrade(score);
-    grade.push(freGrade);
-    grade.push(this.smogIndex(text2));
-    grade.push(this.colemanLiauIndex(text2));
-    grade.push(this.automatedReadabilityIndex(text2));
-    grade.push(this.daleChallToGrade(this.daleChallReadabilityScore(text2)));
-    grade.push(this.linsearWriteFormula(text2));
-    grade.push(this.gunningFog(text2));
-    grade.sort(function(a2, b2) {
-      return a2 - b2;
-    });
-    let half = Math.floor(grade.length / 2);
-    if (half & 1)
-      return (grade[half - 1] + grade[half]) / 2;
-    else
-      return grade[half];
-  }
-}
-const readability = new Readability();
-var main$1 = readability;
-var WordCountView_vue_vue_type_style_index_0_scoped_true_lang = "";
-const _withScopeId = (n2) => (pushScopeId("data-v-8505eed6"), n2 = n2(), popScopeId(), n2);
-const _hoisted_1 = { class: "view-container" };
-const _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h2", null, "Word Count", -1));
-const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("hr", null, null, -1));
-const _hoisted_4 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h4", null, " Enter your text into the field below, and the statistics below will automatically update! ", -1));
-const _hoisted_5 = { class: "counts" };
-const _hoisted_6 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("div", null, [
-  /* @__PURE__ */ createTextVNode(" Words "),
-  /* @__PURE__ */ createBaseVNode("br"),
-  /* @__PURE__ */ createTextVNode(" Characters "),
-  /* @__PURE__ */ createBaseVNode("br"),
-  /* @__PURE__ */ createTextVNode(" Syllables "),
-  /* @__PURE__ */ createBaseVNode("br"),
-  /* @__PURE__ */ createTextVNode(" Time to Read "),
-  /* @__PURE__ */ createBaseVNode("br"),
-  /* @__PURE__ */ createTextVNode(" Reading Level ")
-], -1));
-const _hoisted_7 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
-const _hoisted_8 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
-const _hoisted_9 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
-const _hoisted_10 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
-const _hoisted_11 = { class: "text-input" };
-const _sfc_main = {
-  props: {
-    navCollapsed: {
-      type: Boolean,
-      required: true
-    }
-  },
-  setup(__props) {
-    const words = ref(0);
-    const characters = ref(0);
-    const readingDifficulty = ref("Very Easy");
-    const syllables2 = ref(0);
-    const readingTime = ref(0);
-    function setWords(text2) {
-      words.value = main$1.lexiconCount(text2);
-    }
-    function setLetters(text2) {
-      characters.value = text2.replace(/\s/g, "").length;
-    }
-    function setReadingDifficulty(text2) {
-      const value2 = main$1.fleschReadingEase(text2);
-      if (value2 <= 29) {
-        readingDifficulty.value = "Very Confusing";
-      } else if (value2 <= 49) {
-        readingDifficulty.value = "Difficult";
-      } else if (value2 <= 59) {
-        readingDifficulty.value = "Fairly Difficult";
-      } else if (value2 <= 69) {
-        readingDifficulty.value = "Standard";
-      } else if (value2 <= 79) {
-        readingDifficulty.value = "Fairly Easy";
-      } else if (value2 <= 89) {
-        readingDifficulty.value = "Easy";
-      } else {
-        readingDifficulty.value = "Very Easy";
-      }
-    }
-    function setSyllables(text2) {
-      syllables2.value = main$1.syllableCount(text2);
-    }
-    function setReadingTime(text2) {
-      const words2 = main$1.lexiconCount(text2);
-      readingTime.value = Math.round(words2 / 238);
-    }
-    function updateText(e2) {
-      setWords(e2.target.value);
-      setLetters(e2.target.value);
-      setReadingDifficulty(e2.target.value);
-      setSyllables(e2.target.value);
-      setReadingTime(e2.target.value);
-    }
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("main", {
-        class: normalizeClass({ navCollapsed: __props.navCollapsed })
-      }, [
-        createBaseVNode("div", _hoisted_1, [
-          _hoisted_2,
-          _hoisted_3,
-          _hoisted_4,
-          createBaseVNode("div", _hoisted_5, [
-            _hoisted_6,
-            createBaseVNode("div", null, [
-              createBaseVNode("b", null, toDisplayString(words.value), 1),
-              _hoisted_7,
-              createBaseVNode("b", null, toDisplayString(characters.value), 1),
-              _hoisted_8,
-              createBaseVNode("b", null, toDisplayString(syllables2.value), 1),
-              _hoisted_9,
-              createBaseVNode("b", null, toDisplayString(readingTime.value) + " minute(s)", 1),
-              _hoisted_10,
-              createBaseVNode("b", null, toDisplayString(readingDifficulty.value), 1)
-            ])
-          ]),
-          createBaseVNode("div", _hoisted_11, [
-            createBaseVNode("textarea", {
-              placeholder: "Enter text content here!",
-              onInput: updateText,
-              rows: "30"
-            }, null, 32)
-          ])
-        ])
-      ], 2);
-    };
-  }
-};
-var WordCountView = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-8505eed6"]]);
-const router = createRouter({
-  history: createWebHistory("/web-utilities/"),
-  routes: [
-    {
-      path: "/",
-      name: "home",
-      component: HomeView,
-      props: { navCollapsed: String }
-    },
-    {
-      path: "/pdf-merge",
-      name: "pdf merge",
-      component: PDFMergeView,
-      props: { navCollapsed: String }
-    },
-    {
-      path: "/word-count",
-      name: "word count",
-      component: WordCountView,
-      props: { navCollapsed: String }
-    }
-  ]
-});
-var buffer = {};
-var base64Js = {};
-base64Js.byteLength = byteLength;
-base64Js.toByteArray = toByteArray;
-base64Js.fromByteArray = fromByteArray;
-var lookup = [];
-var revLookup = [];
-var Arr = typeof Uint8Array !== "undefined" ? Uint8Array : Array;
-var code = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-for (var i$1 = 0, len = code.length; i$1 < len; ++i$1) {
-  lookup[i$1] = code[i$1];
-  revLookup[code.charCodeAt(i$1)] = i$1;
-}
-revLookup["-".charCodeAt(0)] = 62;
-revLookup["_".charCodeAt(0)] = 63;
-function getLens(b64) {
-  var len2 = b64.length;
-  if (len2 % 4 > 0) {
-    throw new Error("Invalid string. Length must be a multiple of 4");
-  }
-  var validLen = b64.indexOf("=");
-  if (validLen === -1)
-    validLen = len2;
-  var placeHoldersLen = validLen === len2 ? 0 : 4 - validLen % 4;
-  return [validLen, placeHoldersLen];
-}
-function byteLength(b64) {
-  var lens = getLens(b64);
-  var validLen = lens[0];
-  var placeHoldersLen = lens[1];
-  return (validLen + placeHoldersLen) * 3 / 4 - placeHoldersLen;
-}
-function _byteLength(b64, validLen, placeHoldersLen) {
-  return (validLen + placeHoldersLen) * 3 / 4 - placeHoldersLen;
-}
-function toByteArray(b64) {
-  var tmp;
-  var lens = getLens(b64);
-  var validLen = lens[0];
-  var placeHoldersLen = lens[1];
-  var arr = new Arr(_byteLength(b64, validLen, placeHoldersLen));
-  var curByte = 0;
-  var len2 = placeHoldersLen > 0 ? validLen - 4 : validLen;
-  var i2;
-  for (i2 = 0; i2 < len2; i2 += 4) {
-    tmp = revLookup[b64.charCodeAt(i2)] << 18 | revLookup[b64.charCodeAt(i2 + 1)] << 12 | revLookup[b64.charCodeAt(i2 + 2)] << 6 | revLookup[b64.charCodeAt(i2 + 3)];
-    arr[curByte++] = tmp >> 16 & 255;
-    arr[curByte++] = tmp >> 8 & 255;
-    arr[curByte++] = tmp & 255;
-  }
-  if (placeHoldersLen === 2) {
-    tmp = revLookup[b64.charCodeAt(i2)] << 2 | revLookup[b64.charCodeAt(i2 + 1)] >> 4;
-    arr[curByte++] = tmp & 255;
-  }
-  if (placeHoldersLen === 1) {
-    tmp = revLookup[b64.charCodeAt(i2)] << 10 | revLookup[b64.charCodeAt(i2 + 1)] << 4 | revLookup[b64.charCodeAt(i2 + 2)] >> 2;
-    arr[curByte++] = tmp >> 8 & 255;
-    arr[curByte++] = tmp & 255;
-  }
-  return arr;
-}
-function tripletToBase64(num) {
-  return lookup[num >> 18 & 63] + lookup[num >> 12 & 63] + lookup[num >> 6 & 63] + lookup[num & 63];
-}
-function encodeChunk(uint8, start, end) {
-  var tmp;
-  var output = [];
-  for (var i2 = start; i2 < end; i2 += 3) {
-    tmp = (uint8[i2] << 16 & 16711680) + (uint8[i2 + 1] << 8 & 65280) + (uint8[i2 + 2] & 255);
-    output.push(tripletToBase64(tmp));
-  }
-  return output.join("");
-}
-function fromByteArray(uint8) {
-  var tmp;
-  var len2 = uint8.length;
-  var extraBytes = len2 % 3;
-  var parts = [];
-  var maxChunkLength = 16383;
-  for (var i2 = 0, len22 = len2 - extraBytes; i2 < len22; i2 += maxChunkLength) {
-    parts.push(encodeChunk(uint8, i2, i2 + maxChunkLength > len22 ? len22 : i2 + maxChunkLength));
-  }
-  if (extraBytes === 1) {
-    tmp = uint8[len2 - 1];
-    parts.push(lookup[tmp >> 2] + lookup[tmp << 4 & 63] + "==");
-  } else if (extraBytes === 2) {
-    tmp = (uint8[len2 - 2] << 8) + uint8[len2 - 1];
-    parts.push(lookup[tmp >> 10] + lookup[tmp >> 4 & 63] + lookup[tmp << 2 & 63] + "=");
-  }
-  return parts.join("");
-}
-var ieee754 = {};
-/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
-ieee754.read = function(buffer2, offset, isLE, mLen, nBytes) {
-  var e2, m2;
-  var eLen = nBytes * 8 - mLen - 1;
-  var eMax = (1 << eLen) - 1;
-  var eBias = eMax >> 1;
-  var nBits = -7;
-  var i2 = isLE ? nBytes - 1 : 0;
-  var d2 = isLE ? -1 : 1;
-  var s2 = buffer2[offset + i2];
-  i2 += d2;
-  e2 = s2 & (1 << -nBits) - 1;
-  s2 >>= -nBits;
-  nBits += eLen;
-  for (; nBits > 0; e2 = e2 * 256 + buffer2[offset + i2], i2 += d2, nBits -= 8) {
-  }
-  m2 = e2 & (1 << -nBits) - 1;
-  e2 >>= -nBits;
-  nBits += mLen;
-  for (; nBits > 0; m2 = m2 * 256 + buffer2[offset + i2], i2 += d2, nBits -= 8) {
-  }
-  if (e2 === 0) {
-    e2 = 1 - eBias;
-  } else if (e2 === eMax) {
-    return m2 ? NaN : (s2 ? -1 : 1) * Infinity;
-  } else {
-    m2 = m2 + Math.pow(2, mLen);
-    e2 = e2 - eBias;
-  }
-  return (s2 ? -1 : 1) * m2 * Math.pow(2, e2 - mLen);
-};
-ieee754.write = function(buffer2, value2, offset, isLE, mLen, nBytes) {
-  var e2, m2, c2;
-  var eLen = nBytes * 8 - mLen - 1;
-  var eMax = (1 << eLen) - 1;
-  var eBias = eMax >> 1;
-  var rt = mLen === 23 ? Math.pow(2, -24) - Math.pow(2, -77) : 0;
-  var i2 = isLE ? 0 : nBytes - 1;
-  var d2 = isLE ? 1 : -1;
-  var s2 = value2 < 0 || value2 === 0 && 1 / value2 < 0 ? 1 : 0;
-  value2 = Math.abs(value2);
-  if (isNaN(value2) || value2 === Infinity) {
-    m2 = isNaN(value2) ? 1 : 0;
-    e2 = eMax;
-  } else {
-    e2 = Math.floor(Math.log(value2) / Math.LN2);
-    if (value2 * (c2 = Math.pow(2, -e2)) < 1) {
-      e2--;
-      c2 *= 2;
-    }
-    if (e2 + eBias >= 1) {
-      value2 += rt / c2;
-    } else {
-      value2 += rt * Math.pow(2, 1 - eBias);
-    }
-    if (value2 * c2 >= 2) {
-      e2++;
-      c2 /= 2;
-    }
-    if (e2 + eBias >= eMax) {
-      m2 = 0;
-      e2 = eMax;
-    } else if (e2 + eBias >= 1) {
-      m2 = (value2 * c2 - 1) * Math.pow(2, mLen);
-      e2 = e2 + eBias;
-    } else {
-      m2 = value2 * Math.pow(2, eBias - 1) * Math.pow(2, mLen);
-      e2 = 0;
-    }
-  }
-  for (; mLen >= 8; buffer2[offset + i2] = m2 & 255, i2 += d2, m2 /= 256, mLen -= 8) {
-  }
-  e2 = e2 << mLen | m2;
-  eLen += mLen;
-  for (; eLen > 0; buffer2[offset + i2] = e2 & 255, i2 += d2, e2 /= 256, eLen -= 8) {
-  }
-  buffer2[offset + i2 - d2] |= s2 * 128;
-};
-/*!
- * The buffer module from node.js, for the browser.
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
-(function(exports2) {
-  const base64 = base64Js;
-  const ieee754$1 = ieee754;
-  const customInspectSymbol = typeof Symbol === "function" && typeof Symbol["for"] === "function" ? Symbol["for"]("nodejs.util.inspect.custom") : null;
-  exports2.Buffer = Buffer2;
-  exports2.SlowBuffer = SlowBuffer;
-  exports2.INSPECT_MAX_BYTES = 50;
-  const K_MAX_LENGTH = 2147483647;
-  exports2.kMaxLength = K_MAX_LENGTH;
-  Buffer2.TYPED_ARRAY_SUPPORT = typedArraySupport();
-  if (!Buffer2.TYPED_ARRAY_SUPPORT && typeof console !== "undefined" && typeof console.error === "function") {
-    console.error("This browser lacks typed array (Uint8Array) support which is required by `buffer` v5.x. Use `buffer` v4.x if you require old browser support.");
-  }
-  function typedArraySupport() {
-    try {
-      const arr = new Uint8Array(1);
-      const proto = { foo: function() {
-        return 42;
-      } };
-      Object.setPrototypeOf(proto, Uint8Array.prototype);
-      Object.setPrototypeOf(arr, proto);
-      return arr.foo() === 42;
-    } catch (e2) {
-      return false;
-    }
-  }
-  Object.defineProperty(Buffer2.prototype, "parent", {
-    enumerable: true,
-    get: function() {
-      if (!Buffer2.isBuffer(this))
-        return void 0;
-      return this.buffer;
-    }
-  });
-  Object.defineProperty(Buffer2.prototype, "offset", {
-    enumerable: true,
-    get: function() {
-      if (!Buffer2.isBuffer(this))
-        return void 0;
-      return this.byteOffset;
-    }
-  });
-  function createBuffer(length) {
-    if (length > K_MAX_LENGTH) {
-      throw new RangeError('The value "' + length + '" is invalid for option "size"');
-    }
-    const buf2 = new Uint8Array(length);
-    Object.setPrototypeOf(buf2, Buffer2.prototype);
-    return buf2;
-  }
-  function Buffer2(arg, encodingOrOffset, length) {
-    if (typeof arg === "number") {
-      if (typeof encodingOrOffset === "string") {
-        throw new TypeError('The "string" argument must be of type string. Received type number');
-      }
-      return allocUnsafe(arg);
-    }
-    return from2(arg, encodingOrOffset, length);
-  }
-  Buffer2.poolSize = 8192;
-  function from2(value2, encodingOrOffset, length) {
-    if (typeof value2 === "string") {
-      return fromString(value2, encodingOrOffset);
-    }
-    if (ArrayBuffer.isView(value2)) {
-      return fromArrayView(value2);
-    }
-    if (value2 == null) {
-      throw new TypeError("The first argument must be one of type string, Buffer, ArrayBuffer, Array, or Array-like Object. Received type " + typeof value2);
-    }
-    if (isInstance(value2, ArrayBuffer) || value2 && isInstance(value2.buffer, ArrayBuffer)) {
-      return fromArrayBuffer(value2, encodingOrOffset, length);
-    }
-    if (typeof SharedArrayBuffer !== "undefined" && (isInstance(value2, SharedArrayBuffer) || value2 && isInstance(value2.buffer, SharedArrayBuffer))) {
-      return fromArrayBuffer(value2, encodingOrOffset, length);
-    }
-    if (typeof value2 === "number") {
-      throw new TypeError('The "value" argument must not be of type number. Received type number');
-    }
-    const valueOf = value2.valueOf && value2.valueOf();
-    if (valueOf != null && valueOf !== value2) {
-      return Buffer2.from(valueOf, encodingOrOffset, length);
-    }
-    const b2 = fromObject(value2);
-    if (b2)
-      return b2;
-    if (typeof Symbol !== "undefined" && Symbol.toPrimitive != null && typeof value2[Symbol.toPrimitive] === "function") {
-      return Buffer2.from(value2[Symbol.toPrimitive]("string"), encodingOrOffset, length);
-    }
-    throw new TypeError("The first argument must be one of type string, Buffer, ArrayBuffer, Array, or Array-like Object. Received type " + typeof value2);
-  }
-  Buffer2.from = function(value2, encodingOrOffset, length) {
-    return from2(value2, encodingOrOffset, length);
-  };
-  Object.setPrototypeOf(Buffer2.prototype, Uint8Array.prototype);
-  Object.setPrototypeOf(Buffer2, Uint8Array);
-  function assertSize(size2) {
-    if (typeof size2 !== "number") {
-      throw new TypeError('"size" argument must be of type number');
-    } else if (size2 < 0) {
-      throw new RangeError('The value "' + size2 + '" is invalid for option "size"');
-    }
-  }
-  function alloc(size2, fill, encoding) {
-    assertSize(size2);
-    if (size2 <= 0) {
-      return createBuffer(size2);
-    }
-    if (fill !== void 0) {
-      return typeof encoding === "string" ? createBuffer(size2).fill(fill, encoding) : createBuffer(size2).fill(fill);
-    }
-    return createBuffer(size2);
-  }
-  Buffer2.alloc = function(size2, fill, encoding) {
-    return alloc(size2, fill, encoding);
-  };
-  function allocUnsafe(size2) {
-    assertSize(size2);
-    return createBuffer(size2 < 0 ? 0 : checked(size2) | 0);
-  }
-  Buffer2.allocUnsafe = function(size2) {
-    return allocUnsafe(size2);
-  };
-  Buffer2.allocUnsafeSlow = function(size2) {
-    return allocUnsafe(size2);
-  };
-  function fromString(string2, encoding) {
-    if (typeof encoding !== "string" || encoding === "") {
-      encoding = "utf8";
-    }
-    if (!Buffer2.isEncoding(encoding)) {
-      throw new TypeError("Unknown encoding: " + encoding);
-    }
-    const length = byteLength2(string2, encoding) | 0;
-    let buf2 = createBuffer(length);
-    const actual = buf2.write(string2, encoding);
-    if (actual !== length) {
-      buf2 = buf2.slice(0, actual);
-    }
-    return buf2;
-  }
-  function fromArrayLike(array2) {
-    const length = array2.length < 0 ? 0 : checked(array2.length) | 0;
-    const buf2 = createBuffer(length);
-    for (let i2 = 0; i2 < length; i2 += 1) {
-      buf2[i2] = array2[i2] & 255;
-    }
-    return buf2;
-  }
-  function fromArrayView(arrayView) {
-    if (isInstance(arrayView, Uint8Array)) {
-      const copy = new Uint8Array(arrayView);
-      return fromArrayBuffer(copy.buffer, copy.byteOffset, copy.byteLength);
-    }
-    return fromArrayLike(arrayView);
-  }
-  function fromArrayBuffer(array2, byteOffset, length) {
-    if (byteOffset < 0 || array2.byteLength < byteOffset) {
-      throw new RangeError('"offset" is outside of buffer bounds');
-    }
-    if (array2.byteLength < byteOffset + (length || 0)) {
-      throw new RangeError('"length" is outside of buffer bounds');
-    }
-    let buf2;
-    if (byteOffset === void 0 && length === void 0) {
-      buf2 = new Uint8Array(array2);
-    } else if (length === void 0) {
-      buf2 = new Uint8Array(array2, byteOffset);
-    } else {
-      buf2 = new Uint8Array(array2, byteOffset, length);
-    }
-    Object.setPrototypeOf(buf2, Buffer2.prototype);
-    return buf2;
-  }
-  function fromObject(obj) {
-    if (Buffer2.isBuffer(obj)) {
-      const len2 = checked(obj.length) | 0;
-      const buf2 = createBuffer(len2);
-      if (buf2.length === 0) {
-        return buf2;
-      }
-      obj.copy(buf2, 0, 0, len2);
-      return buf2;
-    }
-    if (obj.length !== void 0) {
-      if (typeof obj.length !== "number" || numberIsNaN(obj.length)) {
-        return createBuffer(0);
-      }
-      return fromArrayLike(obj);
-    }
-    if (obj.type === "Buffer" && Array.isArray(obj.data)) {
-      return fromArrayLike(obj.data);
-    }
-  }
-  function checked(length) {
-    if (length >= K_MAX_LENGTH) {
-      throw new RangeError("Attempt to allocate Buffer larger than maximum size: 0x" + K_MAX_LENGTH.toString(16) + " bytes");
-    }
-    return length | 0;
-  }
-  function SlowBuffer(length) {
-    if (+length != length) {
-      length = 0;
-    }
-    return Buffer2.alloc(+length);
-  }
-  Buffer2.isBuffer = function isBuffer(b2) {
-    return b2 != null && b2._isBuffer === true && b2 !== Buffer2.prototype;
-  };
-  Buffer2.compare = function compare(a2, b2) {
-    if (isInstance(a2, Uint8Array))
-      a2 = Buffer2.from(a2, a2.offset, a2.byteLength);
-    if (isInstance(b2, Uint8Array))
-      b2 = Buffer2.from(b2, b2.offset, b2.byteLength);
-    if (!Buffer2.isBuffer(a2) || !Buffer2.isBuffer(b2)) {
-      throw new TypeError('The "buf1", "buf2" arguments must be one of type Buffer or Uint8Array');
-    }
-    if (a2 === b2)
-      return 0;
-    let x = a2.length;
-    let y2 = b2.length;
-    for (let i2 = 0, len2 = Math.min(x, y2); i2 < len2; ++i2) {
-      if (a2[i2] !== b2[i2]) {
-        x = a2[i2];
-        y2 = b2[i2];
-        break;
-      }
-    }
-    if (x < y2)
-      return -1;
-    if (y2 < x)
-      return 1;
-    return 0;
-  };
-  Buffer2.isEncoding = function isEncoding2(encoding) {
-    switch (String(encoding).toLowerCase()) {
-      case "hex":
-      case "utf8":
-      case "utf-8":
-      case "ascii":
-      case "latin1":
-      case "binary":
-      case "base64":
-      case "ucs2":
-      case "ucs-2":
-      case "utf16le":
-      case "utf-16le":
-        return true;
-      default:
-        return false;
-    }
-  };
-  Buffer2.concat = function concat(list, length) {
-    if (!Array.isArray(list)) {
-      throw new TypeError('"list" argument must be an Array of Buffers');
-    }
-    if (list.length === 0) {
-      return Buffer2.alloc(0);
-    }
-    let i2;
-    if (length === void 0) {
-      length = 0;
-      for (i2 = 0; i2 < list.length; ++i2) {
-        length += list[i2].length;
-      }
-    }
-    const buffer2 = Buffer2.allocUnsafe(length);
-    let pos = 0;
-    for (i2 = 0; i2 < list.length; ++i2) {
-      let buf2 = list[i2];
-      if (isInstance(buf2, Uint8Array)) {
-        if (pos + buf2.length > buffer2.length) {
-          if (!Buffer2.isBuffer(buf2))
-            buf2 = Buffer2.from(buf2);
-          buf2.copy(buffer2, pos);
-        } else {
-          Uint8Array.prototype.set.call(buffer2, buf2, pos);
-        }
-      } else if (!Buffer2.isBuffer(buf2)) {
-        throw new TypeError('"list" argument must be an Array of Buffers');
-      } else {
-        buf2.copy(buffer2, pos);
-      }
-      pos += buf2.length;
-    }
-    return buffer2;
-  };
-  function byteLength2(string2, encoding) {
-    if (Buffer2.isBuffer(string2)) {
-      return string2.length;
-    }
-    if (ArrayBuffer.isView(string2) || isInstance(string2, ArrayBuffer)) {
-      return string2.byteLength;
-    }
-    if (typeof string2 !== "string") {
-      throw new TypeError('The "string" argument must be one of type string, Buffer, or ArrayBuffer. Received type ' + typeof string2);
-    }
-    const len2 = string2.length;
-    const mustMatch = arguments.length > 2 && arguments[2] === true;
-    if (!mustMatch && len2 === 0)
-      return 0;
-    let loweredCase = false;
-    for (; ; ) {
-      switch (encoding) {
-        case "ascii":
-        case "latin1":
-        case "binary":
-          return len2;
-        case "utf8":
-        case "utf-8":
-          return utf8ToBytes(string2).length;
-        case "ucs2":
-        case "ucs-2":
-        case "utf16le":
-        case "utf-16le":
-          return len2 * 2;
-        case "hex":
-          return len2 >>> 1;
-        case "base64":
-          return base64ToBytes(string2).length;
-        default:
-          if (loweredCase) {
-            return mustMatch ? -1 : utf8ToBytes(string2).length;
-          }
-          encoding = ("" + encoding).toLowerCase();
-          loweredCase = true;
-      }
-    }
-  }
-  Buffer2.byteLength = byteLength2;
-  function slowToString(encoding, start, end) {
-    let loweredCase = false;
-    if (start === void 0 || start < 0) {
-      start = 0;
-    }
-    if (start > this.length) {
-      return "";
-    }
-    if (end === void 0 || end > this.length) {
-      end = this.length;
-    }
-    if (end <= 0) {
-      return "";
-    }
-    end >>>= 0;
-    start >>>= 0;
-    if (end <= start) {
-      return "";
-    }
-    if (!encoding)
-      encoding = "utf8";
-    while (true) {
-      switch (encoding) {
-        case "hex":
-          return hexSlice(this, start, end);
-        case "utf8":
-        case "utf-8":
-          return utf8Slice(this, start, end);
-        case "ascii":
-          return asciiSlice(this, start, end);
-        case "latin1":
-        case "binary":
-          return latin1Slice(this, start, end);
-        case "base64":
-          return base64Slice(this, start, end);
-        case "ucs2":
-        case "ucs-2":
-        case "utf16le":
-        case "utf-16le":
-          return utf16leSlice(this, start, end);
-        default:
-          if (loweredCase)
-            throw new TypeError("Unknown encoding: " + encoding);
-          encoding = (encoding + "").toLowerCase();
-          loweredCase = true;
-      }
-    }
-  }
-  Buffer2.prototype._isBuffer = true;
-  function swap(b2, n2, m2) {
-    const i2 = b2[n2];
-    b2[n2] = b2[m2];
-    b2[m2] = i2;
-  }
-  Buffer2.prototype.swap16 = function swap16() {
-    const len2 = this.length;
-    if (len2 % 2 !== 0) {
-      throw new RangeError("Buffer size must be a multiple of 16-bits");
-    }
-    for (let i2 = 0; i2 < len2; i2 += 2) {
-      swap(this, i2, i2 + 1);
-    }
-    return this;
-  };
-  Buffer2.prototype.swap32 = function swap32() {
-    const len2 = this.length;
-    if (len2 % 4 !== 0) {
-      throw new RangeError("Buffer size must be a multiple of 32-bits");
-    }
-    for (let i2 = 0; i2 < len2; i2 += 4) {
-      swap(this, i2, i2 + 3);
-      swap(this, i2 + 1, i2 + 2);
-    }
-    return this;
-  };
-  Buffer2.prototype.swap64 = function swap64() {
-    const len2 = this.length;
-    if (len2 % 8 !== 0) {
-      throw new RangeError("Buffer size must be a multiple of 64-bits");
-    }
-    for (let i2 = 0; i2 < len2; i2 += 8) {
-      swap(this, i2, i2 + 7);
-      swap(this, i2 + 1, i2 + 6);
-      swap(this, i2 + 2, i2 + 5);
-      swap(this, i2 + 3, i2 + 4);
-    }
-    return this;
-  };
-  Buffer2.prototype.toString = function toString2() {
-    const length = this.length;
-    if (length === 0)
-      return "";
-    if (arguments.length === 0)
-      return utf8Slice(this, 0, length);
-    return slowToString.apply(this, arguments);
-  };
-  Buffer2.prototype.toLocaleString = Buffer2.prototype.toString;
-  Buffer2.prototype.equals = function equals2(b2) {
-    if (!Buffer2.isBuffer(b2))
-      throw new TypeError("Argument must be a Buffer");
-    if (this === b2)
-      return true;
-    return Buffer2.compare(this, b2) === 0;
-  };
-  Buffer2.prototype.inspect = function inspect2() {
-    let str = "";
-    const max = exports2.INSPECT_MAX_BYTES;
-    str = this.toString("hex", 0, max).replace(/(.{2})/g, "$1 ").trim();
-    if (this.length > max)
-      str += " ... ";
-    return "<Buffer " + str + ">";
-  };
-  if (customInspectSymbol) {
-    Buffer2.prototype[customInspectSymbol] = Buffer2.prototype.inspect;
-  }
-  Buffer2.prototype.compare = function compare(target, start, end, thisStart, thisEnd) {
-    if (isInstance(target, Uint8Array)) {
-      target = Buffer2.from(target, target.offset, target.byteLength);
-    }
-    if (!Buffer2.isBuffer(target)) {
-      throw new TypeError('The "target" argument must be one of type Buffer or Uint8Array. Received type ' + typeof target);
-    }
-    if (start === void 0) {
-      start = 0;
-    }
-    if (end === void 0) {
-      end = target ? target.length : 0;
-    }
-    if (thisStart === void 0) {
-      thisStart = 0;
-    }
-    if (thisEnd === void 0) {
-      thisEnd = this.length;
-    }
-    if (start < 0 || end > target.length || thisStart < 0 || thisEnd > this.length) {
-      throw new RangeError("out of range index");
-    }
-    if (thisStart >= thisEnd && start >= end) {
-      return 0;
-    }
-    if (thisStart >= thisEnd) {
-      return -1;
-    }
-    if (start >= end) {
-      return 1;
-    }
-    start >>>= 0;
-    end >>>= 0;
-    thisStart >>>= 0;
-    thisEnd >>>= 0;
-    if (this === target)
-      return 0;
-    let x = thisEnd - thisStart;
-    let y2 = end - start;
-    const len2 = Math.min(x, y2);
-    const thisCopy = this.slice(thisStart, thisEnd);
-    const targetCopy = target.slice(start, end);
-    for (let i2 = 0; i2 < len2; ++i2) {
-      if (thisCopy[i2] !== targetCopy[i2]) {
-        x = thisCopy[i2];
-        y2 = targetCopy[i2];
-        break;
-      }
-    }
-    if (x < y2)
-      return -1;
-    if (y2 < x)
-      return 1;
-    return 0;
-  };
-  function bidirectionalIndexOf(buffer2, val, byteOffset, encoding, dir) {
-    if (buffer2.length === 0)
-      return -1;
-    if (typeof byteOffset === "string") {
-      encoding = byteOffset;
-      byteOffset = 0;
-    } else if (byteOffset > 2147483647) {
-      byteOffset = 2147483647;
-    } else if (byteOffset < -2147483648) {
-      byteOffset = -2147483648;
-    }
-    byteOffset = +byteOffset;
-    if (numberIsNaN(byteOffset)) {
-      byteOffset = dir ? 0 : buffer2.length - 1;
-    }
-    if (byteOffset < 0)
-      byteOffset = buffer2.length + byteOffset;
-    if (byteOffset >= buffer2.length) {
-      if (dir)
-        return -1;
-      else
-        byteOffset = buffer2.length - 1;
-    } else if (byteOffset < 0) {
-      if (dir)
-        byteOffset = 0;
-      else
-        return -1;
-    }
-    if (typeof val === "string") {
-      val = Buffer2.from(val, encoding);
-    }
-    if (Buffer2.isBuffer(val)) {
-      if (val.length === 0) {
-        return -1;
-      }
-      return arrayIndexOf(buffer2, val, byteOffset, encoding, dir);
-    } else if (typeof val === "number") {
-      val = val & 255;
-      if (typeof Uint8Array.prototype.indexOf === "function") {
-        if (dir) {
-          return Uint8Array.prototype.indexOf.call(buffer2, val, byteOffset);
-        } else {
-          return Uint8Array.prototype.lastIndexOf.call(buffer2, val, byteOffset);
-        }
-      }
-      return arrayIndexOf(buffer2, [val], byteOffset, encoding, dir);
-    }
-    throw new TypeError("val must be string, number or Buffer");
-  }
-  function arrayIndexOf(arr, val, byteOffset, encoding, dir) {
-    let indexSize = 1;
-    let arrLength = arr.length;
-    let valLength = val.length;
-    if (encoding !== void 0) {
-      encoding = String(encoding).toLowerCase();
-      if (encoding === "ucs2" || encoding === "ucs-2" || encoding === "utf16le" || encoding === "utf-16le") {
-        if (arr.length < 2 || val.length < 2) {
-          return -1;
-        }
-        indexSize = 2;
-        arrLength /= 2;
-        valLength /= 2;
-        byteOffset /= 2;
-      }
-    }
-    function read(buf2, i3) {
-      if (indexSize === 1) {
-        return buf2[i3];
-      } else {
-        return buf2.readUInt16BE(i3 * indexSize);
-      }
-    }
-    let i2;
-    if (dir) {
-      let foundIndex = -1;
-      for (i2 = byteOffset; i2 < arrLength; i2++) {
-        if (read(arr, i2) === read(val, foundIndex === -1 ? 0 : i2 - foundIndex)) {
-          if (foundIndex === -1)
-            foundIndex = i2;
-          if (i2 - foundIndex + 1 === valLength)
-            return foundIndex * indexSize;
-        } else {
-          if (foundIndex !== -1)
-            i2 -= i2 - foundIndex;
-          foundIndex = -1;
-        }
-      }
-    } else {
-      if (byteOffset + valLength > arrLength)
-        byteOffset = arrLength - valLength;
-      for (i2 = byteOffset; i2 >= 0; i2--) {
-        let found = true;
-        for (let j = 0; j < valLength; j++) {
-          if (read(arr, i2 + j) !== read(val, j)) {
-            found = false;
-            break;
-          }
-        }
-        if (found)
-          return i2;
-      }
-    }
-    return -1;
-  }
-  Buffer2.prototype.includes = function includes2(val, byteOffset, encoding) {
-    return this.indexOf(val, byteOffset, encoding) !== -1;
-  };
-  Buffer2.prototype.indexOf = function indexOf2(val, byteOffset, encoding) {
-    return bidirectionalIndexOf(this, val, byteOffset, encoding, true);
-  };
-  Buffer2.prototype.lastIndexOf = function lastIndexOf2(val, byteOffset, encoding) {
-    return bidirectionalIndexOf(this, val, byteOffset, encoding, false);
-  };
-  function hexWrite(buf2, string2, offset, length) {
-    offset = Number(offset) || 0;
-    const remaining = buf2.length - offset;
-    if (!length) {
-      length = remaining;
-    } else {
-      length = Number(length);
-      if (length > remaining) {
-        length = remaining;
-      }
-    }
-    const strLen = string2.length;
-    if (length > strLen / 2) {
-      length = strLen / 2;
-    }
-    let i2;
-    for (i2 = 0; i2 < length; ++i2) {
-      const parsed = parseInt(string2.substr(i2 * 2, 2), 16);
-      if (numberIsNaN(parsed))
-        return i2;
-      buf2[offset + i2] = parsed;
-    }
-    return i2;
-  }
-  function utf8Write(buf2, string2, offset, length) {
-    return blitBuffer(utf8ToBytes(string2, buf2.length - offset), buf2, offset, length);
-  }
-  function asciiWrite(buf2, string2, offset, length) {
-    return blitBuffer(asciiToBytes(string2), buf2, offset, length);
-  }
-  function base64Write(buf2, string2, offset, length) {
-    return blitBuffer(base64ToBytes(string2), buf2, offset, length);
-  }
-  function ucs2Write(buf2, string2, offset, length) {
-    return blitBuffer(utf16leToBytes(string2, buf2.length - offset), buf2, offset, length);
-  }
-  Buffer2.prototype.write = function write(string2, offset, length, encoding) {
-    if (offset === void 0) {
-      encoding = "utf8";
-      length = this.length;
-      offset = 0;
-    } else if (length === void 0 && typeof offset === "string") {
-      encoding = offset;
-      length = this.length;
-      offset = 0;
-    } else if (isFinite(offset)) {
-      offset = offset >>> 0;
-      if (isFinite(length)) {
-        length = length >>> 0;
-        if (encoding === void 0)
-          encoding = "utf8";
-      } else {
-        encoding = length;
-        length = void 0;
-      }
-    } else {
-      throw new Error("Buffer.write(string, encoding, offset[, length]) is no longer supported");
-    }
-    const remaining = this.length - offset;
-    if (length === void 0 || length > remaining)
-      length = remaining;
-    if (string2.length > 0 && (length < 0 || offset < 0) || offset > this.length) {
-      throw new RangeError("Attempt to write outside buffer bounds");
-    }
-    if (!encoding)
-      encoding = "utf8";
-    let loweredCase = false;
-    for (; ; ) {
-      switch (encoding) {
-        case "hex":
-          return hexWrite(this, string2, offset, length);
-        case "utf8":
-        case "utf-8":
-          return utf8Write(this, string2, offset, length);
-        case "ascii":
-        case "latin1":
-        case "binary":
-          return asciiWrite(this, string2, offset, length);
-        case "base64":
-          return base64Write(this, string2, offset, length);
-        case "ucs2":
-        case "ucs-2":
-        case "utf16le":
-        case "utf-16le":
-          return ucs2Write(this, string2, offset, length);
-        default:
-          if (loweredCase)
-            throw new TypeError("Unknown encoding: " + encoding);
-          encoding = ("" + encoding).toLowerCase();
-          loweredCase = true;
-      }
-    }
-  };
-  Buffer2.prototype.toJSON = function toJSON() {
-    return {
-      type: "Buffer",
-      data: Array.prototype.slice.call(this._arr || this, 0)
-    };
-  };
-  function base64Slice(buf2, start, end) {
-    if (start === 0 && end === buf2.length) {
-      return base64.fromByteArray(buf2);
-    } else {
-      return base64.fromByteArray(buf2.slice(start, end));
-    }
-  }
-  function utf8Slice(buf2, start, end) {
-    end = Math.min(buf2.length, end);
-    const res = [];
-    let i2 = start;
-    while (i2 < end) {
-      const firstByte = buf2[i2];
-      let codePoint = null;
-      let bytesPerSequence = firstByte > 239 ? 4 : firstByte > 223 ? 3 : firstByte > 191 ? 2 : 1;
-      if (i2 + bytesPerSequence <= end) {
-        let secondByte, thirdByte, fourthByte, tempCodePoint;
-        switch (bytesPerSequence) {
-          case 1:
-            if (firstByte < 128) {
-              codePoint = firstByte;
-            }
-            break;
-          case 2:
-            secondByte = buf2[i2 + 1];
-            if ((secondByte & 192) === 128) {
-              tempCodePoint = (firstByte & 31) << 6 | secondByte & 63;
-              if (tempCodePoint > 127) {
-                codePoint = tempCodePoint;
-              }
-            }
-            break;
-          case 3:
-            secondByte = buf2[i2 + 1];
-            thirdByte = buf2[i2 + 2];
-            if ((secondByte & 192) === 128 && (thirdByte & 192) === 128) {
-              tempCodePoint = (firstByte & 15) << 12 | (secondByte & 63) << 6 | thirdByte & 63;
-              if (tempCodePoint > 2047 && (tempCodePoint < 55296 || tempCodePoint > 57343)) {
-                codePoint = tempCodePoint;
-              }
-            }
-            break;
-          case 4:
-            secondByte = buf2[i2 + 1];
-            thirdByte = buf2[i2 + 2];
-            fourthByte = buf2[i2 + 3];
-            if ((secondByte & 192) === 128 && (thirdByte & 192) === 128 && (fourthByte & 192) === 128) {
-              tempCodePoint = (firstByte & 15) << 18 | (secondByte & 63) << 12 | (thirdByte & 63) << 6 | fourthByte & 63;
-              if (tempCodePoint > 65535 && tempCodePoint < 1114112) {
-                codePoint = tempCodePoint;
-              }
-            }
-        }
-      }
-      if (codePoint === null) {
-        codePoint = 65533;
-        bytesPerSequence = 1;
-      } else if (codePoint > 65535) {
-        codePoint -= 65536;
-        res.push(codePoint >>> 10 & 1023 | 55296);
-        codePoint = 56320 | codePoint & 1023;
-      }
-      res.push(codePoint);
-      i2 += bytesPerSequence;
-    }
-    return decodeCodePointsArray(res);
-  }
-  const MAX_ARGUMENTS_LENGTH = 4096;
-  function decodeCodePointsArray(codePoints) {
-    const len2 = codePoints.length;
-    if (len2 <= MAX_ARGUMENTS_LENGTH) {
-      return String.fromCharCode.apply(String, codePoints);
-    }
-    let res = "";
-    let i2 = 0;
-    while (i2 < len2) {
-      res += String.fromCharCode.apply(String, codePoints.slice(i2, i2 += MAX_ARGUMENTS_LENGTH));
-    }
-    return res;
-  }
-  function asciiSlice(buf2, start, end) {
-    let ret = "";
-    end = Math.min(buf2.length, end);
-    for (let i2 = start; i2 < end; ++i2) {
-      ret += String.fromCharCode(buf2[i2] & 127);
-    }
-    return ret;
-  }
-  function latin1Slice(buf2, start, end) {
-    let ret = "";
-    end = Math.min(buf2.length, end);
-    for (let i2 = start; i2 < end; ++i2) {
-      ret += String.fromCharCode(buf2[i2]);
-    }
-    return ret;
-  }
-  function hexSlice(buf2, start, end) {
-    const len2 = buf2.length;
-    if (!start || start < 0)
-      start = 0;
-    if (!end || end < 0 || end > len2)
-      end = len2;
-    let out = "";
-    for (let i2 = start; i2 < end; ++i2) {
-      out += hexSliceLookupTable[buf2[i2]];
-    }
-    return out;
-  }
-  function utf16leSlice(buf2, start, end) {
-    const bytes = buf2.slice(start, end);
-    let res = "";
-    for (let i2 = 0; i2 < bytes.length - 1; i2 += 2) {
-      res += String.fromCharCode(bytes[i2] + bytes[i2 + 1] * 256);
-    }
-    return res;
-  }
-  Buffer2.prototype.slice = function slice(start, end) {
-    const len2 = this.length;
-    start = ~~start;
-    end = end === void 0 ? len2 : ~~end;
-    if (start < 0) {
-      start += len2;
-      if (start < 0)
-        start = 0;
-    } else if (start > len2) {
-      start = len2;
-    }
-    if (end < 0) {
-      end += len2;
-      if (end < 0)
-        end = 0;
-    } else if (end > len2) {
-      end = len2;
-    }
-    if (end < start)
-      end = start;
-    const newBuf = this.subarray(start, end);
-    Object.setPrototypeOf(newBuf, Buffer2.prototype);
-    return newBuf;
-  };
-  function checkOffset(offset, ext, length) {
-    if (offset % 1 !== 0 || offset < 0)
-      throw new RangeError("offset is not uint");
-    if (offset + ext > length)
-      throw new RangeError("Trying to access beyond buffer length");
-  }
-  Buffer2.prototype.readUintLE = Buffer2.prototype.readUIntLE = function readUIntLE(offset, byteLength3, noAssert) {
-    offset = offset >>> 0;
-    byteLength3 = byteLength3 >>> 0;
-    if (!noAssert)
-      checkOffset(offset, byteLength3, this.length);
-    let val = this[offset];
-    let mul = 1;
-    let i2 = 0;
-    while (++i2 < byteLength3 && (mul *= 256)) {
-      val += this[offset + i2] * mul;
-    }
-    return val;
-  };
-  Buffer2.prototype.readUintBE = Buffer2.prototype.readUIntBE = function readUIntBE(offset, byteLength3, noAssert) {
-    offset = offset >>> 0;
-    byteLength3 = byteLength3 >>> 0;
-    if (!noAssert) {
-      checkOffset(offset, byteLength3, this.length);
-    }
-    let val = this[offset + --byteLength3];
-    let mul = 1;
-    while (byteLength3 > 0 && (mul *= 256)) {
-      val += this[offset + --byteLength3] * mul;
-    }
-    return val;
-  };
-  Buffer2.prototype.readUint8 = Buffer2.prototype.readUInt8 = function readUInt8(offset, noAssert) {
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkOffset(offset, 1, this.length);
-    return this[offset];
-  };
-  Buffer2.prototype.readUint16LE = Buffer2.prototype.readUInt16LE = function readUInt16LE(offset, noAssert) {
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkOffset(offset, 2, this.length);
-    return this[offset] | this[offset + 1] << 8;
-  };
-  Buffer2.prototype.readUint16BE = Buffer2.prototype.readUInt16BE = function readUInt16BE(offset, noAssert) {
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkOffset(offset, 2, this.length);
-    return this[offset] << 8 | this[offset + 1];
-  };
-  Buffer2.prototype.readUint32LE = Buffer2.prototype.readUInt32LE = function readUInt32LE(offset, noAssert) {
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkOffset(offset, 4, this.length);
-    return (this[offset] | this[offset + 1] << 8 | this[offset + 2] << 16) + this[offset + 3] * 16777216;
-  };
-  Buffer2.prototype.readUint32BE = Buffer2.prototype.readUInt32BE = function readUInt32BE(offset, noAssert) {
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkOffset(offset, 4, this.length);
-    return this[offset] * 16777216 + (this[offset + 1] << 16 | this[offset + 2] << 8 | this[offset + 3]);
-  };
-  Buffer2.prototype.readBigUInt64LE = defineBigIntMethod(function readBigUInt64LE(offset) {
-    offset = offset >>> 0;
-    validateNumber(offset, "offset");
-    const first = this[offset];
-    const last = this[offset + 7];
-    if (first === void 0 || last === void 0) {
-      boundsError(offset, this.length - 8);
-    }
-    const lo = first + this[++offset] * 2 ** 8 + this[++offset] * 2 ** 16 + this[++offset] * 2 ** 24;
-    const hi = this[++offset] + this[++offset] * 2 ** 8 + this[++offset] * 2 ** 16 + last * 2 ** 24;
-    return BigInt(lo) + (BigInt(hi) << BigInt(32));
-  });
-  Buffer2.prototype.readBigUInt64BE = defineBigIntMethod(function readBigUInt64BE(offset) {
-    offset = offset >>> 0;
-    validateNumber(offset, "offset");
-    const first = this[offset];
-    const last = this[offset + 7];
-    if (first === void 0 || last === void 0) {
-      boundsError(offset, this.length - 8);
-    }
-    const hi = first * 2 ** 24 + this[++offset] * 2 ** 16 + this[++offset] * 2 ** 8 + this[++offset];
-    const lo = this[++offset] * 2 ** 24 + this[++offset] * 2 ** 16 + this[++offset] * 2 ** 8 + last;
-    return (BigInt(hi) << BigInt(32)) + BigInt(lo);
-  });
-  Buffer2.prototype.readIntLE = function readIntLE(offset, byteLength3, noAssert) {
-    offset = offset >>> 0;
-    byteLength3 = byteLength3 >>> 0;
-    if (!noAssert)
-      checkOffset(offset, byteLength3, this.length);
-    let val = this[offset];
-    let mul = 1;
-    let i2 = 0;
-    while (++i2 < byteLength3 && (mul *= 256)) {
-      val += this[offset + i2] * mul;
-    }
-    mul *= 128;
-    if (val >= mul)
-      val -= Math.pow(2, 8 * byteLength3);
-    return val;
-  };
-  Buffer2.prototype.readIntBE = function readIntBE(offset, byteLength3, noAssert) {
-    offset = offset >>> 0;
-    byteLength3 = byteLength3 >>> 0;
-    if (!noAssert)
-      checkOffset(offset, byteLength3, this.length);
-    let i2 = byteLength3;
-    let mul = 1;
-    let val = this[offset + --i2];
-    while (i2 > 0 && (mul *= 256)) {
-      val += this[offset + --i2] * mul;
-    }
-    mul *= 128;
-    if (val >= mul)
-      val -= Math.pow(2, 8 * byteLength3);
-    return val;
-  };
-  Buffer2.prototype.readInt8 = function readInt8(offset, noAssert) {
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkOffset(offset, 1, this.length);
-    if (!(this[offset] & 128))
-      return this[offset];
-    return (255 - this[offset] + 1) * -1;
-  };
-  Buffer2.prototype.readInt16LE = function readInt16LE(offset, noAssert) {
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkOffset(offset, 2, this.length);
-    const val = this[offset] | this[offset + 1] << 8;
-    return val & 32768 ? val | 4294901760 : val;
-  };
-  Buffer2.prototype.readInt16BE = function readInt16BE(offset, noAssert) {
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkOffset(offset, 2, this.length);
-    const val = this[offset + 1] | this[offset] << 8;
-    return val & 32768 ? val | 4294901760 : val;
-  };
-  Buffer2.prototype.readInt32LE = function readInt32LE(offset, noAssert) {
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkOffset(offset, 4, this.length);
-    return this[offset] | this[offset + 1] << 8 | this[offset + 2] << 16 | this[offset + 3] << 24;
-  };
-  Buffer2.prototype.readInt32BE = function readInt32BE(offset, noAssert) {
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkOffset(offset, 4, this.length);
-    return this[offset] << 24 | this[offset + 1] << 16 | this[offset + 2] << 8 | this[offset + 3];
-  };
-  Buffer2.prototype.readBigInt64LE = defineBigIntMethod(function readBigInt64LE(offset) {
-    offset = offset >>> 0;
-    validateNumber(offset, "offset");
-    const first = this[offset];
-    const last = this[offset + 7];
-    if (first === void 0 || last === void 0) {
-      boundsError(offset, this.length - 8);
-    }
-    const val = this[offset + 4] + this[offset + 5] * 2 ** 8 + this[offset + 6] * 2 ** 16 + (last << 24);
-    return (BigInt(val) << BigInt(32)) + BigInt(first + this[++offset] * 2 ** 8 + this[++offset] * 2 ** 16 + this[++offset] * 2 ** 24);
-  });
-  Buffer2.prototype.readBigInt64BE = defineBigIntMethod(function readBigInt64BE(offset) {
-    offset = offset >>> 0;
-    validateNumber(offset, "offset");
-    const first = this[offset];
-    const last = this[offset + 7];
-    if (first === void 0 || last === void 0) {
-      boundsError(offset, this.length - 8);
-    }
-    const val = (first << 24) + this[++offset] * 2 ** 16 + this[++offset] * 2 ** 8 + this[++offset];
-    return (BigInt(val) << BigInt(32)) + BigInt(this[++offset] * 2 ** 24 + this[++offset] * 2 ** 16 + this[++offset] * 2 ** 8 + last);
-  });
-  Buffer2.prototype.readFloatLE = function readFloatLE(offset, noAssert) {
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkOffset(offset, 4, this.length);
-    return ieee754$1.read(this, offset, true, 23, 4);
-  };
-  Buffer2.prototype.readFloatBE = function readFloatBE(offset, noAssert) {
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkOffset(offset, 4, this.length);
-    return ieee754$1.read(this, offset, false, 23, 4);
-  };
-  Buffer2.prototype.readDoubleLE = function readDoubleLE(offset, noAssert) {
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkOffset(offset, 8, this.length);
-    return ieee754$1.read(this, offset, true, 52, 8);
-  };
-  Buffer2.prototype.readDoubleBE = function readDoubleBE(offset, noAssert) {
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkOffset(offset, 8, this.length);
-    return ieee754$1.read(this, offset, false, 52, 8);
-  };
-  function checkInt(buf2, value2, offset, ext, max, min) {
-    if (!Buffer2.isBuffer(buf2))
-      throw new TypeError('"buffer" argument must be a Buffer instance');
-    if (value2 > max || value2 < min)
-      throw new RangeError('"value" argument is out of bounds');
-    if (offset + ext > buf2.length)
-      throw new RangeError("Index out of range");
-  }
-  Buffer2.prototype.writeUintLE = Buffer2.prototype.writeUIntLE = function writeUIntLE(value2, offset, byteLength3, noAssert) {
-    value2 = +value2;
-    offset = offset >>> 0;
-    byteLength3 = byteLength3 >>> 0;
-    if (!noAssert) {
-      const maxBytes = Math.pow(2, 8 * byteLength3) - 1;
-      checkInt(this, value2, offset, byteLength3, maxBytes, 0);
-    }
-    let mul = 1;
-    let i2 = 0;
-    this[offset] = value2 & 255;
-    while (++i2 < byteLength3 && (mul *= 256)) {
-      this[offset + i2] = value2 / mul & 255;
-    }
-    return offset + byteLength3;
-  };
-  Buffer2.prototype.writeUintBE = Buffer2.prototype.writeUIntBE = function writeUIntBE(value2, offset, byteLength3, noAssert) {
-    value2 = +value2;
-    offset = offset >>> 0;
-    byteLength3 = byteLength3 >>> 0;
-    if (!noAssert) {
-      const maxBytes = Math.pow(2, 8 * byteLength3) - 1;
-      checkInt(this, value2, offset, byteLength3, maxBytes, 0);
-    }
-    let i2 = byteLength3 - 1;
-    let mul = 1;
-    this[offset + i2] = value2 & 255;
-    while (--i2 >= 0 && (mul *= 256)) {
-      this[offset + i2] = value2 / mul & 255;
-    }
-    return offset + byteLength3;
-  };
-  Buffer2.prototype.writeUint8 = Buffer2.prototype.writeUInt8 = function writeUInt8(value2, offset, noAssert) {
-    value2 = +value2;
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkInt(this, value2, offset, 1, 255, 0);
-    this[offset] = value2 & 255;
-    return offset + 1;
-  };
-  Buffer2.prototype.writeUint16LE = Buffer2.prototype.writeUInt16LE = function writeUInt16LE(value2, offset, noAssert) {
-    value2 = +value2;
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkInt(this, value2, offset, 2, 65535, 0);
-    this[offset] = value2 & 255;
-    this[offset + 1] = value2 >>> 8;
-    return offset + 2;
-  };
-  Buffer2.prototype.writeUint16BE = Buffer2.prototype.writeUInt16BE = function writeUInt16BE(value2, offset, noAssert) {
-    value2 = +value2;
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkInt(this, value2, offset, 2, 65535, 0);
-    this[offset] = value2 >>> 8;
-    this[offset + 1] = value2 & 255;
-    return offset + 2;
-  };
-  Buffer2.prototype.writeUint32LE = Buffer2.prototype.writeUInt32LE = function writeUInt32LE(value2, offset, noAssert) {
-    value2 = +value2;
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkInt(this, value2, offset, 4, 4294967295, 0);
-    this[offset + 3] = value2 >>> 24;
-    this[offset + 2] = value2 >>> 16;
-    this[offset + 1] = value2 >>> 8;
-    this[offset] = value2 & 255;
-    return offset + 4;
-  };
-  Buffer2.prototype.writeUint32BE = Buffer2.prototype.writeUInt32BE = function writeUInt32BE(value2, offset, noAssert) {
-    value2 = +value2;
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkInt(this, value2, offset, 4, 4294967295, 0);
-    this[offset] = value2 >>> 24;
-    this[offset + 1] = value2 >>> 16;
-    this[offset + 2] = value2 >>> 8;
-    this[offset + 3] = value2 & 255;
-    return offset + 4;
-  };
-  function wrtBigUInt64LE(buf2, value2, offset, min, max) {
-    checkIntBI(value2, min, max, buf2, offset, 7);
-    let lo = Number(value2 & BigInt(4294967295));
-    buf2[offset++] = lo;
-    lo = lo >> 8;
-    buf2[offset++] = lo;
-    lo = lo >> 8;
-    buf2[offset++] = lo;
-    lo = lo >> 8;
-    buf2[offset++] = lo;
-    let hi = Number(value2 >> BigInt(32) & BigInt(4294967295));
-    buf2[offset++] = hi;
-    hi = hi >> 8;
-    buf2[offset++] = hi;
-    hi = hi >> 8;
-    buf2[offset++] = hi;
-    hi = hi >> 8;
-    buf2[offset++] = hi;
-    return offset;
-  }
-  function wrtBigUInt64BE(buf2, value2, offset, min, max) {
-    checkIntBI(value2, min, max, buf2, offset, 7);
-    let lo = Number(value2 & BigInt(4294967295));
-    buf2[offset + 7] = lo;
-    lo = lo >> 8;
-    buf2[offset + 6] = lo;
-    lo = lo >> 8;
-    buf2[offset + 5] = lo;
-    lo = lo >> 8;
-    buf2[offset + 4] = lo;
-    let hi = Number(value2 >> BigInt(32) & BigInt(4294967295));
-    buf2[offset + 3] = hi;
-    hi = hi >> 8;
-    buf2[offset + 2] = hi;
-    hi = hi >> 8;
-    buf2[offset + 1] = hi;
-    hi = hi >> 8;
-    buf2[offset] = hi;
-    return offset + 8;
-  }
-  Buffer2.prototype.writeBigUInt64LE = defineBigIntMethod(function writeBigUInt64LE(value2, offset = 0) {
-    return wrtBigUInt64LE(this, value2, offset, BigInt(0), BigInt("0xffffffffffffffff"));
-  });
-  Buffer2.prototype.writeBigUInt64BE = defineBigIntMethod(function writeBigUInt64BE(value2, offset = 0) {
-    return wrtBigUInt64BE(this, value2, offset, BigInt(0), BigInt("0xffffffffffffffff"));
-  });
-  Buffer2.prototype.writeIntLE = function writeIntLE(value2, offset, byteLength3, noAssert) {
-    value2 = +value2;
-    offset = offset >>> 0;
-    if (!noAssert) {
-      const limit = Math.pow(2, 8 * byteLength3 - 1);
-      checkInt(this, value2, offset, byteLength3, limit - 1, -limit);
-    }
-    let i2 = 0;
-    let mul = 1;
-    let sub = 0;
-    this[offset] = value2 & 255;
-    while (++i2 < byteLength3 && (mul *= 256)) {
-      if (value2 < 0 && sub === 0 && this[offset + i2 - 1] !== 0) {
-        sub = 1;
-      }
-      this[offset + i2] = (value2 / mul >> 0) - sub & 255;
-    }
-    return offset + byteLength3;
-  };
-  Buffer2.prototype.writeIntBE = function writeIntBE(value2, offset, byteLength3, noAssert) {
-    value2 = +value2;
-    offset = offset >>> 0;
-    if (!noAssert) {
-      const limit = Math.pow(2, 8 * byteLength3 - 1);
-      checkInt(this, value2, offset, byteLength3, limit - 1, -limit);
-    }
-    let i2 = byteLength3 - 1;
-    let mul = 1;
-    let sub = 0;
-    this[offset + i2] = value2 & 255;
-    while (--i2 >= 0 && (mul *= 256)) {
-      if (value2 < 0 && sub === 0 && this[offset + i2 + 1] !== 0) {
-        sub = 1;
-      }
-      this[offset + i2] = (value2 / mul >> 0) - sub & 255;
-    }
-    return offset + byteLength3;
-  };
-  Buffer2.prototype.writeInt8 = function writeInt8(value2, offset, noAssert) {
-    value2 = +value2;
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkInt(this, value2, offset, 1, 127, -128);
-    if (value2 < 0)
-      value2 = 255 + value2 + 1;
-    this[offset] = value2 & 255;
-    return offset + 1;
-  };
-  Buffer2.prototype.writeInt16LE = function writeInt16LE(value2, offset, noAssert) {
-    value2 = +value2;
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkInt(this, value2, offset, 2, 32767, -32768);
-    this[offset] = value2 & 255;
-    this[offset + 1] = value2 >>> 8;
-    return offset + 2;
-  };
-  Buffer2.prototype.writeInt16BE = function writeInt16BE(value2, offset, noAssert) {
-    value2 = +value2;
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkInt(this, value2, offset, 2, 32767, -32768);
-    this[offset] = value2 >>> 8;
-    this[offset + 1] = value2 & 255;
-    return offset + 2;
-  };
-  Buffer2.prototype.writeInt32LE = function writeInt32LE(value2, offset, noAssert) {
-    value2 = +value2;
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkInt(this, value2, offset, 4, 2147483647, -2147483648);
-    this[offset] = value2 & 255;
-    this[offset + 1] = value2 >>> 8;
-    this[offset + 2] = value2 >>> 16;
-    this[offset + 3] = value2 >>> 24;
-    return offset + 4;
-  };
-  Buffer2.prototype.writeInt32BE = function writeInt32BE(value2, offset, noAssert) {
-    value2 = +value2;
-    offset = offset >>> 0;
-    if (!noAssert)
-      checkInt(this, value2, offset, 4, 2147483647, -2147483648);
-    if (value2 < 0)
-      value2 = 4294967295 + value2 + 1;
-    this[offset] = value2 >>> 24;
-    this[offset + 1] = value2 >>> 16;
-    this[offset + 2] = value2 >>> 8;
-    this[offset + 3] = value2 & 255;
-    return offset + 4;
-  };
-  Buffer2.prototype.writeBigInt64LE = defineBigIntMethod(function writeBigInt64LE(value2, offset = 0) {
-    return wrtBigUInt64LE(this, value2, offset, -BigInt("0x8000000000000000"), BigInt("0x7fffffffffffffff"));
-  });
-  Buffer2.prototype.writeBigInt64BE = defineBigIntMethod(function writeBigInt64BE(value2, offset = 0) {
-    return wrtBigUInt64BE(this, value2, offset, -BigInt("0x8000000000000000"), BigInt("0x7fffffffffffffff"));
-  });
-  function checkIEEE754(buf2, value2, offset, ext, max, min) {
-    if (offset + ext > buf2.length)
-      throw new RangeError("Index out of range");
-    if (offset < 0)
-      throw new RangeError("Index out of range");
-  }
-  function writeFloat(buf2, value2, offset, littleEndian, noAssert) {
-    value2 = +value2;
-    offset = offset >>> 0;
-    if (!noAssert) {
-      checkIEEE754(buf2, value2, offset, 4);
-    }
-    ieee754$1.write(buf2, value2, offset, littleEndian, 23, 4);
-    return offset + 4;
-  }
-  Buffer2.prototype.writeFloatLE = function writeFloatLE(value2, offset, noAssert) {
-    return writeFloat(this, value2, offset, true, noAssert);
-  };
-  Buffer2.prototype.writeFloatBE = function writeFloatBE(value2, offset, noAssert) {
-    return writeFloat(this, value2, offset, false, noAssert);
-  };
-  function writeDouble(buf2, value2, offset, littleEndian, noAssert) {
-    value2 = +value2;
-    offset = offset >>> 0;
-    if (!noAssert) {
-      checkIEEE754(buf2, value2, offset, 8);
-    }
-    ieee754$1.write(buf2, value2, offset, littleEndian, 52, 8);
-    return offset + 8;
-  }
-  Buffer2.prototype.writeDoubleLE = function writeDoubleLE(value2, offset, noAssert) {
-    return writeDouble(this, value2, offset, true, noAssert);
-  };
-  Buffer2.prototype.writeDoubleBE = function writeDoubleBE(value2, offset, noAssert) {
-    return writeDouble(this, value2, offset, false, noAssert);
-  };
-  Buffer2.prototype.copy = function copy(target, targetStart, start, end) {
-    if (!Buffer2.isBuffer(target))
-      throw new TypeError("argument should be a Buffer");
-    if (!start)
-      start = 0;
-    if (!end && end !== 0)
-      end = this.length;
-    if (targetStart >= target.length)
-      targetStart = target.length;
-    if (!targetStart)
-      targetStart = 0;
-    if (end > 0 && end < start)
-      end = start;
-    if (end === start)
-      return 0;
-    if (target.length === 0 || this.length === 0)
-      return 0;
-    if (targetStart < 0) {
-      throw new RangeError("targetStart out of bounds");
-    }
-    if (start < 0 || start >= this.length)
-      throw new RangeError("Index out of range");
-    if (end < 0)
-      throw new RangeError("sourceEnd out of bounds");
-    if (end > this.length)
-      end = this.length;
-    if (target.length - targetStart < end - start) {
-      end = target.length - targetStart + start;
-    }
-    const len2 = end - start;
-    if (this === target && typeof Uint8Array.prototype.copyWithin === "function") {
-      this.copyWithin(targetStart, start, end);
-    } else {
-      Uint8Array.prototype.set.call(target, this.subarray(start, end), targetStart);
-    }
-    return len2;
-  };
-  Buffer2.prototype.fill = function fill(val, start, end, encoding) {
-    if (typeof val === "string") {
-      if (typeof start === "string") {
-        encoding = start;
-        start = 0;
-        end = this.length;
-      } else if (typeof end === "string") {
-        encoding = end;
-        end = this.length;
-      }
-      if (encoding !== void 0 && typeof encoding !== "string") {
-        throw new TypeError("encoding must be a string");
-      }
-      if (typeof encoding === "string" && !Buffer2.isEncoding(encoding)) {
-        throw new TypeError("Unknown encoding: " + encoding);
-      }
-      if (val.length === 1) {
-        const code2 = val.charCodeAt(0);
-        if (encoding === "utf8" && code2 < 128 || encoding === "latin1") {
-          val = code2;
-        }
-      }
-    } else if (typeof val === "number") {
-      val = val & 255;
-    } else if (typeof val === "boolean") {
-      val = Number(val);
-    }
-    if (start < 0 || this.length < start || this.length < end) {
-      throw new RangeError("Out of range index");
-    }
-    if (end <= start) {
-      return this;
-    }
-    start = start >>> 0;
-    end = end === void 0 ? this.length : end >>> 0;
-    if (!val)
-      val = 0;
-    let i2;
-    if (typeof val === "number") {
-      for (i2 = start; i2 < end; ++i2) {
-        this[i2] = val;
-      }
-    } else {
-      const bytes = Buffer2.isBuffer(val) ? val : Buffer2.from(val, encoding);
-      const len2 = bytes.length;
-      if (len2 === 0) {
-        throw new TypeError('The value "' + val + '" is invalid for argument "value"');
-      }
-      for (i2 = 0; i2 < end - start; ++i2) {
-        this[i2 + start] = bytes[i2 % len2];
-      }
-    }
-    return this;
-  };
-  const errors = {};
-  function E(sym, getMessage, Base2) {
-    errors[sym] = class NodeError extends Base2 {
-      constructor() {
-        super();
-        Object.defineProperty(this, "message", {
-          value: getMessage.apply(this, arguments),
-          writable: true,
-          configurable: true
-        });
-        this.name = `${this.name} [${sym}]`;
-        this.stack;
-        delete this.name;
-      }
-      get code() {
-        return sym;
-      }
-      set code(value2) {
-        Object.defineProperty(this, "code", {
-          configurable: true,
-          enumerable: true,
-          value: value2,
-          writable: true
-        });
-      }
-      toString() {
-        return `${this.name} [${sym}]: ${this.message}`;
-      }
-    };
-  }
-  E("ERR_BUFFER_OUT_OF_BOUNDS", function(name2) {
-    if (name2) {
-      return `${name2} is outside of buffer bounds`;
-    }
-    return "Attempt to access memory outside buffer bounds";
-  }, RangeError);
-  E("ERR_INVALID_ARG_TYPE", function(name2, actual) {
-    return `The "${name2}" argument must be of type number. Received type ${typeof actual}`;
-  }, TypeError);
-  E("ERR_OUT_OF_RANGE", function(str, range, input) {
-    let msg2 = `The value of "${str}" is out of range.`;
-    let received = input;
-    if (Number.isInteger(input) && Math.abs(input) > 2 ** 32) {
-      received = addNumericalSeparator(String(input));
-    } else if (typeof input === "bigint") {
-      received = String(input);
-      if (input > BigInt(2) ** BigInt(32) || input < -(BigInt(2) ** BigInt(32))) {
-        received = addNumericalSeparator(received);
-      }
-      received += "n";
-    }
-    msg2 += ` It must be ${range}. Received ${received}`;
-    return msg2;
-  }, RangeError);
-  function addNumericalSeparator(val) {
-    let res = "";
-    let i2 = val.length;
-    const start = val[0] === "-" ? 1 : 0;
-    for (; i2 >= start + 4; i2 -= 3) {
-      res = `_${val.slice(i2 - 3, i2)}${res}`;
-    }
-    return `${val.slice(0, i2)}${res}`;
-  }
-  function checkBounds(buf2, offset, byteLength3) {
-    validateNumber(offset, "offset");
-    if (buf2[offset] === void 0 || buf2[offset + byteLength3] === void 0) {
-      boundsError(offset, buf2.length - (byteLength3 + 1));
-    }
-  }
-  function checkIntBI(value2, min, max, buf2, offset, byteLength3) {
-    if (value2 > max || value2 < min) {
-      const n2 = typeof min === "bigint" ? "n" : "";
-      let range;
-      if (byteLength3 > 3) {
-        if (min === 0 || min === BigInt(0)) {
-          range = `>= 0${n2} and < 2${n2} ** ${(byteLength3 + 1) * 8}${n2}`;
-        } else {
-          range = `>= -(2${n2} ** ${(byteLength3 + 1) * 8 - 1}${n2}) and < 2 ** ${(byteLength3 + 1) * 8 - 1}${n2}`;
-        }
-      } else {
-        range = `>= ${min}${n2} and <= ${max}${n2}`;
-      }
-      throw new errors.ERR_OUT_OF_RANGE("value", range, value2);
-    }
-    checkBounds(buf2, offset, byteLength3);
-  }
-  function validateNumber(value2, name2) {
-    if (typeof value2 !== "number") {
-      throw new errors.ERR_INVALID_ARG_TYPE(name2, "number", value2);
-    }
-  }
-  function boundsError(value2, length, type) {
-    if (Math.floor(value2) !== value2) {
-      validateNumber(value2, type);
-      throw new errors.ERR_OUT_OF_RANGE(type || "offset", "an integer", value2);
-    }
-    if (length < 0) {
-      throw new errors.ERR_BUFFER_OUT_OF_BOUNDS();
-    }
-    throw new errors.ERR_OUT_OF_RANGE(type || "offset", `>= ${type ? 1 : 0} and <= ${length}`, value2);
-  }
-  const INVALID_BASE64_RE = /[^+/0-9A-Za-z-_]/g;
-  function base64clean(str) {
-    str = str.split("=")[0];
-    str = str.trim().replace(INVALID_BASE64_RE, "");
-    if (str.length < 2)
-      return "";
-    while (str.length % 4 !== 0) {
-      str = str + "=";
-    }
-    return str;
-  }
-  function utf8ToBytes(string2, units) {
-    units = units || Infinity;
-    let codePoint;
-    const length = string2.length;
-    let leadSurrogate = null;
-    const bytes = [];
-    for (let i2 = 0; i2 < length; ++i2) {
-      codePoint = string2.charCodeAt(i2);
-      if (codePoint > 55295 && codePoint < 57344) {
-        if (!leadSurrogate) {
-          if (codePoint > 56319) {
-            if ((units -= 3) > -1)
-              bytes.push(239, 191, 189);
-            continue;
-          } else if (i2 + 1 === length) {
-            if ((units -= 3) > -1)
-              bytes.push(239, 191, 189);
-            continue;
-          }
-          leadSurrogate = codePoint;
-          continue;
-        }
-        if (codePoint < 56320) {
-          if ((units -= 3) > -1)
-            bytes.push(239, 191, 189);
-          leadSurrogate = codePoint;
-          continue;
-        }
-        codePoint = (leadSurrogate - 55296 << 10 | codePoint - 56320) + 65536;
-      } else if (leadSurrogate) {
-        if ((units -= 3) > -1)
-          bytes.push(239, 191, 189);
-      }
-      leadSurrogate = null;
-      if (codePoint < 128) {
-        if ((units -= 1) < 0)
-          break;
-        bytes.push(codePoint);
-      } else if (codePoint < 2048) {
-        if ((units -= 2) < 0)
-          break;
-        bytes.push(codePoint >> 6 | 192, codePoint & 63 | 128);
-      } else if (codePoint < 65536) {
-        if ((units -= 3) < 0)
-          break;
-        bytes.push(codePoint >> 12 | 224, codePoint >> 6 & 63 | 128, codePoint & 63 | 128);
-      } else if (codePoint < 1114112) {
-        if ((units -= 4) < 0)
-          break;
-        bytes.push(codePoint >> 18 | 240, codePoint >> 12 & 63 | 128, codePoint >> 6 & 63 | 128, codePoint & 63 | 128);
-      } else {
-        throw new Error("Invalid code point");
-      }
-    }
-    return bytes;
-  }
-  function asciiToBytes(str) {
-    const byteArray = [];
-    for (let i2 = 0; i2 < str.length; ++i2) {
-      byteArray.push(str.charCodeAt(i2) & 255);
-    }
-    return byteArray;
-  }
-  function utf16leToBytes(str, units) {
-    let c2, hi, lo;
-    const byteArray = [];
-    for (let i2 = 0; i2 < str.length; ++i2) {
-      if ((units -= 2) < 0)
-        break;
-      c2 = str.charCodeAt(i2);
-      hi = c2 >> 8;
-      lo = c2 % 256;
-      byteArray.push(lo);
-      byteArray.push(hi);
-    }
-    return byteArray;
-  }
-  function base64ToBytes(str) {
-    return base64.toByteArray(base64clean(str));
-  }
-  function blitBuffer(src, dst, offset, length) {
-    let i2;
-    for (i2 = 0; i2 < length; ++i2) {
-      if (i2 + offset >= dst.length || i2 >= src.length)
-        break;
-      dst[i2 + offset] = src[i2];
-    }
-    return i2;
-  }
-  function isInstance(obj, type) {
-    return obj instanceof type || obj != null && obj.constructor != null && obj.constructor.name != null && obj.constructor.name === type.name;
-  }
-  function numberIsNaN(obj) {
-    return obj !== obj;
-  }
-  const hexSliceLookupTable = function() {
-    const alphabet = "0123456789abcdef";
-    const table2 = new Array(256);
-    for (let i2 = 0; i2 < 16; ++i2) {
-      const i16 = i2 * 16;
-      for (let j = 0; j < 16; ++j) {
-        table2[i16 + j] = alphabet[i2] + alphabet[j];
-      }
-    }
-    return table2;
-  }();
-  function defineBigIntMethod(fn) {
-    return typeof BigInt === "undefined" ? BufferBigIntNotDefined : fn;
-  }
-  function BufferBigIntNotDefined() {
-    throw new Error("BigInt not supported");
-  }
-})(buffer);
-var browser$2 = { exports: {} };
-var process$1 = browser$2.exports = {};
-var cachedSetTimeout;
-var cachedClearTimeout;
-function defaultSetTimout() {
-  throw new Error("setTimeout has not been defined");
-}
-function defaultClearTimeout() {
-  throw new Error("clearTimeout has not been defined");
-}
-(function() {
-  try {
-    if (typeof setTimeout === "function") {
-      cachedSetTimeout = setTimeout;
-    } else {
-      cachedSetTimeout = defaultSetTimout;
-    }
-  } catch (e2) {
-    cachedSetTimeout = defaultSetTimout;
-  }
-  try {
-    if (typeof clearTimeout === "function") {
-      cachedClearTimeout = clearTimeout;
-    } else {
-      cachedClearTimeout = defaultClearTimeout;
-    }
-  } catch (e2) {
-    cachedClearTimeout = defaultClearTimeout;
-  }
-})();
-function runTimeout(fun) {
-  if (cachedSetTimeout === setTimeout) {
-    return setTimeout(fun, 0);
-  }
-  if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-    cachedSetTimeout = setTimeout;
-    return setTimeout(fun, 0);
-  }
-  try {
-    return cachedSetTimeout(fun, 0);
-  } catch (e2) {
-    try {
-      return cachedSetTimeout.call(null, fun, 0);
-    } catch (e3) {
-      return cachedSetTimeout.call(this, fun, 0);
-    }
-  }
-}
-function runClearTimeout(marker) {
-  if (cachedClearTimeout === clearTimeout) {
-    return clearTimeout(marker);
-  }
-  if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-    cachedClearTimeout = clearTimeout;
-    return clearTimeout(marker);
-  }
-  try {
-    return cachedClearTimeout(marker);
-  } catch (e2) {
-    try {
-      return cachedClearTimeout.call(null, marker);
-    } catch (e3) {
-      return cachedClearTimeout.call(this, marker);
-    }
-  }
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-function cleanUpNextTick() {
-  if (!draining || !currentQueue) {
-    return;
-  }
-  draining = false;
-  if (currentQueue.length) {
-    queue = currentQueue.concat(queue);
-  } else {
-    queueIndex = -1;
-  }
-  if (queue.length) {
-    drainQueue();
-  }
-}
-function drainQueue() {
-  if (draining) {
-    return;
-  }
-  var timeout = runTimeout(cleanUpNextTick);
-  draining = true;
-  var len2 = queue.length;
-  while (len2) {
-    currentQueue = queue;
-    queue = [];
-    while (++queueIndex < len2) {
-      if (currentQueue) {
-        currentQueue[queueIndex].run();
-      }
-    }
-    queueIndex = -1;
-    len2 = queue.length;
-  }
-  currentQueue = null;
-  draining = false;
-  runClearTimeout(timeout);
-}
-process$1.nextTick = function(fun) {
-  var args = new Array(arguments.length - 1);
-  if (arguments.length > 1) {
-    for (var i2 = 1; i2 < arguments.length; i2++) {
-      args[i2 - 1] = arguments[i2];
-    }
-  }
-  queue.push(new Item(fun, args));
-  if (queue.length === 1 && !draining) {
-    runTimeout(drainQueue);
-  }
-};
-function Item(fun, array2) {
-  this.fun = fun;
-  this.array = array2;
-}
-Item.prototype.run = function() {
-  this.fun.apply(null, this.array);
-};
-process$1.title = "browser";
-process$1.browser = true;
-process$1.env = {};
-process$1.argv = [];
-process$1.version = "";
-process$1.versions = {};
-function noop$2() {
-}
-process$1.on = noop$2;
-process$1.addListener = noop$2;
-process$1.once = noop$2;
-process$1.off = noop$2;
-process$1.removeListener = noop$2;
-process$1.removeAllListeners = noop$2;
-process$1.emit = noop$2;
-process$1.prependListener = noop$2;
-process$1.prependOnceListener = noop$2;
-process$1.listeners = function(name2) {
-  return [];
-};
-process$1.binding = function(name2) {
-  throw new Error("process.binding is not supported");
-};
-process$1.cwd = function() {
-  return "/";
-};
-process$1.chdir = function(dir) {
-  throw new Error("process.chdir is not supported");
-};
-process$1.umask = function() {
-  return 0;
-};
-var process$2 = browser$2.exports;
 var lib = {};
 class Cursor$1 {
   constructor(width, height, x, y2) {
@@ -26412,7 +19255,7 @@ const keywords = [
 const license = "MIT";
 const homepage = "https://github.com/rkusa/pdfjs";
 const bugs = "https://github.com/rkusa/pdfjs/issues";
-const main = "lib/index.js";
+const main$1 = "lib/index.js";
 const scripts = {
   test: "npm run test:pdfs && npm run test:types",
   "test:pdfs": "node test/index.js",
@@ -26441,7 +19284,7 @@ const engines = {
   node: ">=7"
 };
 const types = "./types/main.d.ts";
-var require$$0$1 = {
+var require$$0$3 = {
   name,
   author,
   version: version$2,
@@ -26450,7 +19293,7 @@ var require$$0$1 = {
   license,
   homepage,
   bugs,
-  main,
+  main: main$1,
   scripts,
   dependencies,
   devDependencies,
@@ -26458,7 +19301,7 @@ var require$$0$1 = {
   engines,
   types
 };
-const version$1 = require$$0$1.version;
+const version$1 = require$$0$3.version;
 const PDFDictionary$1 = dictionary;
 const PDFArray$1 = array;
 const PDFString$1 = string;
@@ -29803,6 +22646,1820 @@ function eventTargetAgnosticAddListener(emitter, name2, listener, flags) {
   }
 }
 var streamBrowser = events.exports.EventEmitter;
+var buffer = {};
+var base64Js = {};
+base64Js.byteLength = byteLength;
+base64Js.toByteArray = toByteArray;
+base64Js.fromByteArray = fromByteArray;
+var lookup = [];
+var revLookup = [];
+var Arr = typeof Uint8Array !== "undefined" ? Uint8Array : Array;
+var code = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+for (var i$1 = 0, len = code.length; i$1 < len; ++i$1) {
+  lookup[i$1] = code[i$1];
+  revLookup[code.charCodeAt(i$1)] = i$1;
+}
+revLookup["-".charCodeAt(0)] = 62;
+revLookup["_".charCodeAt(0)] = 63;
+function getLens(b64) {
+  var len2 = b64.length;
+  if (len2 % 4 > 0) {
+    throw new Error("Invalid string. Length must be a multiple of 4");
+  }
+  var validLen = b64.indexOf("=");
+  if (validLen === -1)
+    validLen = len2;
+  var placeHoldersLen = validLen === len2 ? 0 : 4 - validLen % 4;
+  return [validLen, placeHoldersLen];
+}
+function byteLength(b64) {
+  var lens = getLens(b64);
+  var validLen = lens[0];
+  var placeHoldersLen = lens[1];
+  return (validLen + placeHoldersLen) * 3 / 4 - placeHoldersLen;
+}
+function _byteLength(b64, validLen, placeHoldersLen) {
+  return (validLen + placeHoldersLen) * 3 / 4 - placeHoldersLen;
+}
+function toByteArray(b64) {
+  var tmp;
+  var lens = getLens(b64);
+  var validLen = lens[0];
+  var placeHoldersLen = lens[1];
+  var arr = new Arr(_byteLength(b64, validLen, placeHoldersLen));
+  var curByte = 0;
+  var len2 = placeHoldersLen > 0 ? validLen - 4 : validLen;
+  var i2;
+  for (i2 = 0; i2 < len2; i2 += 4) {
+    tmp = revLookup[b64.charCodeAt(i2)] << 18 | revLookup[b64.charCodeAt(i2 + 1)] << 12 | revLookup[b64.charCodeAt(i2 + 2)] << 6 | revLookup[b64.charCodeAt(i2 + 3)];
+    arr[curByte++] = tmp >> 16 & 255;
+    arr[curByte++] = tmp >> 8 & 255;
+    arr[curByte++] = tmp & 255;
+  }
+  if (placeHoldersLen === 2) {
+    tmp = revLookup[b64.charCodeAt(i2)] << 2 | revLookup[b64.charCodeAt(i2 + 1)] >> 4;
+    arr[curByte++] = tmp & 255;
+  }
+  if (placeHoldersLen === 1) {
+    tmp = revLookup[b64.charCodeAt(i2)] << 10 | revLookup[b64.charCodeAt(i2 + 1)] << 4 | revLookup[b64.charCodeAt(i2 + 2)] >> 2;
+    arr[curByte++] = tmp >> 8 & 255;
+    arr[curByte++] = tmp & 255;
+  }
+  return arr;
+}
+function tripletToBase64(num) {
+  return lookup[num >> 18 & 63] + lookup[num >> 12 & 63] + lookup[num >> 6 & 63] + lookup[num & 63];
+}
+function encodeChunk(uint8, start, end) {
+  var tmp;
+  var output = [];
+  for (var i2 = start; i2 < end; i2 += 3) {
+    tmp = (uint8[i2] << 16 & 16711680) + (uint8[i2 + 1] << 8 & 65280) + (uint8[i2 + 2] & 255);
+    output.push(tripletToBase64(tmp));
+  }
+  return output.join("");
+}
+function fromByteArray(uint8) {
+  var tmp;
+  var len2 = uint8.length;
+  var extraBytes = len2 % 3;
+  var parts = [];
+  var maxChunkLength = 16383;
+  for (var i2 = 0, len22 = len2 - extraBytes; i2 < len22; i2 += maxChunkLength) {
+    parts.push(encodeChunk(uint8, i2, i2 + maxChunkLength > len22 ? len22 : i2 + maxChunkLength));
+  }
+  if (extraBytes === 1) {
+    tmp = uint8[len2 - 1];
+    parts.push(lookup[tmp >> 2] + lookup[tmp << 4 & 63] + "==");
+  } else if (extraBytes === 2) {
+    tmp = (uint8[len2 - 2] << 8) + uint8[len2 - 1];
+    parts.push(lookup[tmp >> 10] + lookup[tmp >> 4 & 63] + lookup[tmp << 2 & 63] + "=");
+  }
+  return parts.join("");
+}
+var ieee754 = {};
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
+ieee754.read = function(buffer2, offset, isLE, mLen, nBytes) {
+  var e2, m2;
+  var eLen = nBytes * 8 - mLen - 1;
+  var eMax = (1 << eLen) - 1;
+  var eBias = eMax >> 1;
+  var nBits = -7;
+  var i2 = isLE ? nBytes - 1 : 0;
+  var d2 = isLE ? -1 : 1;
+  var s2 = buffer2[offset + i2];
+  i2 += d2;
+  e2 = s2 & (1 << -nBits) - 1;
+  s2 >>= -nBits;
+  nBits += eLen;
+  for (; nBits > 0; e2 = e2 * 256 + buffer2[offset + i2], i2 += d2, nBits -= 8) {
+  }
+  m2 = e2 & (1 << -nBits) - 1;
+  e2 >>= -nBits;
+  nBits += mLen;
+  for (; nBits > 0; m2 = m2 * 256 + buffer2[offset + i2], i2 += d2, nBits -= 8) {
+  }
+  if (e2 === 0) {
+    e2 = 1 - eBias;
+  } else if (e2 === eMax) {
+    return m2 ? NaN : (s2 ? -1 : 1) * Infinity;
+  } else {
+    m2 = m2 + Math.pow(2, mLen);
+    e2 = e2 - eBias;
+  }
+  return (s2 ? -1 : 1) * m2 * Math.pow(2, e2 - mLen);
+};
+ieee754.write = function(buffer2, value2, offset, isLE, mLen, nBytes) {
+  var e2, m2, c2;
+  var eLen = nBytes * 8 - mLen - 1;
+  var eMax = (1 << eLen) - 1;
+  var eBias = eMax >> 1;
+  var rt = mLen === 23 ? Math.pow(2, -24) - Math.pow(2, -77) : 0;
+  var i2 = isLE ? 0 : nBytes - 1;
+  var d2 = isLE ? 1 : -1;
+  var s2 = value2 < 0 || value2 === 0 && 1 / value2 < 0 ? 1 : 0;
+  value2 = Math.abs(value2);
+  if (isNaN(value2) || value2 === Infinity) {
+    m2 = isNaN(value2) ? 1 : 0;
+    e2 = eMax;
+  } else {
+    e2 = Math.floor(Math.log(value2) / Math.LN2);
+    if (value2 * (c2 = Math.pow(2, -e2)) < 1) {
+      e2--;
+      c2 *= 2;
+    }
+    if (e2 + eBias >= 1) {
+      value2 += rt / c2;
+    } else {
+      value2 += rt * Math.pow(2, 1 - eBias);
+    }
+    if (value2 * c2 >= 2) {
+      e2++;
+      c2 /= 2;
+    }
+    if (e2 + eBias >= eMax) {
+      m2 = 0;
+      e2 = eMax;
+    } else if (e2 + eBias >= 1) {
+      m2 = (value2 * c2 - 1) * Math.pow(2, mLen);
+      e2 = e2 + eBias;
+    } else {
+      m2 = value2 * Math.pow(2, eBias - 1) * Math.pow(2, mLen);
+      e2 = 0;
+    }
+  }
+  for (; mLen >= 8; buffer2[offset + i2] = m2 & 255, i2 += d2, m2 /= 256, mLen -= 8) {
+  }
+  e2 = e2 << mLen | m2;
+  eLen += mLen;
+  for (; eLen > 0; buffer2[offset + i2] = e2 & 255, i2 += d2, e2 /= 256, eLen -= 8) {
+  }
+  buffer2[offset + i2 - d2] |= s2 * 128;
+};
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+(function(exports2) {
+  const base64 = base64Js;
+  const ieee754$1 = ieee754;
+  const customInspectSymbol = typeof Symbol === "function" && typeof Symbol["for"] === "function" ? Symbol["for"]("nodejs.util.inspect.custom") : null;
+  exports2.Buffer = Buffer2;
+  exports2.SlowBuffer = SlowBuffer;
+  exports2.INSPECT_MAX_BYTES = 50;
+  const K_MAX_LENGTH = 2147483647;
+  exports2.kMaxLength = K_MAX_LENGTH;
+  Buffer2.TYPED_ARRAY_SUPPORT = typedArraySupport();
+  if (!Buffer2.TYPED_ARRAY_SUPPORT && typeof console !== "undefined" && typeof console.error === "function") {
+    console.error("This browser lacks typed array (Uint8Array) support which is required by `buffer` v5.x. Use `buffer` v4.x if you require old browser support.");
+  }
+  function typedArraySupport() {
+    try {
+      const arr = new Uint8Array(1);
+      const proto = { foo: function() {
+        return 42;
+      } };
+      Object.setPrototypeOf(proto, Uint8Array.prototype);
+      Object.setPrototypeOf(arr, proto);
+      return arr.foo() === 42;
+    } catch (e2) {
+      return false;
+    }
+  }
+  Object.defineProperty(Buffer2.prototype, "parent", {
+    enumerable: true,
+    get: function() {
+      if (!Buffer2.isBuffer(this))
+        return void 0;
+      return this.buffer;
+    }
+  });
+  Object.defineProperty(Buffer2.prototype, "offset", {
+    enumerable: true,
+    get: function() {
+      if (!Buffer2.isBuffer(this))
+        return void 0;
+      return this.byteOffset;
+    }
+  });
+  function createBuffer(length) {
+    if (length > K_MAX_LENGTH) {
+      throw new RangeError('The value "' + length + '" is invalid for option "size"');
+    }
+    const buf2 = new Uint8Array(length);
+    Object.setPrototypeOf(buf2, Buffer2.prototype);
+    return buf2;
+  }
+  function Buffer2(arg, encodingOrOffset, length) {
+    if (typeof arg === "number") {
+      if (typeof encodingOrOffset === "string") {
+        throw new TypeError('The "string" argument must be of type string. Received type number');
+      }
+      return allocUnsafe(arg);
+    }
+    return from2(arg, encodingOrOffset, length);
+  }
+  Buffer2.poolSize = 8192;
+  function from2(value2, encodingOrOffset, length) {
+    if (typeof value2 === "string") {
+      return fromString(value2, encodingOrOffset);
+    }
+    if (ArrayBuffer.isView(value2)) {
+      return fromArrayView(value2);
+    }
+    if (value2 == null) {
+      throw new TypeError("The first argument must be one of type string, Buffer, ArrayBuffer, Array, or Array-like Object. Received type " + typeof value2);
+    }
+    if (isInstance(value2, ArrayBuffer) || value2 && isInstance(value2.buffer, ArrayBuffer)) {
+      return fromArrayBuffer(value2, encodingOrOffset, length);
+    }
+    if (typeof SharedArrayBuffer !== "undefined" && (isInstance(value2, SharedArrayBuffer) || value2 && isInstance(value2.buffer, SharedArrayBuffer))) {
+      return fromArrayBuffer(value2, encodingOrOffset, length);
+    }
+    if (typeof value2 === "number") {
+      throw new TypeError('The "value" argument must not be of type number. Received type number');
+    }
+    const valueOf = value2.valueOf && value2.valueOf();
+    if (valueOf != null && valueOf !== value2) {
+      return Buffer2.from(valueOf, encodingOrOffset, length);
+    }
+    const b2 = fromObject(value2);
+    if (b2)
+      return b2;
+    if (typeof Symbol !== "undefined" && Symbol.toPrimitive != null && typeof value2[Symbol.toPrimitive] === "function") {
+      return Buffer2.from(value2[Symbol.toPrimitive]("string"), encodingOrOffset, length);
+    }
+    throw new TypeError("The first argument must be one of type string, Buffer, ArrayBuffer, Array, or Array-like Object. Received type " + typeof value2);
+  }
+  Buffer2.from = function(value2, encodingOrOffset, length) {
+    return from2(value2, encodingOrOffset, length);
+  };
+  Object.setPrototypeOf(Buffer2.prototype, Uint8Array.prototype);
+  Object.setPrototypeOf(Buffer2, Uint8Array);
+  function assertSize(size2) {
+    if (typeof size2 !== "number") {
+      throw new TypeError('"size" argument must be of type number');
+    } else if (size2 < 0) {
+      throw new RangeError('The value "' + size2 + '" is invalid for option "size"');
+    }
+  }
+  function alloc(size2, fill, encoding) {
+    assertSize(size2);
+    if (size2 <= 0) {
+      return createBuffer(size2);
+    }
+    if (fill !== void 0) {
+      return typeof encoding === "string" ? createBuffer(size2).fill(fill, encoding) : createBuffer(size2).fill(fill);
+    }
+    return createBuffer(size2);
+  }
+  Buffer2.alloc = function(size2, fill, encoding) {
+    return alloc(size2, fill, encoding);
+  };
+  function allocUnsafe(size2) {
+    assertSize(size2);
+    return createBuffer(size2 < 0 ? 0 : checked(size2) | 0);
+  }
+  Buffer2.allocUnsafe = function(size2) {
+    return allocUnsafe(size2);
+  };
+  Buffer2.allocUnsafeSlow = function(size2) {
+    return allocUnsafe(size2);
+  };
+  function fromString(string2, encoding) {
+    if (typeof encoding !== "string" || encoding === "") {
+      encoding = "utf8";
+    }
+    if (!Buffer2.isEncoding(encoding)) {
+      throw new TypeError("Unknown encoding: " + encoding);
+    }
+    const length = byteLength2(string2, encoding) | 0;
+    let buf2 = createBuffer(length);
+    const actual = buf2.write(string2, encoding);
+    if (actual !== length) {
+      buf2 = buf2.slice(0, actual);
+    }
+    return buf2;
+  }
+  function fromArrayLike(array2) {
+    const length = array2.length < 0 ? 0 : checked(array2.length) | 0;
+    const buf2 = createBuffer(length);
+    for (let i2 = 0; i2 < length; i2 += 1) {
+      buf2[i2] = array2[i2] & 255;
+    }
+    return buf2;
+  }
+  function fromArrayView(arrayView) {
+    if (isInstance(arrayView, Uint8Array)) {
+      const copy = new Uint8Array(arrayView);
+      return fromArrayBuffer(copy.buffer, copy.byteOffset, copy.byteLength);
+    }
+    return fromArrayLike(arrayView);
+  }
+  function fromArrayBuffer(array2, byteOffset, length) {
+    if (byteOffset < 0 || array2.byteLength < byteOffset) {
+      throw new RangeError('"offset" is outside of buffer bounds');
+    }
+    if (array2.byteLength < byteOffset + (length || 0)) {
+      throw new RangeError('"length" is outside of buffer bounds');
+    }
+    let buf2;
+    if (byteOffset === void 0 && length === void 0) {
+      buf2 = new Uint8Array(array2);
+    } else if (length === void 0) {
+      buf2 = new Uint8Array(array2, byteOffset);
+    } else {
+      buf2 = new Uint8Array(array2, byteOffset, length);
+    }
+    Object.setPrototypeOf(buf2, Buffer2.prototype);
+    return buf2;
+  }
+  function fromObject(obj) {
+    if (Buffer2.isBuffer(obj)) {
+      const len2 = checked(obj.length) | 0;
+      const buf2 = createBuffer(len2);
+      if (buf2.length === 0) {
+        return buf2;
+      }
+      obj.copy(buf2, 0, 0, len2);
+      return buf2;
+    }
+    if (obj.length !== void 0) {
+      if (typeof obj.length !== "number" || numberIsNaN(obj.length)) {
+        return createBuffer(0);
+      }
+      return fromArrayLike(obj);
+    }
+    if (obj.type === "Buffer" && Array.isArray(obj.data)) {
+      return fromArrayLike(obj.data);
+    }
+  }
+  function checked(length) {
+    if (length >= K_MAX_LENGTH) {
+      throw new RangeError("Attempt to allocate Buffer larger than maximum size: 0x" + K_MAX_LENGTH.toString(16) + " bytes");
+    }
+    return length | 0;
+  }
+  function SlowBuffer(length) {
+    if (+length != length) {
+      length = 0;
+    }
+    return Buffer2.alloc(+length);
+  }
+  Buffer2.isBuffer = function isBuffer(b2) {
+    return b2 != null && b2._isBuffer === true && b2 !== Buffer2.prototype;
+  };
+  Buffer2.compare = function compare(a2, b2) {
+    if (isInstance(a2, Uint8Array))
+      a2 = Buffer2.from(a2, a2.offset, a2.byteLength);
+    if (isInstance(b2, Uint8Array))
+      b2 = Buffer2.from(b2, b2.offset, b2.byteLength);
+    if (!Buffer2.isBuffer(a2) || !Buffer2.isBuffer(b2)) {
+      throw new TypeError('The "buf1", "buf2" arguments must be one of type Buffer or Uint8Array');
+    }
+    if (a2 === b2)
+      return 0;
+    let x = a2.length;
+    let y2 = b2.length;
+    for (let i2 = 0, len2 = Math.min(x, y2); i2 < len2; ++i2) {
+      if (a2[i2] !== b2[i2]) {
+        x = a2[i2];
+        y2 = b2[i2];
+        break;
+      }
+    }
+    if (x < y2)
+      return -1;
+    if (y2 < x)
+      return 1;
+    return 0;
+  };
+  Buffer2.isEncoding = function isEncoding2(encoding) {
+    switch (String(encoding).toLowerCase()) {
+      case "hex":
+      case "utf8":
+      case "utf-8":
+      case "ascii":
+      case "latin1":
+      case "binary":
+      case "base64":
+      case "ucs2":
+      case "ucs-2":
+      case "utf16le":
+      case "utf-16le":
+        return true;
+      default:
+        return false;
+    }
+  };
+  Buffer2.concat = function concat(list, length) {
+    if (!Array.isArray(list)) {
+      throw new TypeError('"list" argument must be an Array of Buffers');
+    }
+    if (list.length === 0) {
+      return Buffer2.alloc(0);
+    }
+    let i2;
+    if (length === void 0) {
+      length = 0;
+      for (i2 = 0; i2 < list.length; ++i2) {
+        length += list[i2].length;
+      }
+    }
+    const buffer2 = Buffer2.allocUnsafe(length);
+    let pos = 0;
+    for (i2 = 0; i2 < list.length; ++i2) {
+      let buf2 = list[i2];
+      if (isInstance(buf2, Uint8Array)) {
+        if (pos + buf2.length > buffer2.length) {
+          if (!Buffer2.isBuffer(buf2))
+            buf2 = Buffer2.from(buf2);
+          buf2.copy(buffer2, pos);
+        } else {
+          Uint8Array.prototype.set.call(buffer2, buf2, pos);
+        }
+      } else if (!Buffer2.isBuffer(buf2)) {
+        throw new TypeError('"list" argument must be an Array of Buffers');
+      } else {
+        buf2.copy(buffer2, pos);
+      }
+      pos += buf2.length;
+    }
+    return buffer2;
+  };
+  function byteLength2(string2, encoding) {
+    if (Buffer2.isBuffer(string2)) {
+      return string2.length;
+    }
+    if (ArrayBuffer.isView(string2) || isInstance(string2, ArrayBuffer)) {
+      return string2.byteLength;
+    }
+    if (typeof string2 !== "string") {
+      throw new TypeError('The "string" argument must be one of type string, Buffer, or ArrayBuffer. Received type ' + typeof string2);
+    }
+    const len2 = string2.length;
+    const mustMatch = arguments.length > 2 && arguments[2] === true;
+    if (!mustMatch && len2 === 0)
+      return 0;
+    let loweredCase = false;
+    for (; ; ) {
+      switch (encoding) {
+        case "ascii":
+        case "latin1":
+        case "binary":
+          return len2;
+        case "utf8":
+        case "utf-8":
+          return utf8ToBytes(string2).length;
+        case "ucs2":
+        case "ucs-2":
+        case "utf16le":
+        case "utf-16le":
+          return len2 * 2;
+        case "hex":
+          return len2 >>> 1;
+        case "base64":
+          return base64ToBytes(string2).length;
+        default:
+          if (loweredCase) {
+            return mustMatch ? -1 : utf8ToBytes(string2).length;
+          }
+          encoding = ("" + encoding).toLowerCase();
+          loweredCase = true;
+      }
+    }
+  }
+  Buffer2.byteLength = byteLength2;
+  function slowToString(encoding, start, end) {
+    let loweredCase = false;
+    if (start === void 0 || start < 0) {
+      start = 0;
+    }
+    if (start > this.length) {
+      return "";
+    }
+    if (end === void 0 || end > this.length) {
+      end = this.length;
+    }
+    if (end <= 0) {
+      return "";
+    }
+    end >>>= 0;
+    start >>>= 0;
+    if (end <= start) {
+      return "";
+    }
+    if (!encoding)
+      encoding = "utf8";
+    while (true) {
+      switch (encoding) {
+        case "hex":
+          return hexSlice(this, start, end);
+        case "utf8":
+        case "utf-8":
+          return utf8Slice(this, start, end);
+        case "ascii":
+          return asciiSlice(this, start, end);
+        case "latin1":
+        case "binary":
+          return latin1Slice(this, start, end);
+        case "base64":
+          return base64Slice(this, start, end);
+        case "ucs2":
+        case "ucs-2":
+        case "utf16le":
+        case "utf-16le":
+          return utf16leSlice(this, start, end);
+        default:
+          if (loweredCase)
+            throw new TypeError("Unknown encoding: " + encoding);
+          encoding = (encoding + "").toLowerCase();
+          loweredCase = true;
+      }
+    }
+  }
+  Buffer2.prototype._isBuffer = true;
+  function swap(b2, n2, m2) {
+    const i2 = b2[n2];
+    b2[n2] = b2[m2];
+    b2[m2] = i2;
+  }
+  Buffer2.prototype.swap16 = function swap16() {
+    const len2 = this.length;
+    if (len2 % 2 !== 0) {
+      throw new RangeError("Buffer size must be a multiple of 16-bits");
+    }
+    for (let i2 = 0; i2 < len2; i2 += 2) {
+      swap(this, i2, i2 + 1);
+    }
+    return this;
+  };
+  Buffer2.prototype.swap32 = function swap32() {
+    const len2 = this.length;
+    if (len2 % 4 !== 0) {
+      throw new RangeError("Buffer size must be a multiple of 32-bits");
+    }
+    for (let i2 = 0; i2 < len2; i2 += 4) {
+      swap(this, i2, i2 + 3);
+      swap(this, i2 + 1, i2 + 2);
+    }
+    return this;
+  };
+  Buffer2.prototype.swap64 = function swap64() {
+    const len2 = this.length;
+    if (len2 % 8 !== 0) {
+      throw new RangeError("Buffer size must be a multiple of 64-bits");
+    }
+    for (let i2 = 0; i2 < len2; i2 += 8) {
+      swap(this, i2, i2 + 7);
+      swap(this, i2 + 1, i2 + 6);
+      swap(this, i2 + 2, i2 + 5);
+      swap(this, i2 + 3, i2 + 4);
+    }
+    return this;
+  };
+  Buffer2.prototype.toString = function toString2() {
+    const length = this.length;
+    if (length === 0)
+      return "";
+    if (arguments.length === 0)
+      return utf8Slice(this, 0, length);
+    return slowToString.apply(this, arguments);
+  };
+  Buffer2.prototype.toLocaleString = Buffer2.prototype.toString;
+  Buffer2.prototype.equals = function equals2(b2) {
+    if (!Buffer2.isBuffer(b2))
+      throw new TypeError("Argument must be a Buffer");
+    if (this === b2)
+      return true;
+    return Buffer2.compare(this, b2) === 0;
+  };
+  Buffer2.prototype.inspect = function inspect2() {
+    let str = "";
+    const max = exports2.INSPECT_MAX_BYTES;
+    str = this.toString("hex", 0, max).replace(/(.{2})/g, "$1 ").trim();
+    if (this.length > max)
+      str += " ... ";
+    return "<Buffer " + str + ">";
+  };
+  if (customInspectSymbol) {
+    Buffer2.prototype[customInspectSymbol] = Buffer2.prototype.inspect;
+  }
+  Buffer2.prototype.compare = function compare(target, start, end, thisStart, thisEnd) {
+    if (isInstance(target, Uint8Array)) {
+      target = Buffer2.from(target, target.offset, target.byteLength);
+    }
+    if (!Buffer2.isBuffer(target)) {
+      throw new TypeError('The "target" argument must be one of type Buffer or Uint8Array. Received type ' + typeof target);
+    }
+    if (start === void 0) {
+      start = 0;
+    }
+    if (end === void 0) {
+      end = target ? target.length : 0;
+    }
+    if (thisStart === void 0) {
+      thisStart = 0;
+    }
+    if (thisEnd === void 0) {
+      thisEnd = this.length;
+    }
+    if (start < 0 || end > target.length || thisStart < 0 || thisEnd > this.length) {
+      throw new RangeError("out of range index");
+    }
+    if (thisStart >= thisEnd && start >= end) {
+      return 0;
+    }
+    if (thisStart >= thisEnd) {
+      return -1;
+    }
+    if (start >= end) {
+      return 1;
+    }
+    start >>>= 0;
+    end >>>= 0;
+    thisStart >>>= 0;
+    thisEnd >>>= 0;
+    if (this === target)
+      return 0;
+    let x = thisEnd - thisStart;
+    let y2 = end - start;
+    const len2 = Math.min(x, y2);
+    const thisCopy = this.slice(thisStart, thisEnd);
+    const targetCopy = target.slice(start, end);
+    for (let i2 = 0; i2 < len2; ++i2) {
+      if (thisCopy[i2] !== targetCopy[i2]) {
+        x = thisCopy[i2];
+        y2 = targetCopy[i2];
+        break;
+      }
+    }
+    if (x < y2)
+      return -1;
+    if (y2 < x)
+      return 1;
+    return 0;
+  };
+  function bidirectionalIndexOf(buffer2, val, byteOffset, encoding, dir) {
+    if (buffer2.length === 0)
+      return -1;
+    if (typeof byteOffset === "string") {
+      encoding = byteOffset;
+      byteOffset = 0;
+    } else if (byteOffset > 2147483647) {
+      byteOffset = 2147483647;
+    } else if (byteOffset < -2147483648) {
+      byteOffset = -2147483648;
+    }
+    byteOffset = +byteOffset;
+    if (numberIsNaN(byteOffset)) {
+      byteOffset = dir ? 0 : buffer2.length - 1;
+    }
+    if (byteOffset < 0)
+      byteOffset = buffer2.length + byteOffset;
+    if (byteOffset >= buffer2.length) {
+      if (dir)
+        return -1;
+      else
+        byteOffset = buffer2.length - 1;
+    } else if (byteOffset < 0) {
+      if (dir)
+        byteOffset = 0;
+      else
+        return -1;
+    }
+    if (typeof val === "string") {
+      val = Buffer2.from(val, encoding);
+    }
+    if (Buffer2.isBuffer(val)) {
+      if (val.length === 0) {
+        return -1;
+      }
+      return arrayIndexOf(buffer2, val, byteOffset, encoding, dir);
+    } else if (typeof val === "number") {
+      val = val & 255;
+      if (typeof Uint8Array.prototype.indexOf === "function") {
+        if (dir) {
+          return Uint8Array.prototype.indexOf.call(buffer2, val, byteOffset);
+        } else {
+          return Uint8Array.prototype.lastIndexOf.call(buffer2, val, byteOffset);
+        }
+      }
+      return arrayIndexOf(buffer2, [val], byteOffset, encoding, dir);
+    }
+    throw new TypeError("val must be string, number or Buffer");
+  }
+  function arrayIndexOf(arr, val, byteOffset, encoding, dir) {
+    let indexSize = 1;
+    let arrLength = arr.length;
+    let valLength = val.length;
+    if (encoding !== void 0) {
+      encoding = String(encoding).toLowerCase();
+      if (encoding === "ucs2" || encoding === "ucs-2" || encoding === "utf16le" || encoding === "utf-16le") {
+        if (arr.length < 2 || val.length < 2) {
+          return -1;
+        }
+        indexSize = 2;
+        arrLength /= 2;
+        valLength /= 2;
+        byteOffset /= 2;
+      }
+    }
+    function read(buf2, i3) {
+      if (indexSize === 1) {
+        return buf2[i3];
+      } else {
+        return buf2.readUInt16BE(i3 * indexSize);
+      }
+    }
+    let i2;
+    if (dir) {
+      let foundIndex = -1;
+      for (i2 = byteOffset; i2 < arrLength; i2++) {
+        if (read(arr, i2) === read(val, foundIndex === -1 ? 0 : i2 - foundIndex)) {
+          if (foundIndex === -1)
+            foundIndex = i2;
+          if (i2 - foundIndex + 1 === valLength)
+            return foundIndex * indexSize;
+        } else {
+          if (foundIndex !== -1)
+            i2 -= i2 - foundIndex;
+          foundIndex = -1;
+        }
+      }
+    } else {
+      if (byteOffset + valLength > arrLength)
+        byteOffset = arrLength - valLength;
+      for (i2 = byteOffset; i2 >= 0; i2--) {
+        let found = true;
+        for (let j = 0; j < valLength; j++) {
+          if (read(arr, i2 + j) !== read(val, j)) {
+            found = false;
+            break;
+          }
+        }
+        if (found)
+          return i2;
+      }
+    }
+    return -1;
+  }
+  Buffer2.prototype.includes = function includes2(val, byteOffset, encoding) {
+    return this.indexOf(val, byteOffset, encoding) !== -1;
+  };
+  Buffer2.prototype.indexOf = function indexOf2(val, byteOffset, encoding) {
+    return bidirectionalIndexOf(this, val, byteOffset, encoding, true);
+  };
+  Buffer2.prototype.lastIndexOf = function lastIndexOf2(val, byteOffset, encoding) {
+    return bidirectionalIndexOf(this, val, byteOffset, encoding, false);
+  };
+  function hexWrite(buf2, string2, offset, length) {
+    offset = Number(offset) || 0;
+    const remaining = buf2.length - offset;
+    if (!length) {
+      length = remaining;
+    } else {
+      length = Number(length);
+      if (length > remaining) {
+        length = remaining;
+      }
+    }
+    const strLen = string2.length;
+    if (length > strLen / 2) {
+      length = strLen / 2;
+    }
+    let i2;
+    for (i2 = 0; i2 < length; ++i2) {
+      const parsed = parseInt(string2.substr(i2 * 2, 2), 16);
+      if (numberIsNaN(parsed))
+        return i2;
+      buf2[offset + i2] = parsed;
+    }
+    return i2;
+  }
+  function utf8Write(buf2, string2, offset, length) {
+    return blitBuffer(utf8ToBytes(string2, buf2.length - offset), buf2, offset, length);
+  }
+  function asciiWrite(buf2, string2, offset, length) {
+    return blitBuffer(asciiToBytes(string2), buf2, offset, length);
+  }
+  function base64Write(buf2, string2, offset, length) {
+    return blitBuffer(base64ToBytes(string2), buf2, offset, length);
+  }
+  function ucs2Write(buf2, string2, offset, length) {
+    return blitBuffer(utf16leToBytes(string2, buf2.length - offset), buf2, offset, length);
+  }
+  Buffer2.prototype.write = function write(string2, offset, length, encoding) {
+    if (offset === void 0) {
+      encoding = "utf8";
+      length = this.length;
+      offset = 0;
+    } else if (length === void 0 && typeof offset === "string") {
+      encoding = offset;
+      length = this.length;
+      offset = 0;
+    } else if (isFinite(offset)) {
+      offset = offset >>> 0;
+      if (isFinite(length)) {
+        length = length >>> 0;
+        if (encoding === void 0)
+          encoding = "utf8";
+      } else {
+        encoding = length;
+        length = void 0;
+      }
+    } else {
+      throw new Error("Buffer.write(string, encoding, offset[, length]) is no longer supported");
+    }
+    const remaining = this.length - offset;
+    if (length === void 0 || length > remaining)
+      length = remaining;
+    if (string2.length > 0 && (length < 0 || offset < 0) || offset > this.length) {
+      throw new RangeError("Attempt to write outside buffer bounds");
+    }
+    if (!encoding)
+      encoding = "utf8";
+    let loweredCase = false;
+    for (; ; ) {
+      switch (encoding) {
+        case "hex":
+          return hexWrite(this, string2, offset, length);
+        case "utf8":
+        case "utf-8":
+          return utf8Write(this, string2, offset, length);
+        case "ascii":
+        case "latin1":
+        case "binary":
+          return asciiWrite(this, string2, offset, length);
+        case "base64":
+          return base64Write(this, string2, offset, length);
+        case "ucs2":
+        case "ucs-2":
+        case "utf16le":
+        case "utf-16le":
+          return ucs2Write(this, string2, offset, length);
+        default:
+          if (loweredCase)
+            throw new TypeError("Unknown encoding: " + encoding);
+          encoding = ("" + encoding).toLowerCase();
+          loweredCase = true;
+      }
+    }
+  };
+  Buffer2.prototype.toJSON = function toJSON() {
+    return {
+      type: "Buffer",
+      data: Array.prototype.slice.call(this._arr || this, 0)
+    };
+  };
+  function base64Slice(buf2, start, end) {
+    if (start === 0 && end === buf2.length) {
+      return base64.fromByteArray(buf2);
+    } else {
+      return base64.fromByteArray(buf2.slice(start, end));
+    }
+  }
+  function utf8Slice(buf2, start, end) {
+    end = Math.min(buf2.length, end);
+    const res = [];
+    let i2 = start;
+    while (i2 < end) {
+      const firstByte = buf2[i2];
+      let codePoint = null;
+      let bytesPerSequence = firstByte > 239 ? 4 : firstByte > 223 ? 3 : firstByte > 191 ? 2 : 1;
+      if (i2 + bytesPerSequence <= end) {
+        let secondByte, thirdByte, fourthByte, tempCodePoint;
+        switch (bytesPerSequence) {
+          case 1:
+            if (firstByte < 128) {
+              codePoint = firstByte;
+            }
+            break;
+          case 2:
+            secondByte = buf2[i2 + 1];
+            if ((secondByte & 192) === 128) {
+              tempCodePoint = (firstByte & 31) << 6 | secondByte & 63;
+              if (tempCodePoint > 127) {
+                codePoint = tempCodePoint;
+              }
+            }
+            break;
+          case 3:
+            secondByte = buf2[i2 + 1];
+            thirdByte = buf2[i2 + 2];
+            if ((secondByte & 192) === 128 && (thirdByte & 192) === 128) {
+              tempCodePoint = (firstByte & 15) << 12 | (secondByte & 63) << 6 | thirdByte & 63;
+              if (tempCodePoint > 2047 && (tempCodePoint < 55296 || tempCodePoint > 57343)) {
+                codePoint = tempCodePoint;
+              }
+            }
+            break;
+          case 4:
+            secondByte = buf2[i2 + 1];
+            thirdByte = buf2[i2 + 2];
+            fourthByte = buf2[i2 + 3];
+            if ((secondByte & 192) === 128 && (thirdByte & 192) === 128 && (fourthByte & 192) === 128) {
+              tempCodePoint = (firstByte & 15) << 18 | (secondByte & 63) << 12 | (thirdByte & 63) << 6 | fourthByte & 63;
+              if (tempCodePoint > 65535 && tempCodePoint < 1114112) {
+                codePoint = tempCodePoint;
+              }
+            }
+        }
+      }
+      if (codePoint === null) {
+        codePoint = 65533;
+        bytesPerSequence = 1;
+      } else if (codePoint > 65535) {
+        codePoint -= 65536;
+        res.push(codePoint >>> 10 & 1023 | 55296);
+        codePoint = 56320 | codePoint & 1023;
+      }
+      res.push(codePoint);
+      i2 += bytesPerSequence;
+    }
+    return decodeCodePointsArray(res);
+  }
+  const MAX_ARGUMENTS_LENGTH = 4096;
+  function decodeCodePointsArray(codePoints) {
+    const len2 = codePoints.length;
+    if (len2 <= MAX_ARGUMENTS_LENGTH) {
+      return String.fromCharCode.apply(String, codePoints);
+    }
+    let res = "";
+    let i2 = 0;
+    while (i2 < len2) {
+      res += String.fromCharCode.apply(String, codePoints.slice(i2, i2 += MAX_ARGUMENTS_LENGTH));
+    }
+    return res;
+  }
+  function asciiSlice(buf2, start, end) {
+    let ret = "";
+    end = Math.min(buf2.length, end);
+    for (let i2 = start; i2 < end; ++i2) {
+      ret += String.fromCharCode(buf2[i2] & 127);
+    }
+    return ret;
+  }
+  function latin1Slice(buf2, start, end) {
+    let ret = "";
+    end = Math.min(buf2.length, end);
+    for (let i2 = start; i2 < end; ++i2) {
+      ret += String.fromCharCode(buf2[i2]);
+    }
+    return ret;
+  }
+  function hexSlice(buf2, start, end) {
+    const len2 = buf2.length;
+    if (!start || start < 0)
+      start = 0;
+    if (!end || end < 0 || end > len2)
+      end = len2;
+    let out = "";
+    for (let i2 = start; i2 < end; ++i2) {
+      out += hexSliceLookupTable[buf2[i2]];
+    }
+    return out;
+  }
+  function utf16leSlice(buf2, start, end) {
+    const bytes = buf2.slice(start, end);
+    let res = "";
+    for (let i2 = 0; i2 < bytes.length - 1; i2 += 2) {
+      res += String.fromCharCode(bytes[i2] + bytes[i2 + 1] * 256);
+    }
+    return res;
+  }
+  Buffer2.prototype.slice = function slice(start, end) {
+    const len2 = this.length;
+    start = ~~start;
+    end = end === void 0 ? len2 : ~~end;
+    if (start < 0) {
+      start += len2;
+      if (start < 0)
+        start = 0;
+    } else if (start > len2) {
+      start = len2;
+    }
+    if (end < 0) {
+      end += len2;
+      if (end < 0)
+        end = 0;
+    } else if (end > len2) {
+      end = len2;
+    }
+    if (end < start)
+      end = start;
+    const newBuf = this.subarray(start, end);
+    Object.setPrototypeOf(newBuf, Buffer2.prototype);
+    return newBuf;
+  };
+  function checkOffset(offset, ext, length) {
+    if (offset % 1 !== 0 || offset < 0)
+      throw new RangeError("offset is not uint");
+    if (offset + ext > length)
+      throw new RangeError("Trying to access beyond buffer length");
+  }
+  Buffer2.prototype.readUintLE = Buffer2.prototype.readUIntLE = function readUIntLE(offset, byteLength3, noAssert) {
+    offset = offset >>> 0;
+    byteLength3 = byteLength3 >>> 0;
+    if (!noAssert)
+      checkOffset(offset, byteLength3, this.length);
+    let val = this[offset];
+    let mul = 1;
+    let i2 = 0;
+    while (++i2 < byteLength3 && (mul *= 256)) {
+      val += this[offset + i2] * mul;
+    }
+    return val;
+  };
+  Buffer2.prototype.readUintBE = Buffer2.prototype.readUIntBE = function readUIntBE(offset, byteLength3, noAssert) {
+    offset = offset >>> 0;
+    byteLength3 = byteLength3 >>> 0;
+    if (!noAssert) {
+      checkOffset(offset, byteLength3, this.length);
+    }
+    let val = this[offset + --byteLength3];
+    let mul = 1;
+    while (byteLength3 > 0 && (mul *= 256)) {
+      val += this[offset + --byteLength3] * mul;
+    }
+    return val;
+  };
+  Buffer2.prototype.readUint8 = Buffer2.prototype.readUInt8 = function readUInt8(offset, noAssert) {
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkOffset(offset, 1, this.length);
+    return this[offset];
+  };
+  Buffer2.prototype.readUint16LE = Buffer2.prototype.readUInt16LE = function readUInt16LE(offset, noAssert) {
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkOffset(offset, 2, this.length);
+    return this[offset] | this[offset + 1] << 8;
+  };
+  Buffer2.prototype.readUint16BE = Buffer2.prototype.readUInt16BE = function readUInt16BE(offset, noAssert) {
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkOffset(offset, 2, this.length);
+    return this[offset] << 8 | this[offset + 1];
+  };
+  Buffer2.prototype.readUint32LE = Buffer2.prototype.readUInt32LE = function readUInt32LE(offset, noAssert) {
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkOffset(offset, 4, this.length);
+    return (this[offset] | this[offset + 1] << 8 | this[offset + 2] << 16) + this[offset + 3] * 16777216;
+  };
+  Buffer2.prototype.readUint32BE = Buffer2.prototype.readUInt32BE = function readUInt32BE(offset, noAssert) {
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkOffset(offset, 4, this.length);
+    return this[offset] * 16777216 + (this[offset + 1] << 16 | this[offset + 2] << 8 | this[offset + 3]);
+  };
+  Buffer2.prototype.readBigUInt64LE = defineBigIntMethod(function readBigUInt64LE(offset) {
+    offset = offset >>> 0;
+    validateNumber(offset, "offset");
+    const first = this[offset];
+    const last = this[offset + 7];
+    if (first === void 0 || last === void 0) {
+      boundsError(offset, this.length - 8);
+    }
+    const lo = first + this[++offset] * 2 ** 8 + this[++offset] * 2 ** 16 + this[++offset] * 2 ** 24;
+    const hi = this[++offset] + this[++offset] * 2 ** 8 + this[++offset] * 2 ** 16 + last * 2 ** 24;
+    return BigInt(lo) + (BigInt(hi) << BigInt(32));
+  });
+  Buffer2.prototype.readBigUInt64BE = defineBigIntMethod(function readBigUInt64BE(offset) {
+    offset = offset >>> 0;
+    validateNumber(offset, "offset");
+    const first = this[offset];
+    const last = this[offset + 7];
+    if (first === void 0 || last === void 0) {
+      boundsError(offset, this.length - 8);
+    }
+    const hi = first * 2 ** 24 + this[++offset] * 2 ** 16 + this[++offset] * 2 ** 8 + this[++offset];
+    const lo = this[++offset] * 2 ** 24 + this[++offset] * 2 ** 16 + this[++offset] * 2 ** 8 + last;
+    return (BigInt(hi) << BigInt(32)) + BigInt(lo);
+  });
+  Buffer2.prototype.readIntLE = function readIntLE(offset, byteLength3, noAssert) {
+    offset = offset >>> 0;
+    byteLength3 = byteLength3 >>> 0;
+    if (!noAssert)
+      checkOffset(offset, byteLength3, this.length);
+    let val = this[offset];
+    let mul = 1;
+    let i2 = 0;
+    while (++i2 < byteLength3 && (mul *= 256)) {
+      val += this[offset + i2] * mul;
+    }
+    mul *= 128;
+    if (val >= mul)
+      val -= Math.pow(2, 8 * byteLength3);
+    return val;
+  };
+  Buffer2.prototype.readIntBE = function readIntBE(offset, byteLength3, noAssert) {
+    offset = offset >>> 0;
+    byteLength3 = byteLength3 >>> 0;
+    if (!noAssert)
+      checkOffset(offset, byteLength3, this.length);
+    let i2 = byteLength3;
+    let mul = 1;
+    let val = this[offset + --i2];
+    while (i2 > 0 && (mul *= 256)) {
+      val += this[offset + --i2] * mul;
+    }
+    mul *= 128;
+    if (val >= mul)
+      val -= Math.pow(2, 8 * byteLength3);
+    return val;
+  };
+  Buffer2.prototype.readInt8 = function readInt8(offset, noAssert) {
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkOffset(offset, 1, this.length);
+    if (!(this[offset] & 128))
+      return this[offset];
+    return (255 - this[offset] + 1) * -1;
+  };
+  Buffer2.prototype.readInt16LE = function readInt16LE(offset, noAssert) {
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkOffset(offset, 2, this.length);
+    const val = this[offset] | this[offset + 1] << 8;
+    return val & 32768 ? val | 4294901760 : val;
+  };
+  Buffer2.prototype.readInt16BE = function readInt16BE(offset, noAssert) {
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkOffset(offset, 2, this.length);
+    const val = this[offset + 1] | this[offset] << 8;
+    return val & 32768 ? val | 4294901760 : val;
+  };
+  Buffer2.prototype.readInt32LE = function readInt32LE(offset, noAssert) {
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkOffset(offset, 4, this.length);
+    return this[offset] | this[offset + 1] << 8 | this[offset + 2] << 16 | this[offset + 3] << 24;
+  };
+  Buffer2.prototype.readInt32BE = function readInt32BE(offset, noAssert) {
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkOffset(offset, 4, this.length);
+    return this[offset] << 24 | this[offset + 1] << 16 | this[offset + 2] << 8 | this[offset + 3];
+  };
+  Buffer2.prototype.readBigInt64LE = defineBigIntMethod(function readBigInt64LE(offset) {
+    offset = offset >>> 0;
+    validateNumber(offset, "offset");
+    const first = this[offset];
+    const last = this[offset + 7];
+    if (first === void 0 || last === void 0) {
+      boundsError(offset, this.length - 8);
+    }
+    const val = this[offset + 4] + this[offset + 5] * 2 ** 8 + this[offset + 6] * 2 ** 16 + (last << 24);
+    return (BigInt(val) << BigInt(32)) + BigInt(first + this[++offset] * 2 ** 8 + this[++offset] * 2 ** 16 + this[++offset] * 2 ** 24);
+  });
+  Buffer2.prototype.readBigInt64BE = defineBigIntMethod(function readBigInt64BE(offset) {
+    offset = offset >>> 0;
+    validateNumber(offset, "offset");
+    const first = this[offset];
+    const last = this[offset + 7];
+    if (first === void 0 || last === void 0) {
+      boundsError(offset, this.length - 8);
+    }
+    const val = (first << 24) + this[++offset] * 2 ** 16 + this[++offset] * 2 ** 8 + this[++offset];
+    return (BigInt(val) << BigInt(32)) + BigInt(this[++offset] * 2 ** 24 + this[++offset] * 2 ** 16 + this[++offset] * 2 ** 8 + last);
+  });
+  Buffer2.prototype.readFloatLE = function readFloatLE(offset, noAssert) {
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkOffset(offset, 4, this.length);
+    return ieee754$1.read(this, offset, true, 23, 4);
+  };
+  Buffer2.prototype.readFloatBE = function readFloatBE(offset, noAssert) {
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkOffset(offset, 4, this.length);
+    return ieee754$1.read(this, offset, false, 23, 4);
+  };
+  Buffer2.prototype.readDoubleLE = function readDoubleLE(offset, noAssert) {
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkOffset(offset, 8, this.length);
+    return ieee754$1.read(this, offset, true, 52, 8);
+  };
+  Buffer2.prototype.readDoubleBE = function readDoubleBE(offset, noAssert) {
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkOffset(offset, 8, this.length);
+    return ieee754$1.read(this, offset, false, 52, 8);
+  };
+  function checkInt(buf2, value2, offset, ext, max, min) {
+    if (!Buffer2.isBuffer(buf2))
+      throw new TypeError('"buffer" argument must be a Buffer instance');
+    if (value2 > max || value2 < min)
+      throw new RangeError('"value" argument is out of bounds');
+    if (offset + ext > buf2.length)
+      throw new RangeError("Index out of range");
+  }
+  Buffer2.prototype.writeUintLE = Buffer2.prototype.writeUIntLE = function writeUIntLE(value2, offset, byteLength3, noAssert) {
+    value2 = +value2;
+    offset = offset >>> 0;
+    byteLength3 = byteLength3 >>> 0;
+    if (!noAssert) {
+      const maxBytes = Math.pow(2, 8 * byteLength3) - 1;
+      checkInt(this, value2, offset, byteLength3, maxBytes, 0);
+    }
+    let mul = 1;
+    let i2 = 0;
+    this[offset] = value2 & 255;
+    while (++i2 < byteLength3 && (mul *= 256)) {
+      this[offset + i2] = value2 / mul & 255;
+    }
+    return offset + byteLength3;
+  };
+  Buffer2.prototype.writeUintBE = Buffer2.prototype.writeUIntBE = function writeUIntBE(value2, offset, byteLength3, noAssert) {
+    value2 = +value2;
+    offset = offset >>> 0;
+    byteLength3 = byteLength3 >>> 0;
+    if (!noAssert) {
+      const maxBytes = Math.pow(2, 8 * byteLength3) - 1;
+      checkInt(this, value2, offset, byteLength3, maxBytes, 0);
+    }
+    let i2 = byteLength3 - 1;
+    let mul = 1;
+    this[offset + i2] = value2 & 255;
+    while (--i2 >= 0 && (mul *= 256)) {
+      this[offset + i2] = value2 / mul & 255;
+    }
+    return offset + byteLength3;
+  };
+  Buffer2.prototype.writeUint8 = Buffer2.prototype.writeUInt8 = function writeUInt8(value2, offset, noAssert) {
+    value2 = +value2;
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkInt(this, value2, offset, 1, 255, 0);
+    this[offset] = value2 & 255;
+    return offset + 1;
+  };
+  Buffer2.prototype.writeUint16LE = Buffer2.prototype.writeUInt16LE = function writeUInt16LE(value2, offset, noAssert) {
+    value2 = +value2;
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkInt(this, value2, offset, 2, 65535, 0);
+    this[offset] = value2 & 255;
+    this[offset + 1] = value2 >>> 8;
+    return offset + 2;
+  };
+  Buffer2.prototype.writeUint16BE = Buffer2.prototype.writeUInt16BE = function writeUInt16BE(value2, offset, noAssert) {
+    value2 = +value2;
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkInt(this, value2, offset, 2, 65535, 0);
+    this[offset] = value2 >>> 8;
+    this[offset + 1] = value2 & 255;
+    return offset + 2;
+  };
+  Buffer2.prototype.writeUint32LE = Buffer2.prototype.writeUInt32LE = function writeUInt32LE(value2, offset, noAssert) {
+    value2 = +value2;
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkInt(this, value2, offset, 4, 4294967295, 0);
+    this[offset + 3] = value2 >>> 24;
+    this[offset + 2] = value2 >>> 16;
+    this[offset + 1] = value2 >>> 8;
+    this[offset] = value2 & 255;
+    return offset + 4;
+  };
+  Buffer2.prototype.writeUint32BE = Buffer2.prototype.writeUInt32BE = function writeUInt32BE(value2, offset, noAssert) {
+    value2 = +value2;
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkInt(this, value2, offset, 4, 4294967295, 0);
+    this[offset] = value2 >>> 24;
+    this[offset + 1] = value2 >>> 16;
+    this[offset + 2] = value2 >>> 8;
+    this[offset + 3] = value2 & 255;
+    return offset + 4;
+  };
+  function wrtBigUInt64LE(buf2, value2, offset, min, max) {
+    checkIntBI(value2, min, max, buf2, offset, 7);
+    let lo = Number(value2 & BigInt(4294967295));
+    buf2[offset++] = lo;
+    lo = lo >> 8;
+    buf2[offset++] = lo;
+    lo = lo >> 8;
+    buf2[offset++] = lo;
+    lo = lo >> 8;
+    buf2[offset++] = lo;
+    let hi = Number(value2 >> BigInt(32) & BigInt(4294967295));
+    buf2[offset++] = hi;
+    hi = hi >> 8;
+    buf2[offset++] = hi;
+    hi = hi >> 8;
+    buf2[offset++] = hi;
+    hi = hi >> 8;
+    buf2[offset++] = hi;
+    return offset;
+  }
+  function wrtBigUInt64BE(buf2, value2, offset, min, max) {
+    checkIntBI(value2, min, max, buf2, offset, 7);
+    let lo = Number(value2 & BigInt(4294967295));
+    buf2[offset + 7] = lo;
+    lo = lo >> 8;
+    buf2[offset + 6] = lo;
+    lo = lo >> 8;
+    buf2[offset + 5] = lo;
+    lo = lo >> 8;
+    buf2[offset + 4] = lo;
+    let hi = Number(value2 >> BigInt(32) & BigInt(4294967295));
+    buf2[offset + 3] = hi;
+    hi = hi >> 8;
+    buf2[offset + 2] = hi;
+    hi = hi >> 8;
+    buf2[offset + 1] = hi;
+    hi = hi >> 8;
+    buf2[offset] = hi;
+    return offset + 8;
+  }
+  Buffer2.prototype.writeBigUInt64LE = defineBigIntMethod(function writeBigUInt64LE(value2, offset = 0) {
+    return wrtBigUInt64LE(this, value2, offset, BigInt(0), BigInt("0xffffffffffffffff"));
+  });
+  Buffer2.prototype.writeBigUInt64BE = defineBigIntMethod(function writeBigUInt64BE(value2, offset = 0) {
+    return wrtBigUInt64BE(this, value2, offset, BigInt(0), BigInt("0xffffffffffffffff"));
+  });
+  Buffer2.prototype.writeIntLE = function writeIntLE(value2, offset, byteLength3, noAssert) {
+    value2 = +value2;
+    offset = offset >>> 0;
+    if (!noAssert) {
+      const limit = Math.pow(2, 8 * byteLength3 - 1);
+      checkInt(this, value2, offset, byteLength3, limit - 1, -limit);
+    }
+    let i2 = 0;
+    let mul = 1;
+    let sub = 0;
+    this[offset] = value2 & 255;
+    while (++i2 < byteLength3 && (mul *= 256)) {
+      if (value2 < 0 && sub === 0 && this[offset + i2 - 1] !== 0) {
+        sub = 1;
+      }
+      this[offset + i2] = (value2 / mul >> 0) - sub & 255;
+    }
+    return offset + byteLength3;
+  };
+  Buffer2.prototype.writeIntBE = function writeIntBE(value2, offset, byteLength3, noAssert) {
+    value2 = +value2;
+    offset = offset >>> 0;
+    if (!noAssert) {
+      const limit = Math.pow(2, 8 * byteLength3 - 1);
+      checkInt(this, value2, offset, byteLength3, limit - 1, -limit);
+    }
+    let i2 = byteLength3 - 1;
+    let mul = 1;
+    let sub = 0;
+    this[offset + i2] = value2 & 255;
+    while (--i2 >= 0 && (mul *= 256)) {
+      if (value2 < 0 && sub === 0 && this[offset + i2 + 1] !== 0) {
+        sub = 1;
+      }
+      this[offset + i2] = (value2 / mul >> 0) - sub & 255;
+    }
+    return offset + byteLength3;
+  };
+  Buffer2.prototype.writeInt8 = function writeInt8(value2, offset, noAssert) {
+    value2 = +value2;
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkInt(this, value2, offset, 1, 127, -128);
+    if (value2 < 0)
+      value2 = 255 + value2 + 1;
+    this[offset] = value2 & 255;
+    return offset + 1;
+  };
+  Buffer2.prototype.writeInt16LE = function writeInt16LE(value2, offset, noAssert) {
+    value2 = +value2;
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkInt(this, value2, offset, 2, 32767, -32768);
+    this[offset] = value2 & 255;
+    this[offset + 1] = value2 >>> 8;
+    return offset + 2;
+  };
+  Buffer2.prototype.writeInt16BE = function writeInt16BE(value2, offset, noAssert) {
+    value2 = +value2;
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkInt(this, value2, offset, 2, 32767, -32768);
+    this[offset] = value2 >>> 8;
+    this[offset + 1] = value2 & 255;
+    return offset + 2;
+  };
+  Buffer2.prototype.writeInt32LE = function writeInt32LE(value2, offset, noAssert) {
+    value2 = +value2;
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkInt(this, value2, offset, 4, 2147483647, -2147483648);
+    this[offset] = value2 & 255;
+    this[offset + 1] = value2 >>> 8;
+    this[offset + 2] = value2 >>> 16;
+    this[offset + 3] = value2 >>> 24;
+    return offset + 4;
+  };
+  Buffer2.prototype.writeInt32BE = function writeInt32BE(value2, offset, noAssert) {
+    value2 = +value2;
+    offset = offset >>> 0;
+    if (!noAssert)
+      checkInt(this, value2, offset, 4, 2147483647, -2147483648);
+    if (value2 < 0)
+      value2 = 4294967295 + value2 + 1;
+    this[offset] = value2 >>> 24;
+    this[offset + 1] = value2 >>> 16;
+    this[offset + 2] = value2 >>> 8;
+    this[offset + 3] = value2 & 255;
+    return offset + 4;
+  };
+  Buffer2.prototype.writeBigInt64LE = defineBigIntMethod(function writeBigInt64LE(value2, offset = 0) {
+    return wrtBigUInt64LE(this, value2, offset, -BigInt("0x8000000000000000"), BigInt("0x7fffffffffffffff"));
+  });
+  Buffer2.prototype.writeBigInt64BE = defineBigIntMethod(function writeBigInt64BE(value2, offset = 0) {
+    return wrtBigUInt64BE(this, value2, offset, -BigInt("0x8000000000000000"), BigInt("0x7fffffffffffffff"));
+  });
+  function checkIEEE754(buf2, value2, offset, ext, max, min) {
+    if (offset + ext > buf2.length)
+      throw new RangeError("Index out of range");
+    if (offset < 0)
+      throw new RangeError("Index out of range");
+  }
+  function writeFloat(buf2, value2, offset, littleEndian, noAssert) {
+    value2 = +value2;
+    offset = offset >>> 0;
+    if (!noAssert) {
+      checkIEEE754(buf2, value2, offset, 4);
+    }
+    ieee754$1.write(buf2, value2, offset, littleEndian, 23, 4);
+    return offset + 4;
+  }
+  Buffer2.prototype.writeFloatLE = function writeFloatLE(value2, offset, noAssert) {
+    return writeFloat(this, value2, offset, true, noAssert);
+  };
+  Buffer2.prototype.writeFloatBE = function writeFloatBE(value2, offset, noAssert) {
+    return writeFloat(this, value2, offset, false, noAssert);
+  };
+  function writeDouble(buf2, value2, offset, littleEndian, noAssert) {
+    value2 = +value2;
+    offset = offset >>> 0;
+    if (!noAssert) {
+      checkIEEE754(buf2, value2, offset, 8);
+    }
+    ieee754$1.write(buf2, value2, offset, littleEndian, 52, 8);
+    return offset + 8;
+  }
+  Buffer2.prototype.writeDoubleLE = function writeDoubleLE(value2, offset, noAssert) {
+    return writeDouble(this, value2, offset, true, noAssert);
+  };
+  Buffer2.prototype.writeDoubleBE = function writeDoubleBE(value2, offset, noAssert) {
+    return writeDouble(this, value2, offset, false, noAssert);
+  };
+  Buffer2.prototype.copy = function copy(target, targetStart, start, end) {
+    if (!Buffer2.isBuffer(target))
+      throw new TypeError("argument should be a Buffer");
+    if (!start)
+      start = 0;
+    if (!end && end !== 0)
+      end = this.length;
+    if (targetStart >= target.length)
+      targetStart = target.length;
+    if (!targetStart)
+      targetStart = 0;
+    if (end > 0 && end < start)
+      end = start;
+    if (end === start)
+      return 0;
+    if (target.length === 0 || this.length === 0)
+      return 0;
+    if (targetStart < 0) {
+      throw new RangeError("targetStart out of bounds");
+    }
+    if (start < 0 || start >= this.length)
+      throw new RangeError("Index out of range");
+    if (end < 0)
+      throw new RangeError("sourceEnd out of bounds");
+    if (end > this.length)
+      end = this.length;
+    if (target.length - targetStart < end - start) {
+      end = target.length - targetStart + start;
+    }
+    const len2 = end - start;
+    if (this === target && typeof Uint8Array.prototype.copyWithin === "function") {
+      this.copyWithin(targetStart, start, end);
+    } else {
+      Uint8Array.prototype.set.call(target, this.subarray(start, end), targetStart);
+    }
+    return len2;
+  };
+  Buffer2.prototype.fill = function fill(val, start, end, encoding) {
+    if (typeof val === "string") {
+      if (typeof start === "string") {
+        encoding = start;
+        start = 0;
+        end = this.length;
+      } else if (typeof end === "string") {
+        encoding = end;
+        end = this.length;
+      }
+      if (encoding !== void 0 && typeof encoding !== "string") {
+        throw new TypeError("encoding must be a string");
+      }
+      if (typeof encoding === "string" && !Buffer2.isEncoding(encoding)) {
+        throw new TypeError("Unknown encoding: " + encoding);
+      }
+      if (val.length === 1) {
+        const code2 = val.charCodeAt(0);
+        if (encoding === "utf8" && code2 < 128 || encoding === "latin1") {
+          val = code2;
+        }
+      }
+    } else if (typeof val === "number") {
+      val = val & 255;
+    } else if (typeof val === "boolean") {
+      val = Number(val);
+    }
+    if (start < 0 || this.length < start || this.length < end) {
+      throw new RangeError("Out of range index");
+    }
+    if (end <= start) {
+      return this;
+    }
+    start = start >>> 0;
+    end = end === void 0 ? this.length : end >>> 0;
+    if (!val)
+      val = 0;
+    let i2;
+    if (typeof val === "number") {
+      for (i2 = start; i2 < end; ++i2) {
+        this[i2] = val;
+      }
+    } else {
+      const bytes = Buffer2.isBuffer(val) ? val : Buffer2.from(val, encoding);
+      const len2 = bytes.length;
+      if (len2 === 0) {
+        throw new TypeError('The value "' + val + '" is invalid for argument "value"');
+      }
+      for (i2 = 0; i2 < end - start; ++i2) {
+        this[i2 + start] = bytes[i2 % len2];
+      }
+    }
+    return this;
+  };
+  const errors = {};
+  function E(sym, getMessage, Base2) {
+    errors[sym] = class NodeError extends Base2 {
+      constructor() {
+        super();
+        Object.defineProperty(this, "message", {
+          value: getMessage.apply(this, arguments),
+          writable: true,
+          configurable: true
+        });
+        this.name = `${this.name} [${sym}]`;
+        this.stack;
+        delete this.name;
+      }
+      get code() {
+        return sym;
+      }
+      set code(value2) {
+        Object.defineProperty(this, "code", {
+          configurable: true,
+          enumerable: true,
+          value: value2,
+          writable: true
+        });
+      }
+      toString() {
+        return `${this.name} [${sym}]: ${this.message}`;
+      }
+    };
+  }
+  E("ERR_BUFFER_OUT_OF_BOUNDS", function(name2) {
+    if (name2) {
+      return `${name2} is outside of buffer bounds`;
+    }
+    return "Attempt to access memory outside buffer bounds";
+  }, RangeError);
+  E("ERR_INVALID_ARG_TYPE", function(name2, actual) {
+    return `The "${name2}" argument must be of type number. Received type ${typeof actual}`;
+  }, TypeError);
+  E("ERR_OUT_OF_RANGE", function(str, range, input) {
+    let msg2 = `The value of "${str}" is out of range.`;
+    let received = input;
+    if (Number.isInteger(input) && Math.abs(input) > 2 ** 32) {
+      received = addNumericalSeparator(String(input));
+    } else if (typeof input === "bigint") {
+      received = String(input);
+      if (input > BigInt(2) ** BigInt(32) || input < -(BigInt(2) ** BigInt(32))) {
+        received = addNumericalSeparator(received);
+      }
+      received += "n";
+    }
+    msg2 += ` It must be ${range}. Received ${received}`;
+    return msg2;
+  }, RangeError);
+  function addNumericalSeparator(val) {
+    let res = "";
+    let i2 = val.length;
+    const start = val[0] === "-" ? 1 : 0;
+    for (; i2 >= start + 4; i2 -= 3) {
+      res = `_${val.slice(i2 - 3, i2)}${res}`;
+    }
+    return `${val.slice(0, i2)}${res}`;
+  }
+  function checkBounds(buf2, offset, byteLength3) {
+    validateNumber(offset, "offset");
+    if (buf2[offset] === void 0 || buf2[offset + byteLength3] === void 0) {
+      boundsError(offset, buf2.length - (byteLength3 + 1));
+    }
+  }
+  function checkIntBI(value2, min, max, buf2, offset, byteLength3) {
+    if (value2 > max || value2 < min) {
+      const n2 = typeof min === "bigint" ? "n" : "";
+      let range;
+      if (byteLength3 > 3) {
+        if (min === 0 || min === BigInt(0)) {
+          range = `>= 0${n2} and < 2${n2} ** ${(byteLength3 + 1) * 8}${n2}`;
+        } else {
+          range = `>= -(2${n2} ** ${(byteLength3 + 1) * 8 - 1}${n2}) and < 2 ** ${(byteLength3 + 1) * 8 - 1}${n2}`;
+        }
+      } else {
+        range = `>= ${min}${n2} and <= ${max}${n2}`;
+      }
+      throw new errors.ERR_OUT_OF_RANGE("value", range, value2);
+    }
+    checkBounds(buf2, offset, byteLength3);
+  }
+  function validateNumber(value2, name2) {
+    if (typeof value2 !== "number") {
+      throw new errors.ERR_INVALID_ARG_TYPE(name2, "number", value2);
+    }
+  }
+  function boundsError(value2, length, type) {
+    if (Math.floor(value2) !== value2) {
+      validateNumber(value2, type);
+      throw new errors.ERR_OUT_OF_RANGE(type || "offset", "an integer", value2);
+    }
+    if (length < 0) {
+      throw new errors.ERR_BUFFER_OUT_OF_BOUNDS();
+    }
+    throw new errors.ERR_OUT_OF_RANGE(type || "offset", `>= ${type ? 1 : 0} and <= ${length}`, value2);
+  }
+  const INVALID_BASE64_RE = /[^+/0-9A-Za-z-_]/g;
+  function base64clean(str) {
+    str = str.split("=")[0];
+    str = str.trim().replace(INVALID_BASE64_RE, "");
+    if (str.length < 2)
+      return "";
+    while (str.length % 4 !== 0) {
+      str = str + "=";
+    }
+    return str;
+  }
+  function utf8ToBytes(string2, units) {
+    units = units || Infinity;
+    let codePoint;
+    const length = string2.length;
+    let leadSurrogate = null;
+    const bytes = [];
+    for (let i2 = 0; i2 < length; ++i2) {
+      codePoint = string2.charCodeAt(i2);
+      if (codePoint > 55295 && codePoint < 57344) {
+        if (!leadSurrogate) {
+          if (codePoint > 56319) {
+            if ((units -= 3) > -1)
+              bytes.push(239, 191, 189);
+            continue;
+          } else if (i2 + 1 === length) {
+            if ((units -= 3) > -1)
+              bytes.push(239, 191, 189);
+            continue;
+          }
+          leadSurrogate = codePoint;
+          continue;
+        }
+        if (codePoint < 56320) {
+          if ((units -= 3) > -1)
+            bytes.push(239, 191, 189);
+          leadSurrogate = codePoint;
+          continue;
+        }
+        codePoint = (leadSurrogate - 55296 << 10 | codePoint - 56320) + 65536;
+      } else if (leadSurrogate) {
+        if ((units -= 3) > -1)
+          bytes.push(239, 191, 189);
+      }
+      leadSurrogate = null;
+      if (codePoint < 128) {
+        if ((units -= 1) < 0)
+          break;
+        bytes.push(codePoint);
+      } else if (codePoint < 2048) {
+        if ((units -= 2) < 0)
+          break;
+        bytes.push(codePoint >> 6 | 192, codePoint & 63 | 128);
+      } else if (codePoint < 65536) {
+        if ((units -= 3) < 0)
+          break;
+        bytes.push(codePoint >> 12 | 224, codePoint >> 6 & 63 | 128, codePoint & 63 | 128);
+      } else if (codePoint < 1114112) {
+        if ((units -= 4) < 0)
+          break;
+        bytes.push(codePoint >> 18 | 240, codePoint >> 12 & 63 | 128, codePoint >> 6 & 63 | 128, codePoint & 63 | 128);
+      } else {
+        throw new Error("Invalid code point");
+      }
+    }
+    return bytes;
+  }
+  function asciiToBytes(str) {
+    const byteArray = [];
+    for (let i2 = 0; i2 < str.length; ++i2) {
+      byteArray.push(str.charCodeAt(i2) & 255);
+    }
+    return byteArray;
+  }
+  function utf16leToBytes(str, units) {
+    let c2, hi, lo;
+    const byteArray = [];
+    for (let i2 = 0; i2 < str.length; ++i2) {
+      if ((units -= 2) < 0)
+        break;
+      c2 = str.charCodeAt(i2);
+      hi = c2 >> 8;
+      lo = c2 % 256;
+      byteArray.push(lo);
+      byteArray.push(hi);
+    }
+    return byteArray;
+  }
+  function base64ToBytes(str) {
+    return base64.toByteArray(base64clean(str));
+  }
+  function blitBuffer(src, dst, offset, length) {
+    let i2;
+    for (i2 = 0; i2 < length; ++i2) {
+      if (i2 + offset >= dst.length || i2 >= src.length)
+        break;
+      dst[i2 + offset] = src[i2];
+    }
+    return i2;
+  }
+  function isInstance(obj, type) {
+    return obj instanceof type || obj != null && obj.constructor != null && obj.constructor.name != null && obj.constructor.name === type.name;
+  }
+  function numberIsNaN(obj) {
+    return obj !== obj;
+  }
+  const hexSliceLookupTable = function() {
+    const alphabet = "0123456789abcdef";
+    const table2 = new Array(256);
+    for (let i2 = 0; i2 < 16; ++i2) {
+      const i16 = i2 * 16;
+      for (let j = 0; j < 16; ++j) {
+        table2[i16 + j] = alphabet[i2] + alphabet[j];
+      }
+    }
+    return table2;
+  }();
+  function defineBigIntMethod(fn) {
+    return typeof BigInt === "undefined" ? BufferBigIntNotDefined : fn;
+  }
+  function BufferBigIntNotDefined() {
+    throw new Error("BigInt not supported");
+  }
+})(buffer);
+var __viteBrowserExternal = {};
+var __viteBrowserExternal$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  "default": __viteBrowserExternal
+}, Symbol.toStringTag, { value: "Module" }));
+var require$$0$2 = /* @__PURE__ */ getAugmentedNamespace(__viteBrowserExternal$1);
 function ownKeys(object2, enumerableOnly) {
   var keys2 = Object.keys(object2);
   if (Object.getOwnPropertySymbols) {
@@ -29863,7 +24520,7 @@ function _createClass(Constructor, protoProps, staticProps) {
   return Constructor;
 }
 var _require$2 = buffer, Buffer$4 = _require$2.Buffer;
-var _require2 = require$$3$1, inspect = _require2.inspect;
+var _require2 = require$$0$2, inspect = _require2.inspect;
 var custom = inspect && inspect.custom || "inspect";
 function copyBuffer(src, target, offset) {
   Buffer$4.prototype.copy.call(src, target, offset);
@@ -30275,7 +24932,7 @@ if (typeof Object.create === "function") {
     }
   };
 }
-var browser$1 = deprecate;
+var browser$2 = deprecate;
 function deprecate(fn, msg2) {
   if (config("noDeprecation")) {
     return fn;
@@ -30320,7 +24977,7 @@ function CorkedRequest(state2) {
 var Duplex$3;
 Writable$1.WritableState = WritableState;
 var internalUtil = {
-  deprecate: browser$1
+  deprecate: browser$2
 };
 var Stream$1 = streamBrowser;
 var Buffer$3 = buffer.Buffer;
@@ -31181,7 +25838,7 @@ function once$1(callback) {
     callback.apply(this, args);
   };
 }
-function noop$1() {
+function noop$2() {
 }
 function isRequest$1(stream2) {
   return stream2.setHeader && typeof stream2.abort === "function";
@@ -31191,7 +25848,7 @@ function eos$1(stream2, opts, callback) {
     return eos$1(stream2, null, opts);
   if (!opts)
     opts = {};
-  callback = once$1(callback || noop$1);
+  callback = once$1(callback || noop$2);
   var readable = opts.readable || opts.readable !== false && stream2.readable;
   var writable = opts.writable || opts.writable !== false && stream2.writable;
   var onlegacyfinish = function onlegacyfinish2() {
@@ -31443,7 +26100,7 @@ function _uint8ArrayToBuffer(chunk) {
 function _isUint8Array(obj) {
   return Buffer$1.isBuffer(obj) || obj instanceof OurUint8Array;
 }
-var debugUtil = require$$3$1;
+var debugUtil = require$$0$2;
 var debug;
 if (debugUtil && debugUtil.debuglog) {
   debug = debugUtil.debuglog("stream");
@@ -32315,7 +26972,7 @@ function once(callback) {
   };
 }
 var _require$codes = errorsBrowser.codes, ERR_MISSING_ARGS = _require$codes.ERR_MISSING_ARGS, ERR_STREAM_DESTROYED = _require$codes.ERR_STREAM_DESTROYED;
-function noop(err) {
+function noop$1(err) {
   if (err)
     throw err;
 }
@@ -32361,9 +27018,9 @@ function pipe(from2, to) {
 }
 function popCallback(streams) {
   if (!streams.length)
-    return noop;
+    return noop$1;
   if (typeof streams[streams.length - 1] !== "function")
-    return noop;
+    return noop$1;
   return streams.pop();
 }
 function pipeline() {
@@ -46617,8 +41274,8 @@ var opentype_module = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defin
   loadSync,
   parse: parseBuffer
 }, Symbol.toStringTag, { value: "Module" }));
-var require$$0 = /* @__PURE__ */ getAugmentedNamespace(opentype_module);
-const opentype$1 = require$$0;
+var require$$0$1 = /* @__PURE__ */ getAugmentedNamespace(opentype_module);
+const opentype$1 = require$$0$1;
 var subset = class FontSubset2 {
   constructor(font) {
     this.font = font;
@@ -46670,7 +41327,7 @@ var subset = class FontSubset2 {
     return font.toArrayBuffer();
   }
 };
-const opentype = require$$0;
+const opentype = require$$0$1;
 const FontSubset = subset;
 const PDFObject = object;
 const PDFDictionary = dictionary;
@@ -46904,7 +41561,7 @@ function determineType(buffer2) {
   exports2.cm = exports2.mm * 10;
 })(lib);
 const pdf = lib;
-class PDFMerger$1 {
+class PDFMerger {
   constructor(pdfjsOptions = {}) {
     this._resetDoc(pdfjsOptions);
   }
@@ -46998,10 +41655,5352 @@ class PDFMerger$1 {
     link.click();
   }
 }
-var browser = PDFMerger$1;
+var browser$1 = PDFMerger;
+var PDFMergeView_vue_vue_type_style_index_0_scoped_true_lang = "";
+const _withScopeId$1 = (n2) => (pushScopeId("data-v-53f83d92"), n2 = n2(), popScopeId(), n2);
+const _hoisted_1$1 = { class: "view-container" };
+const _hoisted_2$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("h2", null, "PDF Merger", -1));
+const _hoisted_3$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("hr", null, null, -1));
+const _hoisted_4$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("h4", null, " Add your PDF files using them prompt below, you can upload them one at a time or multiple at once. ", -1));
+const _hoisted_5$1 = { key: 0 };
+const _hoisted_6$1 = { key: 1 };
+const _hoisted_7$1 = {
+  key: 0,
+  class: "error"
+};
+const _hoisted_8$1 = { key: 1 };
+const _hoisted_9$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("h3", null, "Selected PDFs (drag to re-order)", -1));
+const _hoisted_10$1 = { class: "files" };
+const _hoisted_11$1 = ["onClick"];
+const _hoisted_12 = { key: 0 };
+const _hoisted_13 = ["disabled"];
+const _hoisted_14 = {
+  key: 0,
+  class: "loader"
+};
+const _sfc_main$1 = {
+  props: {
+    navCollapsed: {
+      type: Boolean,
+      required: true
+    }
+  },
+  setup(__props) {
+    let merger = new browser$1();
+    const files = ref([]);
+    const error = ref("");
+    const loading = ref(false);
+    function onDrop(acceptFiles, rejectReasons) {
+      if (acceptFiles) {
+        files.value = [...files.value, ...acceptFiles];
+      }
+      if (rejectReasons.length > 0) {
+        error.value = "File type must be .pdf!";
+      } else {
+        error.value = "";
+      }
+    }
+    function removeFile(index2) {
+      files.value.splice(index2, 1);
+    }
+    async function merge() {
+      loading.value = true;
+      for (let file of files.value) {
+        await merger.add(file);
+      }
+      return await merger.save("merged").then(() => {
+        loading.value = false;
+        merger = new browser$1();
+      });
+    }
+    const options = {
+      onDrop,
+      accept: ".pdf"
+    };
+    const { getRootProps, getInputProps, isDragActive } = useDropzone(options);
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("main", {
+        class: normalizeClass({ navCollapsed: __props.navCollapsed })
+      }, [
+        createBaseVNode("div", _hoisted_1$1, [
+          _hoisted_2$1,
+          _hoisted_3$1,
+          _hoisted_4$1,
+          createBaseVNode("div", mergeProps({ class: "file-area" }, unref(getRootProps)()), [
+            createBaseVNode("input", normalizeProps(guardReactiveProps(unref(getInputProps)())), null, 16),
+            unref(isDragActive) ? (openBlock(), createElementBlock("p", _hoisted_5$1, "Drop the files here ...")) : (openBlock(), createElementBlock("p", _hoisted_6$1, " Drag and drop the PDF files here, or click in this area to select your files! "))
+          ], 16),
+          error.value ? (openBlock(), createElementBlock("p", _hoisted_7$1, toDisplayString(error.value), 1)) : createCommentVNode("", true),
+          files.value.length > 0 ? (openBlock(), createElementBlock("div", _hoisted_8$1, [
+            _hoisted_9$1,
+            createBaseVNode("div", _hoisted_10$1, [
+              createBaseVNode("ol", null, [
+                createVNode(unref(draggable), {
+                  modelValue: files.value,
+                  "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => files.value = $event),
+                  "item-key": "id"
+                }, {
+                  item: withCtx(({ element, index: index2 }) => [
+                    createBaseVNode("li", null, [
+                      createTextVNode(toDisplayString(element.name) + " ", 1),
+                      createBaseVNode("span", {
+                        class: "remove",
+                        onClick: ($event) => removeFile(index2)
+                      }, "X", 8, _hoisted_11$1)
+                    ])
+                  ]),
+                  _: 1
+                }, 8, ["modelValue"])
+              ])
+            ]),
+            files.value.length > 1 ? (openBlock(), createElementBlock("div", _hoisted_12, [
+              createBaseVNode("button", {
+                onClick: merge,
+                disabled: loading.value
+              }, "Merge PDFs", 8, _hoisted_13),
+              loading.value ? (openBlock(), createElementBlock("div", _hoisted_14)) : createCommentVNode("", true)
+            ])) : createCommentVNode("", true)
+          ])) : createCommentVNode("", true)
+        ])
+      ], 2);
+    };
+  }
+};
+var PDFMergeView = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-53f83d92"]]);
+var pluralize$3 = { exports: {} };
+(function(module, exports2) {
+  (function(root, pluralize2) {
+    if (typeof commonjsRequire === "function" && true && true) {
+      module.exports = pluralize2();
+    } else {
+      root.pluralize = pluralize2();
+    }
+  })(commonjsGlobal, function() {
+    var pluralRules = [];
+    var singularRules = [];
+    var uncountables = {};
+    var irregularPlurals = {};
+    var irregularSingles = {};
+    function sanitizeRule(rule) {
+      if (typeof rule === "string") {
+        return new RegExp("^" + rule + "$", "i");
+      }
+      return rule;
+    }
+    function restoreCase(word, token) {
+      if (word === token)
+        return token;
+      if (word === word.toUpperCase())
+        return token.toUpperCase();
+      if (word[0] === word[0].toUpperCase()) {
+        return token.charAt(0).toUpperCase() + token.substr(1).toLowerCase();
+      }
+      return token.toLowerCase();
+    }
+    function interpolate(str, args) {
+      return str.replace(/\$(\d{1,2})/g, function(match, index2) {
+        return args[index2] || "";
+      });
+    }
+    function replace(word, rule) {
+      return word.replace(rule[0], function(match, index2) {
+        var result = interpolate(rule[1], arguments);
+        if (match === "") {
+          return restoreCase(word[index2 - 1], result);
+        }
+        return restoreCase(match, result);
+      });
+    }
+    function sanitizeWord(token, word, rules) {
+      if (!token.length || uncountables.hasOwnProperty(token)) {
+        return word;
+      }
+      var len2 = rules.length;
+      while (len2--) {
+        var rule = rules[len2];
+        if (rule[0].test(word))
+          return replace(word, rule);
+      }
+      return word;
+    }
+    function replaceWord(replaceMap, keepMap, rules) {
+      return function(word) {
+        var token = word.toLowerCase();
+        if (keepMap.hasOwnProperty(token)) {
+          return restoreCase(word, token);
+        }
+        if (replaceMap.hasOwnProperty(token)) {
+          return restoreCase(word, replaceMap[token]);
+        }
+        return sanitizeWord(token, word, rules);
+      };
+    }
+    function checkWord(replaceMap, keepMap, rules, bool) {
+      return function(word) {
+        var token = word.toLowerCase();
+        if (keepMap.hasOwnProperty(token))
+          return true;
+        if (replaceMap.hasOwnProperty(token))
+          return false;
+        return sanitizeWord(token, token, rules) === token;
+      };
+    }
+    function pluralize2(word, count, inclusive) {
+      var pluralized = count === 1 ? pluralize2.singular(word) : pluralize2.plural(word);
+      return (inclusive ? count + " " : "") + pluralized;
+    }
+    pluralize2.plural = replaceWord(irregularSingles, irregularPlurals, pluralRules);
+    pluralize2.isPlural = checkWord(irregularSingles, irregularPlurals, pluralRules);
+    pluralize2.singular = replaceWord(irregularPlurals, irregularSingles, singularRules);
+    pluralize2.isSingular = checkWord(irregularPlurals, irregularSingles, singularRules);
+    pluralize2.addPluralRule = function(rule, replacement) {
+      pluralRules.push([sanitizeRule(rule), replacement]);
+    };
+    pluralize2.addSingularRule = function(rule, replacement) {
+      singularRules.push([sanitizeRule(rule), replacement]);
+    };
+    pluralize2.addUncountableRule = function(word) {
+      if (typeof word === "string") {
+        uncountables[word.toLowerCase()] = true;
+        return;
+      }
+      pluralize2.addPluralRule(word, "$0");
+      pluralize2.addSingularRule(word, "$0");
+    };
+    pluralize2.addIrregularRule = function(single, plural) {
+      plural = plural.toLowerCase();
+      single = single.toLowerCase();
+      irregularSingles[single] = plural;
+      irregularPlurals[plural] = single;
+    };
+    [
+      ["I", "we"],
+      ["me", "us"],
+      ["he", "they"],
+      ["she", "they"],
+      ["them", "them"],
+      ["myself", "ourselves"],
+      ["yourself", "yourselves"],
+      ["itself", "themselves"],
+      ["herself", "themselves"],
+      ["himself", "themselves"],
+      ["themself", "themselves"],
+      ["is", "are"],
+      ["was", "were"],
+      ["has", "have"],
+      ["this", "these"],
+      ["that", "those"],
+      ["echo", "echoes"],
+      ["dingo", "dingoes"],
+      ["volcano", "volcanoes"],
+      ["tornado", "tornadoes"],
+      ["torpedo", "torpedoes"],
+      ["genus", "genera"],
+      ["viscus", "viscera"],
+      ["stigma", "stigmata"],
+      ["stoma", "stomata"],
+      ["dogma", "dogmata"],
+      ["lemma", "lemmata"],
+      ["schema", "schemata"],
+      ["anathema", "anathemata"],
+      ["ox", "oxen"],
+      ["axe", "axes"],
+      ["die", "dice"],
+      ["yes", "yeses"],
+      ["foot", "feet"],
+      ["eave", "eaves"],
+      ["goose", "geese"],
+      ["tooth", "teeth"],
+      ["quiz", "quizzes"],
+      ["human", "humans"],
+      ["proof", "proofs"],
+      ["carve", "carves"],
+      ["valve", "valves"],
+      ["looey", "looies"],
+      ["thief", "thieves"],
+      ["groove", "grooves"],
+      ["pickaxe", "pickaxes"],
+      ["whiskey", "whiskies"]
+    ].forEach(function(rule) {
+      return pluralize2.addIrregularRule(rule[0], rule[1]);
+    });
+    [
+      [/s?$/i, "s"],
+      [/[^\u0000-\u007F]$/i, "$0"],
+      [/([^aeiou]ese)$/i, "$1"],
+      [/(ax|test)is$/i, "$1es"],
+      [/(alias|[^aou]us|tlas|gas|ris)$/i, "$1es"],
+      [/(e[mn]u)s?$/i, "$1s"],
+      [/([^l]ias|[aeiou]las|[emjzr]as|[iu]am)$/i, "$1"],
+      [/(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc|strat)(?:us|i)$/i, "$1i"],
+      [/(alumn|alg|vertebr)(?:a|ae)$/i, "$1ae"],
+      [/(seraph|cherub)(?:im)?$/i, "$1im"],
+      [/(her|at|gr)o$/i, "$1oes"],
+      [/(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|automat|quor)(?:a|um)$/i, "$1a"],
+      [/(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|hedr|automat)(?:a|on)$/i, "$1a"],
+      [/sis$/i, "ses"],
+      [/(?:(kni|wi|li)fe|(ar|l|ea|eo|oa|hoo)f)$/i, "$1$2ves"],
+      [/([^aeiouy]|qu)y$/i, "$1ies"],
+      [/([^ch][ieo][ln])ey$/i, "$1ies"],
+      [/(x|ch|ss|sh|zz)$/i, "$1es"],
+      [/(matr|cod|mur|sil|vert|ind|append)(?:ix|ex)$/i, "$1ices"],
+      [/(m|l)(?:ice|ouse)$/i, "$1ice"],
+      [/(pe)(?:rson|ople)$/i, "$1ople"],
+      [/(child)(?:ren)?$/i, "$1ren"],
+      [/eaux$/i, "$0"],
+      [/m[ae]n$/i, "men"],
+      ["thou", "you"]
+    ].forEach(function(rule) {
+      return pluralize2.addPluralRule(rule[0], rule[1]);
+    });
+    [
+      [/s$/i, ""],
+      [/(ss)$/i, "$1"],
+      [/(wi|kni|(?:after|half|high|low|mid|non|night|[^\w]|^)li)ves$/i, "$1fe"],
+      [/(ar|(?:wo|[ae])l|[eo][ao])ves$/i, "$1f"],
+      [/ies$/i, "y"],
+      [/\b([pl]|zomb|(?:neck|cross)?t|coll|faer|food|gen|goon|group|lass|talk|goal|cut)ies$/i, "$1ie"],
+      [/\b(mon|smil)ies$/i, "$1ey"],
+      [/(m|l)ice$/i, "$1ouse"],
+      [/(seraph|cherub)im$/i, "$1"],
+      [/(x|ch|ss|sh|zz|tto|go|cho|alias|[^aou]us|tlas|gas|(?:her|at|gr)o|ris)(?:es)?$/i, "$1"],
+      [/(analy|ba|diagno|parenthe|progno|synop|the|empha|cri)(?:sis|ses)$/i, "$1sis"],
+      [/(movie|twelve|abuse|e[mn]u)s$/i, "$1"],
+      [/(test)(?:is|es)$/i, "$1is"],
+      [/(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc|strat)(?:us|i)$/i, "$1us"],
+      [/(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|quor)a$/i, "$1um"],
+      [/(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|hedr|automat)a$/i, "$1on"],
+      [/(alumn|alg|vertebr)ae$/i, "$1a"],
+      [/(cod|mur|sil|vert|ind)ices$/i, "$1ex"],
+      [/(matr|append)ices$/i, "$1ix"],
+      [/(pe)(rson|ople)$/i, "$1rson"],
+      [/(child)ren$/i, "$1"],
+      [/(eau)x?$/i, "$1"],
+      [/men$/i, "man"]
+    ].forEach(function(rule) {
+      return pluralize2.addSingularRule(rule[0], rule[1]);
+    });
+    [
+      "adulthood",
+      "advice",
+      "agenda",
+      "aid",
+      "alcohol",
+      "ammo",
+      "anime",
+      "athletics",
+      "audio",
+      "bison",
+      "blood",
+      "bream",
+      "buffalo",
+      "butter",
+      "carp",
+      "cash",
+      "chassis",
+      "chess",
+      "clothing",
+      "cod",
+      "commerce",
+      "cooperation",
+      "corps",
+      "debris",
+      "diabetes",
+      "digestion",
+      "elk",
+      "energy",
+      "equipment",
+      "excretion",
+      "expertise",
+      "flounder",
+      "fun",
+      "gallows",
+      "garbage",
+      "graffiti",
+      "headquarters",
+      "health",
+      "herpes",
+      "highjinks",
+      "homework",
+      "housework",
+      "information",
+      "jeans",
+      "justice",
+      "kudos",
+      "labour",
+      "literature",
+      "machinery",
+      "mackerel",
+      "mail",
+      "media",
+      "mews",
+      "moose",
+      "music",
+      "manga",
+      "news",
+      "pike",
+      "plankton",
+      "pliers",
+      "pollution",
+      "premises",
+      "rain",
+      "research",
+      "rice",
+      "salmon",
+      "scissors",
+      "series",
+      "sewage",
+      "shambles",
+      "shrimp",
+      "species",
+      "staff",
+      "swine",
+      "tennis",
+      "traffic",
+      "transporation",
+      "trout",
+      "tuna",
+      "wealth",
+      "welfare",
+      "whiting",
+      "wildebeest",
+      "wildlife",
+      "you",
+      /[^aeiou]ese$/i,
+      /deer$/i,
+      /fish$/i,
+      /measles$/i,
+      /o[iu]s$/i,
+      /pox$/i,
+      /sheep$/i
+    ].forEach(pluralize2.addUncountableRule);
+    return pluralize2;
+  });
+})(pluralize$3);
+var normalizeStrings = { exports: {} };
+var require$$0 = {
+  "105": "i",
+  "192": "A",
+  "193": "A",
+  "194": "A",
+  "195": "A",
+  "196": "A",
+  "197": "A",
+  "199": "C",
+  "200": "E",
+  "201": "E",
+  "202": "E",
+  "203": "E",
+  "204": "I",
+  "205": "I",
+  "206": "I",
+  "207": "I",
+  "209": "N",
+  "210": "O",
+  "211": "O",
+  "212": "O",
+  "213": "O",
+  "214": "O",
+  "216": "O",
+  "217": "U",
+  "218": "U",
+  "219": "U",
+  "220": "U",
+  "221": "Y",
+  "224": "a",
+  "225": "a",
+  "226": "a",
+  "227": "a",
+  "228": "a",
+  "229": "a",
+  "231": "c",
+  "232": "e",
+  "233": "e",
+  "234": "e",
+  "235": "e",
+  "236": "i",
+  "237": "i",
+  "238": "i",
+  "239": "i",
+  "241": "n",
+  "242": "o",
+  "243": "o",
+  "244": "o",
+  "245": "o",
+  "246": "o",
+  "248": "o",
+  "249": "u",
+  "250": "u",
+  "251": "u",
+  "252": "u",
+  "253": "y",
+  "255": "y",
+  "256": "A",
+  "257": "a",
+  "258": "A",
+  "259": "a",
+  "260": "A",
+  "261": "a",
+  "262": "C",
+  "263": "c",
+  "264": "C",
+  "265": "c",
+  "266": "C",
+  "267": "c",
+  "268": "C",
+  "269": "c",
+  "270": "D",
+  "271": "d",
+  "272": "D",
+  "273": "d",
+  "274": "E",
+  "275": "e",
+  "276": "E",
+  "277": "e",
+  "278": "E",
+  "279": "e",
+  "280": "E",
+  "281": "e",
+  "282": "E",
+  "283": "e",
+  "284": "G",
+  "285": "g",
+  "286": "G",
+  "287": "g",
+  "288": "G",
+  "289": "g",
+  "290": "G",
+  "291": "g",
+  "292": "H",
+  "293": "h",
+  "294": "H",
+  "295": "h",
+  "296": "I",
+  "297": "i",
+  "298": "I",
+  "299": "i",
+  "300": "I",
+  "301": "i",
+  "302": "I",
+  "303": "i",
+  "304": "I",
+  "308": "J",
+  "309": "j",
+  "310": "K",
+  "311": "k",
+  "313": "L",
+  "314": "l",
+  "315": "L",
+  "316": "l",
+  "317": "L",
+  "318": "l",
+  "319": "L",
+  "320": "l",
+  "321": "L",
+  "322": "l",
+  "323": "N",
+  "324": "n",
+  "325": "N",
+  "326": "n",
+  "327": "N",
+  "328": "n",
+  "332": "O",
+  "333": "o",
+  "334": "O",
+  "335": "o",
+  "336": "O",
+  "337": "o",
+  "338": "O",
+  "339": "o",
+  "340": "R",
+  "341": "r",
+  "342": "R",
+  "343": "r",
+  "344": "R",
+  "345": "r",
+  "346": "S",
+  "347": "s",
+  "348": "S",
+  "349": "s",
+  "350": "S",
+  "351": "s",
+  "352": "S",
+  "353": "s",
+  "354": "T",
+  "355": "t",
+  "356": "T",
+  "357": "t",
+  "358": "T",
+  "359": "t",
+  "360": "U",
+  "361": "u",
+  "362": "U",
+  "363": "u",
+  "364": "U",
+  "365": "u",
+  "366": "U",
+  "367": "u",
+  "368": "U",
+  "369": "u",
+  "370": "U",
+  "371": "u",
+  "372": "W",
+  "373": "w",
+  "374": "Y",
+  "375": "y",
+  "376": "Y",
+  "377": "Z",
+  "378": "z",
+  "379": "Z",
+  "380": "z",
+  "381": "Z",
+  "382": "z",
+  "384": "b",
+  "385": "B",
+  "386": "B",
+  "387": "b",
+  "390": "O",
+  "391": "C",
+  "392": "c",
+  "393": "D",
+  "394": "D",
+  "395": "D",
+  "396": "d",
+  "398": "E",
+  "400": "E",
+  "401": "F",
+  "402": "f",
+  "403": "G",
+  "407": "I",
+  "408": "K",
+  "409": "k",
+  "410": "l",
+  "412": "M",
+  "413": "N",
+  "414": "n",
+  "415": "O",
+  "416": "O",
+  "417": "o",
+  "420": "P",
+  "421": "p",
+  "422": "R",
+  "427": "t",
+  "428": "T",
+  "429": "t",
+  "430": "T",
+  "431": "U",
+  "432": "u",
+  "434": "V",
+  "435": "Y",
+  "436": "y",
+  "437": "Z",
+  "438": "z",
+  "461": "A",
+  "462": "a",
+  "463": "I",
+  "464": "i",
+  "465": "O",
+  "466": "o",
+  "467": "U",
+  "468": "u",
+  "477": "e",
+  "484": "G",
+  "485": "g",
+  "486": "G",
+  "487": "g",
+  "488": "K",
+  "489": "k",
+  "490": "O",
+  "491": "o",
+  "500": "G",
+  "501": "g",
+  "504": "N",
+  "505": "n",
+  "512": "A",
+  "513": "a",
+  "514": "A",
+  "515": "a",
+  "516": "E",
+  "517": "e",
+  "518": "E",
+  "519": "e",
+  "520": "I",
+  "521": "i",
+  "522": "I",
+  "523": "i",
+  "524": "O",
+  "525": "o",
+  "526": "O",
+  "527": "o",
+  "528": "R",
+  "529": "r",
+  "530": "R",
+  "531": "r",
+  "532": "U",
+  "533": "u",
+  "534": "U",
+  "535": "u",
+  "536": "S",
+  "537": "s",
+  "538": "T",
+  "539": "t",
+  "542": "H",
+  "543": "h",
+  "544": "N",
+  "545": "d",
+  "548": "Z",
+  "549": "z",
+  "550": "A",
+  "551": "a",
+  "552": "E",
+  "553": "e",
+  "558": "O",
+  "559": "o",
+  "562": "Y",
+  "563": "y",
+  "564": "l",
+  "565": "n",
+  "566": "t",
+  "567": "j",
+  "570": "A",
+  "571": "C",
+  "572": "c",
+  "573": "L",
+  "574": "T",
+  "575": "s",
+  "576": "z",
+  "579": "B",
+  "580": "U",
+  "581": "V",
+  "582": "E",
+  "583": "e",
+  "584": "J",
+  "585": "j",
+  "586": "Q",
+  "587": "q",
+  "588": "R",
+  "589": "r",
+  "590": "Y",
+  "591": "y",
+  "592": "a",
+  "593": "a",
+  "595": "b",
+  "596": "o",
+  "597": "c",
+  "598": "d",
+  "599": "d",
+  "600": "e",
+  "603": "e",
+  "604": "e",
+  "605": "e",
+  "606": "e",
+  "607": "j",
+  "608": "g",
+  "609": "g",
+  "610": "g",
+  "613": "h",
+  "614": "h",
+  "616": "i",
+  "618": "i",
+  "619": "l",
+  "620": "l",
+  "621": "l",
+  "623": "m",
+  "624": "m",
+  "625": "m",
+  "626": "n",
+  "627": "n",
+  "628": "n",
+  "629": "o",
+  "633": "r",
+  "634": "r",
+  "635": "r",
+  "636": "r",
+  "637": "r",
+  "638": "r",
+  "639": "r",
+  "640": "r",
+  "641": "r",
+  "642": "s",
+  "647": "t",
+  "648": "t",
+  "649": "u",
+  "651": "v",
+  "652": "v",
+  "653": "w",
+  "654": "y",
+  "655": "y",
+  "656": "z",
+  "657": "z",
+  "663": "c",
+  "665": "b",
+  "666": "e",
+  "667": "g",
+  "668": "h",
+  "669": "j",
+  "670": "k",
+  "671": "l",
+  "672": "q",
+  "686": "h",
+  "688": "h",
+  "690": "j",
+  "691": "r",
+  "692": "r",
+  "694": "r",
+  "695": "w",
+  "696": "y",
+  "737": "l",
+  "738": "s",
+  "739": "x",
+  "780": "v",
+  "829": "x",
+  "851": "x",
+  "867": "a",
+  "868": "e",
+  "869": "i",
+  "870": "o",
+  "871": "u",
+  "872": "c",
+  "873": "d",
+  "874": "h",
+  "875": "m",
+  "876": "r",
+  "877": "t",
+  "878": "v",
+  "879": "x",
+  "7424": "a",
+  "7427": "b",
+  "7428": "c",
+  "7429": "d",
+  "7431": "e",
+  "7432": "e",
+  "7433": "i",
+  "7434": "j",
+  "7435": "k",
+  "7436": "l",
+  "7437": "m",
+  "7438": "n",
+  "7439": "o",
+  "7440": "o",
+  "7441": "o",
+  "7442": "o",
+  "7443": "o",
+  "7446": "o",
+  "7447": "o",
+  "7448": "p",
+  "7449": "r",
+  "7450": "r",
+  "7451": "t",
+  "7452": "u",
+  "7453": "u",
+  "7454": "u",
+  "7455": "m",
+  "7456": "v",
+  "7457": "w",
+  "7458": "z",
+  "7522": "i",
+  "7523": "r",
+  "7524": "u",
+  "7525": "v",
+  "7680": "A",
+  "7681": "a",
+  "7682": "B",
+  "7683": "b",
+  "7684": "B",
+  "7685": "b",
+  "7686": "B",
+  "7687": "b",
+  "7690": "D",
+  "7691": "d",
+  "7692": "D",
+  "7693": "d",
+  "7694": "D",
+  "7695": "d",
+  "7696": "D",
+  "7697": "d",
+  "7698": "D",
+  "7699": "d",
+  "7704": "E",
+  "7705": "e",
+  "7706": "E",
+  "7707": "e",
+  "7710": "F",
+  "7711": "f",
+  "7712": "G",
+  "7713": "g",
+  "7714": "H",
+  "7715": "h",
+  "7716": "H",
+  "7717": "h",
+  "7718": "H",
+  "7719": "h",
+  "7720": "H",
+  "7721": "h",
+  "7722": "H",
+  "7723": "h",
+  "7724": "I",
+  "7725": "i",
+  "7728": "K",
+  "7729": "k",
+  "7730": "K",
+  "7731": "k",
+  "7732": "K",
+  "7733": "k",
+  "7734": "L",
+  "7735": "l",
+  "7738": "L",
+  "7739": "l",
+  "7740": "L",
+  "7741": "l",
+  "7742": "M",
+  "7743": "m",
+  "7744": "M",
+  "7745": "m",
+  "7746": "M",
+  "7747": "m",
+  "7748": "N",
+  "7749": "n",
+  "7750": "N",
+  "7751": "n",
+  "7752": "N",
+  "7753": "n",
+  "7754": "N",
+  "7755": "n",
+  "7764": "P",
+  "7765": "p",
+  "7766": "P",
+  "7767": "p",
+  "7768": "R",
+  "7769": "r",
+  "7770": "R",
+  "7771": "r",
+  "7774": "R",
+  "7775": "r",
+  "7776": "S",
+  "7777": "s",
+  "7778": "S",
+  "7779": "s",
+  "7786": "T",
+  "7787": "t",
+  "7788": "T",
+  "7789": "t",
+  "7790": "T",
+  "7791": "t",
+  "7792": "T",
+  "7793": "t",
+  "7794": "U",
+  "7795": "u",
+  "7796": "U",
+  "7797": "u",
+  "7798": "U",
+  "7799": "u",
+  "7804": "V",
+  "7805": "v",
+  "7806": "V",
+  "7807": "v",
+  "7808": "W",
+  "7809": "w",
+  "7810": "W",
+  "7811": "w",
+  "7812": "W",
+  "7813": "w",
+  "7814": "W",
+  "7815": "w",
+  "7816": "W",
+  "7817": "w",
+  "7818": "X",
+  "7819": "x",
+  "7820": "X",
+  "7821": "x",
+  "7822": "Y",
+  "7823": "y",
+  "7824": "Z",
+  "7825": "z",
+  "7826": "Z",
+  "7827": "z",
+  "7828": "Z",
+  "7829": "z",
+  "7835": "s",
+  "7840": "A",
+  "7841": "a",
+  "7842": "A",
+  "7843": "a",
+  "7864": "E",
+  "7865": "e",
+  "7866": "E",
+  "7867": "e",
+  "7868": "E",
+  "7869": "e",
+  "7880": "I",
+  "7881": "i",
+  "7882": "I",
+  "7883": "i",
+  "7884": "O",
+  "7885": "o",
+  "7886": "O",
+  "7887": "o",
+  "7908": "U",
+  "7909": "u",
+  "7910": "U",
+  "7911": "u",
+  "7922": "Y",
+  "7923": "y",
+  "7924": "Y",
+  "7925": "y",
+  "7926": "Y",
+  "7927": "y",
+  "7928": "Y",
+  "7929": "y",
+  "8305": "i",
+  "8341": "h",
+  "8342": "k",
+  "8343": "l",
+  "8344": "m",
+  "8345": "n",
+  "8346": "p",
+  "8347": "s",
+  "8348": "t",
+  "8450": "c",
+  "8458": "g",
+  "8459": "h",
+  "8460": "h",
+  "8461": "h",
+  "8464": "i",
+  "8465": "i",
+  "8466": "l",
+  "8467": "l",
+  "8468": "l",
+  "8469": "n",
+  "8472": "p",
+  "8473": "p",
+  "8474": "q",
+  "8475": "r",
+  "8476": "r",
+  "8477": "r",
+  "8484": "z",
+  "8488": "z",
+  "8492": "b",
+  "8493": "c",
+  "8495": "e",
+  "8496": "e",
+  "8497": "f",
+  "8498": "F",
+  "8499": "m",
+  "8500": "o",
+  "8506": "q",
+  "8513": "g",
+  "8514": "l",
+  "8515": "l",
+  "8516": "y",
+  "8517": "d",
+  "8518": "d",
+  "8519": "e",
+  "8520": "i",
+  "8521": "j",
+  "8526": "f",
+  "8579": "C",
+  "8580": "c",
+  "8765": "s",
+  "8766": "s",
+  "8959": "z",
+  "8999": "x",
+  "9746": "x",
+  "9776": "i",
+  "9866": "i",
+  "10005": "x",
+  "10006": "x",
+  "10007": "x",
+  "10008": "x",
+  "10625": "z",
+  "10626": "z",
+  "11362": "L",
+  "11364": "R",
+  "11365": "a",
+  "11366": "t",
+  "11373": "A",
+  "11374": "M",
+  "11375": "A",
+  "11390": "S",
+  "11391": "Z",
+  "19904": "i",
+  "42893": "H",
+  "42922": "H",
+  "42923": "E",
+  "42924": "G",
+  "42925": "L",
+  "42928": "K",
+  "42929": "T",
+  "62937": "x"
+};
+(function(module) {
+  (function(window2, factory) {
+    if (module.exports) {
+      module.exports = factory(window2, window2.document);
+    } else {
+      window2.normalize = factory(window2, window2.document);
+    }
+  })(typeof window !== "undefined" ? window : commonjsGlobal, function(window2, document2) {
+    var charmap = require$$0;
+    var regex = null;
+    var current_charmap;
+    var old_charmap;
+    function normalize2(str, custom_charmap) {
+      old_charmap = current_charmap;
+      current_charmap = custom_charmap || charmap;
+      regex = regex && old_charmap === current_charmap ? regex : buildRegExp(current_charmap);
+      return str.replace(regex, function(charToReplace) {
+        return current_charmap[charToReplace.charCodeAt(0)] || charToReplace;
+      });
+    }
+    function buildRegExp(charmap2) {
+      return new RegExp("[" + Object.keys(charmap2).map(function(code2) {
+        return String.fromCharCode(code2);
+      }).join(" ") + "]", "g");
+    }
+    return normalize2;
+  });
+})(normalizeStrings);
+const abalone = 4;
+const abare = 3;
+const abbruzzese = 4;
+const abed = 2;
+const aborigine = 5;
+const abruzzese = 4;
+const acreage = 3;
+const adame = 3;
+const adieu = 2;
+const adobe = 3;
+const anemone = 4;
+const apache = 3;
+const aphrodite = 4;
+const apostrophe = 4;
+const ariadne = 4;
+const cafe = 2;
+const calliope = 4;
+const catastrophe = 4;
+const chile = 2;
+const chloe = 2;
+const circe = 2;
+const coyote = 3;
+const daphne = 2;
+const epitome = 4;
+const eurydice = 4;
+const euterpe = 3;
+const every = 2;
+const everywhere = 3;
+const forever = 3;
+const gethsemane = 4;
+const guacamole = 4;
+const hermione = 4;
+const hyperbole = 4;
+const jesse = 2;
+const jukebox = 2;
+const karate = 3;
+const machete = 3;
+const maybe = 2;
+const newlywed = 3;
+const penelope = 4;
+const people = 2;
+const persephone = 4;
+const phoebe = 2;
+const pulse = 1;
+const queue$1 = 1;
+const recipe = 3;
+const riverbed = 3;
+const sesame = 3;
+const shoreline = 2;
+const simile = 3;
+const snuffleupagus = 5;
+const sometimes = 2;
+const syncope = 3;
+const tamale = 3;
+const waterbed = 3;
+const wednesday = 2;
+const yosemite = 4;
+const zoe = 2;
+var require$$2 = {
+  abalone,
+  abare,
+  abbruzzese,
+  abed,
+  aborigine,
+  abruzzese,
+  acreage,
+  adame,
+  adieu,
+  adobe,
+  anemone,
+  apache,
+  aphrodite,
+  apostrophe,
+  ariadne,
+  cafe,
+  calliope,
+  catastrophe,
+  chile,
+  chloe,
+  circe,
+  coyote,
+  daphne,
+  epitome,
+  eurydice,
+  euterpe,
+  every,
+  everywhere,
+  forever,
+  gethsemane,
+  guacamole,
+  hermione,
+  hyperbole,
+  jesse,
+  jukebox,
+  karate,
+  machete,
+  maybe,
+  newlywed,
+  penelope,
+  people,
+  persephone,
+  phoebe,
+  pulse,
+  queue: queue$1,
+  recipe,
+  riverbed,
+  sesame,
+  shoreline,
+  simile,
+  snuffleupagus,
+  sometimes,
+  syncope,
+  tamale,
+  waterbed,
+  wednesday,
+  yosemite,
+  zoe
+};
+var pluralize$2 = pluralize$3.exports;
+var normalize = normalizeStrings.exports;
+var problematic = require$$2;
+var syllable_1 = syllables;
+var own = {}.hasOwnProperty;
+var EXPRESSION_MONOSYLLABIC_ONE = new RegExp([
+  "cia(?:l|$)",
+  "tia",
+  "cius",
+  "cious",
+  "[^aeiou]giu",
+  "[aeiouy][^aeiouy]ion",
+  "iou",
+  "sia$",
+  "eous$",
+  "[oa]gue$",
+  ".[^aeiuoycgltdb]{2,}ed$",
+  ".ely$",
+  "^jua",
+  "uai",
+  "eau",
+  "^busi$",
+  "(?:[aeiouy](?:" + [
+    "[bcfgklmnprsvwxyz]",
+    "ch",
+    "dg",
+    "g[hn]",
+    "lch",
+    "l[lv]",
+    "mm",
+    "nch",
+    "n[cgn]",
+    "r[bcnsv]",
+    "squ",
+    "s[chkls]",
+    "th"
+  ].join("|") + ")ed$)",
+  "(?:[aeiouy](?:" + [
+    "[bdfklmnprstvy]",
+    "ch",
+    "g[hn]",
+    "lch",
+    "l[lv]",
+    "mm",
+    "nch",
+    "nn",
+    "r[nsv]",
+    "squ",
+    "s[cklst]",
+    "th"
+  ].join("|") + ")es$)"
+].join("|"), "g");
+var EXPRESSION_MONOSYLLABIC_TWO = new RegExp("[aeiouy](?:" + [
+  "[bcdfgklmnprstvyz]",
+  "ch",
+  "dg",
+  "g[hn]",
+  "l[lv]",
+  "mm",
+  "n[cgn]",
+  "r[cnsv]",
+  "squ",
+  "s[cklst]",
+  "th"
+].join("|") + ")e$", "g");
+var EXPRESSION_DOUBLE_SYLLABIC_ONE = new RegExp("(?:" + [
+  "([^aeiouy])\\1l",
+  "[^aeiouy]ie(?:r|s?t)",
+  "[aeiouym]bl",
+  "eo",
+  "ism",
+  "asm",
+  "thm",
+  "dnt",
+  "snt",
+  "uity",
+  "dea",
+  "gean",
+  "oa",
+  "ua",
+  "react?",
+  "orbed",
+  "eings?",
+  "[aeiouy]sh?e[rs]"
+].join("|") + ")$", "g");
+var EXPRESSION_DOUBLE_SYLLABIC_TWO = new RegExp([
+  "creat(?!u)",
+  "[^gq]ua[^auieo]",
+  "[aeiou]{3}",
+  "^(?:ia|mc|coa[dglx].)",
+  "^re(app|es|im|us)"
+].join("|"), "g");
+var EXPRESSION_DOUBLE_SYLLABIC_THREE = new RegExp([
+  "[^aeiou]y[ae]",
+  "[^l]lien",
+  "riet",
+  "dien",
+  "iu",
+  "io",
+  "ii",
+  "uen",
+  "real",
+  "iell",
+  "eo[^aeiou]",
+  "[aeiou]y[aeiou]"
+].join("|"), "g");
+var EXPRESSION_DOUBLE_SYLLABIC_FOUR = /[^s]ia/;
+var EXPRESSION_SINGLE = new RegExp([
+  "^(?:" + [
+    "un",
+    "fore",
+    "ware",
+    "none?",
+    "out",
+    "post",
+    "sub",
+    "pre",
+    "pro",
+    "dis",
+    "side",
+    "some"
+  ].join("|") + ")",
+  "(?:" + [
+    "ly",
+    "less",
+    "some",
+    "ful",
+    "ers?",
+    "ness",
+    "cians?",
+    "ments?",
+    "ettes?",
+    "villes?",
+    "ships?",
+    "sides?",
+    "ports?",
+    "shires?",
+    "tion(?:ed|s)?"
+  ].join("|") + ")$"
+].join("|"), "g");
+var EXPRESSION_DOUBLE = new RegExp([
+  "^(?:" + [
+    "above",
+    "anti",
+    "ante",
+    "counter",
+    "hyper",
+    "afore",
+    "agri",
+    "infra",
+    "intra",
+    "inter",
+    "over",
+    "semi",
+    "ultra",
+    "under",
+    "extra",
+    "dia",
+    "micro",
+    "mega",
+    "kilo",
+    "pico",
+    "nano",
+    "macro",
+    "somer"
+  ].join("|") + ")",
+  "(?:" + ["fully", "berry", "woman", "women", "edly"].join("|") + ")$"
+].join("|"), "g");
+var EXPRESSION_TRIPLE = /(creations?|ology|ologist|onomy|onomist)$/g;
+var SPLIT = /\b/g;
+var APOSTROPHE = /['’]/g;
+var EXPRESSION_NONALPHABETIC = /[^a-z]/g;
+function syllables(value2) {
+  var values = normalize(String(value2)).toLowerCase().replace(APOSTROPHE, "").split(SPLIT);
+  var length = values.length;
+  var index2 = -1;
+  var total = 0;
+  while (++index2 < length) {
+    total += syllable$1(values[index2].replace(EXPRESSION_NONALPHABETIC, ""));
+  }
+  return total;
+}
+function syllable$1(value2) {
+  var count = 0;
+  var index2;
+  var length;
+  var singular;
+  var parts;
+  var addOne;
+  var subtractOne;
+  if (value2.length === 0) {
+    return count;
+  }
+  if (value2.length < 3) {
+    return 1;
+  }
+  if (own.call(problematic, value2)) {
+    return problematic[value2];
+  }
+  singular = pluralize$2(value2, 1);
+  if (own.call(problematic, singular)) {
+    return problematic[singular];
+  }
+  addOne = returnFactory(1);
+  subtractOne = returnFactory(-1);
+  value2 = value2.replace(EXPRESSION_TRIPLE, countFactory(3)).replace(EXPRESSION_DOUBLE, countFactory(2)).replace(EXPRESSION_SINGLE, countFactory(1));
+  parts = value2.split(/[^aeiouy]+/);
+  index2 = -1;
+  length = parts.length;
+  while (++index2 < length) {
+    if (parts[index2] !== "") {
+      count++;
+    }
+  }
+  value2.replace(EXPRESSION_MONOSYLLABIC_ONE, subtractOne).replace(EXPRESSION_MONOSYLLABIC_TWO, subtractOne);
+  value2.replace(EXPRESSION_DOUBLE_SYLLABIC_ONE, addOne).replace(EXPRESSION_DOUBLE_SYLLABIC_TWO, addOne).replace(EXPRESSION_DOUBLE_SYLLABIC_THREE, addOne).replace(EXPRESSION_DOUBLE_SYLLABIC_FOUR, addOne);
+  return count || 1;
+  function countFactory(addition) {
+    return counter;
+    function counter() {
+      count += addition;
+      return "";
+    }
+  }
+  function returnFactory(addition) {
+    return returner;
+    function returner($0) {
+      count += addition;
+      return $0;
+    }
+  }
+}
+var pluralize$1 = { exports: {} };
+(function(module, exports2) {
+  (function(root, pluralize2) {
+    if (typeof commonjsRequire === "function" && true && true) {
+      module.exports = pluralize2();
+    } else {
+      root.pluralize = pluralize2();
+    }
+  })(commonjsGlobal, function() {
+    var pluralRules = [];
+    var singularRules = [];
+    var uncountables = {};
+    var irregularPlurals = {};
+    var irregularSingles = {};
+    function sanitizeRule(rule) {
+      if (typeof rule === "string") {
+        return new RegExp("^" + rule + "$", "i");
+      }
+      return rule;
+    }
+    function restoreCase(word, token) {
+      if (word === token)
+        return token;
+      if (word === word.toLowerCase())
+        return token.toLowerCase();
+      if (word === word.toUpperCase())
+        return token.toUpperCase();
+      if (word[0] === word[0].toUpperCase()) {
+        return token.charAt(0).toUpperCase() + token.substr(1).toLowerCase();
+      }
+      return token.toLowerCase();
+    }
+    function interpolate(str, args) {
+      return str.replace(/\$(\d{1,2})/g, function(match, index2) {
+        return args[index2] || "";
+      });
+    }
+    function replace(word, rule) {
+      return word.replace(rule[0], function(match, index2) {
+        var result = interpolate(rule[1], arguments);
+        if (match === "") {
+          return restoreCase(word[index2 - 1], result);
+        }
+        return restoreCase(match, result);
+      });
+    }
+    function sanitizeWord(token, word, rules) {
+      if (!token.length || uncountables.hasOwnProperty(token)) {
+        return word;
+      }
+      var len2 = rules.length;
+      while (len2--) {
+        var rule = rules[len2];
+        if (rule[0].test(word))
+          return replace(word, rule);
+      }
+      return word;
+    }
+    function replaceWord(replaceMap, keepMap, rules) {
+      return function(word) {
+        var token = word.toLowerCase();
+        if (keepMap.hasOwnProperty(token)) {
+          return restoreCase(word, token);
+        }
+        if (replaceMap.hasOwnProperty(token)) {
+          return restoreCase(word, replaceMap[token]);
+        }
+        return sanitizeWord(token, word, rules);
+      };
+    }
+    function checkWord(replaceMap, keepMap, rules, bool) {
+      return function(word) {
+        var token = word.toLowerCase();
+        if (keepMap.hasOwnProperty(token))
+          return true;
+        if (replaceMap.hasOwnProperty(token))
+          return false;
+        return sanitizeWord(token, token, rules) === token;
+      };
+    }
+    function pluralize2(word, count, inclusive) {
+      var pluralized = count === 1 ? pluralize2.singular(word) : pluralize2.plural(word);
+      return (inclusive ? count + " " : "") + pluralized;
+    }
+    pluralize2.plural = replaceWord(irregularSingles, irregularPlurals, pluralRules);
+    pluralize2.isPlural = checkWord(irregularSingles, irregularPlurals, pluralRules);
+    pluralize2.singular = replaceWord(irregularPlurals, irregularSingles, singularRules);
+    pluralize2.isSingular = checkWord(irregularPlurals, irregularSingles, singularRules);
+    pluralize2.addPluralRule = function(rule, replacement) {
+      pluralRules.push([sanitizeRule(rule), replacement]);
+    };
+    pluralize2.addSingularRule = function(rule, replacement) {
+      singularRules.push([sanitizeRule(rule), replacement]);
+    };
+    pluralize2.addUncountableRule = function(word) {
+      if (typeof word === "string") {
+        uncountables[word.toLowerCase()] = true;
+        return;
+      }
+      pluralize2.addPluralRule(word, "$0");
+      pluralize2.addSingularRule(word, "$0");
+    };
+    pluralize2.addIrregularRule = function(single, plural) {
+      plural = plural.toLowerCase();
+      single = single.toLowerCase();
+      irregularSingles[single] = plural;
+      irregularPlurals[plural] = single;
+    };
+    [
+      ["I", "we"],
+      ["me", "us"],
+      ["he", "they"],
+      ["she", "they"],
+      ["them", "them"],
+      ["myself", "ourselves"],
+      ["yourself", "yourselves"],
+      ["itself", "themselves"],
+      ["herself", "themselves"],
+      ["himself", "themselves"],
+      ["themself", "themselves"],
+      ["is", "are"],
+      ["was", "were"],
+      ["has", "have"],
+      ["this", "these"],
+      ["that", "those"],
+      ["echo", "echoes"],
+      ["dingo", "dingoes"],
+      ["volcano", "volcanoes"],
+      ["tornado", "tornadoes"],
+      ["torpedo", "torpedoes"],
+      ["genus", "genera"],
+      ["viscus", "viscera"],
+      ["stigma", "stigmata"],
+      ["stoma", "stomata"],
+      ["dogma", "dogmata"],
+      ["lemma", "lemmata"],
+      ["schema", "schemata"],
+      ["anathema", "anathemata"],
+      ["ox", "oxen"],
+      ["axe", "axes"],
+      ["die", "dice"],
+      ["yes", "yeses"],
+      ["foot", "feet"],
+      ["eave", "eaves"],
+      ["goose", "geese"],
+      ["tooth", "teeth"],
+      ["quiz", "quizzes"],
+      ["human", "humans"],
+      ["proof", "proofs"],
+      ["carve", "carves"],
+      ["valve", "valves"],
+      ["looey", "looies"],
+      ["thief", "thieves"],
+      ["groove", "grooves"],
+      ["pickaxe", "pickaxes"],
+      ["passerby", "passersby"]
+    ].forEach(function(rule) {
+      return pluralize2.addIrregularRule(rule[0], rule[1]);
+    });
+    [
+      [/s?$/i, "s"],
+      [/[^\u0000-\u007F]$/i, "$0"],
+      [/([^aeiou]ese)$/i, "$1"],
+      [/(ax|test)is$/i, "$1es"],
+      [/(alias|[^aou]us|t[lm]as|gas|ris)$/i, "$1es"],
+      [/(e[mn]u)s?$/i, "$1s"],
+      [/([^l]ias|[aeiou]las|[ejzr]as|[iu]am)$/i, "$1"],
+      [/(alumn|syllab|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc|strat)(?:us|i)$/i, "$1i"],
+      [/(alumn|alg|vertebr)(?:a|ae)$/i, "$1ae"],
+      [/(seraph|cherub)(?:im)?$/i, "$1im"],
+      [/(her|at|gr)o$/i, "$1oes"],
+      [/(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|automat|quor)(?:a|um)$/i, "$1a"],
+      [/(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|hedr|automat)(?:a|on)$/i, "$1a"],
+      [/sis$/i, "ses"],
+      [/(?:(kni|wi|li)fe|(ar|l|ea|eo|oa|hoo)f)$/i, "$1$2ves"],
+      [/([^aeiouy]|qu)y$/i, "$1ies"],
+      [/([^ch][ieo][ln])ey$/i, "$1ies"],
+      [/(x|ch|ss|sh|zz)$/i, "$1es"],
+      [/(matr|cod|mur|sil|vert|ind|append)(?:ix|ex)$/i, "$1ices"],
+      [/\b((?:tit)?m|l)(?:ice|ouse)$/i, "$1ice"],
+      [/(pe)(?:rson|ople)$/i, "$1ople"],
+      [/(child)(?:ren)?$/i, "$1ren"],
+      [/eaux$/i, "$0"],
+      [/m[ae]n$/i, "men"],
+      ["thou", "you"]
+    ].forEach(function(rule) {
+      return pluralize2.addPluralRule(rule[0], rule[1]);
+    });
+    [
+      [/s$/i, ""],
+      [/(ss)$/i, "$1"],
+      [/(wi|kni|(?:after|half|high|low|mid|non|night|[^\w]|^)li)ves$/i, "$1fe"],
+      [/(ar|(?:wo|[ae])l|[eo][ao])ves$/i, "$1f"],
+      [/ies$/i, "y"],
+      [/\b([pl]|zomb|(?:neck|cross)?t|coll|faer|food|gen|goon|group|lass|talk|goal|cut)ies$/i, "$1ie"],
+      [/\b(mon|smil)ies$/i, "$1ey"],
+      [/\b((?:tit)?m|l)ice$/i, "$1ouse"],
+      [/(seraph|cherub)im$/i, "$1"],
+      [/(x|ch|ss|sh|zz|tto|go|cho|alias|[^aou]us|t[lm]as|gas|(?:her|at|gr)o|[aeiou]ris)(?:es)?$/i, "$1"],
+      [/(analy|diagno|parenthe|progno|synop|the|empha|cri|ne)(?:sis|ses)$/i, "$1sis"],
+      [/(movie|twelve|abuse|e[mn]u)s$/i, "$1"],
+      [/(test)(?:is|es)$/i, "$1is"],
+      [/(alumn|syllab|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc|strat)(?:us|i)$/i, "$1us"],
+      [/(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|quor)a$/i, "$1um"],
+      [/(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|hedr|automat)a$/i, "$1on"],
+      [/(alumn|alg|vertebr)ae$/i, "$1a"],
+      [/(cod|mur|sil|vert|ind)ices$/i, "$1ex"],
+      [/(matr|append)ices$/i, "$1ix"],
+      [/(pe)(rson|ople)$/i, "$1rson"],
+      [/(child)ren$/i, "$1"],
+      [/(eau)x?$/i, "$1"],
+      [/men$/i, "man"]
+    ].forEach(function(rule) {
+      return pluralize2.addSingularRule(rule[0], rule[1]);
+    });
+    [
+      "adulthood",
+      "advice",
+      "agenda",
+      "aid",
+      "aircraft",
+      "alcohol",
+      "ammo",
+      "analytics",
+      "anime",
+      "athletics",
+      "audio",
+      "bison",
+      "blood",
+      "bream",
+      "buffalo",
+      "butter",
+      "carp",
+      "cash",
+      "chassis",
+      "chess",
+      "clothing",
+      "cod",
+      "commerce",
+      "cooperation",
+      "corps",
+      "debris",
+      "diabetes",
+      "digestion",
+      "elk",
+      "energy",
+      "equipment",
+      "excretion",
+      "expertise",
+      "firmware",
+      "flounder",
+      "fun",
+      "gallows",
+      "garbage",
+      "graffiti",
+      "hardware",
+      "headquarters",
+      "health",
+      "herpes",
+      "highjinks",
+      "homework",
+      "housework",
+      "information",
+      "jeans",
+      "justice",
+      "kudos",
+      "labour",
+      "literature",
+      "machinery",
+      "mackerel",
+      "mail",
+      "media",
+      "mews",
+      "moose",
+      "music",
+      "mud",
+      "manga",
+      "news",
+      "only",
+      "personnel",
+      "pike",
+      "plankton",
+      "pliers",
+      "police",
+      "pollution",
+      "premises",
+      "rain",
+      "research",
+      "rice",
+      "salmon",
+      "scissors",
+      "series",
+      "sewage",
+      "shambles",
+      "shrimp",
+      "software",
+      "species",
+      "staff",
+      "swine",
+      "tennis",
+      "traffic",
+      "transportation",
+      "trout",
+      "tuna",
+      "wealth",
+      "welfare",
+      "whiting",
+      "wildebeest",
+      "wildlife",
+      "you",
+      /pok[eé]mon$/i,
+      /[^aeiou]ese$/i,
+      /deer$/i,
+      /fish$/i,
+      /measles$/i,
+      /o[iu]s$/i,
+      /pox$/i,
+      /sheep$/i
+    ].forEach(pluralize2.addUncountableRule);
+    return pluralize2;
+  });
+})(pluralize$1);
+const easyWords$1 = [
+  "a",
+  "able",
+  "aboard",
+  "about",
+  "above",
+  "absent",
+  "accept",
+  "accident",
+  "account",
+  "ache",
+  "aching",
+  "acorn",
+  "acre",
+  "across",
+  "act",
+  "acts",
+  "add",
+  "address",
+  "admire",
+  "adventure",
+  "afar",
+  "afraid",
+  "after",
+  "afternoon",
+  "afterward",
+  "afterwards",
+  "again",
+  "against",
+  "age",
+  "aged",
+  "ago",
+  "agree",
+  "ah",
+  "ahead",
+  "aid",
+  "aim",
+  "air",
+  "airfield",
+  "airplane",
+  "airport",
+  "airship",
+  "airy",
+  "alarm",
+  "alike",
+  "alive",
+  "all",
+  "alley",
+  "alligator",
+  "allow",
+  "almost",
+  "alone",
+  "along",
+  "aloud",
+  "already",
+  "also",
+  "always",
+  "am",
+  "america",
+  "american",
+  "among",
+  "amount",
+  "an",
+  "and",
+  "angel",
+  "anger",
+  "angry",
+  "animal",
+  "another",
+  "answer",
+  "ant",
+  "any",
+  "anybody",
+  "anyhow",
+  "anyone",
+  "anything",
+  "anyway",
+  "anywhere",
+  "apart",
+  "apartment",
+  "ape",
+  "apiece",
+  "appear",
+  "apple",
+  "april",
+  "apron",
+  "are",
+  "aren't",
+  "arise",
+  "arithmetic",
+  "arm",
+  "armful",
+  "army",
+  "arose",
+  "around",
+  "arrange",
+  "arrive",
+  "arrived",
+  "arrow",
+  "art",
+  "artist",
+  "as",
+  "ash",
+  "ashes",
+  "aside",
+  "ask",
+  "asleep",
+  "at",
+  "ate",
+  "attack",
+  "attend",
+  "attention",
+  "august",
+  "aunt",
+  "author",
+  "auto",
+  "automobile",
+  "autumn",
+  "avenue",
+  "awake",
+  "awaken",
+  "away",
+  "awful",
+  "awfully",
+  "awhile",
+  "ax",
+  "axe",
+  "baa",
+  "babe",
+  "babies",
+  "back",
+  "background",
+  "backward",
+  "backwards",
+  "bacon",
+  "bad",
+  "badge",
+  "badly",
+  "bag",
+  "bake",
+  "baker",
+  "bakery",
+  "baking",
+  "ball",
+  "balloon",
+  "banana",
+  "band",
+  "bandage",
+  "bang",
+  "banjo",
+  "bank",
+  "banker",
+  "bar",
+  "barber",
+  "bare",
+  "barefoot",
+  "barely",
+  "bark",
+  "barn",
+  "barrel",
+  "base",
+  "baseball",
+  "basement",
+  "basket",
+  "bat",
+  "batch",
+  "bath",
+  "bathe",
+  "bathing",
+  "bathroom",
+  "bathtub",
+  "battle",
+  "battleship",
+  "bay",
+  "be",
+  "beach",
+  "bead",
+  "beam",
+  "bean",
+  "bear",
+  "beard",
+  "beast",
+  "beat",
+  "beating",
+  "beautiful",
+  "beautify",
+  "beauty",
+  "became",
+  "because",
+  "become",
+  "becoming",
+  "bed",
+  "bedbug",
+  "bedroom",
+  "bedspread",
+  "bedtime",
+  "bee",
+  "beech",
+  "beef",
+  "beefsteak",
+  "beehive",
+  "been",
+  "beer",
+  "beet",
+  "before",
+  "beg",
+  "began",
+  "beggar",
+  "begged",
+  "begin",
+  "beginning",
+  "begun",
+  "behave",
+  "behind",
+  "being",
+  "believe",
+  "bell",
+  "belong",
+  "below",
+  "belt",
+  "bench",
+  "bend",
+  "beneath",
+  "bent",
+  "berries",
+  "berry",
+  "beside",
+  "besides",
+  "best",
+  "bet",
+  "better",
+  "between",
+  "bib",
+  "bible",
+  "bicycle",
+  "bid",
+  "big",
+  "bigger",
+  "bill",
+  "billboard",
+  "bin",
+  "bind",
+  "bird",
+  "birth",
+  "birthday",
+  "biscuit",
+  "bit",
+  "bite",
+  "biting",
+  "bitter",
+  "black",
+  "blackberry",
+  "blackbird",
+  "blackboard",
+  "blackness",
+  "blacksmith",
+  "blame",
+  "blank",
+  "blanket",
+  "blast",
+  "blaze",
+  "bleed",
+  "bless",
+  "blessing",
+  "blew",
+  "blind",
+  "blindfold",
+  "blinds",
+  "block",
+  "blood",
+  "bloom",
+  "blossom",
+  "blot",
+  "blow",
+  "blue",
+  "blueberry",
+  "bluebird",
+  "blush",
+  "board",
+  "boast",
+  "boat",
+  "bob",
+  "bobwhite",
+  "bodies",
+  "body",
+  "boil",
+  "boiler",
+  "bold",
+  "bone",
+  "bonnet",
+  "boo",
+  "book",
+  "bookcase",
+  "bookkeeper",
+  "boom",
+  "boot",
+  "born",
+  "borrow",
+  "boss",
+  "both",
+  "bother",
+  "bottle",
+  "bottom",
+  "bought",
+  "bounce",
+  "bow",
+  "bowl",
+  "bow-wow",
+  "box",
+  "boxcar",
+  "boxer",
+  "boxes",
+  "boy",
+  "boyhood",
+  "bracelet",
+  "brain",
+  "brake",
+  "bran",
+  "branch",
+  "brass",
+  "brave",
+  "bread",
+  "break",
+  "breakfast",
+  "breast",
+  "breath",
+  "breathe",
+  "breeze",
+  "brick",
+  "bride",
+  "bridge",
+  "bright",
+  "brightness",
+  "bring",
+  "broad",
+  "broadcast",
+  "broke",
+  "broken",
+  "brook",
+  "broom",
+  "brother",
+  "brought",
+  "brown",
+  "brush",
+  "bubble",
+  "bucket",
+  "buckle",
+  "bud",
+  "buffalo",
+  "bug",
+  "buggy",
+  "build",
+  "building",
+  "built",
+  "bulb",
+  "bull",
+  "bullet",
+  "bum",
+  "bumblebee",
+  "bump",
+  "bun",
+  "bunch",
+  "bundle",
+  "bunny",
+  "burn",
+  "burst",
+  "bury",
+  "bus",
+  "bush",
+  "bushel",
+  "business",
+  "busy",
+  "but",
+  "butcher",
+  "butt",
+  "butter",
+  "buttercup",
+  "butterfly",
+  "buttermilk",
+  "butterscotch",
+  "button",
+  "buttonhole",
+  "buy",
+  "buzz",
+  "by",
+  "bye",
+  "cab",
+  "cabbage",
+  "cabin",
+  "cabinet",
+  "cackle",
+  "cage",
+  "cake",
+  "calendar",
+  "calf",
+  "call",
+  "caller",
+  "calling",
+  "came",
+  "camel",
+  "camp",
+  "campfire",
+  "can",
+  "canal",
+  "canary",
+  "candle",
+  "candlestick",
+  "candy",
+  "cane",
+  "cannon",
+  "cannot",
+  "canoe",
+  "can't",
+  "canyon",
+  "cap",
+  "cape",
+  "capital",
+  "captain",
+  "car",
+  "card",
+  "cardboard",
+  "care",
+  "careful",
+  "careless",
+  "carelessness",
+  "carload",
+  "carpenter",
+  "carpet",
+  "carriage",
+  "carrot",
+  "carry",
+  "cart",
+  "carve",
+  "case",
+  "cash",
+  "cashier",
+  "castle",
+  "cat",
+  "catbird",
+  "catch",
+  "catcher",
+  "caterpillar",
+  "catfish",
+  "catsup",
+  "cattle",
+  "caught",
+  "cause",
+  "cave",
+  "ceiling",
+  "cell",
+  "cellar",
+  "cent",
+  "center",
+  "cereal",
+  "certain",
+  "certainly",
+  "chain",
+  "chair",
+  "chalk",
+  "champion",
+  "chance",
+  "change",
+  "chap",
+  "charge",
+  "charm",
+  "chart",
+  "chase",
+  "chatter",
+  "cheap",
+  "cheat",
+  "check",
+  "checkers",
+  "cheek",
+  "cheer",
+  "cheese",
+  "cherry",
+  "chest",
+  "chew",
+  "chick",
+  "chicken",
+  "chief",
+  "child",
+  "childhood",
+  "children",
+  "chill",
+  "chilly",
+  "chimney",
+  "chin",
+  "china",
+  "chip",
+  "chipmunk",
+  "chocolate",
+  "choice",
+  "choose",
+  "chop",
+  "chorus",
+  "chose",
+  "chosen",
+  "christen",
+  "christmas",
+  "church",
+  "churn",
+  "cigarette",
+  "circle",
+  "circus",
+  "citizen",
+  "city",
+  "clang",
+  "clap",
+  "class",
+  "classmate",
+  "classroom",
+  "claw",
+  "clay",
+  "clean",
+  "cleaner",
+  "clear",
+  "clerk",
+  "clever",
+  "click",
+  "cliff",
+  "climb",
+  "clip",
+  "cloak",
+  "clock",
+  "close",
+  "closet",
+  "cloth",
+  "clothes",
+  "clothing",
+  "cloud",
+  "cloudy",
+  "clover",
+  "clown",
+  "club",
+  "cluck",
+  "clump",
+  "coach",
+  "coal",
+  "coast",
+  "coat",
+  "cob",
+  "cobbler",
+  "cocoa",
+  "coconut",
+  "cocoon",
+  "cod",
+  "codfish",
+  "coffee",
+  "coffeepot",
+  "coin",
+  "cold",
+  "collar",
+  "college",
+  "color",
+  "colored",
+  "colt",
+  "column",
+  "comb",
+  "come",
+  "comfort",
+  "comic",
+  "coming",
+  "company",
+  "compare",
+  "conductor",
+  "cone",
+  "connect",
+  "coo",
+  "cook",
+  "cooked",
+  "cooking",
+  "cookie",
+  "cookies",
+  "cool",
+  "cooler",
+  "coop",
+  "copper",
+  "copy",
+  "cord",
+  "cork",
+  "corn",
+  "corner",
+  "correct",
+  "cost",
+  "cot",
+  "cottage",
+  "cotton",
+  "couch",
+  "cough",
+  "could",
+  "couldn't",
+  "count",
+  "counter",
+  "country",
+  "county",
+  "course",
+  "court",
+  "cousin",
+  "cover",
+  "cow",
+  "coward",
+  "cowardly",
+  "cowboy",
+  "cozy",
+  "crab",
+  "crack",
+  "cracker",
+  "cradle",
+  "cramps",
+  "cranberry",
+  "crank",
+  "cranky",
+  "crash",
+  "crawl",
+  "crazy",
+  "cream",
+  "creamy",
+  "creek",
+  "creep",
+  "crept",
+  "cried",
+  "croak",
+  "crook",
+  "crooked",
+  "crop",
+  "cross",
+  "crossing",
+  "cross-eyed",
+  "crow",
+  "crowd",
+  "crowded",
+  "crown",
+  "cruel",
+  "crumb",
+  "crumble",
+  "crush",
+  "crust",
+  "cry",
+  "cries",
+  "cub",
+  "cuff",
+  "cup",
+  "cuff",
+  "cup",
+  "cupboard",
+  "cupful",
+  "cure",
+  "curl",
+  "curly",
+  "curtain",
+  "curve",
+  "cushion",
+  "custard",
+  "customer",
+  "cut",
+  "cute",
+  "cutting",
+  "dab",
+  "dad",
+  "daddy",
+  "daily",
+  "dairy",
+  "daisy",
+  "dam",
+  "damage",
+  "dame",
+  "damp",
+  "dance",
+  "dancer",
+  "dancing",
+  "dandy",
+  "danger",
+  "dangerous",
+  "dare",
+  "dark",
+  "darkness",
+  "darling",
+  "darn",
+  "dart",
+  "dash",
+  "date",
+  "daughter",
+  "dawn",
+  "day",
+  "daybreak",
+  "daytime",
+  "dead",
+  "deaf",
+  "deal",
+  "dear",
+  "death",
+  "december",
+  "decide",
+  "deck",
+  "deed",
+  "deep",
+  "deer",
+  "defeat",
+  "defend",
+  "defense",
+  "delight",
+  "den",
+  "dentist",
+  "depend",
+  "deposit",
+  "describe",
+  "desert",
+  "deserve",
+  "desire",
+  "desk",
+  "destroy",
+  "devil",
+  "dew",
+  "diamond",
+  "did",
+  "didn't",
+  "die",
+  "died",
+  "dies",
+  "difference",
+  "different",
+  "dig",
+  "dim",
+  "dime",
+  "dine",
+  "ding-dong",
+  "dinner",
+  "dip",
+  "direct",
+  "direction",
+  "dirt",
+  "dirty",
+  "discover",
+  "dish",
+  "dislike",
+  "dismiss",
+  "ditch",
+  "dive",
+  "diver",
+  "divide",
+  "do",
+  "dock",
+  "doctor",
+  "does",
+  "doesn't",
+  "dog",
+  "doll",
+  "dollar",
+  "dolly",
+  "done",
+  "donkey",
+  "don't",
+  "door",
+  "doorbell",
+  "doorknob",
+  "doorstep",
+  "dope",
+  "dot",
+  "double",
+  "dough",
+  "dove",
+  "down",
+  "downstairs",
+  "downtown",
+  "dozen",
+  "drag",
+  "drain",
+  "drank",
+  "draw",
+  "drawer",
+  "draw",
+  "drawing",
+  "dream",
+  "dress",
+  "dresser",
+  "dressmaker",
+  "drew",
+  "dried",
+  "drift",
+  "drill",
+  "drink",
+  "drip",
+  "drive",
+  "driven",
+  "driver",
+  "drop",
+  "drove",
+  "drown",
+  "drowsy",
+  "drub",
+  "drum",
+  "drunk",
+  "dry",
+  "duck",
+  "due",
+  "dug",
+  "dull",
+  "dumb",
+  "dump",
+  "during",
+  "dust",
+  "dusty",
+  "duty",
+  "dwarf",
+  "dwell",
+  "dwelt",
+  "dying",
+  "each",
+  "eager",
+  "eagle",
+  "ear",
+  "early",
+  "earn",
+  "earth",
+  "east",
+  "eastern",
+  "easy",
+  "eat",
+  "eaten",
+  "edge",
+  "egg",
+  "eh",
+  "eight",
+  "eighteen",
+  "eighth",
+  "eighty",
+  "either",
+  "elbow",
+  "elder",
+  "eldest",
+  "electric",
+  "electricity",
+  "elephant",
+  "eleven",
+  "elf",
+  "elm",
+  "else",
+  "elsewhere",
+  "empty",
+  "end",
+  "ending",
+  "enemy",
+  "engine",
+  "engineer",
+  "english",
+  "enjoy",
+  "enough",
+  "enter",
+  "envelope",
+  "equal",
+  "erase",
+  "eraser",
+  "errand",
+  "escape",
+  "eve",
+  "even",
+  "evening",
+  "ever",
+  "every",
+  "everybody",
+  "everyday",
+  "everyone",
+  "everything",
+  "everywhere",
+  "evil",
+  "exact",
+  "except",
+  "exchange",
+  "excited",
+  "exciting",
+  "excuse",
+  "exit",
+  "expect",
+  "explain",
+  "extra",
+  "eye",
+  "eyebrow",
+  "fable",
+  "face",
+  "facing",
+  "fact",
+  "factory",
+  "fail",
+  "faint",
+  "fair",
+  "fairy",
+  "faith",
+  "fake",
+  "fall",
+  "false",
+  "family",
+  "fan",
+  "fancy",
+  "far",
+  "faraway",
+  "fare",
+  "farmer",
+  "farm",
+  "farming",
+  "far-off",
+  "farther",
+  "fashion",
+  "fast",
+  "fasten",
+  "fat",
+  "father",
+  "fault",
+  "favor",
+  "favorite",
+  "fear",
+  "feast",
+  "feather",
+  "february",
+  "fed",
+  "feed",
+  "feel",
+  "feet",
+  "fell",
+  "fellow",
+  "felt",
+  "fence",
+  "fever",
+  "few",
+  "fib",
+  "fiddle",
+  "field",
+  "fife",
+  "fifteen",
+  "fifth",
+  "fifty",
+  "fig",
+  "fight",
+  "figure",
+  "file",
+  "fill",
+  "film",
+  "finally",
+  "find",
+  "fine",
+  "finger",
+  "finish",
+  "fire",
+  "firearm",
+  "firecracker",
+  "fireplace",
+  "fireworks",
+  "firing",
+  "first",
+  "fish",
+  "fisherman",
+  "fist",
+  "fit",
+  "fits",
+  "five",
+  "fix",
+  "flag",
+  "flake",
+  "flame",
+  "flap",
+  "flash",
+  "flashlight",
+  "flat",
+  "flea",
+  "flesh",
+  "flew",
+  "flies",
+  "flight",
+  "flip",
+  "flip-flop",
+  "float",
+  "flock",
+  "flood",
+  "floor",
+  "flop",
+  "flour",
+  "flow",
+  "flower",
+  "flowery",
+  "flutter",
+  "fly",
+  "foam",
+  "fog",
+  "foggy",
+  "fold",
+  "folks",
+  "follow",
+  "following",
+  "fond",
+  "food",
+  "fool",
+  "foolish",
+  "foot",
+  "football",
+  "footprint",
+  "for",
+  "forehead",
+  "forest",
+  "forget",
+  "forgive",
+  "forgot",
+  "forgotten",
+  "fork",
+  "form",
+  "fort",
+  "forth",
+  "fortune",
+  "forty",
+  "forward",
+  "fought",
+  "found",
+  "fountain",
+  "four",
+  "fourteen",
+  "fourth",
+  "fox",
+  "frame",
+  "free",
+  "freedom",
+  "freeze",
+  "freight",
+  "french",
+  "fresh",
+  "fret",
+  "friday",
+  "fried",
+  "friend",
+  "friendly",
+  "friendship",
+  "frighten",
+  "frog",
+  "from",
+  "front",
+  "frost",
+  "frown",
+  "froze",
+  "fruit",
+  "fry",
+  "fudge",
+  "fuel",
+  "full",
+  "fully",
+  "fun",
+  "funny",
+  "fur",
+  "furniture",
+  "further",
+  "fuzzy",
+  "gain",
+  "gallon",
+  "gallop",
+  "game",
+  "gang",
+  "garage",
+  "garbage",
+  "garden",
+  "gas",
+  "gasoline",
+  "gate",
+  "gather",
+  "gave",
+  "gay",
+  "gear",
+  "geese",
+  "general",
+  "gentle",
+  "gentleman",
+  "gentlemen",
+  "geography",
+  "get",
+  "getting",
+  "giant",
+  "gift",
+  "gingerbread",
+  "girl",
+  "give",
+  "given",
+  "giving",
+  "glad",
+  "gladly",
+  "glance",
+  "glass",
+  "glasses",
+  "gleam",
+  "glide",
+  "glory",
+  "glove",
+  "glow",
+  "glue",
+  "go",
+  "going",
+  "goes",
+  "goal",
+  "goat",
+  "gobble",
+  "god",
+  "god",
+  "godmother",
+  "gold",
+  "golden",
+  "goldfish",
+  "golf",
+  "gone",
+  "good",
+  "goods",
+  "goodbye",
+  "good-by",
+  "goodbye",
+  "good-bye",
+  "good-looking",
+  "goodness",
+  "goody",
+  "goose",
+  "gooseberry",
+  "got",
+  "govern",
+  "government",
+  "gown",
+  "grab",
+  "gracious",
+  "grade",
+  "grain",
+  "grand",
+  "grandchild",
+  "grandchildren",
+  "granddaughter",
+  "grandfather",
+  "grandma",
+  "grandmother",
+  "grandpa",
+  "grandson",
+  "grandstand",
+  "grape",
+  "grapes",
+  "grapefruit",
+  "grass",
+  "grasshopper",
+  "grateful",
+  "grave",
+  "gravel",
+  "graveyard",
+  "gravy",
+  "gray",
+  "graze",
+  "grease",
+  "great",
+  "green",
+  "greet",
+  "grew",
+  "grind",
+  "groan",
+  "grocery",
+  "ground",
+  "group",
+  "grove",
+  "grow",
+  "guard",
+  "guess",
+  "guest",
+  "guide",
+  "gulf",
+  "gum",
+  "gun",
+  "gunpowder",
+  "guy",
+  "ha",
+  "habit",
+  "had",
+  "hadn't",
+  "hail",
+  "hair",
+  "haircut",
+  "hairpin",
+  "half",
+  "hall",
+  "halt",
+  "ham",
+  "hammer",
+  "hand",
+  "handful",
+  "handkerchief",
+  "handle",
+  "handwriting",
+  "hang",
+  "happen",
+  "happily",
+  "happiness",
+  "happy",
+  "harbor",
+  "hard",
+  "hardly",
+  "hardship",
+  "hardware",
+  "hare",
+  "hark",
+  "harm",
+  "harness",
+  "harp",
+  "harvest",
+  "has",
+  "hasn't",
+  "haste",
+  "hasten",
+  "hasty",
+  "hat",
+  "hatch",
+  "hatchet",
+  "hate",
+  "haul",
+  "have",
+  "haven't",
+  "having",
+  "hawk",
+  "hay",
+  "hayfield",
+  "haystack",
+  "he",
+  "head",
+  "headache",
+  "heal",
+  "health",
+  "healthy",
+  "heap",
+  "hear",
+  "hearing",
+  "heard",
+  "heart",
+  "heat",
+  "heater",
+  "heaven",
+  "heavy",
+  "he'd",
+  "heel",
+  "height",
+  "held",
+  "hell",
+  "he'll",
+  "hello",
+  "helmet",
+  "help",
+  "helper",
+  "helpful",
+  "hem",
+  "hen",
+  "henhouse",
+  "her",
+  "hers",
+  "herd",
+  "here",
+  "here's",
+  "hero",
+  "herself",
+  "he's",
+  "hey",
+  "hickory",
+  "hid",
+  "hidden",
+  "hide",
+  "high",
+  "highway",
+  "hill",
+  "hillside",
+  "hilltop",
+  "hilly",
+  "him",
+  "himself",
+  "hind",
+  "hint",
+  "hip",
+  "hire",
+  "his",
+  "hiss",
+  "history",
+  "hit",
+  "hitch",
+  "hive",
+  "ho",
+  "hoe",
+  "hog",
+  "hold",
+  "holder",
+  "hole",
+  "holiday",
+  "hollow",
+  "holy",
+  "home",
+  "homely",
+  "homesick",
+  "honest",
+  "honey",
+  "honeybee",
+  "honeymoon",
+  "honk",
+  "honor",
+  "hood",
+  "hoof",
+  "hook",
+  "hoop",
+  "hop",
+  "hope",
+  "hopeful",
+  "hopeless",
+  "horn",
+  "horse",
+  "horseback",
+  "horseshoe",
+  "hose",
+  "hospital",
+  "host",
+  "hot",
+  "hotel",
+  "hound",
+  "hour",
+  "house",
+  "housetop",
+  "housewife",
+  "housework",
+  "how",
+  "however",
+  "howl",
+  "hug",
+  "huge",
+  "hum",
+  "humble",
+  "hump",
+  "hundred",
+  "hung",
+  "hunger",
+  "hungry",
+  "hunk",
+  "hunt",
+  "hunter",
+  "hurrah",
+  "hurried",
+  "hurry",
+  "hurt",
+  "husband",
+  "hush",
+  "hut",
+  "hymn",
+  "i",
+  "ice",
+  "icy",
+  "i'd",
+  "idea",
+  "ideal",
+  "if",
+  "ill",
+  "i'll",
+  "i'm",
+  "important",
+  "impossible",
+  "improve",
+  "in",
+  "inch",
+  "inches",
+  "income",
+  "indeed",
+  "indian",
+  "indoors",
+  "ink",
+  "inn",
+  "insect",
+  "inside",
+  "instant",
+  "instead",
+  "insult",
+  "intend",
+  "interested",
+  "interesting",
+  "into",
+  "invite",
+  "iron",
+  "is",
+  "island",
+  "isn't",
+  "it",
+  "its",
+  "it's",
+  "itself",
+  "i've",
+  "ivory",
+  "ivy",
+  "jacket",
+  "jacks",
+  "jail",
+  "jam",
+  "january",
+  "jar",
+  "jaw",
+  "jay",
+  "jelly",
+  "jellyfish",
+  "jerk",
+  "jig",
+  "job",
+  "jockey",
+  "join",
+  "joke",
+  "joking",
+  "jolly",
+  "journey",
+  "joy",
+  "joyful",
+  "joyous",
+  "judge",
+  "jug",
+  "juice",
+  "juicy",
+  "july",
+  "jump",
+  "june",
+  "junior",
+  "junk",
+  "just",
+  "keen",
+  "keep",
+  "kept",
+  "kettle",
+  "key",
+  "kick",
+  "kid",
+  "kill",
+  "killed",
+  "kind",
+  "kindly",
+  "kindness",
+  "king",
+  "kingdom",
+  "kiss",
+  "kitchen",
+  "kite",
+  "kitten",
+  "kitty",
+  "knee",
+  "kneel",
+  "knew",
+  "knife",
+  "knit",
+  "knives",
+  "knob",
+  "knock",
+  "knot",
+  "know",
+  "known",
+  "lace",
+  "lad",
+  "ladder",
+  "ladies",
+  "lady",
+  "laid",
+  "lake",
+  "lamb",
+  "lame",
+  "lamp",
+  "land",
+  "lane",
+  "language",
+  "lantern",
+  "lap",
+  "lard",
+  "large",
+  "lash",
+  "lass",
+  "last",
+  "late",
+  "laugh",
+  "laundry",
+  "law",
+  "lawn",
+  "lawyer",
+  "lay",
+  "lazy",
+  "lead",
+  "leader",
+  "leaf",
+  "leak",
+  "lean",
+  "leap",
+  "learn",
+  "learned",
+  "least",
+  "leather",
+  "leave",
+  "leaving",
+  "led",
+  "left",
+  "leg",
+  "lemon",
+  "lemonade",
+  "lend",
+  "length",
+  "less",
+  "lesson",
+  "let",
+  "let's",
+  "letter",
+  "letting",
+  "lettuce",
+  "level",
+  "liberty",
+  "library",
+  "lice",
+  "lick",
+  "lid",
+  "lie",
+  "life",
+  "lift",
+  "light",
+  "lightness",
+  "lightning",
+  "like",
+  "likely",
+  "liking",
+  "lily",
+  "limb",
+  "lime",
+  "limp",
+  "line",
+  "linen",
+  "lion",
+  "lip",
+  "list",
+  "listen",
+  "lit",
+  "little",
+  "live",
+  "lives",
+  "lively",
+  "liver",
+  "living",
+  "lizard",
+  "load",
+  "loaf",
+  "loan",
+  "loaves",
+  "lock",
+  "locomotive",
+  "log",
+  "lone",
+  "lonely",
+  "lonesome",
+  "long",
+  "look",
+  "lookout",
+  "loop",
+  "loose",
+  "lord",
+  "lose",
+  "loser",
+  "loss",
+  "lost",
+  "lot",
+  "loud",
+  "love",
+  "lovely",
+  "lover",
+  "low",
+  "luck",
+  "lucky",
+  "lumber",
+  "lump",
+  "lunch",
+  "lying",
+  "machine",
+  "machinery",
+  "mad",
+  "made",
+  "magazine",
+  "magic",
+  "maid",
+  "mail",
+  "mailbox",
+  "mailman",
+  "major",
+  "make",
+  "making",
+  "male",
+  "mama",
+  "mamma",
+  "man",
+  "manager",
+  "mane",
+  "manger",
+  "many",
+  "map",
+  "maple",
+  "marble",
+  "march",
+  "march",
+  "mare",
+  "mark",
+  "market",
+  "marriage",
+  "married",
+  "marry",
+  "mask",
+  "mast",
+  "master",
+  "mat",
+  "match",
+  "matter",
+  "mattress",
+  "may",
+  "may",
+  "maybe",
+  "mayor",
+  "maypole",
+  "me",
+  "meadow",
+  "meal",
+  "mean",
+  "means",
+  "meant",
+  "measure",
+  "meat",
+  "medicine",
+  "meet",
+  "meeting",
+  "melt",
+  "member",
+  "men",
+  "mend",
+  "meow",
+  "merry",
+  "mess",
+  "message",
+  "met",
+  "metal",
+  "mew",
+  "mice",
+  "middle",
+  "midnight",
+  "might",
+  "mighty",
+  "mile",
+  "milk",
+  "milkman",
+  "mill",
+  "miler",
+  "million",
+  "mind",
+  "mine",
+  "miner",
+  "mint",
+  "minute",
+  "mirror",
+  "mischief",
+  "miss",
+  "miss",
+  "misspell",
+  "mistake",
+  "misty",
+  "mitt",
+  "mitten",
+  "mix",
+  "moment",
+  "monday",
+  "money",
+  "monkey",
+  "month",
+  "moo",
+  "moon",
+  "moonlight",
+  "moose",
+  "mop",
+  "more",
+  "morning",
+  "morrow",
+  "moss",
+  "most",
+  "mostly",
+  "mother",
+  "motor",
+  "mount",
+  "mountain",
+  "mouse",
+  "mouth",
+  "move",
+  "movie",
+  "movies",
+  "moving",
+  "mow",
+  "mr.",
+  "mrs.",
+  "much",
+  "mud",
+  "muddy",
+  "mug",
+  "mule",
+  "multiply",
+  "murder",
+  "music",
+  "must",
+  "my",
+  "myself",
+  "nail",
+  "name",
+  "nap",
+  "napkin",
+  "narrow",
+  "nasty",
+  "naughty",
+  "navy",
+  "near",
+  "nearby",
+  "nearly",
+  "neat",
+  "neck",
+  "necktie",
+  "need",
+  "needle",
+  "needn't",
+  "negro",
+  "neighbor",
+  "neighborhood",
+  "neither",
+  "nerve",
+  "nest",
+  "net",
+  "never",
+  "nevermore",
+  "new",
+  "news",
+  "newspaper",
+  "next",
+  "nibble",
+  "nice",
+  "nickel",
+  "night",
+  "nightgown",
+  "nine",
+  "nineteen",
+  "ninety",
+  "no",
+  "nobody",
+  "nod",
+  "noise",
+  "noisy",
+  "none",
+  "noon",
+  "nor",
+  "north",
+  "northern",
+  "nose",
+  "not",
+  "note",
+  "nothing",
+  "notice",
+  "november",
+  "now",
+  "nowhere",
+  "number",
+  "nurse",
+  "nut",
+  "oak",
+  "oar",
+  "oatmeal",
+  "oats",
+  "obey",
+  "ocean",
+  "o'clock",
+  "october",
+  "odd",
+  "of",
+  "off",
+  "offer",
+  "office",
+  "officer",
+  "often",
+  "oh",
+  "oil",
+  "old",
+  "old-fashioned",
+  "on",
+  "once",
+  "one",
+  "onion",
+  "only",
+  "onward",
+  "open",
+  "or",
+  "orange",
+  "orchard",
+  "order",
+  "ore",
+  "organ",
+  "other",
+  "otherwise",
+  "ouch",
+  "ought",
+  "our",
+  "ours",
+  "ourselves",
+  "out",
+  "outdoors",
+  "outfit",
+  "outlaw",
+  "outline",
+  "outside",
+  "outward",
+  "oven",
+  "over",
+  "overalls",
+  "overcoat",
+  "overeat",
+  "overhead",
+  "overhear",
+  "overnight",
+  "overturn",
+  "owe",
+  "owing",
+  "owl",
+  "own",
+  "owner",
+  "ox",
+  "pa",
+  "pace",
+  "pack",
+  "package",
+  "pad",
+  "page",
+  "paid",
+  "pail",
+  "pain",
+  "painful",
+  "paint",
+  "painter",
+  "painting",
+  "pair",
+  "pal",
+  "palace",
+  "pale",
+  "pan",
+  "pancake",
+  "pane",
+  "pansy",
+  "pants",
+  "papa",
+  "paper",
+  "parade",
+  "pardon",
+  "parent",
+  "park",
+  "part",
+  "partly",
+  "partner",
+  "party",
+  "pass",
+  "passenger",
+  "past",
+  "paste",
+  "pasture",
+  "pat",
+  "patch",
+  "path",
+  "patter",
+  "pave",
+  "pavement",
+  "paw",
+  "pay",
+  "payment",
+  "pea",
+  "peas",
+  "peace",
+  "peaceful",
+  "peach",
+  "peaches",
+  "peak",
+  "peanut",
+  "pear",
+  "pearl",
+  "peck",
+  "peek",
+  "peel",
+  "peep",
+  "peg",
+  "pen",
+  "pencil",
+  "penny",
+  "people",
+  "pepper",
+  "peppermint",
+  "perfume",
+  "perhaps",
+  "person",
+  "pet",
+  "phone",
+  "piano",
+  "pick",
+  "pickle",
+  "picnic",
+  "picture",
+  "pie",
+  "piece",
+  "pig",
+  "pigeon",
+  "piggy",
+  "pile",
+  "pill",
+  "pillow",
+  "pin",
+  "pine",
+  "pineapple",
+  "pink",
+  "pint",
+  "pipe",
+  "pistol",
+  "pit",
+  "pitch",
+  "pitcher",
+  "pity",
+  "place",
+  "plain",
+  "plan",
+  "plane",
+  "plant",
+  "plate",
+  "platform",
+  "platter",
+  "play",
+  "player",
+  "playground",
+  "playhouse",
+  "playmate",
+  "plaything",
+  "pleasant",
+  "please",
+  "pleasure",
+  "plenty",
+  "plow",
+  "plug",
+  "plum",
+  "pocket",
+  "pocketbook",
+  "poem",
+  "point",
+  "poison",
+  "poke",
+  "pole",
+  "police",
+  "policeman",
+  "polish",
+  "polite",
+  "pond",
+  "ponies",
+  "pony",
+  "pool",
+  "poor",
+  "pop",
+  "popcorn",
+  "popped",
+  "porch",
+  "pork",
+  "possible",
+  "post",
+  "postage",
+  "postman",
+  "pot",
+  "potato",
+  "potatoes",
+  "pound",
+  "pour",
+  "powder",
+  "power",
+  "powerful",
+  "praise",
+  "pray",
+  "prayer",
+  "prepare",
+  "present",
+  "pretty",
+  "price",
+  "prick",
+  "prince",
+  "princess",
+  "print",
+  "prison",
+  "prize",
+  "promise",
+  "proper",
+  "protect",
+  "proud",
+  "prove",
+  "prune",
+  "public",
+  "puddle",
+  "puff",
+  "pull",
+  "pump",
+  "pumpkin",
+  "punch",
+  "punish",
+  "pup",
+  "pupil",
+  "puppy",
+  "pure",
+  "purple",
+  "purse",
+  "push",
+  "puss",
+  "pussy",
+  "pussycat",
+  "put",
+  "putting",
+  "puzzle",
+  "quack",
+  "quart",
+  "quarter",
+  "queen",
+  "queer",
+  "question",
+  "quick",
+  "quickly",
+  "quiet",
+  "quilt",
+  "quit",
+  "quite",
+  "rabbit",
+  "race",
+  "rack",
+  "radio",
+  "radish",
+  "rag",
+  "rail",
+  "railroad",
+  "railway",
+  "rain",
+  "rainy",
+  "rainbow",
+  "raise",
+  "raisin",
+  "rake",
+  "ram",
+  "ran",
+  "ranch",
+  "rang",
+  "rap",
+  "rapidly",
+  "rat",
+  "rate",
+  "rather",
+  "rattle",
+  "raw",
+  "ray",
+  "reach",
+  "read",
+  "reader",
+  "reading",
+  "ready",
+  "real",
+  "really",
+  "reap",
+  "rear",
+  "reason",
+  "rebuild",
+  "receive",
+  "recess",
+  "record",
+  "red",
+  "redbird",
+  "redbreast",
+  "refuse",
+  "reindeer",
+  "rejoice",
+  "remain",
+  "remember",
+  "remind",
+  "remove",
+  "rent",
+  "repair",
+  "repay",
+  "repeat",
+  "report",
+  "rest",
+  "return",
+  "review",
+  "reward",
+  "rib",
+  "ribbon",
+  "rice",
+  "rich",
+  "rid",
+  "riddle",
+  "ride",
+  "rider",
+  "riding",
+  "right",
+  "rim",
+  "ring",
+  "rip",
+  "ripe",
+  "rise",
+  "rising",
+  "river",
+  "road",
+  "roadside",
+  "roar",
+  "roast",
+  "rob",
+  "robber",
+  "robe",
+  "robin",
+  "rock",
+  "rocky",
+  "rocket",
+  "rode",
+  "roll",
+  "roller",
+  "roof",
+  "room",
+  "rooster",
+  "root",
+  "rope",
+  "rose",
+  "rosebud",
+  "rot",
+  "rotten",
+  "rough",
+  "round",
+  "route",
+  "row",
+  "rowboat",
+  "royal",
+  "rub",
+  "rubbed",
+  "rubber",
+  "rubbish",
+  "rug",
+  "rule",
+  "ruler",
+  "rumble",
+  "run",
+  "rung",
+  "runner",
+  "running",
+  "rush",
+  "rust",
+  "rusty",
+  "rye",
+  "sack",
+  "sad",
+  "saddle",
+  "sadness",
+  "safe",
+  "safety",
+  "said",
+  "sail",
+  "sailboat",
+  "sailor",
+  "saint",
+  "salad",
+  "sale",
+  "salt",
+  "same",
+  "sand",
+  "sandy",
+  "sandwich",
+  "sang",
+  "sank",
+  "sap",
+  "sash",
+  "sat",
+  "satin",
+  "satisfactory",
+  "saturday",
+  "sausage",
+  "savage",
+  "save",
+  "savings",
+  "saw",
+  "say",
+  "scab",
+  "scales",
+  "scare",
+  "scarf",
+  "school",
+  "schoolboy",
+  "schoolhouse",
+  "schoolmaster",
+  "schoolroom",
+  "scorch",
+  "score",
+  "scrap",
+  "scrape",
+  "scratch",
+  "scream",
+  "screen",
+  "screw",
+  "scrub",
+  "sea",
+  "seal",
+  "seam",
+  "search",
+  "season",
+  "seat",
+  "second",
+  "secret",
+  "see",
+  "seeing",
+  "seed",
+  "seek",
+  "seem",
+  "seen",
+  "seesaw",
+  "select",
+  "self",
+  "selfish",
+  "sell",
+  "send",
+  "sense",
+  "sent",
+  "sentence",
+  "separate",
+  "september",
+  "servant",
+  "serve",
+  "service",
+  "set",
+  "setting",
+  "settle",
+  "settlement",
+  "seven",
+  "seventeen",
+  "seventh",
+  "seventy",
+  "several",
+  "sew",
+  "shade",
+  "shadow",
+  "shady",
+  "shake",
+  "shaker",
+  "shaking",
+  "shall",
+  "shame",
+  "shan't",
+  "shape",
+  "share",
+  "sharp",
+  "shave",
+  "she",
+  "she'd",
+  "she'll",
+  "she's",
+  "shear",
+  "shears",
+  "shed",
+  "sheep",
+  "sheet",
+  "shelf",
+  "shell",
+  "shepherd",
+  "shine",
+  "shining",
+  "shiny",
+  "ship",
+  "shirt",
+  "shock",
+  "shoe",
+  "shoemaker",
+  "shone",
+  "shook",
+  "shoot",
+  "shop",
+  "shopping",
+  "shore",
+  "short",
+  "shot",
+  "should",
+  "shoulder",
+  "shouldn't",
+  "shout",
+  "shovel",
+  "show",
+  "shower",
+  "shut",
+  "shy",
+  "sick",
+  "sickness",
+  "side",
+  "sidewalk",
+  "sideways",
+  "sigh",
+  "sight",
+  "sign",
+  "silence",
+  "silent",
+  "silk",
+  "sill",
+  "silly",
+  "silver",
+  "simple",
+  "sin",
+  "since",
+  "sing",
+  "singer",
+  "single",
+  "sink",
+  "sip",
+  "sir",
+  "sis",
+  "sissy",
+  "sister",
+  "sit",
+  "sitting",
+  "six",
+  "sixteen",
+  "sixth",
+  "sixty",
+  "size",
+  "skate",
+  "skater",
+  "ski",
+  "skin",
+  "skip",
+  "skirt",
+  "sky",
+  "slam",
+  "slap",
+  "slate",
+  "slave",
+  "sled",
+  "sleep",
+  "sleepy",
+  "sleeve",
+  "sleigh",
+  "slept",
+  "slice",
+  "slid",
+  "slide",
+  "sling",
+  "slip",
+  "slipped",
+  "slipper",
+  "slippery",
+  "slit",
+  "slow",
+  "slowly",
+  "sly",
+  "smack",
+  "small",
+  "smart",
+  "smell",
+  "smile",
+  "smoke",
+  "smooth",
+  "snail",
+  "snake",
+  "snap",
+  "snapping",
+  "sneeze",
+  "snow",
+  "snowy",
+  "snowball",
+  "snowflake",
+  "snuff",
+  "snug",
+  "so",
+  "soak",
+  "soap",
+  "sob",
+  "socks",
+  "sod",
+  "soda",
+  "sofa",
+  "soft",
+  "soil",
+  "sold",
+  "soldier",
+  "sole",
+  "some",
+  "somebody",
+  "somehow",
+  "someone",
+  "something",
+  "sometime",
+  "sometimes",
+  "somewhere",
+  "son",
+  "song",
+  "soon",
+  "sore",
+  "sorrow",
+  "sorry",
+  "sort",
+  "soul",
+  "sound",
+  "soup",
+  "sour",
+  "south",
+  "southern",
+  "space",
+  "spade",
+  "spank",
+  "sparrow",
+  "speak",
+  "speaker",
+  "spear",
+  "speech",
+  "speed",
+  "spell",
+  "spelling",
+  "spend",
+  "spent",
+  "spider",
+  "spike",
+  "spill",
+  "spin",
+  "spinach",
+  "spirit",
+  "spit",
+  "splash",
+  "spoil",
+  "spoke",
+  "spook",
+  "spoon",
+  "sport",
+  "spot",
+  "spread",
+  "spring",
+  "springtime",
+  "sprinkle",
+  "square",
+  "squash",
+  "squeak",
+  "squeeze",
+  "squirrel",
+  "stable",
+  "stack",
+  "stage",
+  "stair",
+  "stall",
+  "stamp",
+  "stand",
+  "star",
+  "stare",
+  "start",
+  "starve",
+  "state",
+  "station",
+  "stay",
+  "steak",
+  "steal",
+  "steam",
+  "steamboat",
+  "steamer",
+  "steel",
+  "steep",
+  "steeple",
+  "steer",
+  "stem",
+  "step",
+  "stepping",
+  "stick",
+  "sticky",
+  "stiff",
+  "still",
+  "stillness",
+  "sting",
+  "stir",
+  "stitch",
+  "stock",
+  "stocking",
+  "stole",
+  "stone",
+  "stood",
+  "stool",
+  "stoop",
+  "stop",
+  "stopped",
+  "stopping",
+  "store",
+  "stork",
+  "stories",
+  "storm",
+  "stormy",
+  "story",
+  "stove",
+  "straight",
+  "strange",
+  "stranger",
+  "strap",
+  "straw",
+  "strawberry",
+  "stream",
+  "street",
+  "stretch",
+  "string",
+  "strip",
+  "stripes",
+  "strong",
+  "stuck",
+  "study",
+  "stuff",
+  "stump",
+  "stung",
+  "subject",
+  "such",
+  "suck",
+  "sudden",
+  "suffer",
+  "sugar",
+  "suit",
+  "sum",
+  "summer",
+  "sun",
+  "sunday",
+  "sunflower",
+  "sung",
+  "sunk",
+  "sunlight",
+  "sunny",
+  "sunrise",
+  "sunset",
+  "sunshine",
+  "supper",
+  "suppose",
+  "sure",
+  "surely",
+  "surface",
+  "surprise",
+  "swallow",
+  "swam",
+  "swamp",
+  "swan",
+  "swat",
+  "swear",
+  "sweat",
+  "sweater",
+  "sweep",
+  "sweet",
+  "sweetness",
+  "sweetheart",
+  "swell",
+  "swept",
+  "swift",
+  "swim",
+  "swimming",
+  "swing",
+  "switch",
+  "sword",
+  "swore",
+  "table",
+  "tablecloth",
+  "tablespoon",
+  "tablet",
+  "tack",
+  "tag",
+  "tail",
+  "tailor",
+  "take",
+  "taken",
+  "taking",
+  "tale",
+  "talk",
+  "talker",
+  "tall",
+  "tame",
+  "tan",
+  "tank",
+  "tap",
+  "tape",
+  "tar",
+  "tardy",
+  "task",
+  "taste",
+  "taught",
+  "tax",
+  "tea",
+  "teach",
+  "teacher",
+  "team",
+  "tear",
+  "tease",
+  "teaspoon",
+  "teeth",
+  "telephone",
+  "tell",
+  "temper",
+  "ten",
+  "tennis",
+  "tent",
+  "term",
+  "terrible",
+  "test",
+  "than",
+  "thank",
+  "thanks",
+  "thankful",
+  "thanksgiving",
+  "that",
+  "that's",
+  "the",
+  "theater",
+  "thee",
+  "their",
+  "them",
+  "then",
+  "there",
+  "these",
+  "they",
+  "they'd",
+  "they'll",
+  "they're",
+  "they've",
+  "thick",
+  "thief",
+  "thimble",
+  "thin",
+  "thing",
+  "think",
+  "third",
+  "thirsty",
+  "thirteen",
+  "thirty",
+  "this",
+  "thorn",
+  "those",
+  "though",
+  "thought",
+  "thousand",
+  "thread",
+  "three",
+  "threw",
+  "throat",
+  "throne",
+  "through",
+  "throw",
+  "thrown",
+  "thumb",
+  "thunder",
+  "thursday",
+  "thy",
+  "tick",
+  "ticket",
+  "tickle",
+  "tie",
+  "tiger",
+  "tight",
+  "till",
+  "time",
+  "tin",
+  "tinkle",
+  "tiny",
+  "tip",
+  "tiptoe",
+  "tire",
+  "tired",
+  "title",
+  "to",
+  "toad",
+  "toadstool",
+  "toast",
+  "tobacco",
+  "today",
+  "toe",
+  "together",
+  "toilet",
+  "told",
+  "tomato",
+  "tomorrow",
+  "ton",
+  "tone",
+  "tongue",
+  "tonight",
+  "too",
+  "took",
+  "tool",
+  "toot",
+  "tooth",
+  "toothbrush",
+  "toothpick",
+  "top",
+  "tore",
+  "torn",
+  "toss",
+  "touch",
+  "tow",
+  "toward",
+  "towards",
+  "towel",
+  "tower",
+  "town",
+  "toy",
+  "trace",
+  "track",
+  "trade",
+  "train",
+  "tramp",
+  "trap",
+  "tray",
+  "treasure",
+  "treat",
+  "tree",
+  "trick",
+  "tricycle",
+  "tried",
+  "trim",
+  "trip",
+  "trolley",
+  "trouble",
+  "truck",
+  "true",
+  "truly",
+  "trunk",
+  "trust",
+  "truth",
+  "try",
+  "tub",
+  "tuesday",
+  "tug",
+  "tulip",
+  "tumble",
+  "tune",
+  "tunnel",
+  "turkey",
+  "turn",
+  "turtle",
+  "twelve",
+  "twenty",
+  "twice",
+  "twig",
+  "twin",
+  "two",
+  "ugly",
+  "umbrella",
+  "uncle",
+  "under",
+  "understand",
+  "underwear",
+  "undress",
+  "unfair",
+  "unfinished",
+  "unfold",
+  "unfriendly",
+  "unhappy",
+  "unhurt",
+  "uniform",
+  "united",
+  "states",
+  "unkind",
+  "unknown",
+  "unless",
+  "unpleasant",
+  "until",
+  "unwilling",
+  "up",
+  "upon",
+  "upper",
+  "upset",
+  "upside",
+  "upstairs",
+  "uptown",
+  "upward",
+  "us",
+  "use",
+  "used",
+  "useful",
+  "valentine",
+  "valley",
+  "valuable",
+  "value",
+  "vase",
+  "vegetable",
+  "velvet",
+  "very",
+  "vessel",
+  "victory",
+  "view",
+  "village",
+  "vine",
+  "violet",
+  "visit",
+  "visitor",
+  "voice",
+  "vote",
+  "wag",
+  "wagon",
+  "waist",
+  "wait",
+  "wake",
+  "waken",
+  "walk",
+  "wall",
+  "walnut",
+  "want",
+  "war",
+  "warm",
+  "warn",
+  "was",
+  "wash",
+  "washer",
+  "washtub",
+  "wasn't",
+  "waste",
+  "watch",
+  "watchman",
+  "water",
+  "watermelon",
+  "waterproof",
+  "wave",
+  "wax",
+  "way",
+  "wayside",
+  "we",
+  "weak",
+  "weakness",
+  "weaken",
+  "wealth",
+  "weapon",
+  "wear",
+  "weary",
+  "weather",
+  "weave",
+  "web",
+  "we'd",
+  "wedding",
+  "wednesday",
+  "wee",
+  "weed",
+  "week",
+  "we'll",
+  "weep",
+  "weigh",
+  "welcome",
+  "well",
+  "went",
+  "were",
+  "we're",
+  "west",
+  "western",
+  "wet",
+  "we've",
+  "whale",
+  "what",
+  "what's",
+  "wheat",
+  "wheel",
+  "when",
+  "whenever",
+  "where",
+  "which",
+  "while",
+  "whip",
+  "whipped",
+  "whirl",
+  "whisky",
+  "whiskey",
+  "whisper",
+  "whistle",
+  "white",
+  "who",
+  "who'd",
+  "whole",
+  "who'll",
+  "whom",
+  "who's",
+  "whose",
+  "why",
+  "wicked",
+  "wide",
+  "wife",
+  "wiggle",
+  "wild",
+  "wildcat",
+  "will",
+  "willing",
+  "willow",
+  "win",
+  "wind",
+  "windy",
+  "windmill",
+  "window",
+  "wine",
+  "wing",
+  "wink",
+  "winner",
+  "winter",
+  "wipe",
+  "wire",
+  "wise",
+  "wish",
+  "wit",
+  "witch",
+  "with",
+  "without",
+  "woke",
+  "wolf",
+  "woman",
+  "women",
+  "won",
+  "wonder",
+  "wonderful",
+  "won't",
+  "wood",
+  "wooden",
+  "woodpecker",
+  "woods",
+  "wool",
+  "woolen",
+  "word",
+  "wore",
+  "work",
+  "worker",
+  "workman",
+  "world",
+  "worm",
+  "worn",
+  "worry",
+  "worse",
+  "worst",
+  "worth",
+  "would",
+  "wouldn't",
+  "wound",
+  "wove",
+  "wrap",
+  "wrapped",
+  "wreck",
+  "wren",
+  "wring",
+  "write",
+  "writing",
+  "written",
+  "wrong",
+  "wrote",
+  "wrung",
+  "yard",
+  "yarn",
+  "year",
+  "yell",
+  "yellow",
+  "yes",
+  "yesterday",
+  "yet",
+  "yolk",
+  "yonder",
+  "you",
+  "you'd",
+  "you'll",
+  "young",
+  "youngster",
+  "your",
+  "yours",
+  "you're",
+  "yourself",
+  "yourselves",
+  "youth",
+  "you've"
+];
+var easy_words = easyWords$1;
+const syllable = syllable_1;
+const pluralize = pluralize$1.exports;
+const punctuationRE = /[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,\-./:;<=>?@[\]^_`{|}~]/g;
+const easyWords = easy_words;
+const easyWordSet = new Set(easyWords);
+Math.copySign = (x, y2) => {
+  return x * (y2 / Math.abs(y2));
+};
+Math.legacyRound = (number2, points = 0) => {
+  const p2 = 10 ** points;
+  return Math.floor(number2 * p2 + Math.copySign(0.5, number2)) / p2;
+};
+class Readability {
+  static getGradeSuffix(grade) {
+    grade = Math.floor(grade);
+    const gradeMap = {
+      1: "st",
+      2: "nd",
+      3: "rd"
+    };
+    return gradeMap[grade] ? gradeMap[grade] : "th";
+  }
+  charCount(text2, ignoreSpaces = true) {
+    if (ignoreSpaces)
+      text2 = text2.replace(/ /g, "");
+    return text2.length;
+  }
+  letterCount(text2, ignoreSpaces = true) {
+    if (ignoreSpaces)
+      text2 = text2.replace(/ /g, "");
+    return this.removePunctuation(text2).length;
+  }
+  removePunctuation(text2) {
+    text2 = text2.replace(punctuationRE, "");
+    return text2;
+  }
+  static split(text2) {
+    text2 = text2.split(/,| |\n|\r/g);
+    text2 = text2.filter((n2) => n2);
+    return text2;
+  }
+  lexiconCount(text2, removePunctuation = true) {
+    if (removePunctuation)
+      text2 = this.removePunctuation(text2);
+    text2 = text2.split(/,| |\n|\r/g);
+    text2 = text2.filter((n2) => n2);
+    return text2.length;
+  }
+  syllableCount(text2, lang = "en-US") {
+    text2 = text2.toLocaleLowerCase(lang);
+    text2 = this.removePunctuation(text2);
+    if (!text2)
+      return 0;
+    const count = syllable(text2);
+    return count;
+  }
+  sentenceCount(text2) {
+    let ignoreCount = 0;
+    let sentences = text2.split(/ *[.?!]['")\]]*[ |\n](?=[A-Z])/g);
+    for (let sentence of sentences) {
+      if (this.lexiconCount(sentence) <= 2)
+        ignoreCount += 1;
+    }
+    const validSentences = sentences.length - ignoreCount;
+    return validSentences > 1 ? validSentences : 1;
+  }
+  averageSentenceLength(text2) {
+    const asl = this.lexiconCount(text2) / this.sentenceCount(text2);
+    const returnVal = Math.legacyRound(asl, 1);
+    return !isNaN(returnVal) ? returnVal : 0;
+  }
+  averageSyllablePerWord(text2) {
+    const syllables2 = this.syllableCount(text2);
+    const words = this.lexiconCount(text2);
+    const syllablePerWord = syllables2 / words;
+    const returnVal = Math.legacyRound(syllablePerWord, 1);
+    return !isNaN(returnVal) ? returnVal : 0;
+  }
+  averageCharacterPerWord(text2) {
+    const charactersPerWord = this.charCount(text2) / this.lexiconCount(text2);
+    const returnVal = Math.legacyRound(charactersPerWord, 2);
+    return !isNaN(returnVal) ? returnVal : 0;
+  }
+  averageLetterPerWord(text2) {
+    const lettersPerWord = this.letterCount(text2) / this.lexiconCount(text2);
+    const returnVal = Math.legacyRound(lettersPerWord, 2);
+    return !isNaN(returnVal) ? returnVal : 0;
+  }
+  averageSentencePerWord(text2) {
+    const sentencesPerWord = this.sentenceCount(text2) / this.lexiconCount(text2);
+    const returnVal = Math.legacyRound(sentencesPerWord, 2);
+    return !isNaN(returnVal) ? returnVal : 0;
+  }
+  fleschReadingEase(text2) {
+    const sentenceLength = this.averageSentenceLength(text2);
+    const syllablesPerWord = this.averageSyllablePerWord(text2);
+    const flesch = 206.835 - 1.015 * sentenceLength - 84.6 * syllablesPerWord;
+    const returnVal = Math.legacyRound(flesch, 2);
+    return returnVal;
+  }
+  fleschReadingEaseToGrade(score) {
+    if (score < 100 && score >= 90)
+      return 5;
+    else if (score < 90 && score >= 80)
+      return 6;
+    else if (score < 80 && score >= 70)
+      return 7;
+    else if (score < 70 && score >= 60)
+      return 8.5;
+    else if (score < 60 && score >= 50)
+      return 11;
+    else if (score < 50 && score >= 40)
+      return 13;
+    else if (score < 40 && score >= 30)
+      return 15;
+    else
+      return 16;
+  }
+  fleschKincaidGrade(text2) {
+    const sentenceLength = this.averageSentenceLength(text2);
+    const syllablePerWord = this.averageSyllablePerWord(text2);
+    const flesch = 0.39 * sentenceLength + 11.8 * syllablePerWord - 15.59;
+    const returnVal = Math.legacyRound(flesch, 1);
+    return returnVal;
+  }
+  polySyllableCount(text2) {
+    let count = 0;
+    let wrds;
+    for (let word of Readability.split(text2)) {
+      wrds = this.syllableCount(word);
+      if (wrds >= 3)
+        count += 1;
+    }
+    return count;
+  }
+  smogIndex(text2) {
+    const sentences = this.sentenceCount(text2);
+    if (sentences >= 3) {
+      const polySyllab = this.polySyllableCount(text2);
+      const smog = 1.043 * (30 * (polySyllab / sentences)) ** 0.5 + 3.1291;
+      const returnVal = Math.legacyRound(smog, 1);
+      return !isNaN(returnVal) ? returnVal : 0;
+    }
+    return 0;
+  }
+  colemanLiauIndex(text2) {
+    const letters = Math.legacyRound(this.averageLetterPerWord(text2) * 100, 2);
+    const sentences = Math.legacyRound(this.averageSentencePerWord(text2) * 100, 2);
+    const coleman = 0.058 * letters - 0.296 * sentences - 15.8;
+    return Math.legacyRound(coleman, 2);
+  }
+  automatedReadabilityIndex(text2) {
+    const characters = this.charCount(text2);
+    const words = this.lexiconCount(text2);
+    const sentences = this.sentenceCount(text2);
+    const averageCharacterPerWord = characters / words;
+    const averageWordPerSentence = words / sentences;
+    const readability2 = 4.71 * Math.legacyRound(averageCharacterPerWord, 2) + 0.5 * Math.legacyRound(averageWordPerSentence, 2) - 21.43;
+    const returnVal = Math.legacyRound(readability2, 1);
+    return !isNaN(returnVal) ? returnVal : 0;
+  }
+  linsearWriteFormula(text2) {
+    let easyWord = 0;
+    let difficultWord = 0;
+    let textList = Readability.split(text2).slice(0, 100);
+    for (let word of textList) {
+      if (this.syllableCount(word) < 3) {
+        easyWord += 1;
+      } else {
+        difficultWord += 1;
+      }
+    }
+    text2 = textList.join(" ");
+    let number2 = (easyWord * 1 + difficultWord * 3) / this.sentenceCount(text2);
+    let returnVal = number2 <= 20 ? (number2 - 2) / 2 : number2 / 2;
+    returnVal = Math.legacyRound(returnVal, 1);
+    return !isNaN(returnVal) ? returnVal : 0;
+  }
+  presentTense(word) {
+    if (word.length < 6)
+      return word;
+    if (word.endsWith("ed")) {
+      if (easyWordSet.has(word.slice(0, -1)))
+        return word.slice(0, -1);
+      else
+        return word.slice(0, -2);
+    }
+    if (word.endsWith("ing")) {
+      const suffixIngToE = word.slice(0, -3) + "e";
+      if (easyWordSet.has(suffixIngToE))
+        return suffixIngToE;
+      else
+        return word.slice(0, -3);
+    }
+    return word;
+  }
+  difficultWords(text2, syllableThreshold = 2) {
+    const textList = text2.match(/[\w=‘’]+/g);
+    const diffWordsSet = /* @__PURE__ */ new Set();
+    if (textList === null)
+      return diffWordsSet;
+    for (let word of textList) {
+      const normalized = this.presentTense(pluralize(word.toLocaleLowerCase(), 1));
+      if (!easyWordSet.has(normalized) && this.syllableCount(word) >= syllableThreshold) {
+        diffWordsSet.add(word);
+      }
+    }
+    return [...diffWordsSet].length;
+  }
+  daleChallReadabilityScore(text2) {
+    const wordCount = this.lexiconCount(text2);
+    const count = wordCount - this.difficultWords(text2);
+    const per = count / wordCount * 100;
+    if (isNaN(per))
+      return 0;
+    const difficultWords = 100 - per;
+    let score = 0.1579 * difficultWords + 0.0496 * this.averageSentenceLength(text2);
+    if (difficultWords > 5)
+      score += 3.6365;
+    return Math.legacyRound(score, 2);
+  }
+  daleChallToGrade(score) {
+    if (score <= 4.9)
+      return 4;
+    if (score < 5.9)
+      return 5;
+    if (score < 6.9)
+      return 7;
+    if (score < 7.9)
+      return 9;
+    if (score < 8.9)
+      return 11;
+    if (score < 9.9)
+      return 13;
+    else
+      return 16;
+  }
+  gunningFog(text2) {
+    const perDiffWords = this.difficultWords(text2, 3) / this.lexiconCount(text2) * 100;
+    const grade = 0.4 * (this.averageSentenceLength(text2) + perDiffWords);
+    const returnVal = Math.legacyRound(grade, 2);
+    return !isNaN(returnVal) ? returnVal : 0;
+  }
+  lix(text2) {
+    const words = Readability.split(text2);
+    const wordsLen = words.length;
+    const longWords = words.filter((wrd) => wrd.length > 6).length;
+    const perLongWords = longWords * 100 / wordsLen;
+    const asl = this.averageSentenceLength(text2);
+    const lix = asl + perLongWords;
+    return Math.legacyRound(lix, 2);
+  }
+  rix(text2) {
+    const words = Readability.split(text2);
+    const longWordsCount = words.filter((wrd) => wrd.length > 6).length;
+    const sentencesCount = this.sentenceCount(text2);
+    const rix = longWordsCount / sentencesCount;
+    return !isNaN(rix) ? Math.legacyRound(rix, 2) : 0;
+  }
+  textStandard(text2, floatOutput = null) {
+    const grade = [];
+    let lower = Math.legacyRound(this.fleschKincaidGrade(text2));
+    let upper = Math.ceil(this.fleschKincaidGrade(text2));
+    grade.push(Math.floor(lower));
+    grade.push(Math.floor(upper));
+    let score = this.fleschReadingEase(text2);
+    let freGrade = this.fleschReadingEaseToGrade(score);
+    grade.push(freGrade);
+    lower = Math.legacyRound(this.smogIndex(text2));
+    upper = Math.ceil(this.smogIndex(text2));
+    grade.push(Math.floor(lower));
+    grade.push(Math.floor(upper));
+    lower = Math.legacyRound(this.colemanLiauIndex(text2));
+    upper = Math.ceil(this.colemanLiauIndex(text2));
+    grade.push(Math.floor(lower));
+    grade.push(Math.floor(upper));
+    lower = Math.legacyRound(this.automatedReadabilityIndex(text2));
+    upper = Math.ceil(this.automatedReadabilityIndex(text2));
+    grade.push(Math.floor(lower));
+    grade.push(Math.floor(upper));
+    lower = Math.legacyRound(this.daleChallToGrade(this.daleChallReadabilityScore(text2)));
+    upper = Math.ceil(this.daleChallToGrade(this.daleChallReadabilityScore(text2)));
+    grade.push(Math.floor(lower));
+    grade.push(Math.floor(upper));
+    lower = Math.legacyRound(this.linsearWriteFormula(text2));
+    upper = Math.ceil(this.linsearWriteFormula(text2));
+    grade.push(Math.floor(lower));
+    grade.push(Math.floor(upper));
+    lower = Math.legacyRound(this.gunningFog(text2));
+    upper = Math.ceil(this.gunningFog(text2));
+    grade.push(Math.floor(lower));
+    grade.push(Math.floor(upper));
+    const counterMap = [...new Set(grade)].map((x) => [x, grade.filter((y2) => y2 === x).length]);
+    const finalGrade = counterMap.reduce((x, y2) => y2[1] >= x[1] ? y2 : x);
+    score = finalGrade[0];
+    if (floatOutput)
+      return score;
+    const lowerScore = Math.floor(score) - 1;
+    const upperScore = lowerScore + 1;
+    return `${lowerScore}${Readability.getGradeSuffix(lowerScore)} and ${upperScore}${Readability.getGradeSuffix(upperScore)} grade`;
+  }
+  textMedian(text2) {
+    const grade = [];
+    grade.push(this.fleschKincaidGrade(text2));
+    const score = this.fleschReadingEase(text2);
+    const freGrade = this.fleschReadingEaseToGrade(score);
+    grade.push(freGrade);
+    grade.push(this.smogIndex(text2));
+    grade.push(this.colemanLiauIndex(text2));
+    grade.push(this.automatedReadabilityIndex(text2));
+    grade.push(this.daleChallToGrade(this.daleChallReadabilityScore(text2)));
+    grade.push(this.linsearWriteFormula(text2));
+    grade.push(this.gunningFog(text2));
+    grade.sort(function(a2, b2) {
+      return a2 - b2;
+    });
+    let half = Math.floor(grade.length / 2);
+    if (half & 1)
+      return (grade[half - 1] + grade[half]) / 2;
+    else
+      return grade[half];
+  }
+}
+const readability = new Readability();
+var main = readability;
+var WordCountView_vue_vue_type_style_index_0_scoped_true_lang = "";
+const _withScopeId = (n2) => (pushScopeId("data-v-8505eed6"), n2 = n2(), popScopeId(), n2);
+const _hoisted_1 = { class: "view-container" };
+const _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h2", null, "Word Count", -1));
+const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("hr", null, null, -1));
+const _hoisted_4 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h4", null, " Enter your text into the field below, and the statistics below will automatically update! ", -1));
+const _hoisted_5 = { class: "counts" };
+const _hoisted_6 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("div", null, [
+  /* @__PURE__ */ createTextVNode(" Words "),
+  /* @__PURE__ */ createBaseVNode("br"),
+  /* @__PURE__ */ createTextVNode(" Characters "),
+  /* @__PURE__ */ createBaseVNode("br"),
+  /* @__PURE__ */ createTextVNode(" Syllables "),
+  /* @__PURE__ */ createBaseVNode("br"),
+  /* @__PURE__ */ createTextVNode(" Time to Read "),
+  /* @__PURE__ */ createBaseVNode("br"),
+  /* @__PURE__ */ createTextVNode(" Reading Level ")
+], -1));
+const _hoisted_7 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
+const _hoisted_8 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
+const _hoisted_9 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
+const _hoisted_10 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
+const _hoisted_11 = { class: "text-input" };
+const _sfc_main = {
+  props: {
+    navCollapsed: {
+      type: Boolean,
+      required: true
+    }
+  },
+  setup(__props) {
+    const words = ref(0);
+    const characters = ref(0);
+    const readingDifficulty = ref("Very Easy");
+    const syllables2 = ref(0);
+    const readingTime = ref(0);
+    function setWords(text2) {
+      words.value = main.lexiconCount(text2);
+    }
+    function setLetters(text2) {
+      characters.value = text2.replace(/\s/g, "").length;
+    }
+    function setReadingDifficulty(text2) {
+      const value2 = main.fleschReadingEase(text2);
+      if (value2 <= 29) {
+        readingDifficulty.value = "Very Confusing";
+      } else if (value2 <= 49) {
+        readingDifficulty.value = "Difficult";
+      } else if (value2 <= 59) {
+        readingDifficulty.value = "Fairly Difficult";
+      } else if (value2 <= 69) {
+        readingDifficulty.value = "Standard";
+      } else if (value2 <= 79) {
+        readingDifficulty.value = "Fairly Easy";
+      } else if (value2 <= 89) {
+        readingDifficulty.value = "Easy";
+      } else {
+        readingDifficulty.value = "Very Easy";
+      }
+    }
+    function setSyllables(text2) {
+      syllables2.value = main.syllableCount(text2);
+    }
+    function setReadingTime(text2) {
+      const words2 = main.lexiconCount(text2);
+      readingTime.value = Math.round(words2 / 238);
+    }
+    function updateText(e2) {
+      setWords(e2.target.value);
+      setLetters(e2.target.value);
+      setReadingDifficulty(e2.target.value);
+      setSyllables(e2.target.value);
+      setReadingTime(e2.target.value);
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("main", {
+        class: normalizeClass({ navCollapsed: __props.navCollapsed })
+      }, [
+        createBaseVNode("div", _hoisted_1, [
+          _hoisted_2,
+          _hoisted_3,
+          _hoisted_4,
+          createBaseVNode("div", _hoisted_5, [
+            _hoisted_6,
+            createBaseVNode("div", null, [
+              createBaseVNode("b", null, toDisplayString(words.value), 1),
+              _hoisted_7,
+              createBaseVNode("b", null, toDisplayString(characters.value), 1),
+              _hoisted_8,
+              createBaseVNode("b", null, toDisplayString(syllables2.value), 1),
+              _hoisted_9,
+              createBaseVNode("b", null, toDisplayString(readingTime.value) + " minute(s)", 1),
+              _hoisted_10,
+              createBaseVNode("b", null, toDisplayString(readingDifficulty.value), 1)
+            ])
+          ]),
+          createBaseVNode("div", _hoisted_11, [
+            createBaseVNode("textarea", {
+              placeholder: "Enter text content here!",
+              onInput: updateText,
+              rows: "30"
+            }, null, 32)
+          ])
+        ])
+      ], 2);
+    };
+  }
+};
+var WordCountView = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-8505eed6"]]);
+const router = createRouter({
+  history: createWebHistory("/web-utilities/"),
+  routes: [
+    {
+      path: "/",
+      name: "home",
+      component: HomeView,
+      props: { navCollapsed: String }
+    },
+    {
+      path: "/pdf-merge",
+      name: "pdf merge",
+      component: PDFMergeView,
+      props: { navCollapsed: String }
+    },
+    {
+      path: "/word-count",
+      name: "word count",
+      component: WordCountView,
+      props: { navCollapsed: String }
+    }
+  ]
+});
+var browser = { exports: {} };
+var process$1 = browser.exports = {};
+var cachedSetTimeout;
+var cachedClearTimeout;
+function defaultSetTimout() {
+  throw new Error("setTimeout has not been defined");
+}
+function defaultClearTimeout() {
+  throw new Error("clearTimeout has not been defined");
+}
+(function() {
+  try {
+    if (typeof setTimeout === "function") {
+      cachedSetTimeout = setTimeout;
+    } else {
+      cachedSetTimeout = defaultSetTimout;
+    }
+  } catch (e2) {
+    cachedSetTimeout = defaultSetTimout;
+  }
+  try {
+    if (typeof clearTimeout === "function") {
+      cachedClearTimeout = clearTimeout;
+    } else {
+      cachedClearTimeout = defaultClearTimeout;
+    }
+  } catch (e2) {
+    cachedClearTimeout = defaultClearTimeout;
+  }
+})();
+function runTimeout(fun) {
+  if (cachedSetTimeout === setTimeout) {
+    return setTimeout(fun, 0);
+  }
+  if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+    cachedSetTimeout = setTimeout;
+    return setTimeout(fun, 0);
+  }
+  try {
+    return cachedSetTimeout(fun, 0);
+  } catch (e2) {
+    try {
+      return cachedSetTimeout.call(null, fun, 0);
+    } catch (e3) {
+      return cachedSetTimeout.call(this, fun, 0);
+    }
+  }
+}
+function runClearTimeout(marker) {
+  if (cachedClearTimeout === clearTimeout) {
+    return clearTimeout(marker);
+  }
+  if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+    cachedClearTimeout = clearTimeout;
+    return clearTimeout(marker);
+  }
+  try {
+    return cachedClearTimeout(marker);
+  } catch (e2) {
+    try {
+      return cachedClearTimeout.call(null, marker);
+    } catch (e3) {
+      return cachedClearTimeout.call(this, marker);
+    }
+  }
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+function cleanUpNextTick() {
+  if (!draining || !currentQueue) {
+    return;
+  }
+  draining = false;
+  if (currentQueue.length) {
+    queue = currentQueue.concat(queue);
+  } else {
+    queueIndex = -1;
+  }
+  if (queue.length) {
+    drainQueue();
+  }
+}
+function drainQueue() {
+  if (draining) {
+    return;
+  }
+  var timeout = runTimeout(cleanUpNextTick);
+  draining = true;
+  var len2 = queue.length;
+  while (len2) {
+    currentQueue = queue;
+    queue = [];
+    while (++queueIndex < len2) {
+      if (currentQueue) {
+        currentQueue[queueIndex].run();
+      }
+    }
+    queueIndex = -1;
+    len2 = queue.length;
+  }
+  currentQueue = null;
+  draining = false;
+  runClearTimeout(timeout);
+}
+process$1.nextTick = function(fun) {
+  var args = new Array(arguments.length - 1);
+  if (arguments.length > 1) {
+    for (var i2 = 1; i2 < arguments.length; i2++) {
+      args[i2 - 1] = arguments[i2];
+    }
+  }
+  queue.push(new Item(fun, args));
+  if (queue.length === 1 && !draining) {
+    runTimeout(drainQueue);
+  }
+};
+function Item(fun, array2) {
+  this.fun = fun;
+  this.array = array2;
+}
+Item.prototype.run = function() {
+  this.fun.apply(null, this.array);
+};
+process$1.title = "browser";
+process$1.browser = true;
+process$1.env = {};
+process$1.argv = [];
+process$1.version = "";
+process$1.versions = {};
+function noop() {
+}
+process$1.on = noop;
+process$1.addListener = noop;
+process$1.once = noop;
+process$1.off = noop;
+process$1.removeListener = noop;
+process$1.removeAllListeners = noop;
+process$1.emit = noop;
+process$1.prependListener = noop;
+process$1.prependOnceListener = noop;
+process$1.listeners = function(name2) {
+  return [];
+};
+process$1.binding = function(name2) {
+  throw new Error("process.binding is not supported");
+};
+process$1.cwd = function() {
+  return "/";
+};
+process$1.chdir = function(dir) {
+  throw new Error("process.chdir is not supported");
+};
+process$1.umask = function() {
+  return 0;
+};
+var process$2 = browser.exports;
 window.Buffer = buffer.Buffer;
 window.process = process$2;
-window.PDFMerger = browser;
 const app = createApp(_sfc_main$3);
 app.use(router);
 app.mount("#app");
