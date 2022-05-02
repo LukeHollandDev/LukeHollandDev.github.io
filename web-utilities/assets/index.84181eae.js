@@ -20750,7 +20750,7 @@ const Font$2 = base;
 const PDF$6 = object$1;
 const UNDERLINE_FLAG = 1;
 const STRIKETHROUGH_FLAG = 2;
-const Text = class Text2 extends Fragment$5 {
+class Text extends Fragment$5 {
   constructor(doc2, parent, opts) {
     super(doc2, parent);
     this._line = [];
@@ -21058,7 +21058,7 @@ const Text = class Text2 extends Fragment$5 {
     this._pending.push(() => this._render("\n\n", {}));
     return this;
   }
-};
+}
 function calcSpaceWidth(spacing, font, fontSize) {
   const scaleFactor = 1e3 / fontSize;
   return -(spacing + font.stringWidth(" ", fontSize)) * scaleFactor;
@@ -21755,7 +21755,7 @@ var header = class Header2 extends Fragment$2 {
     if (this._pageNumbers.length === 0) {
       return;
     }
-    const Text3 = text;
+    const Text2 = text;
     for (const instance of this._pageNumbers) {
       let withPageCount = false;
       if (instance.fn) {
@@ -21789,7 +21789,7 @@ var header = class Header2 extends Fragment$2 {
           this._cursor.bottomOffset = -this._doc._cursor.bottomOffset;
           const pageCount = this._doc._pages.length;
           const str = instance.fn ? instance.fn(currentPage, pageCount) : currentPage;
-          const txt = new Text3(this._doc, this, instance.opts);
+          const txt = new Text2(this._doc, this, instance.opts);
           txt._parts++;
           txt._ended = true;
           await txt._start();
@@ -21805,7 +21805,7 @@ var header = class Header2 extends Fragment$2 {
         this._cursor.x = instance.x;
         this._cursor.width = instance.width;
         this._cursor.bottomOffset = -this._doc._cursor.bottomOffset;
-        const txt = new Text3(this._doc, this, instance.opts);
+        const txt = new Text2(this._doc, this, instance.opts);
         txt._parts++;
         txt._ended = true;
         await txt._start();
@@ -22203,8 +22203,8 @@ var fragment = class Fragment2 {
     if (!opts || typeof opts !== "object") {
       opts = {};
     }
-    const Text3 = text;
-    const ctx = new Text3(this._doc, this, this._opts(opts));
+    const Text2 = text;
+    const ctx = new Text2(this._doc, this, this._opts(opts));
     this._begin(ctx);
     ctx._pending.push(() => ctx._start());
     if (typeof text$1 === "string" && text$1.length > 0) {
