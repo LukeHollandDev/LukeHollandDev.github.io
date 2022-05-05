@@ -8894,7 +8894,7 @@ function _sfc_render(_ctx, _cache) {
 }
 var MoonIcon = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render]]);
 var ThemeSwitcher_vue_vue_type_style_index_0_scoped_true_lang = "";
-const _withScopeId$5 = (n2) => (pushScopeId("data-v-12e40c8e"), n2 = n2(), popScopeId(), n2);
+const _withScopeId$5 = (n2) => (pushScopeId("data-v-5b3ee933"), n2 = n2(), popScopeId(), n2);
 const _hoisted_1$5 = /* @__PURE__ */ _withScopeId$5(() => /* @__PURE__ */ createBaseVNode("br", null, null, -1));
 const _sfc_main$6 = {
   setup(__props) {
@@ -8923,7 +8923,7 @@ const _sfc_main$6 = {
     };
   }
 };
-var ThemeSwitcher = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-12e40c8e"]]);
+var ThemeSwitcher = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-5b3ee933"]]);
 var NavBar_vue_vue_type_style_index_0_scoped_true_lang = "";
 const _withScopeId$4 = (n2) => (pushScopeId("data-v-087f39de"), n2 = n2(), popScopeId(), n2);
 const _hoisted_1$4 = { class: "title" };
