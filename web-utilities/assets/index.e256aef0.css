@@ -179,7 +179,7 @@ button {
   color: var(--color-text);
 }
 
-.file-area[data-v-5f1b001a] {
+.file-area[data-v-6f428bec] {
   display: flex;
   height: 150px;
   justify-content: center;
@@ -187,21 +187,21 @@ button {
   text-align: center;
   border: 1px solid;
 }
-.file-area p[data-v-5f1b001a] {
+.file-area p[data-v-6f428bec] {
   padding: 0 1em;
 }
-.files li[data-v-5f1b001a]::before {
+.files li[data-v-6f428bec]::before {
   content: "";
   width: 1em;
   display: inline-block;
 }
-.files li[data-v-5f1b001a] {
+.files li[data-v-6f428bec] {
   margin: 0.5em 0;
   font-weight: bold;
   padding: 0.25em 0;
   cursor: pointer;
 }
-.remove[data-v-5f1b001a] {
+.remove[data-v-6f428bec] {
   color: red;
   margin-left: 0.5em;
 }
