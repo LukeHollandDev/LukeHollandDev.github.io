@@ -1,5 +1,16 @@
 
-.container[data-v-9bbc360a] {
+.theme-container[data-v-13817600] {
+  margin: 1em 0;
+  padding: 1em 0;
+  text-align: center;
+  height: auto;
+  cursor: pointer;
+}
+.theme-container[data-v-13817600]:hover {
+  background-color: var(--color-background-soft)
+}
+
+.container[data-v-087f39de] {
   background-color: var(--color-background-mute);
   height: 110%;
   width: 192px;
@@ -9,14 +20,14 @@
   z-index: 1;
   margin-top: -25px; /* fix the gap left by the TopNav component */
 }
-.collapsed[data-v-9bbc360a] {
+.collapsed[data-v-087f39de] {
   left: calc(20px - 192px);
 }
-.title[data-v-9bbc360a] {
+.title[data-v-087f39de] {
   text-align: center;
   position: relative;
 }
-.menu-icon[data-v-9bbc360a] {
+.menu-icon[data-v-087f39de] {
   position: absolute;
   top: -8px;
   right: -20px;
@@ -25,10 +36,10 @@
   border-radius: 50%;
   cursor: pointer;
 }
-.options-container[data-v-9bbc360a] {
+.options-container[data-v-087f39de] {
   text-align: center;
 }
-.option[data-v-9bbc360a] {
+.option[data-v-087f39de] {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -37,10 +48,10 @@
   transition: background-color 0.3s;
   margin-bottom: 10px;
 }
-.option[data-v-9bbc360a]:hover {
+.option[data-v-087f39de]:hover {
   background-color: var(--color-background-soft);
 }
-.selected[data-v-9bbc360a] {
+.selected[data-v-087f39de] {
   background-color: var(--color-background-soft);
 }
 
@@ -84,24 +95,25 @@
   --section-gap: 160px;
   --border-radius: 16px;
 }
-@media (prefers-color-scheme: dark) {
-:root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
+[data-theme="dark"] {
+  --color-background: var(--vt-c-black);
+  --color-background-soft: var(--vt-c-black-soft);
+  --color-background-mute: var(--vt-c-black-mute);
 
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
+  --color-border: var(--vt-c-divider-dark-2);
+  --color-border-hover: var(--vt-c-divider-dark-1);
 
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-}
+  --color-heading: var(--vt-c-text-dark-1);
+  --color-text: var(--vt-c-text-dark-2);
 }
 body {
   background-color: var(--color-background);
   color: var(--color-heading);
   font-family: sans-serif;
   margin: 0;
+}
+body > * {
+  transition: all 1s;
 }
 a {
   text-decoration: none;

@@ -5,8 +5,8 @@
     <link rel="icon" href="/web-utilities/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web Utilities</title>
-    <script type="module" crossorigin src="/web-utilities/assets/index.ee4e1608.js"></script>
-    <link rel="stylesheet" href="/web-utilities/assets/index.47d289a1.css">
+    <script type="module" crossorigin src="/web-utilities/assets/index.c1db3a5e.js"></script>
+    <link rel="stylesheet" href="/web-utilities/assets/index.53a2a797.css">
   </head>
   <body>
     <div id="app"></div>
@@ -22,6 +22,25 @@
           }
         }
       )();
+    </script>
+    <script>
+      function detectColorScheme(){
+        var theme="light";
+        if(localStorage.getItem("theme")){
+            if(localStorage.getItem("theme") == "dark"){
+                var theme = "dark";
+            }
+        } else if(!window.matchMedia) {
+            return false;
+        } else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            var theme = "dark";
+        }
+
+        if (theme=="dark") {
+             document.documentElement.setAttribute("data-theme", "dark");
+        }
+      }
+      detectColorScheme();
     </script>
   </body>
 </html>
