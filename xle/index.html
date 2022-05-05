@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Xle - Portal for Worlde games!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>
+      function switchTheme() {
+        if (localStorage.getItem("theme") === "light") {
+          localStorage.setItem("theme", "dark");
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          localStorage.setItem("theme", "light");
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="main" class="container">
+      <h1>Xle</h1>
+      <h3>List of different world-like games all in one place!</h3>
+      <button onclick="switchTheme()">Dark/Light Mode</button>
+      <hr />
+      <div id="games" class="game-containers">
+        <!-- each game title and button goes here -->
+      </div>
+      <!-- iframe will be loaded here, and when a new game is played will be delete and added back -->
+    </div>
+
+    <script>
+      var games = [
+        // ["https://www.nytimes.com/games/wordle/index.html", "Wordle"]
+        ["https://actorle.com/", 'Actorle'],
+        ["https://framed.wtf/", "Framed"],
+        ["https://www.moviedle.app/", "Moviedle"],
+        ["https://www.posterdle.com/", "Posterdle"],
+        ["https://nerdlegame.com/", "Nerdle"],
+        ["https://www.quordle.com/#/", "Quordle"],
+        ["https://worldle.teuteuf.fr/", "Wordle"],
+        // ["https://wafflegame.net/", "Waffle"]
+        ["https://crosswordle.vercel.app/", "Crosswordle"],
+        ["https://www.dungleon.com/", "Dungleon"],
+        ["https://squareword.org/", "Squareword"]
+      ];
+
+      function play(id) {
+        if (games.length > id) {
+          var link = games[id][0];
+          var fake = document.getElementById("playing");
+          // do nothing if same game pressed play
+          if (fake && fake.dataset.game === `${id}`) {
+            return;
+          }
+          // delete if iframe exists and not same game button
+          if (fake) {
+            fake.remove();
+          }
+          var iframe = document.createElement("iframe");
+          iframe.className = "frame";
+          iframe.id = "playing";
+          iframe.src = link;
+          iframe.dataset.game = id
+          document.getElementById("main").appendChild(iframe);
+        }
+      }
+
+      function click(id) {
+        return function () { play(id) };
+      }
+
+      function render() {
+        var container = document.getElementById("games");
+        for (var i = 0; i < games.length; i++) {
+          var link = games[i][0];
+          var name = games[i][1];
+          var div = document.createElement("div");
+          div.className = "game-option";
+          var name_header = document.createElement("h3");
+          name_header.innerHTML = `${name} (<a href="${link}" target="_blank">link</a>)`;
+          div.appendChild(name_header);
+          var button = document.createElement("button");
+          button.id = `${i}-btn`;
+          button.onclick = click(i);
+          button.innerHTML = "PLAY";
+          div.appendChild(button);
+          var innerdiv = document.createElement("div");
+          innerdiv.id = i;
+          div.appendChild(innerdiv);
+          container.appendChild(div);
+        }
+      }
+      render();
+    </script>
+
+    <script>
+      function detectColorScheme(){
+        var theme="light";
+        if(localStorage.getItem("theme")){
+          if(localStorage.getItem("theme") == "dark"){
+            var theme = "dark";
+          }
+        } else if(!window.matchMedia) {
+          localStorage.setItem("theme", "dark");
+          return false;
+        } else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          var theme = "dark";
+          localStorage.setItem("theme", "dark");
+        } else {
+          localStorage.setItem("theme", "light");
+        }
+
+        if (theme=="dark") {
+           document.documentElement.setAttribute("data-theme", "dark");
+        }
+      }
+      detectColorScheme();
+    </script>
+  </body>
+</html>
