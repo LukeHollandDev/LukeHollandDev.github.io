@@ -34782,11 +34782,15 @@ const merge = async (pdfs) => {
   return result.save();
 };
 var PDFMergeView_vue_vue_type_style_index_0_scoped_true_lang = "";
-const _withScopeId$1 = (n2) => (pushScopeId("data-v-6f428bec"), n2 = n2(), popScopeId(), n2);
+const _withScopeId$1 = (n2) => (pushScopeId("data-v-1d016305"), n2 = n2(), popScopeId(), n2);
 const _hoisted_1$1 = { class: "view-container" };
 const _hoisted_2$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("h2", null, "PDF Merger", -1));
 const _hoisted_3$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("hr", null, null, -1));
-const _hoisted_4$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("h4", null, " Add your PDF files using them prompt below, you can upload them one at a time or multiple at once. ", -1));
+const _hoisted_4$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("h4", null, [
+  /* @__PURE__ */ createTextVNode(" Add your PDF files using them prompt below, you can add them one at a time or multiple at once. "),
+  /* @__PURE__ */ createBaseVNode("br"),
+  /* @__PURE__ */ createTextVNode(" Since all the operations to merge are done on your browser you can be sure this tool will not upload your files anywhere! ")
+], -1));
 const _hoisted_5$1 = { key: 0 };
 const _hoisted_6$1 = { key: 1 };
 const _hoisted_7$1 = {
@@ -34828,6 +34832,7 @@ const _sfc_main$1 = {
       files.value.splice(index2, 1);
     }
     async function merge$1(pdfs) {
+      loading.value = true;
       const data = await merge(pdfs);
       const url = window.URL.createObjectURL(new Blob([data], { type: "application/pdf" }));
       const a2 = document.createElement("a");
@@ -34835,6 +34840,7 @@ const _sfc_main$1 = {
       a2.download = "merged.pdf";
       a2.click();
       a2.remove();
+      loading.value = false;
     }
     const options = {
       onDrop,
@@ -34889,7 +34895,7 @@ const _sfc_main$1 = {
     };
   }
 };
-var PDFMergeView = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-6f428bec"]]);
+var PDFMergeView = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-1d016305"]]);
 var pluralize$3 = { exports: {} };
 (function(module, exports) {
   (function(root, pluralize2) {

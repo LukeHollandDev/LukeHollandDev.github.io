@@ -5,11 +5,23 @@
     <link rel="icon" href="/web-utilities/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web Utilities</title>
-    <script type="module" crossorigin src="/web-utilities/assets/index.122ac418.js"></script>
-    <link rel="stylesheet" href="/web-utilities/assets/index.e256aef0.css">
+    <script type="module" crossorigin src="/web-utilities/assets/index.ee4e1608.js"></script>
+    <link rel="stylesheet" href="/web-utilities/assets/index.47d289a1.css">
   </head>
   <body>
     <div id="app"></div>
     
+    <script>
+      // https://www.smashingmagazine.com/2016/08/sghpa-single-page-app-hack-github-pages/
+      (
+        function(){
+          var redirect = sessionStorage.redirect;
+          delete sessionStorage.redirect;
+          if (redirect && redirect != location.href) {
+            history.replaceState(null, null, redirect);
+          }
+        }
+      )();
+    </script>
   </body>
 </html>
