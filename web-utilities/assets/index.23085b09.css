@@ -163,6 +163,13 @@ button {
   border-radius: var(--border-radius);
   cursor: pointer;
 }
+button:hover {
+  background-color: var(--color-background-soft);
+}
+button:disabled {
+  background-color: var(--color-background);
+  cursor: default;
+}
 .navCollapsed {
   margin-left: 20px;
 }
