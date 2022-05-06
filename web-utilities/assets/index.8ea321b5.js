@@ -8925,7 +8925,7 @@ const _sfc_main$6 = {
 };
 var ThemeSwitcher = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-5b3ee933"]]);
 var NavBar_vue_vue_type_style_index_0_scoped_true_lang = "";
-const _withScopeId$4 = (n2) => (pushScopeId("data-v-087f39de"), n2 = n2(), popScopeId(), n2);
+const _withScopeId$4 = (n2) => (pushScopeId("data-v-5546f89a"), n2 = n2(), popScopeId(), n2);
 const _hoisted_1$4 = { class: "title" };
 const _hoisted_2$4 = /* @__PURE__ */ _withScopeId$4(() => /* @__PURE__ */ createBaseVNode("h2", null, "Tools", -1));
 const _hoisted_3$4 = { class: "options-container" };
@@ -8981,7 +8981,7 @@ const _sfc_main$5 = {
     };
   }
 };
-var NavBar = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-087f39de"]]);
+var NavBar = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-5546f89a"]]);
 var TopBar_vue_vue_type_style_index_0_scoped_true_lang = "";
 const _withScopeId$3 = (n2) => (pushScopeId("data-v-6457d768"), n2 = n2(), popScopeId(), n2);
 const _hoisted_1$3 = { class: "container" };
@@ -9023,7 +9023,7 @@ const _sfc_main$3 = {
   }
 };
 var HomeView_vue_vue_type_style_index_0_scoped_true_lang = "";
-const _withScopeId$2 = (n2) => (pushScopeId("data-v-7d89f1f6"), n2 = n2(), popScopeId(), n2);
+const _withScopeId$2 = (n2) => (pushScopeId("data-v-c37accec"), n2 = n2(), popScopeId(), n2);
 const _hoisted_1$2 = { class: "view-container" };
 const _hoisted_2$2 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createBaseVNode("h2", null, "Web Utilities", -1));
 const _hoisted_3$2 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createBaseVNode("hr", null, null, -1));
@@ -9074,7 +9074,7 @@ const _sfc_main$2 = {
     };
   }
 };
-var HomeView = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-7d89f1f6"]]);
+var HomeView = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-c37accec"]]);
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof window !== "undefined" ? window : typeof self !== "undefined" ? self : {};
 function getDefaultExportFromCjs(x) {
   return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
@@ -34844,7 +34844,7 @@ const merge = async (pdfs) => {
   return result.save();
 };
 var PDFMergeView_vue_vue_type_style_index_0_scoped_true_lang = "";
-const _withScopeId$1 = (n2) => (pushScopeId("data-v-1d016305"), n2 = n2(), popScopeId(), n2);
+const _withScopeId$1 = (n2) => (pushScopeId("data-v-e51f4386"), n2 = n2(), popScopeId(), n2);
 const _hoisted_1$1 = { class: "view-container" };
 const _hoisted_2$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("h2", null, "PDF Merger", -1));
 const _hoisted_3$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("hr", null, null, -1));
@@ -34863,12 +34863,22 @@ const _hoisted_8$1 = { key: 1 };
 const _hoisted_9$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("h3", null, "Selected PDFs (drag to re-order)", -1));
 const _hoisted_10$1 = { class: "files" };
 const _hoisted_11$1 = ["onClick"];
-const _hoisted_12 = { key: 0 };
+const _hoisted_12 = { class: "buttons-container" };
 const _hoisted_13 = ["disabled"];
 const _hoisted_14 = {
-  key: 0,
-  class: "loader"
+  key: 2,
+  class: "lds-ellipsis"
 };
+const _hoisted_15 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("div", null, null, -1));
+const _hoisted_16 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("div", null, null, -1));
+const _hoisted_17 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("div", null, null, -1));
+const _hoisted_18 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("div", null, null, -1));
+const _hoisted_19 = [
+  _hoisted_15,
+  _hoisted_16,
+  _hoisted_17,
+  _hoisted_18
+];
 const _sfc_main$1 = {
   props: {
     navCollapsed: {
@@ -34892,6 +34902,9 @@ const _sfc_main$1 = {
     }
     function removeFile(index2) {
       files.value.splice(index2, 1);
+    }
+    function clearFiles() {
+      files.value = [];
     }
     async function merge$1(pdfs) {
       loading.value = true;
@@ -34944,20 +34957,25 @@ const _sfc_main$1 = {
                 }, 8, ["modelValue"])
               ])
             ]),
-            files.value.length > 1 ? (openBlock(), createElementBlock("div", _hoisted_12, [
-              createBaseVNode("button", {
+            createBaseVNode("div", _hoisted_12, [
+              files.value.length > 1 ? (openBlock(), createElementBlock("button", {
+                key: 0,
                 onClick: _cache[1] || (_cache[1] = ($event) => merge$1(files.value)),
                 disabled: loading.value
-              }, "Merge PDFs", 8, _hoisted_13),
-              loading.value ? (openBlock(), createElementBlock("div", _hoisted_14)) : createCommentVNode("", true)
-            ])) : createCommentVNode("", true)
+              }, " Merge ", 8, _hoisted_13)) : createCommentVNode("", true),
+              files.value.length > 0 ? (openBlock(), createElementBlock("button", {
+                key: 1,
+                onClick: _cache[2] || (_cache[2] = ($event) => clearFiles())
+              }, "Clear")) : createCommentVNode("", true),
+              loading.value ? (openBlock(), createElementBlock("div", _hoisted_14, _hoisted_19)) : createCommentVNode("", true)
+            ])
           ])) : createCommentVNode("", true)
         ])
       ], 2);
     };
   }
 };
-var PDFMergeView = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-1d016305"]]);
+var PDFMergeView = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-e51f4386"]]);
 var pluralize$3 = { exports: {} };
 (function(module, exports) {
   (function(root, pluralize2) {
