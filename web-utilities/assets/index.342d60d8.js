@@ -34844,7 +34844,7 @@ const merge = async (pdfs) => {
   return result.save();
 };
 var PDFMergeView_vue_vue_type_style_index_0_scoped_true_lang = "";
-const _withScopeId$1 = (n2) => (pushScopeId("data-v-e51f4386"), n2 = n2(), popScopeId(), n2);
+const _withScopeId$1 = (n2) => (pushScopeId("data-v-6079bd2a"), n2 = n2(), popScopeId(), n2);
 const _hoisted_1$1 = { class: "view-container" };
 const _hoisted_2$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("h2", null, "PDF Merger", -1));
 const _hoisted_3$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("hr", null, null, -1));
@@ -34863,21 +34863,23 @@ const _hoisted_8$1 = { key: 1 };
 const _hoisted_9$1 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("h3", null, "Selected PDFs (drag to re-order)", -1));
 const _hoisted_10$1 = { class: "files" };
 const _hoisted_11$1 = ["onClick"];
-const _hoisted_12 = { class: "buttons-container" };
-const _hoisted_13 = ["disabled"];
-const _hoisted_14 = {
+const _hoisted_12 = /* @__PURE__ */ createTextVNode(" Filename ");
+const _hoisted_13 = ["value"];
+const _hoisted_14 = { class: "buttons-container" };
+const _hoisted_15 = ["disabled"];
+const _hoisted_16 = {
   key: 2,
   class: "lds-ellipsis"
 };
-const _hoisted_15 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("div", null, null, -1));
-const _hoisted_16 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("div", null, null, -1));
 const _hoisted_17 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("div", null, null, -1));
 const _hoisted_18 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("div", null, null, -1));
-const _hoisted_19 = [
-  _hoisted_15,
-  _hoisted_16,
+const _hoisted_19 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("div", null, null, -1));
+const _hoisted_20 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("div", null, null, -1));
+const _hoisted_21 = [
   _hoisted_17,
-  _hoisted_18
+  _hoisted_18,
+  _hoisted_19,
+  _hoisted_20
 ];
 const _sfc_main$1 = {
   props: {
@@ -34889,6 +34891,7 @@ const _sfc_main$1 = {
   setup(__props) {
     const files = ref([]);
     const error2 = ref("");
+    const filename = ref("");
     const loading = ref(false);
     function onDrop(acceptFiles, rejectReasons) {
       if (acceptFiles) {
@@ -34912,10 +34915,13 @@ const _sfc_main$1 = {
       const url = window.URL.createObjectURL(new Blob([data], { type: "application/pdf" }));
       const a2 = document.createElement("a");
       a2.href = url;
-      a2.download = "merged.pdf";
+      a2.download = `${filename.value || "merged"}.pdf`;
       a2.click();
       a2.remove();
       loading.value = false;
+    }
+    function updateFilename(e2) {
+      filename.value = e2.target.value;
     }
     const options = {
       onDrop,
@@ -34957,17 +34963,24 @@ const _sfc_main$1 = {
                 }, 8, ["modelValue"])
               ])
             ]),
-            createBaseVNode("div", _hoisted_12, [
+            _hoisted_12,
+            createBaseVNode("input", {
+              type: "text",
+              value: filename.value,
+              onInput: updateFilename,
+              placeholder: "merged"
+            }, null, 40, _hoisted_13),
+            createBaseVNode("div", _hoisted_14, [
               files.value.length > 1 ? (openBlock(), createElementBlock("button", {
                 key: 0,
                 onClick: _cache[1] || (_cache[1] = ($event) => merge$1(files.value)),
                 disabled: loading.value
-              }, " Merge ", 8, _hoisted_13)) : createCommentVNode("", true),
+              }, " Merge ", 8, _hoisted_15)) : createCommentVNode("", true),
               files.value.length > 0 ? (openBlock(), createElementBlock("button", {
                 key: 1,
                 onClick: _cache[2] || (_cache[2] = ($event) => clearFiles())
               }, "Clear")) : createCommentVNode("", true),
-              loading.value ? (openBlock(), createElementBlock("div", _hoisted_14, _hoisted_19)) : createCommentVNode("", true)
+              loading.value ? (openBlock(), createElementBlock("div", _hoisted_16, _hoisted_21)) : createCommentVNode("", true)
             ])
           ])) : createCommentVNode("", true)
         ])
@@ -34975,7 +34988,7 @@ const _sfc_main$1 = {
     };
   }
 };
-var PDFMergeView = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-e51f4386"]]);
+var PDFMergeView = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-6079bd2a"]]);
 var pluralize$3 = { exports: {} };
 (function(module, exports) {
   (function(root, pluralize2) {

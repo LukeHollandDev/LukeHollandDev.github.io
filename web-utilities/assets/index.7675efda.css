@@ -132,6 +132,25 @@ textarea {
   border: 1px solid;
   border-color: inherit;
   padding: 1em;
+  outline: none;
+}
+input[type=text] {
+  /* account for view container padding and the 1px border */
+  background-color: inherit;
+  color: inherit;
+  border: none;
+  border-bottom: 1px solid;
+  border-color: inherit;
+  padding: 0.25em;
+  margin: 1em;
+  margin-left: 0;
+  font-size: 1em;
+  outline: none;
+}
+input[type=text]:focus {
+  border: none;
+  border-bottom: 1px solid;
+  border-color: inherit;
 }
 button {
   font-size: 1.5em;
@@ -228,7 +247,7 @@ button {
   color: var(--color-text);
 }
 
-.file-area[data-v-e51f4386] {
+.file-area[data-v-6079bd2a] {
   display: flex;
   height: 150px;
   justify-content: center;
@@ -236,25 +255,25 @@ button {
   text-align: center;
   border: 1px solid;
 }
-.file-area p[data-v-e51f4386] {
+.file-area p[data-v-6079bd2a] {
   padding: 0 1em;
 }
-.files li[data-v-e51f4386]::before {
+.files li[data-v-6079bd2a]::before {
   content: "";
   width: 1em;
   display: inline-block;
 }
-.files li[data-v-e51f4386] {
+.files li[data-v-6079bd2a] {
   margin: 0.5em 0;
   font-weight: bold;
   padding: 0.25em 0;
   cursor: pointer;
 }
-.remove[data-v-e51f4386] {
+.remove[data-v-6079bd2a] {
   color: red;
   margin-left: 0.5em;
 }
-.buttons-container[data-v-e51f4386] {
+.buttons-container[data-v-6079bd2a] {
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
