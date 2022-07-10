@@ -1,0 +1,111 @@
+.scores .scores-btn {
+  display: inline;
+  margin-left: 1em;
+  cursor: pointer;
+}
+
+.scores .scores-table {
+  width: 100%;
+  min-width: 300px;
+  text-align: center;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.scores .no-scores {
+  margin-top: 1em 0;
+  display: none;
+}
+
+.scores .scores-table thead {
+  border-bottom: 2px solid var(--border-colour);
+}
+
+.scores .scores-table .name {
+  max-width: 40%;
+  min-width: 40%;
+  width: 40%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scores .scores-table .time {
+  max-width: 15%;
+  min-width: 15%;
+  width: 15%;
+}
+
+.scores .scores-table .ranking,
+.scores .scores-table .trades {
+  max-width: 10%;
+  min-width: 10%;
+  width: 10%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scores .scores-table .first {
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(214, 175, 54), rgba(214, 175, 54));
+  animation: glow 1s ease-in-out infinite alternate;
+}
+.scores .scores-table .first td {
+  padding: 0.75em;
+}
+
+.scores .scores-table .second {
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(167, 167, 173), rgba(167, 167, 173));
+}
+.scores .scores-table .second td {
+  padding: 0.5em;
+}
+
+.scores .scores-table .third {
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(167, 112, 68), rgba(167, 112, 68));
+}
+.scores .scores-table .third td {
+  padding: 0.25em;
+}
+
+.scores .my-score {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+@media (max-width: 575px) {
+  .scores .scores-table {
+    font-size: 0.9em;
+  }
+
+  .scores .scores-table .name {
+    max-width: 32%;
+    min-width: 32%;
+    width: 32%;
+  }
+
+  .scores .scores-table .ranking,
+  .scores .scores-table .time,
+  .scores .scores-table .value,
+  .scores .scores-table .trades {
+    max-width: 11%;
+    min-width: 11%;
+    width: 11%;
+  }
+}
+
+@media (max-width: 380px) {
+  .scores .scores-table {
+    font-size: 0.7em;
+  }
+}
+
+@keyframes glow{
+  from{text-shadow:0px 0px 5px #fff,0px 0px 5px rgba(214, 175, 54);}
+  to{text-shadow:0px 0px 10px #fff,0px 0px 10px rgba(214, 175, 54);}
+}
+
+@-webkit-keyframes glow{
+  from{text-shadow:0px 0px 5px #fff,0px 0px 5px rgba(214, 175, 54);}
+  to{text-shadow:0px 0px 10px #fff,0px 0px 10px rgba(214, 175, 54);}
+}

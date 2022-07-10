@@ -1,0 +1,92 @@
+:root {
+  --main-text-colour: white;
+  --sub-text-colour: lightgrey;
+  --background-colour: black ;
+  --border-colour: white;
+  --border-radius: 20px;
+  --accent-colour: #22a6b3;
+
+  --colour-bad: #e84118;
+  --colour-good: #4cd137;
+  --colour-mid: #fbc531;
+  --font: Verdana, sans-serif;
+  --transition: all 0.2s ease-in-out;
+}
+
+[data-theme="light"] {
+  --main-text-colour: black;
+  --sub-text-colour: grey;
+  --background-colour: white;
+  --border-colour: black;
+  --border-radius: 10px;
+}
+
+body {
+  color: var(--main-text-colour);
+  background-color: var(--background-colour);
+  font-family: var(--font);
+  margin: 0;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+a {
+  color: var(--main-text-colour);
+  font-weight: bold;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--accent-colour);
+}
+
+
+.content {
+  transition: height 0.5s ease;
+}
+
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: inherit !important;
+}
+
+.back-btn {
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  color: var(--accent-colour);
+}
+
+.info-container {
+  border: 2px solid var(--border-colour);
+  border-radius: var(--border-radius);
+  padding: 1em;
+  margin: 1em;
+  font-size: 1.1em;
+}
+
+.info-container span {
+  font-size: 1.3em;
+}
+
+input[type=text] {
+  padding: 0.4em;
+  background-color: transparent;
+  border: 2px solid var(--border-colour);
+  border-radius: var(--border-radius);
+  color: var(--accent-colour);
+  text-align: center;
+  font-size: 1.1em;
+}
+
+input[type=text]:focus, input[type=text]:hover {
+  outline-color: none;
+  outline-style: none;
+}

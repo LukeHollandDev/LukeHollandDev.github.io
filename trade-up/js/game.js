@@ -4,7 +4,7 @@ class Game {
     this.time = 0; // seconds
     this.currentItem = null;
     this.currentOffers = null;
-    this.moves = 0;
+    this.trades = 0;
     this.productData = data.items;
     this.dataIndex = 0;
   }
@@ -52,7 +52,8 @@ class Game {
 
   start() {
     this.inProgress = true;
-    this.time = 0;
+    this.time = -1;
+    this.trades = 0;
     this.currentItem = new Item('£1 Coin', 1.00, 'https://d3h9wgial7chxw.cloudfront.net/products/1921/main/2017-base-metal-bu-nations-of-the-crown-1-coin-single-united-kingdom-the-royal-mint-2.jpg')
     this.dataIndex = parseInt(data.items.length * 0.01 );
     this.currentOffers = this.getOffers();
@@ -64,6 +65,6 @@ class Game {
     this.dataIndex = this.currentItem.index;
     // get new offers and increment the move counter update the dataIndex
     this.currentOffers = this.getOffers();
-    this.moves++;
+    this.trades++;
   }
 }
