@@ -48,6 +48,7 @@
 
 .scores .scores-table .first {
   background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(214, 175, 54), rgba(214, 175, 54));
+  background-attachment: fixed;
   animation: glow 1s ease-in-out infinite alternate;
 }
 .scores .scores-table .first td {
@@ -56,6 +57,7 @@
 
 .scores .scores-table .second {
   background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(167, 167, 173), rgba(167, 167, 173));
+  background-attachment: fixed;
 }
 .scores .scores-table .second td {
   padding: 0.5em;
@@ -63,6 +65,7 @@
 
 .scores .scores-table .third {
   background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(167, 112, 68), rgba(167, 112, 68));
+  background-attachment: fixed;
 }
 .scores .scores-table .third td {
   padding: 0.25em;
