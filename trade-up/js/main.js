@@ -161,7 +161,7 @@ function submitScore() {
   // if global handle posting the score to the server
   if (checkbox.checked) {
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://127.0.0.1:5000/scores', true);
+    xhr.open('POST', 'https://tradeup.lukeh.xyz/scores', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(score));
   }
@@ -194,7 +194,7 @@ function renderScores(globalReq=false, scores=null) {
   } else if (!globalReq) {
     // insert logic for fetching scores from server
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://127.0.0.1:5000/scores', true);
+    xhr.open('GET', 'https://tradeup.lukeh.xyz/scores', true);
     xhr.onload = (e) => {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
