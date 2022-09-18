@@ -1,0 +1,138 @@
+.winner .leo-cheers {
+  background-image: url('https://media2.giphy.com/media/g9582DNuQppxC/200.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+  width: 534px;
+  margin: 0 auto;
+  border: 3px solid var(--border-colour);
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.winner .leo-cheers span {
+  font-weight: bold;
+  font-size: 1.25em;
+  text-align: center;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  background-color: var(--border-colour);
+  color: var(--background-colour)
+}
+
+.winner .results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.winner .results div {
+  flex: 33%;
+  font-size: 0.8em;
+  text-align: center;
+  color: var(--sub-text-colour);
+}
+
+.winner .results span {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: var(--main-text-colour);
+}
+
+.winner .submission {
+  width: 100%;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.winner .submission input[type=text] {
+  width: 80%;
+  margin-bottom: 0.25em;
+}
+
+.winner .submission .submit-container {
+  display: flex;
+  align-items: center;
+  width: 70%;
+  margin: 0 auto;
+  gap: 1em;
+  margin-bottom: 0.25em;
+}
+
+.winner .submission .submit-btn {
+  flex: 20%;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0.2em;
+  border: 2px solid var(--border-colour);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.winner .submission .disabled {
+  border-color: var(--sub-text-colour);
+  color: var(--sub-text-colour);
+  cursor: no-drop;
+}
+
+.winner .submission .sub-text {
+  font-size: 0.7em;
+  color: var(--sub-text-colour);
+}
+
+.winner .confirmation {
+  display: none;
+  text-align: center;
+  margin-top: 1em;
+  font-size: 1.2em;
+}
+
+.winner .confirmation .go-home {
+  margin-top: 0.5em;
+  font-size: 0.7em;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.winner .confirmation .go-home:hover {
+  color: var(--accent-colour);
+}
+
+@media (max-width: 650px) {
+  .winner .leo-cheers {
+    height: 200px;
+    width: 356px;
+  }
+}
+
+@media (max-width: 446px) {
+  .winner .leo-cheers {
+    height: 150px;
+    width: 267px;
+  }
+
+  .winner .leo-cheers span {
+    font-size: 1em;
+  }
+
+  .winner .submission .submit-container {
+    width: 90%;
+  }
+
+  .winner .submission input[type=text] {
+    width: 95%;
+  }
+}
+
+@media (max-width: 350px) {
+  .winner .leo-cheers {
+    height: 125px;
+    width: 222px;
+  }
+}
