@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Meme Tree - Tree of Memes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+    <div id="main" class="container">
+        <h1>M<span class="smaller-text">eme</span> T<span class="smaller-text">ree</span></h1>
+
+        <p>Welcome to Meme Tree! Just a bunhc of memes I found in like an hour or something.</p>
+        <p class="smaller-text">(they will show in random order each time)</p>
+        <p class="smaller-text">(youtube vids probs take long to load or something lel)</p>
+        <p><b>Happy Birthday!!! Woooo! Birthday time!</b></p>
+
+        <img style="border:none" src="cat_spin.gif" />
+
+        <hr />
+
+        <div class="memes">
+            <div class="meme">
+                <img src="memes/netflix_list.webp" />
+                <span>Yeah I'll put it on the list! 👀</span>
+            </div>
+
+            <div class="meme">
+                <img src="memes/evolution_mofo.gif" />
+                <span>It's evolving. But backwards!</span>
+            </div>
+
+            <div class="meme">
+                <img src="memes/understandager.gif" />
+                <span>I can read. No really I can.</span>
+            </div>
+
+            <div class="meme">
+                <img src="memes/poof_gone.gif" />
+                <span>sudo rm -rf ./knowledge</span>
+            </div>
+
+            <div class="meme">
+                <img src="memes/custom_credit_card.webp" />
+                <span>Best credit card design ever PERIOD</span>
+            </div>
+
+            <div class="meme">
+                <img src="memes/woo_done_did_it.gif" />
+                <span>WOO it done be done.</span>
+            </div>
+
+            <div class="meme">
+                <img src="memes/new_record.gif" />
+                <span>Better than last time maybe</span>
+            </div>
+
+            <div class="meme">
+                <img src="memes/damn_we_old.webp" />
+                <span>Sheeesh they grow up so fast</span>
+            </div>
+
+            <div class="meme">
+                <img src="memes/xd.webp" />
+                <span>Woo Jeff Goldblum!</span>
+            </div>
+
+            <div class="meme">
+                <iframe width="1191" height="670" src="https://www.youtube.com/embed/1XSysnj2Bk0" title="Walter White in Mario Kart Wii"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+                <span>Speedster White Rainbow Road</span>
+            </div>
+
+            <div class="meme">
+                <iframe class="short" src="https://www.youtube.com/embed/vUR8uii3AAw"
+                    title="finding diamonds #shorts #minecraft #breakingbad #memes" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+                <span>WOO DIMONS.. WAIT A MINUTE</span>
+            </div>
+
+            <div class="meme">
+                <iframe class="short" src="https://www.youtube.com/embed/ka5-ukopIkY"
+                    title="Walter Gets Kicked Out in Minecraft #Minecraft #Breaking Bad #Shorts #Meme" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+                <span>Better keep them chests organised</span>
+            </div>
+
+            <div class="meme">
+                <iframe class="short" src="https://www.youtube.com/embed/CA2MNvJFr8w"
+                    title="When you anger the Iron Golem in Minecraft #minecraft #breakingbad #meme #shorts #fyp #foryou"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+                <span>Please get my items back</span>
+            </div>
+
+            <div class="meme">
+                <iframe class="short" src="https://www.youtube.com/embed/Vlt2GUIO1p0"
+                    title="Walter Jr.'s Minecraft House sucks | Breaking Bad meme" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+                <span>Good job son</span>
+            </div>
+
+            <div class="meme">
+                <iframe class="short" src="https://www.youtube.com/embed/CWmwR1xhoPo"
+                    title="Are you a builder or miner? #minecraftshorts #minecraft #shorts #memes #breakingbad"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+                <span>I had excellent help</span>
+            </div>
+
+            <div class="meme">
+                <iframe class="short" src="https://www.youtube.com/embed/M1ROTambMLI"
+                    title="Breaking bad Minecraft meme #breakingbad #minecraft #meme #breakingbadmeme #minecraftmeme"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+                <span>Only coal and cobblestone!?</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var parent = document.querySelector(".memes");
+        for (var i = 0; i < parent.children.length; i++) {
+            parent.appendChild(parent.children[Math.random() * i | 0]);
+        }
+    </script>
+</body>
+
+</html>
