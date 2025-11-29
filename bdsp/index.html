@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinnoh Pokedex Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4e7f5 100%);
+            min-height: 100vh;
+        }
+
+        .pokemon-sprite {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+
+        .pokemon-sprite:hover {
+            transform: scale(1.15);
+        }
+
+        .unobtained {
+            filter: brightness(0.85) saturate(0.3);
+            opacity: 0.7;
+        }
+
+        .obtained {
+            filter: none;
+            opacity: 1;
+        }
+
+        .pokemon-slot {
+            position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+            border: 2px solid #b8d4e8;
+            border-radius: 8px;
+            padding: 8px;
+            transition: all 0.2s ease;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .pokemon-slot:hover {
+            background: linear-gradient(135deg, #fff 0%, #e0f2fe 100%);
+            border-color: #7eb8dd;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        .empty-slot {
+            background: #f5f5f5;
+            border: 2px dashed #d0d0d0;
+        }
+
+        .empty-slot:hover {
+            background: #f5f5f5;
+            transform: none;
+        }
+
+        .obtained-badge {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: #10b981;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        .info-link {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 10;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .info-link:hover {
+            background: #2563eb;
+            transform: scale(1.15);
+        }
+
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+
+        .box-container {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+            border: 3px solid #a8c5dc;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .box-header {
+            background: transparent;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .box-nav-btn {
+            transition: all 0.2s ease;
+        }
+
+        .box-nav-btn:hover:not(:disabled) {
+            transform: scale(1.1);
+        }
+
+        .box-nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            background: #e5e7eb;
+            color: #9ca3af;
+            border-color: #d1d5db;
+        }
+
+        .box-selector-btn {
+            min-width: 40px;
+            height: 40px;
+            transition: all 0.2s ease;
+        }
+
+        .box-selector-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .box-selector-btn.active {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-color: #1d4ed8;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="bg-white rounded-lg shadow-xl p-6 mb-6 border-2 border-blue-200">
+            <h1 class="text-4xl font-bold text-center text-blue-700 mb-2">Sinnoh Regional Pokedex</h1>
+            <p class="text-center text-gray-600 mb-4">Click on Pokemon to mark them as obtained!</p>
+
+            <!-- Progress Bar -->
+            <div class="mb-4">
+                <div class="flex justify-between text-sm text-gray-700 mb-2">
+                    <span>Overall Progress</span>
+                    <span id="progress-text">0/151 (0%)</span>
+                </div>
+                <div class="w-full bg-blue-100 rounded-full h-6 overflow-hidden border border-blue-200">
+                    <div id="progress-bar" class="progress-bar bg-gradient-to-r from-blue-400 to-blue-600 h-6 rounded-full flex items-center justify-center text-white text-sm font-bold" style="width: 0%">
+                        <span id="progress-percent">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex flex-wrap gap-3 justify-center">
+                <button onclick="markAllInBox(true)" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition shadow-md text-sm">
+                    Mark Box Obtained
+                </button>
+                <button onclick="markAllInBox(false)" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition shadow-md text-sm">
+                    Clear Box
+                </button>
+                <button onclick="markAll(true)" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition shadow-md text-sm">
+                    Mark All Obtained
+                </button>
+                <button onclick="markAll(false)" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition shadow-md text-sm">
+                    Clear All
+                </button>
+                <button onclick="exportData()" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-lg transition shadow-md text-sm">
+                    Export Data
+                </button>
+                <button onclick="importData()" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg transition shadow-md text-sm">
+                    Import Data
+                </button>
+            </div>
+        </div>
+
+        <!-- Pokemon Box -->
+        <div class="box-container p-4">
+            <!-- Box Header -->
+            <div class="box-header p-4 rounded-t-lg mb-4">
+                <div class="flex items-center justify-between mb-3">
+                    <button onclick="previousBox()" id="prev-btn" class="box-nav-btn bg-white hover:bg-blue-50 text-blue-700 font-bold py-2 px-4 rounded-lg transition shadow-md border-2 border-blue-200">
+                        ← Previous
+                    </button>
+                    <div class="text-center">
+                        <h2 class="text-2xl font-bold text-blue-900 mb-1" id="box-title">Box 1</h2>
+                        <p class="text-sm text-blue-700" id="box-range">Pokemon #1 - #30</p>
+                        <p class="text-sm text-green-600 font-semibold mt-1" id="box-progress">0/30 obtained</p>
+                    </div>
+                    <button onclick="nextBox()" id="next-btn" class="box-nav-btn bg-white hover:bg-blue-50 text-blue-700 font-bold py-2 px-4 rounded-lg transition shadow-md border-2 border-blue-200">
+                        Next →
+                    </button>
+                </div>
+
+                <!-- Box Selector -->
+                <div class="flex gap-2 justify-center flex-wrap" id="box-selector">
+                    <!-- Box buttons will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Pokemon Grid (5 rows x 6 columns = 30 slots) -->
+            <div id="pokemon-grid" class="grid grid-cols-6 gap-3 p-4">
+                <!-- Pokemon slots will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-6 text-gray-600 text-sm">
+            <p>Data from Serebii.net | Pokemon Box System</p>
+        </div>
+    </div>
+
+    <!-- Hidden file input for import -->
+    <input type="file" id="import-file" accept=".json" style="display: none" onchange="handleImport(event)">
+
+    <script>
+        // Pokemon data
+        const pokemonData = [
+  {
+    "regionalNum": 1,
+    "nationalNum": 387,
+    "name": "Turtwig",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/387.png",
+    "serebiiUrl": "/pokedex-swsh/turtwig/"
+  },
+  {
+    "regionalNum": 2,
+    "nationalNum": 388,
+    "name": "Grotle",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/388.png"
+  },
+  {
+    "regionalNum": 3,
+    "nationalNum": 389,
+    "name": "Torterra",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/389.png"
+  },
+  {
+    "regionalNum": 4,
+    "nationalNum": 390,
+    "name": "Chimchar",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/390.png"
+  },
+  {
+    "regionalNum": 5,
+    "nationalNum": 391,
+    "name": "Monferno",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/391.png"
+  },
+  {
+    "regionalNum": 6,
+    "nationalNum": 392,
+    "name": "Infernape",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/392.png"
+  },
+  {
+    "regionalNum": 7,
+    "nationalNum": 393,
+    "name": "Piplup",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/393.png"
+  },
+  {
+    "regionalNum": 8,
+    "nationalNum": 394,
+    "name": "Prinplup",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/394.png"
+  },
+  {
+    "regionalNum": 9,
+    "nationalNum": 395,
+    "name": "Empoleon",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/395.png"
+  },
+  {
+    "regionalNum": 10,
+    "nationalNum": 396,
+    "name": "Starly",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/396.png"
+  },
+  {
+    "regionalNum": 11,
+    "nationalNum": 397,
+    "name": "Staravia",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/397.png"
+  },
+  {
+    "regionalNum": 12,
+    "nationalNum": 398,
+    "name": "Staraptor",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/398.png"
+  },
+  {
+    "regionalNum": 13,
+    "nationalNum": 399,
+    "name": "Bidoof",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/399.png"
+  },
+  {
+    "regionalNum": 14,
+    "nationalNum": 400,
+    "name": "Bibarel",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/400.png"
+  },
+  {
+    "regionalNum": 15,
+    "nationalNum": 401,
+    "name": "Kricketot",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/401.png"
+  },
+  {
+    "regionalNum": 16,
+    "nationalNum": 402,
+    "name": "Kricketune",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/402.png"
+  },
+  {
+    "regionalNum": 17,
+    "nationalNum": 403,
+    "name": "Shinx",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/403.png"
+  },
+  {
+    "regionalNum": 18,
+    "nationalNum": 404,
+    "name": "Luxio",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/404.png"
+  },
+  {
+    "regionalNum": 19,
+    "nationalNum": 405,
+    "name": "Luxray",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/405.png"
+  },
+  {
+    "regionalNum": 20,
+    "nationalNum": 63,
+    "name": "Abra",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/063.png"
+  },
+  {
+    "regionalNum": 21,
+    "nationalNum": 64,
+    "name": "Kadabra",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/064.png"
+  },
+  {
+    "regionalNum": 22,
+    "nationalNum": 65,
+    "name": "Alakazam",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/065.png"
+  },
+  {
+    "regionalNum": 23,
+    "nationalNum": 129,
+    "name": "Magikarp",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/129.png"
+  },
+  {
+    "regionalNum": 24,
+    "nationalNum": 130,
+    "name": "Gyarados",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/130.png"
+  },
+  {
+    "regionalNum": 25,
+    "nationalNum": 406,
+    "name": "Budew",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/406.png"
+  },
+  {
+    "regionalNum": 26,
+    "nationalNum": 315,
+    "name": "Roselia",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/315.png"
+  },
+  {
+    "regionalNum": 27,
+    "nationalNum": 407,
+    "name": "Roserade",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/407.png"
+  },
+  {
+    "regionalNum": 28,
+    "nationalNum": 41,
+    "name": "Zubat",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/041.png"
+  },
+  {
+    "regionalNum": 29,
+    "nationalNum": 42,
+    "name": "Golbat",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/042.png"
+  },
+  {
+    "regionalNum": 30,
+    "nationalNum": 169,
+    "name": "Crobat",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/169.png"
+  },
+  {
+    "regionalNum": 31,
+    "nationalNum": 74,
+    "name": "Geodude",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/074.png"
+  },
+  {
+    "regionalNum": 32,
+    "nationalNum": 75,
+    "name": "Graveler",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/075.png"
+  },
+  {
+    "regionalNum": 33,
+    "nationalNum": 76,
+    "name": "Golem",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/076.png"
+  },
+  {
+    "regionalNum": 34,
+    "nationalNum": 95,
+    "name": "Onix",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/095.png"
+  },
+  {
+    "regionalNum": 35,
+    "nationalNum": 208,
+    "name": "Steelix",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/208.png"
+  },
+  {
+    "regionalNum": 36,
+    "nationalNum": 408,
+    "name": "Cranidos",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/408.png"
+  },
+  {
+    "regionalNum": 37,
+    "nationalNum": 409,
+    "name": "Rampardos",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/409.png"
+  },
+  {
+    "regionalNum": 38,
+    "nationalNum": 410,
+    "name": "Shieldon",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/410.png"
+  },
+  {
+    "regionalNum": 39,
+    "nationalNum": 411,
+    "name": "Bastiodon",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/411.png"
+  },
+  {
+    "regionalNum": 40,
+    "nationalNum": 66,
+    "name": "Machop",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/066.png"
+  },
+  {
+    "regionalNum": 41,
+    "nationalNum": 67,
+    "name": "Machoke",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/067.png"
+  },
+  {
+    "regionalNum": 42,
+    "nationalNum": 68,
+    "name": "Machamp",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/068.png"
+  },
+  {
+    "regionalNum": 43,
+    "nationalNum": 54,
+    "name": "Psyduck",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/054.png"
+  },
+  {
+    "regionalNum": 44,
+    "nationalNum": 55,
+    "name": "Golduck",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/055.png"
+  },
+  {
+    "regionalNum": 45,
+    "nationalNum": 412,
+    "name": "Burmy",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/412.png"
+  },
+  {
+    "regionalNum": 46,
+    "nationalNum": 413,
+    "name": "Wormadam",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/413.png"
+  },
+  {
+    "regionalNum": 47,
+    "nationalNum": 414,
+    "name": "Mothim",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/414.png"
+  },
+  {
+    "regionalNum": 48,
+    "nationalNum": 265,
+    "name": "Wurmple",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/265.png"
+  },
+  {
+    "regionalNum": 49,
+    "nationalNum": 266,
+    "name": "Silcoon",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/266.png"
+  },
+  {
+    "regionalNum": 50,
+    "nationalNum": 267,
+    "name": "Beautifly",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/267.png"
+  },
+  {
+    "regionalNum": 51,
+    "nationalNum": 268,
+    "name": "Cascoon",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/268.png"
+  },
+  {
+    "regionalNum": 52,
+    "nationalNum": 269,
+    "name": "Dustox",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/269.png"
+  },
+  {
+    "regionalNum": 53,
+    "nationalNum": 415,
+    "name": "Combee",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/415.png"
+  },
+  {
+    "regionalNum": 54,
+    "nationalNum": 416,
+    "name": "Vespiquen",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/416.png"
+  },
+  {
+    "regionalNum": 55,
+    "nationalNum": 417,
+    "name": "Pachirisu",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/417.png"
+  },
+  {
+    "regionalNum": 56,
+    "nationalNum": 418,
+    "name": "Buizel",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/418.png"
+  },
+  {
+    "regionalNum": 57,
+    "nationalNum": 419,
+    "name": "Floatzel",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/419.png"
+  },
+  {
+    "regionalNum": 58,
+    "nationalNum": 420,
+    "name": "Cherubi",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/420.png"
+  },
+  {
+    "regionalNum": 59,
+    "nationalNum": 421,
+    "name": "Cherrim",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/421.png"
+  },
+  {
+    "regionalNum": 60,
+    "nationalNum": 422,
+    "name": "Shellos",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/422.png"
+  },
+  {
+    "regionalNum": 61,
+    "nationalNum": 423,
+    "name": "Gastrodon",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/423.png"
+  },
+  {
+    "regionalNum": 62,
+    "nationalNum": 214,
+    "name": "Heracross",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/214.png"
+  },
+  {
+    "regionalNum": 63,
+    "nationalNum": 190,
+    "name": "Aipom",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/190.png"
+  },
+  {
+    "regionalNum": 64,
+    "nationalNum": 424,
+    "name": "Ambipom",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/424.png"
+  },
+  {
+    "regionalNum": 65,
+    "nationalNum": 425,
+    "name": "Drifloon",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/425.png"
+  },
+  {
+    "regionalNum": 66,
+    "nationalNum": 426,
+    "name": "Drifblim",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/426.png"
+  },
+  {
+    "regionalNum": 67,
+    "nationalNum": 427,
+    "name": "Buneary",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/427.png"
+  },
+  {
+    "regionalNum": 68,
+    "nationalNum": 428,
+    "name": "Lopunny",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/428.png"
+  },
+  {
+    "regionalNum": 69,
+    "nationalNum": 92,
+    "name": "Gastly",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/092.png"
+  },
+  {
+    "regionalNum": 70,
+    "nationalNum": 93,
+    "name": "Haunter",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/093.png"
+  },
+  {
+    "regionalNum": 71,
+    "nationalNum": 94,
+    "name": "Gengar",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/094.png"
+  },
+  {
+    "regionalNum": 72,
+    "nationalNum": 200,
+    "name": "Misdreavus",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/200.png"
+  },
+  {
+    "regionalNum": 73,
+    "nationalNum": 429,
+    "name": "Mismagius",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/429.png"
+  },
+  {
+    "regionalNum": 74,
+    "nationalNum": 198,
+    "name": "Murkrow",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/198.png"
+  },
+  {
+    "regionalNum": 75,
+    "nationalNum": 430,
+    "name": "Honchkrow",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/430.png"
+  },
+  {
+    "regionalNum": 76,
+    "nationalNum": 431,
+    "name": "Glameow",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/431.png"
+  },
+  {
+    "regionalNum": 77,
+    "nationalNum": 432,
+    "name": "Purugly",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/432.png"
+  },
+  {
+    "regionalNum": 78,
+    "nationalNum": 118,
+    "name": "Goldeen",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/118.png"
+  },
+  {
+    "regionalNum": 79,
+    "nationalNum": 119,
+    "name": "Seaking",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/119.png"
+  },
+  {
+    "regionalNum": 80,
+    "nationalNum": 339,
+    "name": "Barboach",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/339.png"
+  },
+  {
+    "regionalNum": 81,
+    "nationalNum": 340,
+    "name": "Whiscash",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/340.png"
+  },
+  {
+    "regionalNum": 82,
+    "nationalNum": 433,
+    "name": "Chingling",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/433.png"
+  },
+  {
+    "regionalNum": 83,
+    "nationalNum": 358,
+    "name": "Chimecho",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/358.png"
+  },
+  {
+    "regionalNum": 84,
+    "nationalNum": 434,
+    "name": "Stunky",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/434.png"
+  },
+  {
+    "regionalNum": 85,
+    "nationalNum": 435,
+    "name": "Skuntank",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/435.png"
+  },
+  {
+    "regionalNum": 86,
+    "nationalNum": 307,
+    "name": "Meditite",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/307.png"
+  },
+  {
+    "regionalNum": 87,
+    "nationalNum": 308,
+    "name": "Medicham",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/308.png"
+  },
+  {
+    "regionalNum": 88,
+    "nationalNum": 436,
+    "name": "Bronzor",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/436.png"
+  },
+  {
+    "regionalNum": 89,
+    "nationalNum": 437,
+    "name": "Bronzong",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/437.png"
+  },
+  {
+    "regionalNum": 90,
+    "nationalNum": 77,
+    "name": "Ponyta",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/077.png"
+  },
+  {
+    "regionalNum": 91,
+    "nationalNum": 78,
+    "name": "Rapidash",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/078.png"
+  },
+  {
+    "regionalNum": 92,
+    "nationalNum": 438,
+    "name": "Bonsly",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/438.png"
+  },
+  {
+    "regionalNum": 93,
+    "nationalNum": 185,
+    "name": "Sudowoodo",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/185.png"
+  },
+  {
+    "regionalNum": 94,
+    "nationalNum": 439,
+    "name": "Mime Jr.",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/439.png"
+  },
+  {
+    "regionalNum": 95,
+    "nationalNum": 122,
+    "name": "Mr. Mime",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/122.png"
+  },
+  {
+    "regionalNum": 96,
+    "nationalNum": 440,
+    "name": "Happiny",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/440.png"
+  },
+  {
+    "regionalNum": 97,
+    "nationalNum": 113,
+    "name": "Chansey",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/113.png"
+  },
+  {
+    "regionalNum": 98,
+    "nationalNum": 242,
+    "name": "Blissey",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/242.png"
+  },
+  {
+    "regionalNum": 99,
+    "nationalNum": 173,
+    "name": "Cleffa",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/173.png"
+  },
+  {
+    "regionalNum": 100,
+    "nationalNum": 35,
+    "name": "Clefairy",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/035.png"
+  },
+  {
+    "regionalNum": 101,
+    "nationalNum": 36,
+    "name": "Clefable",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/036.png"
+  },
+  {
+    "regionalNum": 102,
+    "nationalNum": 441,
+    "name": "Chatot",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/441.png"
+  },
+  {
+    "regionalNum": 103,
+    "nationalNum": 172,
+    "name": "Pichu",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/172.png"
+  },
+  {
+    "regionalNum": 104,
+    "nationalNum": 25,
+    "name": "Pikachu",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/025.png"
+  },
+  {
+    "regionalNum": 105,
+    "nationalNum": 26,
+    "name": "Raichu",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/026.png"
+  },
+  {
+    "regionalNum": 106,
+    "nationalNum": 163,
+    "name": "Hoothoot",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/163.png"
+  },
+  {
+    "regionalNum": 107,
+    "nationalNum": 164,
+    "name": "Noctowl",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/164.png"
+  },
+  {
+    "regionalNum": 108,
+    "nationalNum": 442,
+    "name": "Spiritomb",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/442.png"
+  },
+  {
+    "regionalNum": 109,
+    "nationalNum": 443,
+    "name": "Gible",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/443.png"
+  },
+  {
+    "regionalNum": 110,
+    "nationalNum": 444,
+    "name": "Gabite",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/444.png"
+  },
+  {
+    "regionalNum": 111,
+    "nationalNum": 445,
+    "name": "Garchomp",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/445.png"
+  },
+  {
+    "regionalNum": 112,
+    "nationalNum": 446,
+    "name": "Munchlax",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/446.png"
+  },
+  {
+    "regionalNum": 113,
+    "nationalNum": 143,
+    "name": "Snorlax",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/143.png"
+  },
+  {
+    "regionalNum": 114,
+    "nationalNum": 201,
+    "name": "Unown",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/201.png"
+  },
+  {
+    "regionalNum": 115,
+    "nationalNum": 447,
+    "name": "Riolu",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/447.png"
+  },
+  {
+    "regionalNum": 116,
+    "nationalNum": 448,
+    "name": "Lucario",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/448.png"
+  },
+  {
+    "regionalNum": 117,
+    "nationalNum": 194,
+    "name": "Wooper",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/194.png"
+  },
+  {
+    "regionalNum": 118,
+    "nationalNum": 195,
+    "name": "Quagsire",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/195.png"
+  },
+  {
+    "regionalNum": 119,
+    "nationalNum": 278,
+    "name": "Wingull",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/278.png"
+  },
+  {
+    "regionalNum": 120,
+    "nationalNum": 279,
+    "name": "Pelipper",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/279.png"
+  },
+  {
+    "regionalNum": 121,
+    "nationalNum": 203,
+    "name": "Girafarig",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/203.png"
+  },
+  {
+    "regionalNum": 122,
+    "nationalNum": 449,
+    "name": "Hippopotas",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/449.png"
+  },
+  {
+    "regionalNum": 123,
+    "nationalNum": 450,
+    "name": "Hippowdon",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/450.png"
+  },
+  {
+    "regionalNum": 124,
+    "nationalNum": 298,
+    "name": "Azurill",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/298.png"
+  },
+  {
+    "regionalNum": 125,
+    "nationalNum": 183,
+    "name": "Marill",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/183.png"
+  },
+  {
+    "regionalNum": 126,
+    "nationalNum": 184,
+    "name": "Azumarill",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/184.png"
+  },
+  {
+    "regionalNum": 127,
+    "nationalNum": 451,
+    "name": "Skorupi",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/451.png"
+  },
+  {
+    "regionalNum": 128,
+    "nationalNum": 452,
+    "name": "Drapion",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/452.png"
+  },
+  {
+    "regionalNum": 129,
+    "nationalNum": 453,
+    "name": "Croagunk",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/453.png"
+  },
+  {
+    "regionalNum": 130,
+    "nationalNum": 454,
+    "name": "Toxicroak",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/454.png"
+  },
+  {
+    "regionalNum": 131,
+    "nationalNum": 455,
+    "name": "Carnivine",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/455.png"
+  },
+  {
+    "regionalNum": 132,
+    "nationalNum": 223,
+    "name": "Remoraid",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/223.png"
+  },
+  {
+    "regionalNum": 133,
+    "nationalNum": 224,
+    "name": "Octillery",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/224.png"
+  },
+  {
+    "regionalNum": 134,
+    "nationalNum": 456,
+    "name": "Finneon",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/456.png"
+  },
+  {
+    "regionalNum": 135,
+    "nationalNum": 457,
+    "name": "Lumineon",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/457.png"
+  },
+  {
+    "regionalNum": 136,
+    "nationalNum": 72,
+    "name": "Tentacool",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/072.png"
+  },
+  {
+    "regionalNum": 137,
+    "nationalNum": 73,
+    "name": "Tentacruel",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/073.png"
+  },
+  {
+    "regionalNum": 138,
+    "nationalNum": 349,
+    "name": "Feebas",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/349.png"
+  },
+  {
+    "regionalNum": 139,
+    "nationalNum": 350,
+    "name": "Milotic",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/350.png"
+  },
+  {
+    "regionalNum": 140,
+    "nationalNum": 458,
+    "name": "Mantyke",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/458.png"
+  },
+  {
+    "regionalNum": 141,
+    "nationalNum": 226,
+    "name": "Mantine",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/226.png"
+  },
+  {
+    "regionalNum": 142,
+    "nationalNum": 459,
+    "name": "Snover",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/459.png"
+  },
+  {
+    "regionalNum": 143,
+    "nationalNum": 460,
+    "name": "Abomasnow",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/460.png"
+  },
+  {
+    "regionalNum": 144,
+    "nationalNum": 215,
+    "name": "Sneasel",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/215.png"
+  },
+  {
+    "regionalNum": 145,
+    "nationalNum": 461,
+    "name": "Weavile",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/461.png"
+  },
+  {
+    "regionalNum": 146,
+    "nationalNum": 480,
+    "name": "Uxie",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/480.png"
+  },
+  {
+    "regionalNum": 147,
+    "nationalNum": 481,
+    "name": "Mesprit",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/481.png"
+  },
+  {
+    "regionalNum": 148,
+    "nationalNum": 482,
+    "name": "Azelf",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/482.png"
+  },
+  {
+    "regionalNum": 149,
+    "nationalNum": 483,
+    "name": "Dialga",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/483.png"
+  },
+  {
+    "regionalNum": 150,
+    "nationalNum": 484,
+    "name": "Palkia",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/484.png"
+  },
+  {
+    "regionalNum": 151,
+    "nationalNum": 490,
+    "name": "Manaphy",
+    "imageUrl": "https://www.serebii.net/swordshield/pokemon/small/490.png"
+  }
+];
+
+        const POKEMON_PER_BOX = 30;
+        const TOTAL_BOXES = Math.ceil(pokemonData.length / POKEMON_PER_BOX);
+
+        // Serebii URL mapping by regional number
+        const serebiiUrls = {1:"/pokedex-swsh/turtwig/",2:"/pokedex-swsh/grotle/",3:"/pokedex-swsh/torterra/",4:"/pokedex-swsh/chimchar/",5:"/pokedex-swsh/monferno/",6:"/pokedex-swsh/infernape/",7:"/pokedex-swsh/piplup/",8:"/pokedex-swsh/prinplup/",9:"/pokedex-swsh/empoleon/",10:"/pokedex-swsh/starly/",11:"/pokedex-swsh/staravia/",12:"/pokedex-swsh/staraptor/",13:"/pokedex-swsh/bidoof/",14:"/pokedex-swsh/bibarel/",15:"/pokedex-swsh/kricketot/",16:"/pokedex-swsh/kricketune/",17:"/pokedex-swsh/shinx/",18:"/pokedex-swsh/luxio/",19:"/pokedex-swsh/luxray/",20:"/pokedex-swsh/abra/",21:"/pokedex-swsh/kadabra/",22:"/pokedex-swsh/alakazam/",23:"/pokedex-swsh/magikarp/",24:"/pokedex-swsh/gyarados/",25:"/pokedex-swsh/budew/",26:"/pokedex-swsh/roselia/",27:"/pokedex-swsh/roserade/",28:"/pokedex-swsh/zubat/",29:"/pokedex-swsh/golbat/",30:"/pokedex-swsh/crobat/",31:"/pokedex-swsh/geodude/",32:"/pokedex-swsh/graveler/",33:"/pokedex-swsh/golem/",34:"/pokedex-swsh/onix/",35:"/pokedex-swsh/steelix/",36:"/pokedex-swsh/cranidos/",37:"/pokedex-swsh/rampardos/",38:"/pokedex-swsh/shieldon/",39:"/pokedex-swsh/bastiodon/",40:"/pokedex-swsh/machop/",41:"/pokedex-swsh/machoke/",42:"/pokedex-swsh/machamp/",43:"/pokedex-swsh/psyduck/",44:"/pokedex-swsh/golduck/",45:"/pokedex-swsh/burmy/",46:"/pokedex-swsh/wormadam/",47:"/pokedex-swsh/mothim/",48:"/pokedex-swsh/wurmple/",49:"/pokedex-swsh/silcoon/",50:"/pokedex-swsh/beautifly/",51:"/pokedex-swsh/cascoon/",52:"/pokedex-swsh/dustox/",53:"/pokedex-swsh/combee/",54:"/pokedex-swsh/vespiquen/",55:"/pokedex-swsh/pachirisu/",56:"/pokedex-swsh/buizel/",57:"/pokedex-swsh/floatzel/",58:"/pokedex-swsh/cherubi/",59:"/pokedex-swsh/cherrim/",60:"/pokedex-swsh/shellos/",61:"/pokedex-swsh/gastrodon/",62:"/pokedex-swsh/heracross/",63:"/pokedex-swsh/aipom/",64:"/pokedex-swsh/ambipom/",65:"/pokedex-swsh/drifloon/",66:"/pokedex-swsh/drifblim/",67:"/pokedex-swsh/buneary/",68:"/pokedex-swsh/lopunny/",69:"/pokedex-swsh/gastly/",70:"/pokedex-swsh/haunter/",71:"/pokedex-swsh/gengar/",72:"/pokedex-swsh/misdreavus/",73:"/pokedex-swsh/mismagius/",74:"/pokedex-swsh/murkrow/",75:"/pokedex-swsh/honchkrow/",76:"/pokedex-swsh/glameow/",77:"/pokedex-swsh/purugly/",78:"/pokedex-swsh/goldeen/",79:"/pokedex-swsh/seaking/",80:"/pokedex-swsh/barboach/",81:"/pokedex-swsh/whiscash/",82:"/pokedex-swsh/chingling/",83:"/pokedex-swsh/chimecho/",84:"/pokedex-swsh/stunky/",85:"/pokedex-swsh/skuntank/",86:"/pokedex-swsh/meditite/",87:"/pokedex-swsh/medicham/",88:"/pokedex-swsh/bronzor/",89:"/pokedex-swsh/bronzong/",90:"/pokedex-swsh/ponyta/",91:"/pokedex-swsh/rapidash/",92:"/pokedex-swsh/bonsly/",93:"/pokedex-swsh/sudowoodo/",94:"/pokedex-swsh/mimejr./",95:"/pokedex-swsh/mr.mime/",96:"/pokedex-swsh/happiny/",97:"/pokedex-swsh/chansey/",98:"/pokedex-swsh/blissey/",99:"/pokedex-swsh/cleffa/",100:"/pokedex-swsh/clefairy/",101:"/pokedex-swsh/clefable/",102:"/pokedex-swsh/chatot/",103:"/pokedex-swsh/pichu/",104:"/pokedex-swsh/pikachu/",105:"/pokedex-swsh/raichu/",106:"/pokedex-swsh/hoothoot/",107:"/pokedex-swsh/noctowl/",108:"/pokedex-swsh/spiritomb/",109:"/pokedex-swsh/gible/",110:"/pokedex-swsh/gabite/",111:"/pokedex-swsh/garchomp/",112:"/pokedex-swsh/munchlax/",113:"/pokedex-swsh/snorlax/",114:"/pokedex-swsh/unown/",115:"/pokedex-swsh/riolu/",116:"/pokedex-swsh/lucario/",117:"/pokedex-swsh/wooper/",118:"/pokedex-swsh/quagsire/",119:"/pokedex-swsh/wingull/",120:"/pokedex-swsh/pelipper/",121:"/pokedex-swsh/girafarig/",122:"/pokedex-swsh/hippopotas/",123:"/pokedex-swsh/hippowdon/",124:"/pokedex-swsh/azurill/",125:"/pokedex-swsh/marill/",126:"/pokedex-swsh/azumarill/",127:"/pokedex-swsh/skorupi/",128:"/pokedex-swsh/drapion/",129:"/pokedex-swsh/croagunk/",130:"/pokedex-swsh/toxicroak/",131:"/pokedex-swsh/carnivine/",132:"/pokedex-swsh/remoraid/",133:"/pokedex-swsh/octillery/",134:"/pokedex-swsh/finneon/",135:"/pokedex-swsh/lumineon/",136:"/pokedex-swsh/tentacool/",137:"/pokedex-swsh/tentacruel/",138:"/pokedex-swsh/feebas/",139:"/pokedex-swsh/milotic/",140:"/pokedex-swsh/mantyke/",141:"/pokedex-swsh/mantine/",142:"/pokedex-swsh/snover/",143:"/pokedex-swsh/abomasnow/",144:"/pokedex-swsh/sneasel/",145:"/pokedex-swsh/weavile/",146:"/pokedex-swsh/uxie/",147:"/pokedex-swsh/mesprit/",148:"/pokedex-swsh/azelf/",149:"/pokedex-swsh/dialga/",150:"/pokedex-swsh/palkia/",151:"/pokedex-swsh/manaphy/"};
+
+        let currentBox = 0;
+        let obtainedPokemon = new Set(JSON.parse(localStorage.getItem('sinnohDexObtained') || '[]'));
+
+        // Initialize box selector
+        function initBoxSelector() {
+            const selector = document.getElementById('box-selector');
+            selector.innerHTML = '';
+
+            for (let i = 0; i < TOTAL_BOXES; i++) {
+                const btn = document.createElement('button');
+                btn.className = `box-selector-btn border-2 rounded-lg font-bold transition ${i === currentBox ? 'active text-white' : 'bg-white border-blue-300 text-blue-700 hover:bg-blue-50'}`;
+                btn.textContent = i + 1;
+                btn.onclick = () => switchToBox(i);
+                selector.appendChild(btn);
+            }
+        }
+
+        // Switch to a specific box
+        function switchToBox(boxNum) {
+            currentBox = boxNum;
+            renderCurrentBox();
+        }
+
+        // Navigate to previous box
+        function previousBox() {
+            if (currentBox > 0) {
+                currentBox--;
+                renderCurrentBox();
+            }
+        }
+
+        // Navigate to next box
+        function nextBox() {
+            if (currentBox < TOTAL_BOXES - 1) {
+                currentBox++;
+                renderCurrentBox();
+            }
+        }
+
+        // Render the current box
+        function renderCurrentBox() {
+            const startIdx = currentBox * POKEMON_PER_BOX;
+            const endIdx = Math.min(startIdx + POKEMON_PER_BOX, pokemonData.length);
+            const boxPokemon = pokemonData.slice(startIdx, endIdx);
+
+            const grid = document.getElementById('pokemon-grid');
+            grid.innerHTML = '';
+
+            // Render Pokemon in this box
+            for (let i = 0; i < POKEMON_PER_BOX; i++) {
+                const slot = document.createElement('div');
+
+                if (i < boxPokemon.length) {
+                    const pokemon = boxPokemon[i];
+                    const isObtained = obtainedPokemon.has(pokemon.regionalNum);
+
+                    slot.className = 'pokemon-slot';
+                    slot.onclick = () => togglePokemon(pokemon.regionalNum);
+
+                    slot.innerHTML = `
+                        <a href="https://www.serebii.net${serebiiUrls[pokemon.regionalNum]}"
+                           target="_blank"
+                           class="info-link"
+                           title="View ${pokemon.name} on Serebii"
+                           onclick="event.stopPropagation()">i</a>
+                        ${isObtained ? '<div class="obtained-badge">✓</div>' : ''}
+                        <img
+                            src="${pokemon.imageUrl}"
+                            alt="${pokemon.name}"
+                            class="pokemon-sprite ${isObtained ? 'obtained' : 'unobtained'} w-full h-auto"
+                            title="${pokemon.name}"
+                        >
+                        <div class="text-center mt-1">
+                            <div class="text-xs font-bold text-gray-700">#${String(pokemon.regionalNum).padStart(3, '0')}</div>
+                            <div class="text-xs text-gray-600 truncate">${pokemon.name}</div>
+                        </div>
+                    `;
+                } else {
+                    // Empty slot
+                    slot.className = 'pokemon-slot empty-slot';
+                    slot.innerHTML = '<div class="text-gray-500 text-xs">Empty</div>';
+                }
+
+                grid.appendChild(slot);
+            }
+
+            // Update box header
+            document.getElementById('box-title').textContent = `Box ${currentBox + 1}`;
+            document.getElementById('box-range').textContent = `Pokemon #${startIdx + 1} - #${endIdx}`;
+
+            // Update box progress
+            const boxObtained = boxPokemon.filter(p => obtainedPokemon.has(p.regionalNum)).length;
+            document.getElementById('box-progress').textContent = `${boxObtained}/${boxPokemon.length} obtained`;
+
+            // Update navigation buttons
+            document.getElementById('prev-btn').disabled = currentBox === 0;
+            document.getElementById('next-btn').disabled = currentBox === TOTAL_BOXES - 1;
+
+            // Update box selector
+            initBoxSelector();
+
+            // Update overall progress
+            updateOverallProgress();
+        }
+
+        // Toggle Pokemon obtained status
+        function togglePokemon(regionalNum) {
+            if (obtainedPokemon.has(regionalNum)) {
+                obtainedPokemon.delete(regionalNum);
+            } else {
+                obtainedPokemon.add(regionalNum);
+            }
+
+            saveToLocalStorage();
+            renderCurrentBox();
+        }
+
+        // Save to localStorage
+        function saveToLocalStorage() {
+            localStorage.setItem('sinnohDexObtained', JSON.stringify([...obtainedPokemon]));
+        }
+
+        // Update overall progress
+        function updateOverallProgress() {
+            const total = pokemonData.length;
+            const obtained = obtainedPokemon.size;
+            const percentage = Math.round((obtained / total) * 100);
+
+            document.getElementById('progress-text').textContent = `${obtained}/${total} (${percentage}%)`;
+            document.getElementById('progress-bar').style.width = `${percentage}%`;
+            document.getElementById('progress-percent').textContent = `${percentage}%`;
+        }
+
+        // Mark all Pokemon in current box
+        function markAllInBox(obtained) {
+            const startIdx = currentBox * POKEMON_PER_BOX;
+            const endIdx = Math.min(startIdx + POKEMON_PER_BOX, pokemonData.length);
+            const boxPokemon = pokemonData.slice(startIdx, endIdx);
+
+            boxPokemon.forEach(pokemon => {
+                if (obtained) {
+                    obtainedPokemon.add(pokemon.regionalNum);
+                } else {
+                    obtainedPokemon.delete(pokemon.regionalNum);
+                }
+            });
+
+            saveToLocalStorage();
+            renderCurrentBox();
+        }
+
+        // Mark all Pokemon as obtained or unobtained
+        function markAll(obtained) {
+            if (obtained) {
+                obtainedPokemon = new Set(pokemonData.map(p => p.regionalNum));
+            } else {
+                obtainedPokemon = new Set();
+            }
+            saveToLocalStorage();
+            renderCurrentBox();
+        }
+
+        // Export data
+        function exportData() {
+            const data = {
+                version: '1.0',
+                date: new Date().toISOString(),
+                obtained: [...obtainedPokemon]
+            };
+
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `sinnoh-dex-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Import data
+        function importData() {
+            document.getElementById('import-file').click();
+        }
+
+        // Handle import file
+        function handleImport(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (data.obtained && Array.isArray(data.obtained)) {
+                        obtainedPokemon = new Set(data.obtained);
+                        saveToLocalStorage();
+                        renderCurrentBox();
+                        alert('Data imported successfully!');
+                    } else {
+                        alert('Invalid file format');
+                    }
+                } catch (error) {
+                    alert('Error reading file: ' + error.message);
+                }
+            };
+            reader.readAsText(file);
+
+            // Reset file input
+            event.target.value = '';
+        }
+
+        // Initialize on page load
+        renderCurrentBox();
+    </script>
+</body>
+</html>
